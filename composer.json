@@ -1,0 +1,30 @@
+{
+	"name":"openthc/api",
+	"description":"OpenTHC API",
+	"license":"proprietary",
+	"repositories": [
+		{
+			"type": "pear",
+			"url": "https://pear.php.net"
+		}
+	],
+	"require": {
+		"php": ">=5.5.0",
+		"ext-curl": "*",
+		"ext-date": "*",
+		"ext-imap": "*",
+		"ext-json": "*",
+		"ext-mcrypt": "*",
+		"ext-PDO": "*",
+		"ext-session": "*",
+		"ext-sockets": "*",
+		"erusev/parsedown": "1.6.1",
+		"slim/slim": "3.9.2"
+	},
+	"require-dev": {
+		"facebook/webdriver": "1.2.0",
+		"phpunit/phpunit": "5.7.5",
+		"phpunit/phpunit-selenium": "3.0.2",
+		"helmich/phpunit-json-assert": "^1.1"
+	}
+}
