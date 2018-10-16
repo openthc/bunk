@@ -13,19 +13,18 @@
 # --type-set=minifiedjs=.min.js
 
 --break
-
 --heading
 
 --smart-case
-
 --sort-files
 
---ignore-dir=.git
---ignore-dir=.local
---ignore-dir=doxygen
---ignore-dir=node_modules
---ignore-dir=var
---ignore-dir=vendor
+--ignore-dir=.composer/
+--ignore-dir=.git/
+--ignore-dir=.local/
+--ignore-dir=doxygen/
+--ignore-dir=node_modules/
+--ignore-dir=var/
+--ignore-dir=vendor/
 
 --ignore-file=is:composer.lock
 --ignore-file=is:composer.phar

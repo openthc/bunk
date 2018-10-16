@@ -3,13 +3,13 @@
 	OpenTHC Bunk API Application Bootstrap
 */
 
-use Edoceo\Radix\DB\SQL;
-
 define('APP_NAME', 'OpenTHC Bunk');
 define('APP_SITE', 'https://bunk.openthc.org');
-define('APP_ROOT', dirname(__FILE__));
-define('APP_SALT', md5(APP_NAME . APP_SITE . APP_ROOT));
+define('APP_ROOT', __DIR__);
+define('APP_SALT', sha1(APP_NAME . APP_SITE . APP_ROOT));
 
-error_reporting((E_ALL|E_STRICT) ^ E_NOTICE);
+error_reporting(E_ALL & ~ E_NOTICE);
+
+openlog('openthc-bunk', LOG_ODELAY|LOG_PID, LOG_LOCAL0);
 
 require_once(APP_ROOT . '/vendor/autoload.php');

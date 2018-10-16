@@ -5,6 +5,8 @@ It's compatible with WA, HI, IL, ND, NM interfaces.
 
 ## Usage
 
+ * **$BASE** is $HOST/biotrack/v2013/serverjson.asp
+
 Like the standard BioTrack API you simply login() and get a session token.
 This session token is then included with all subsequent calls.
 
@@ -12,6 +14,21 @@ This session token is then included with all subsequent calls.
 	Content-Type: text/JSON
 
 	{ "license_number": "", "username": "", "password": "" }
+
+## Example
+
+    curl \
+		$HOST/biotrack/v2013/serverjson.asp \
+		-X POST \
+		-H "content-type: application/json" \
+		--data '{
+			"action": "login",
+			"license_number": "",
+			"username": "",
+			"password": ""
+		}'
+
+
 
 ## Supported Calls:
 
@@ -62,7 +79,6 @@ This session token is then included with all subsequent calls.
  * inventory_transfer_outbound_modify
  * inventory_transfer_outbound_return_lookup
  * inventory_transfer_outbound_void
- * lib
  * login
  * plant_convert_to_inventory
  * plant_cure
@@ -115,3 +131,4 @@ This session token is then included with all subsequent calls.
 
  * HI Documentation: https://www.biotrack.com/wp-content/uploads/2018/03/JSON-1.pdf
  * IL Documentation: https://www.biotrack.com/wp-content/uploads/2018/04/IL-JSON-2-1.pdf
+ * NM Documentation: https://www.biotrack.com/wp-content/uploads/2018/01/JSON-2.pdf
