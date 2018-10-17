@@ -45,32 +45,31 @@ if (empty($json)) {
 }
 
 // API
-$json['API'] = '4.0';
 if ($json['API'] != '4.0') {
 	return $RES->withJSON(array(
-		'_detail' => 'The "API" key must be provided, the only allowed value is "4.0"',
-		'_request' => $json,
 		'success' => 0,
 		'error' => 'Invalid API Version',
 		'errorcode' => 17,
+		'_detail' => 'The "API" key must be provided, the only allowed value is "4.0"',
+		'_request' => $json,
 	), 400);
 }
 
 // Action
 if (empty($json['action'])) {
 	return $RES->withJSON(array(
-		'_detail' => 'The "action" parameter must be provided',
-		'_request' => $json,
 		'success' => 0,
 		'error' => 'Invalid Action',
 		'errorcode' => 62,
+		'_detail' => 'The "action" parameter must be provided',
+		'_request' => $json,
 	), 400);
 }
 if (!preg_match('/^\w+$/', $json['action'])) {
 	return $RES->withJSON(array(
+		'success' => 0,
 		'_detail' => 'Invalid "action" parameter',
 		'_request' => $json,
-		'success' => 0,
 	), 400);
 }
 
@@ -127,7 +126,6 @@ case 'sale_refund':
 case 'sale_void':
 
 	return $RES->withJSON(array(
-		// '_request' => $json,
 		'success' => 1,
 		'transactionid' => _rnd_transaction_id(),
 		'sessiontime' => $_SERVER['REQUEST_TIME'],
@@ -151,5 +149,5 @@ return $RES->withJSON(array(
 	'_request' => $json,
 	'success' => 0,
 	'error' => 'Unhandled Request',
-	'errorcode' => 987,
+	'errorcode' => 999,
 ), 500);
