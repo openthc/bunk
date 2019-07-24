@@ -14,7 +14,7 @@
 
 namespace Laboratory;
 
-class Lab_Result extends \OpenTHC_Bunk_LeafData_Test
+class Lab_Result_Create extends \OpenTHC_Bunk_LeafData_Test
 {
 	protected function setUp() : void
 	{
@@ -32,12 +32,13 @@ class Lab_Result extends \OpenTHC_Bunk_LeafData_Test
 	{
 
 		// https://watest.leafdatazone.com/api/v1/inventories?f_global_id={{ $SAMPLE_ID }}
-		if (empty(getenv('SAMPLE_ID'))) {
-			$text = "MUST PROVIDE SAMPLE_ID IN RUNTIME ARGUMENTS TO TEST";
-			echo $text;
-			$this->assertEquals('RUNTIME ERROR', $text);
-		}
-		$sample_lot_id = getenv('SAMPLE_ID');
+		// if (empty(getenv('SAMPLE_ID'))) {
+		// 	// $text = "MUST PROVIDE SAMPLE_ID IN RUNTIME ARGUMENTS TO TEST";
+		// 	// echo $text;
+		// 	// $this->assertEquals('RUNTIME ERROR', $text);
+		// }
+		$sample_lot_id = getenv('SAMPLE_L0');
+		$this->assertNotEmpty($sample_lot_id, 'Provide a Laboratory Sample ID for this Test');
 
 		$res = $this->get(sprintf('/api/v1/inventories?f_global_id=%s', $sample_lot_id));
 
