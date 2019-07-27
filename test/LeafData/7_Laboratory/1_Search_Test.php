@@ -1,15 +1,6 @@
 <?php
 /**
  * Lab Results
- *
- * Documentation Reference:
- * 		- STATE OF WASHINGTON USER MANUAL (version 1.37.5) addendum C
- * 			https://lcb.wa.gov/sites/default/files/publications/Marijuana/traceability/WALeafDataSystems_UserManual_v1.37.5_AddendumC_LicenseeUser.pdf
- * 		- ...
- * Lab cannot enter pesticides and heavy-metals unless it's a medical sample.
- *
- * Question Repo:
- * 		- Can I do batch inventory create?
  */
 
 namespace Laboratory;

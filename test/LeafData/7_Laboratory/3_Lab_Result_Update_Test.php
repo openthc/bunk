@@ -5,7 +5,7 @@
 
 namespace Laboratory;
 
-class Lab_Result_Create extends \OpenTHC_Bunk_LeafData_Test
+class Lab_Result_Update extends \OpenTHC_Bunk_LeafData_Test
 {
 	protected function setUp() : void
 	{
@@ -19,86 +19,89 @@ class Lab_Result_Create extends \OpenTHC_Bunk_LeafData_Test
 	 * Usage:
 	 * 	SAMPLE_ID="WALWTL.IN###" ../vendor/bin/phpunit LeafData/7_Laboratory/Lab_Result.php
 	 */
-	public function test_create_lab_result()
+	public function test_update_lab_result()
 	{
+		// Have to find a Sample First
 
-		$res = $this->get('inventories');
+		// Get the Sample
+		// $res = $this->get(sprintf('inventories?f_global_id=%s', $Result['global_for_inventory_id']));
+		$res = $this->get(sprintf('inventories?f_global_id=%s', 'WALWTL.IN3UBM')); // $Result['global_for_inventory_id']));
+		// var_dump($res);
 		$this->assertEquals($res['total'], 1);
 		$this->assertEquals($res['from'], 1);
 		$this->assertEquals($res['to'], 1);
 		$this->assertEquals($res['per_page'], 2500);
-		$this->assertIsArray($res['data']);
+		$this->assertTrue(!empty($res['data']));
 
-		// Find Editable Lab Result
-		$rnd_list = [];
-		foreach ($res['data'] as $x) {
-			if (empty($x['labResults'])) {
-				$rnd_list[] = $x;
-			}
-		}
-		$idx = array_rand($rnd_list);
-		$Sample = $rnd_list[$idx];
-
-		// _ksort_r($Result);
-		// print_r($Result);
-
-		// $sample_lot_id = getenv('SAMPLE_L0');
-		// $this->assertNotEmpty($sample_lot_id, 'Provide a Laboratory Sample ID for this Test');
-		// $res = $this->get(sprintf('inventories?f_global_id=%s', $sample_lot_id));
-		// $this->assertEquals($res['total'], 1);
-		// $this->assertEquals($res['from'], 1);
-		// $this->assertEquals($res['to'], 1);
-		// $this->assertEquals($res['per_page'], 2500);
-		// $this->assertTrue(!empty($res['data']));
-
-		// $Sample = $res['data'][0];
+		$Sample = $res['data'][0];
 		// $this->assertEquals($sample_lot_id, $Sample['global_id']);
-		$this->assertEmpty($Sample['labResults']);
 		$this->assertNotEmpty($Sample['global_mme_id']);
 		$this->assertNotEmpty($Sample['global_original_id']);
+		$this->assertIsArray($Sample['labResults']);
 
-		$Result = [
+		// _ksort_r($Sample);
+		// print_r($Sample);
+		// exit;
 
+		// $res = $this->ghc->get('lab_results?f_date1=2017-07-01');
+		$res = $this->ghc->get('lab_results?f_global_id=' . $Sample['labResults'][0]['global_id']);
+		$res = $this->assertValidResponse($res);
+		$this->assertIsArray($res);
+		$this->assertIsArray($res['data']);
+
+		$Result = $res['data'][0];
+
+		$mod = [
+
+			'global_id' => $Result['global_id'],
 			'global_inventory_id' => $Sample['global_id'],
 			'global_for_mme_id' => $Sample['global_mme_id'],
 			'global_for_inventory_id' => $Sample['global_original_id'],
+			// 'global_for_inventory_id' => $Result['global_for_inventory_id'],
+			// 'global_for_mme_id' => $Result['for_inventory']['global_mme_id'],
+			'intermediate_type' => $Result['intermediate_type'],
+			// 'global_inventory_id' => $Sample['global_id'],
+			// 'global_for_mme_id' => $Sample['global_mme_id'],
+			// 'global_for_inventory_id' => $Sample['global_original_id'],
 
 			/**
 			 * General
 			 */
 			'testing_status'                       => 'completed',
-			'foreign_matter'                       => '0', // 0 = pass, 1 = fail
-			'foreign_matter_seeds'                 => '0', // 0 = pass, 1 = fail
-			'foreign_matter_stems'                 => '0', // 0 = pass, 1 = fail
-			'moisture_content_percent'             => 12,
-			'moisture_content_water_activity_rate' => 0.12,
+			'foreign_matter'                       => '0', // 0 == Pass, 1 == Fail
+			'foreign_matter_seeds'                 => '0', // 0 == Pass, 1 == Fail
+			'foreign_matter_stems'                 => '0', // 0 == Pass, 1 == Fail
+			'moisture_content_percent'             => 13,
+			'moisture_content_water_activity_rate' => 0.13,
+
 
 			/**
 			 * Cannabinoid
 			 */
 			'cannabinoid_status' => 'completed',
-			'cannabinoid_cbc_mg_g'        => 12.345,
-			'cannabinoid_cbc_percent'     => 12.345,
-			'cannabinoid_cbd_mg_g'        => 12.345,
-			'cannabinoid_cbd_percent'     => 12.345,
-			'cannabinoid_cbda_mg_g'       => 12.345,
-			'cannabinoid_cbda_percent'    => 12.345,
-			'cannabinoid_cbdv_mg_g'       => 12.345,
-			'cannabinoid_cbdv_percent'    => 12.345,
-			'cannabinoid_cbg_mg_g'        => 12.345,
-			'cannabinoid_cbg_percent'     => 12.345,
-			'cannabinoid_cbga_mg_g'       => 12.345,
-			'cannabinoid_cbga_percent'    => 12.345,
-			'cannabinoid_cbn_mg_g'        => 12.345,
-			'cannabinoid_cbn_percent'     => 12.345,
-			'cannabinoid_d8_thc_mg_g'     => 12.345,
-			'cannabinoid_d8_thc_percent'  => 12.345,
-			'cannabinoid_d9_thc_mg_g'     => 12.345,
-			'cannabinoid_d9_thc_percent'  => 12.345,
-			'cannabinoid_d9_thca_mg_g'    => 12.345,
-			'cannabinoid_d9_thca_percent' => 12.345,
+			'cannabinoid_cbc_mg_g'        => 23.456,
+			'cannabinoid_cbc_percent'     => 23.456,
+			'cannabinoid_cbd_mg_g'        => 23.456,
+			'cannabinoid_cbd_percent'     => 23.456,
+			'cannabinoid_cbda_mg_g'       => 23.456,
+			'cannabinoid_cbda_percent'    => 23.456,
+			'cannabinoid_cbdv_mg_g'       => 23.456,
+			'cannabinoid_cbdv_percent'    => 23.456,
+			'cannabinoid_cbg_mg_g'        => 23.456,
+			'cannabinoid_cbg_percent'     => 23.456,
+			'cannabinoid_cbga_mg_g'       => 23.456,
+			'cannabinoid_cbga_percent'    => 23.456,
+			'cannabinoid_cbn_mg_g'        => 23.456,
+			'cannabinoid_cbn_percent'     => 23.456,
+			'cannabinoid_d8_thc_mg_g'     => 23.456,
+			'cannabinoid_d8_thc_percent'  => 23.456,
+			'cannabinoid_d9_thc_mg_g'     => 23.456,
+			'cannabinoid_d9_thc_percent'  => 23.456,
+			'cannabinoid_d9_thca_mg_g'    => 23.456,
+			'cannabinoid_d9_thca_percent' => 23.456,
 			//'cannabinoid_thcv_mg_g' => '1.000',
 			//'cannabinoid_thcv_percent' => '1.000',
+
 
 			/**
 			 * Metal
@@ -109,12 +112,14 @@ class Lab_Result_Create extends \OpenTHC_Bunk_LeafData_Test
 			'metal_lead_ppm'    => 0,
 			'metal_mercury_ppm' => 0,
 
+
 			/**
 			 * Microbial
 			 */
 			'microbial_status' => 'completed',
 			'microbial_salmonella_cfu_g' => 0,
 			'microbial_bile_tolerant_cfu_g' => 0,
+			'microbial_pathogenic_e_coli_cfu_g' => 0,
 
 			/**
 			 * Mycotoxin
@@ -154,7 +159,7 @@ class Lab_Result_Create extends \OpenTHC_Bunk_LeafData_Test
 			'pesticide_ethoprophos_ppm' => 0,
 			'pesticide_etofenprox_ppm' => 0,
 			'pesticide_etoxazole_ppm' => 0,
-			//'pesticide_fenhexamid_ppm' => 0,
+			// 'pesticide_fenhexamid_ppm' => 0,
 			'pesticide_fenoxycarb_ppm' => 0,
 			'pesticide_fenpyroximate_ppm' => 0,
 			'pesticide_fipronil_ppm' => 0,
@@ -174,7 +179,7 @@ class Lab_Result_Create extends \OpenTHC_Bunk_LeafData_Test
 			'pesticide_naled_ppm' => 0,
 			'pesticide_oxamyl_ppm' => 0,
 			'pesticide_paclobutrazol_ppm' => 0,
-			//'pesticide_pcnb_ppm' => 0,
+			// 'pesticide_pcnb_ppm' => 0,
 			'pesticide_permethrinsa_ppm' => 0,
 			'pesticide_phosmet_ppm' => 0,
 			'pesticide_piperonyl_butoxide_b_ppm' => 0,
@@ -185,7 +190,7 @@ class Lab_Result_Create extends \OpenTHC_Bunk_LeafData_Test
 			'pesticide_pyrethrin_ppm' => 0,
 			'pesticide_pyrethrinsbc_ppm' => 0,
 			'pesticide_pyridaben_ppm' => 0,
-			//'pesticide_spinetoram_ppm' => 0,
+			// 'pesticide_spinetoram_ppm' => 0,
 			'pesticide_spinosad_ppm' => 0,
 			'pesticide_spiromesifen_ppm' => 0,
 			'pesticide_spirotetramat_ppm' => 0,
@@ -217,29 +222,24 @@ class Lab_Result_Create extends \OpenTHC_Bunk_LeafData_Test
 
 		];
 
-		$res = $this->post('lab_results', [ 'lab_result' => $Result ]);
-		$res = $this->assertValidResponse($res, 200); // Should be 201
+		// print_r($mod);
+
+		$res = $this->post('lab_results/update', [ 'lab_result' => $mod ]);
+		$res = $this->assertValidResponse($res, 200, __METHOD__ . __LINE__);
 
 		$this->assertIsArray($res);
-		$this->assertCount(1, $res);
-
-		$res = $res[0];
-		var_dump($res);
-
-		$this->assertIsArray($res);
-		// $this->assertCount(69, $res);
-
+		$this->assertCount(211, $res);
 
 		$this->assertEquals('passed', $res['status']);
 		$this->assertEquals('completed', $res['testing_status']);
 		$this->assertEquals('completed', $res['cannabinoid_status']);
 		//$this->assertEquals('completed', $res['']);
-		$this->assertNotEmpty($res['global_id']); // "WALWTL.LRUSD"
-		//$this->assertEquals(cannabinoid_cbd_percent":12.345000000000001);
-		//$this->assertEquals("cannabinoid_cbda_percent":12.345000000000001);
-		//$this->assertEquals("cannabinoid_d9_thc_percent":12.345000000000001);
-		//$this->assertEquals("cannabinoid_d9_thca_percent":12.345000000000001);
-		//$this->assertEquals("global_for_inventory_id":"WAGWT.IN3MJ2");
+		$this->assertNotEmpty($res['global_id']);
+		//$this->assertEquals(cannabinoid_cbd_percent":23.456000000000001);
+		//$this->assertEquals("cannabinoid_cbda_percent":23.456000000000001);
+		//$this->assertEquals("cannabinoid_d9_thc_percent":23.456000000000001);
+		//$this->assertEquals("cannabinoid_d9_thca_percent":23.456000000000001);
+		//$this->assertEquals("global_for_inventory_id":"xxxxx");
 		//$this->assertEquals("type":"end_product");
 		//$this->assertEquals("intermediate_type":"usable_marijuana");
 		//$this->assertEquals("retest_eligible":false);
@@ -249,15 +249,13 @@ class Lab_Result_Create extends \OpenTHC_Bunk_LeafData_Test
 		//$this->assertEquals("batch_type":"intermediate\/ end product");
 		//$this->assertEquals("high_thc":false,"high_cbd":false,"general_use":false);
 		$this->assertIsArray($res['inventory']);
-		$this->assertEquals($sample_lot_id, $res['inventory']['global_id']); // ":"WALWTL.IN3WPM"
-		//$this->assertEquals("global_original_id":"WAGWT.IN3MJ2");
 
-		$this->assertIsArray($res['inventories']); // New
+		// $this->assertIsArray($res['inventories']); // New
 
-		$UpdatedSample = $this->get(sprintf('/api/v1/inventories?f_global_id=%s', $sample_lot_id));
-		var_dump($UpdatedSample);
+		// $UpdatedSample = $this->get(sprintf('/api/v1/inventories?f_global_id=%s', $sample_lot_id));
+		// var_dump($UpdatedSample);
 
-		$this->assertEquals($UpdatedSample['labResults']['global_id'], $LabResult['global_id']);
+		// $this->assertEquals($UpdatedSample['labResults']['global_id'], $LabResult['global_id']);
 
 	}
 

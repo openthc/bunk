@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Test Authentication
  */
 
 namespace Auth;
