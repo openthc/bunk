@@ -3,11 +3,13 @@
  * Test Bootstrap
  */
 
+// namespace Test;
+
 // Load App bootstrap file
 require_once(dirname(dirname(__FILE__)) . '/boot.php');
 
 
-class OpenTHC_Bunk_LeafData_Test extends \PHPUnit\Framework\TestCase  //  \App\Test\Components\OpenTHC_Test_Case
+class OpenTHC_Base_TestCase extends \PHPUnit\Framework\TestCase
 {
 	protected $ghc; // API Guzzle HTTP Client
 	protected $raw; // Raw Response Buffer
@@ -17,33 +19,27 @@ class OpenTHC_Bunk_LeafData_Test extends \PHPUnit\Framework\TestCase  //  \App\T
 		$this->ghc = $this->_api();
 	}
 
+
 	/**
-	* Intends to become an assert wrapper for a bunch of common response checks
-	* @param $res, Response Object
-	* @return void
+		HTTP Utility
 	*/
-	function assertValidResponse($res, $code=200, $barf=null)
+	function get($url)
 	{
-		$this->raw = $res->getBody()->getContents();
-		if (!empty($barf)) {
-			echo "\n<<<$barf<<<\n{$this->raw}\n###\n";
-		}
-
-		$ret = \json_decode($this->raw, true);
-
-		//$this->assertEquals('HTTPS', $res->getProtocol());
-		$this->assertEquals($code, $res->getStatusCode());
-		// $this->assertEquals('application/json', $res->getHeaderLine('content-type')); // RFCs
-		$this->assertEquals('text/json; charset=UTF-8', $res->getHeaderLine('content-type')); // LeafData
-		$this->assertIsArray($ret);
-		// $this->assertCount(2, $ret);
-
-		// $this->assertIsArray($x['data']);
-		// $this->assertIsArray($x['meta']);
-
+		$res = $this->ghc->get($url);
+		$ret = $this->assertValidResponse($res, 200); // , "GET FAILED to $url");
 		return $ret;
-
 	}
+
+
+	/**
+		HTTP Utility
+	*/
+	function post($url, $arg)
+	{
+		$res = $this->ghc->post($url, array('json' => $arg));
+		return $res;
+	}
+
 
 	function _data_stash_get()
 	{
@@ -68,24 +64,122 @@ class OpenTHC_Bunk_LeafData_Test extends \PHPUnit\Framework\TestCase  //  \App\T
 		return file_put_contents($f, $d);
 	}
 
+}
 
+/**
+ * Test Helper for LeafData
+ */
+class OpenTHC_Bunk_LeafData_Test extends OpenTHC_Base_TestCase
+{
 	/**
-		HTTP Utility
+	* Intends to become an assert wrapper for a bunch of common response checks
+	* @param $res, Response Object
+	* @return void
 	*/
-	function get($url)
+	function assertValidResponse($res, $code=200, $dump=null)
 	{
-		$res = $this->ghc->get($url);
-		$ret = $this->assertValidResponse($res, 200);
+		$this->assertNotEmpty($res);
+
+		// Dump on Errors
+		$hrc = $res->getStatusCode();
+		switch ($hrc) {
+		case 422:
+		case 500:
+			if (empty($dump)) {
+				$dump = sprintf('%d Response Code', $hrc);
+			}
+			break;
+		}
+
+		$this->raw = $res->getBody()->getContents();
+
+		if (!empty($dump)) {
+			echo "\n<<<$dump<<<\n{$this->raw}\n###\n";
+		}
+
+		$ret = \json_decode($this->raw, true);
+
+		//$this->assertEquals('HTTPS', $res->getProtocol());
+		$this->assertEquals($code, $res->getStatusCode());
+		// $this->assertEquals('application/json', $res->getHeaderLine('content-type')); // RFCs
+		$this->assertEquals('text/json; charset=UTF-8', $res->getHeaderLine('content-type')); // LeafData
+		$this->assertIsArray($ret);
+		// $this->assertCount(2, $ret);
+
+		// $this->assertIsArray($x['data']);
+		// $this->assertIsArray($x['meta']);
+
 		return $ret;
+
+	}
+
+	function find_random_batch_of_type($t)
+	{
+		$res = $this->ghc->get('batches?f_type=' .$t);
+		$res = $this->assertValidResponse($res);
+		$this->assertIsArray($res['data']);
+		$this->assertGreaterThan(2, $res['data']);
+
+		$rnd_list = [];
+		foreach ($res['data'] as $b) {
+			if ('open' == $b['status']) {
+				$rnd_list[] = $b;
+			}
+		}
+
+		$i = array_rand($rnd_list);
+		$B = $rnd_list[$i];
+
+		return $B;
+
 	}
 
 	/**
-		HTTP Utility
-	*/
-	function post($url, $arg)
+	 *
+	 * @param [type] $f [description]
+	 * @return [type] [description]
+	 */
+	function find_random_lot($f)
 	{
-		$res = $this->ghc->post($url, array('json' => $arg));
-		return $res;
+		// @todo Handle Multiple Pages?
+		$res = $this->get('inventories');
+		$this->assertCount(9, $res);
+		$this->assertIsArray($res['data']);
+
+		$rnd_list = [];
+		foreach ($res['data'] as $x) {
+			$rnd_list[] = $x;
+		}
+
+		$i = array_rand($rnd_list);
+		$r = $rnd_list[$i];
+
+		return $r;
+
+	}
+
+
+	function find_random_plant($f=null)
+	{
+		$res = $this->get('plants?f_stage=growing');
+		$this->assertCount(9, $res);
+		$this->assertIsArray($res['data']);
+
+		// echo "\nWe Found: " . count($res['data']) . " Plants\n";
+		// var_dump($res['next_page_url']);
+
+		$rnd_list = [];
+		foreach ($res['data'] as $x) {
+			if ('growing' == $x['stage']) {
+				$rnd_list[] = $x;
+			}
+		}
+
+		$i = array_rand($rnd_list);
+		$r = $rnd_list[$i];
+
+		return $r;
+
 	}
 
 	/**

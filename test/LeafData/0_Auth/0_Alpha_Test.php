@@ -3,7 +3,7 @@
  * Test Authentication
  */
 
-namespace Auth;
+namespace Test\Auth;
 
 class Alpha extends \OpenTHC_Bunk_LeafData_Test
 {

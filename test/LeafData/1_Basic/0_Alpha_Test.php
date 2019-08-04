@@ -3,7 +3,7 @@
  * Not Sure what to Test Here
  */
 
-namespace Basic;
+namespace Test\Basic;
 
 class Alpha extends \OpenTHC_Bunk_LeafData_Test
 {

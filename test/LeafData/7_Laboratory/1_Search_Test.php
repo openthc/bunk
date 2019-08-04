@@ -3,7 +3,7 @@
  * Lab Results
  */
 
-namespace Laboratory;
+namespace Test\Laboratory;
 
 class Lab_Result_Search extends \OpenTHC_Bunk_LeafData_Test
 {
