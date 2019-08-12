@@ -9,7 +9,7 @@ return $RES->withJSON(array(
 		0 => array(
 			"inventoryid" => "2891345622130160",
 			"vendor_license" => "123456",
-			"location" => "18750",
+			"location" => "999999",
 			"quantity" => "1.00",
 			"sample_type" => "1",
 			"sessiontime" => $time,

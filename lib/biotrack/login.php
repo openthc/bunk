@@ -1,8 +1,8 @@
 <?php
 /**
-	Simulate the BioTrack API for Login
-	HI, WA
-*/
+ * Simulate the BioTrack API for Login
+ * HI, IL, NM, WA
+ */
 
 if (empty($json['license_number'])) {
 
@@ -16,7 +16,9 @@ if (empty($json['license_number'])) {
 
 
 // Validate against Fixed List
-// The parameter called 'license_number' is really the UBI
+// The parameter called 'license_number' is really the UBI or Company ID
+// BioTrack calls the Company the License
+// BioTrack calls the License the Location
 $ubi = $json['license_number'];
 $lic = preg_match('/^(99).+(\d\d)$/', $ubi, $m) ? sprintf('%02d00%02d', $m[1], $m[2]) : null;
 
@@ -30,7 +32,6 @@ case '999000006':
 case '999000007':
 case '999000008':
 case '999000009':
-case '999999999':
 
 	// OK
 	break;
@@ -41,25 +42,29 @@ default:
 		'success' => 0,
 		// 'error' => null, // Not Set by BioTrack
 		// 'errorcode' => null, // Not Set by BioTrack
-		'_detail' =>  'LBL#040: Invalid Company Identifier',
+		'_detail' =>  'Invalid Company Identifier, only Test IDs allowed [LBL#040]',
 		'_request' => $json,
 	));
 
 }
 
+$cfg = \OpenTHC\Config::get('biotrack_bunk');
+if (!empty($cfg['login_fail'])) {
+	// 10% of the time say invalid username/password
+	//if ($rpct <= 10) {
+	//
+	//	return $RES->withJSON(array(
+	//		'_request' => $json,
+	//		'success' => 0,
+	//		// 'errorcode' => null, // Not Set by BioTrack
+	//		'error' =>  'Invalid username or password.',
+	//	));
+	//
+	//}
+}
 
-// 10% of the time say invalid username/password
-//if ($rpct <= 10) {
-//
-//	return $RES->withJSON(array(
-//		'_request' => $json,
-//		'success' => 0,
-//		// 'errorcode' => null, // Not Set by BioTrack
-//		'error' =>  'Invalid username or password.',
-//	));
-//
-//}
 
+// Fake some session in Redis for an hour
 $hash = hash('sha512', openssl_random_pseudo_bytes(512));
 $hkey = sprintf('api-fake/%s', $hash);
 

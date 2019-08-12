@@ -1,10 +1,10 @@
 <?php
 /**
-	A Mock BioTrackTHC API
-*/
+ * A Mock BioTrackTHC API
+ */
 
 //require_once(APP_ROOT . '/lib/RBE/BioTrack.php');
-require_once(__DIR__ . '/biotrack/lib.php');
+require_once(__DIR__ . '/lib.php');
 
 class BioTrack_Response extends Slim\Http\Response
 {
@@ -29,7 +29,7 @@ $post = file_get_contents('php://input');
 if (empty($post)) {
 	return $RES->withJSON(array(
 		'success' => 0,
-		'_detail' => 'MFB#034: There was no JSON input',
+		'_detail' => 'There was no JSON input [MFB#034]',
 	));
 }
 
@@ -38,7 +38,7 @@ $json = json_decode($post, true);
 if (empty($json)) {
 	return $RES->withJSON(array(
 		'success' => 0,
-		'_detail' => 'MFB#034: Error Decoding Input',
+		'_detail' => 'Error Decoding Input [MFB#041]',
 		'_errors' => json_last_error_msg(),
 		'_input' => $post,
 	), 400, JSON_PRETTY_PRINT);
@@ -135,19 +135,29 @@ case 'sale_void':
 
 default:
 
+	$action_path = sprintf('%s/%s.php', __DIR__, $json['action']);
+	if (substr_count($json['action'], '_')) {
+		$action_base = strtok($json['action'], '_');
+		$action_file = str_replace($action_base, null, $json['action']);
+		$action_file = trim($action_file, '_');
+		$action_path = sprintf('%s/%s/%s.php', __DIR__, $action_base, $action_file);
+	}
+
 	// Response Handler?
-	$file = sprintf('%s/biotrack/%s.php', __DIR__, $json['action']);
-	if (is_file($file)) {
-		return require_once($file);
+	if (is_file($action_path)) {
+		return require_once($action_path);
 	}
 
 	break;
 }
 
 // Failed
-return $RES->withJSON(array(
-	'_request' => $json,
+return $RES->withJSON([
 	'success' => 0,
 	'error' => 'Unhandled Request',
 	'errorcode' => 999,
-), 500);
+	'_request' => $json,
+	'_action_base' => $action_base,
+	'_action_file' => $action_file,
+	'_action_path' => $action_path,
+], 500);

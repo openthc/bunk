@@ -29,6 +29,11 @@ This session token is then included with all subsequent calls.
 		}'
 
 
+## Extended Data
+
+Some responses will come with extended data, maybe useful for debugging.
+They will all begin with an underscore prefix, *_detail* or or something.
+
 
 ## Supported Calls:
 

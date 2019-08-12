@@ -9,7 +9,7 @@ return $RES->withJSON(array(
 			"deleted" => "0",
 			"inventoryid" => "0000000090000178",
 			"itemnumber" => "0",
-			"location" => "18750",
+			"location" => "999999",
 			"price" => "8.00",
 			"quantity" => "1",
 			"sessiontime" => $time,

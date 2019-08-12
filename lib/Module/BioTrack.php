@@ -1,7 +1,7 @@
 <?php
 /**
-	API Group Controller
-*/
+ * BioTrack API Group Controller
+ */
 
 namespace App\Module;
 
@@ -26,9 +26,9 @@ class BioTrack extends \OpenTHC\Module\Base
 
 		// This one is sloppy cause I just slapped in some existing crap I had
 		$a->post('/v2013/serverjson.asp', function($REQ, $RES, $ARG) {
-			return require_once(APP_ROOT . '/lib/biotrack.php');
+			return require_once(APP_ROOT . '/lib/biotrack/front.php');
 		});
-		//->add('App\Middleware\Log\HTTP');
+		//->add('OpenTHC\Middleware\Log\HTTP'); // Logging?
 
 	}
 
