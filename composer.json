@@ -1,7 +1,7 @@
 {
 	"name": "openthc/bunk",
 	"description": "OpenTHC Mock API Interfaces",
-	"license": "GPL",
+	"license": "GPL-3.0-only",
 	"autoload": {
 		"psr-4": {
 			"App\\": "./lib"
