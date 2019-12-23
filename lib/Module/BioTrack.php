@@ -14,14 +14,8 @@ class BioTrack extends \OpenTHC\Module\Base
 	{
 
 		// Info
-		$a->get('', function() {
-
-			$file = APP_ROOT . '/webroot/biotrack.md';
-			$text = file_get_contents($file);
-
-			$pd = new \Parsedown();
-			echo $pd->text($text);
-
+		$a->get('', function($REQ, $RES, $ARG) {
+			return _page_doc_merge('biotrack');
 		});
 
 		// This one is sloppy cause I just slapped in some existing crap I had

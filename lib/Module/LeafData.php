@@ -27,12 +27,7 @@ class LeafData extends \OpenTHC\Module\Base
 
 		// Info
 		$a->get('', function($REQ, $RES, $ARG) {
-
-			$file = APP_ROOT . '/webroot/leafdata.md';
-			$text = file_get_contents($file);
-
-			$pd = new \Parsedown();
-			echo $pd->text($text);
+			return _page_doc_merge('leafdata');
 		});
 
 		// Can I add a Helper Here?
