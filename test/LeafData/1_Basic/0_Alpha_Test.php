@@ -5,7 +5,7 @@
 
 namespace Test\Basic;
 
-class Alpha extends \OpenTHC_Bunk_LeafData_Test
+class Alpha extends \Test\OpenTHC_Bunk_LeafData_Test
 {
 	protected function setUp() : void
 	{

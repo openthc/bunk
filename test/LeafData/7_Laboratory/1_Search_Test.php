@@ -5,7 +5,7 @@
 
 namespace Test\Laboratory;
 
-class Lab_Result_Search extends \OpenTHC_Bunk_LeafData_Test
+class Lab_Result_Search extends \Test\OpenTHC_Bunk_LeafData_Test
 {
 	protected function setUp() : void
 	{

@@ -1,6 +1,6 @@
 <?php
 
-class Alpha extends \OpenTHC_Bunk_LeafData_Test
+class Alpha extends \Test\OpenTHC_Bunk_LeafData_Test
 {
 	/**
 	 * Makes sure the Retailer can Change the UOM

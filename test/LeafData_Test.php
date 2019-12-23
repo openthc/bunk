@@ -157,6 +157,7 @@ class OpenTHC_Bunk_LeafData_Test extends OpenTHC_Base_TestCase
 			),
 			'http_errors' => false,
 			'cookies' => true,
+			'verify' => false,
 		);
 
 		if (!empty($opt['license'])) {
