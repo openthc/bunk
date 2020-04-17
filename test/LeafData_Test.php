@@ -143,7 +143,7 @@ class OpenTHC_Bunk_LeafData_Test extends OpenTHC_Base_TestCase
 	{
 		// create our http client (Guzzle)
 		$cfg = array(
-			'base_uri' => $_ENV['leafdata-uri'],
+			'base_uri' => $_ENV['leafdata-url'],
 			'headers' => [
 				// Setting here doesn't work @see https://github.com/guzzle/guzzle/issues/1678#issuecomment-281921604
 				// 'host' => 'watest.leafdatazone.com',
