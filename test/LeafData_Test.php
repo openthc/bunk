@@ -75,7 +75,7 @@ class OpenTHC_Bunk_LeafData_Test extends OpenTHC_Base_TestCase
 	 * @param [type] $f [description]
 	 * @return [type] [description]
 	 */
-	function find_random_lot($f)
+	function find_random_lot($f=null)
 	{
 		// @todo Handle Multiple Pages?
 		$res = $this->get('inventories');
@@ -147,8 +147,8 @@ class OpenTHC_Bunk_LeafData_Test extends OpenTHC_Base_TestCase
 			'headers' => [
 				// Setting here doesn't work @see https://github.com/guzzle/guzzle/issues/1678#issuecomment-281921604
 				// 'host' => 'watest.leafdatazone.com',
-				'x-mjf-mme-code' => $_ENV['leafdata-license'],
-				'x-mjf-key' => $_ENV['leafdata-license-secret'],
+				'x-mjf-mme-code' => null,
+				'x-mjf-key' => null,
 			],
 			'allow_redirects' => false,
 			'debug' => $_ENV['debug-http'],

@@ -10,8 +10,8 @@ class Alpha extends \Test\OpenTHC_Bunk_LeafData_Test
 	protected function setUp() : void
 	{
 		$this->ghc = $this->_api([
-			'license' => $_ENV['leafdata-license-g'],
-			'license-secret' => $_ENV['leafdata-license-g-secret'],
+			'license' => $_ENV['leafdata-g0-public'],
+			'license-secret' => $_ENV['leafdata-g0-secret'],
 		]);
 	}
 

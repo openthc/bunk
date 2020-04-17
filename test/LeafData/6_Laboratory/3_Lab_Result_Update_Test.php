@@ -11,8 +11,8 @@ class Lab_Result_Update extends \OpenTHC_Bunk_LeafData_Test
 	{
 		// Reset API Connection to Lab
 		$this->ghc = $this->_api([
-			'license' => $_ENV['leafdata-license-l'],
-			'license-secret' => $_ENV['leafdata-license-l-secret'],
+			'license' => $_ENV['leafdata-l0-public'],
+			'license-secret' => $_ENV['leafdata-l0-secret'],
 		]);
 	}
 	/**
@@ -39,7 +39,7 @@ class Lab_Result_Update extends \OpenTHC_Bunk_LeafData_Test
 		$this->assertNotEmpty($Sample['global_original_id']);
 		$this->assertIsArray($Sample['labResults']);
 
-		// _ksort_r($Sample);
+		// _ksort_r($Sample);license
 		// print_r($Sample);
 		// exit;
 

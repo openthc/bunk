@@ -11,11 +11,11 @@ class Lab_Result_Create extends \OpenTHC_Bunk_LeafData_Test
 	{
 		// Reset API Connection to Lab
 		$this->ghc = $this->_api([
-			'license' => $_ENV['leafdata-license-l'],
-			'license-secret' => $_ENV['leafdata-license-l-secret'],
+			'license' => $_ENV['leafdata-l0-public'],
+			'license-secret' => $_ENV['leafdata-l0-secret'],
 		]);
 	}
-	/**
+	/**test/LeafData/9_B2C/0_Alpha_Test.php
 	 * Usage:
 	 * 	SAMPLE_ID="WALWTL.IN###" ../vendor/bin/phpunit LeafData/7_Laboratory/Lab_Result.php
 	 */

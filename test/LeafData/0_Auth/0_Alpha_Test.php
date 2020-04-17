@@ -23,7 +23,7 @@ class Alpha extends \Test\OpenTHC_Bunk_LeafData_Test
 
 		// Case 2: Good license, bad secret
 		$c = $this->_api([
-			'license' => $_ENV['leafdata-license-g'],
+			'license' => $_ENV['leafdata-g0-public'],
 			'license-secret' => 'invalid-password',
 		]);
 		$res = $c->get('mmes');
@@ -31,8 +31,8 @@ class Alpha extends \Test\OpenTHC_Bunk_LeafData_Test
 
 		// Case 3: Good
 		$c = $this->_api([
-			'license' => $_ENV['leafdata-license-g'],
-			'license-secret' => $_ENV['leafdata-license-g-secret'],
+			'license' => $_ENV['leafdata-g0-public'],
+			'license-secret' => $_ENV['leafdata-g0-secret'],
 		]);
 
 		$res = $c->get('mmes');
@@ -43,8 +43,8 @@ class Alpha extends \Test\OpenTHC_Bunk_LeafData_Test
 	public function test_license_list()
 	{
 		$this->ghc = $this->_api([
-			'license' => $_ENV['leafdata-license-g'],
-			'license-secret' => $_ENV['leafdata-license-g-secret'],
+			'license' => $_ENV['leafdata-g0-public'],
+			'license-secret' => $_ENV['leafdata-g0-secret'],
 		]);
 
 		$res = $this->get('mmes');

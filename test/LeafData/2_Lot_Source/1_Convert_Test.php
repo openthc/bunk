@@ -7,11 +7,22 @@ namespace Test\LeafData\2_Lot_Source;
 
 class Convert_Test
 {
+	protected function setUp() : void
+	{
+		// Reset API Connection to Lab
+		$this->ghc = $this->_api([
+			'license' => $_ENV['leafdata-g0-public'],
+			'license-secret' => $_ENV['leafdata-g0-secret'],
+		]);
+	}
+
 	/**
 	 * Conversion Test of Clone Type to Clone Type
 	 */
 	function test_clone_to_clone()
 	{
+		// $lot = $this->_find_random_lot([ type = clone ]);
+
 	}
 
 	function test_clone_to_plant()

@@ -9,8 +9,8 @@ class Alpha extends \Test\OpenTHC_Bunk_LeafData_Test
 	function testRetail_Change_UOM()
 	{
 		$this->ghc = $this->_api(array(
-			'license' => $_ENV['leafdata-license-r'],
-			'license-secret' => $_ENV['leafdata-license-r-secret'],
+			'license' => $_ENV['leafdata-r0-public'],
+			'license-secret' => $_ENV['leafdata-r0-secret'],
 		));
 
 		$L = $this->get('inventories?f_global_id=WARWTR.IN1O0');
