@@ -15,7 +15,6 @@
 --break
 --heading
 
---smart-case
 --sort-files
 
 --ignore-dir=.composer/

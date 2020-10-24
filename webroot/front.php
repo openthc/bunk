@@ -6,8 +6,8 @@
 require_once(dirname(dirname(__FILE__)) . '/boot.php');
 
 // App Configuration
-$cfg = null;
-$cfg = array('debug' => true);
+$cfg = [];
+$cfg['debug'] = true;
 $app = new OpenTHC\App($cfg);
 
 // App Container
@@ -24,15 +24,15 @@ $con['notFoundHandler'] = function($c) {
 };
 
 // BioTrack Fake Interface
-$app->group('/biotrack', 'App\Module\BioTrack');
+$app->group('/biotrack', 'OpenTHC\Bunk\Module\BioTrack');
 
 // LeafData Info
-$app->group('/leafdata', 'App\Module\LeafData');
+$app->group('/leafdata', 'OpenTHC\Bunk\Module\LeafData');
 
 // METRC Fake Interface
-$app->group('/metrc', 'App\Module\METRC');
+$app->group('/metrc', 'OpenTHC\Bunk\Module\METRC');
 
 // OpenTHC Bunk Interface
-// $app->group('/openthc', 'App\Module\OpenTHC');
+$app->group('/openthc', 'OpenTHC\Bunk\Module\OpenTHC');
 
 $app->run();

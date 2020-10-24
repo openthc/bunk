@@ -1,9 +1,9 @@
 <?php
 /**
-	API Group Controller
-*/
+ * LeafData Module
+ */
 
-namespace App\Module;
+namespace OpenTHC\Bunk\Module;
 
 class LeafData extends \OpenTHC\Module\Base
 {

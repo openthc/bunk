@@ -3,7 +3,7 @@
  * BioTrack API Group Controller
  */
 
-namespace App\Module;
+namespace OpenTHC\Bunk\Module;
 
 class BioTrack extends \OpenTHC\Module\Base
 {

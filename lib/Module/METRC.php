@@ -1,9 +1,9 @@
 <?php
 /**
-	API Group Controller
-*/
+ * METRC Group
+ */
 
-namespace App\Module;
+namespace OpenTHC\Bunk\Module;
 
 class METRC extends \OpenTHC\Module\Base
 {
