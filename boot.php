@@ -3,10 +3,7 @@
  * OpenTHC Bunk API Application Bootstrap
  */
 
-define('APP_NAME', 'OpenTHC Bunk');
-define('APP_SITE', 'https://bunk.openthc.org');
 define('APP_ROOT', __DIR__);
-define('APP_SALT', sha1(APP_NAME . APP_SITE . APP_ROOT));
 
 error_reporting(E_ALL & ~ E_NOTICE);
 
@@ -23,7 +20,7 @@ function _page_doc_merge($f)
 
 	$file = sprintf('%s/webroot/%s.md', APP_ROOT, $f);
 	$text = file_get_contents($file);
-	$page_title = strtok($test, "\n");
+	$page_title = strtok($text, "\n");
 
 	$pd = new \Parsedown();
 	$middle = $pd->text($text);
