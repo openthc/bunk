@@ -1,0 +1,33 @@
+;
+; Add These to your current cre.ini
+; For BONG, PIPE or your own system
+;
+
+
+;
+; BioTrack
+[bunk/biotrack]
+	name = "OpenTHC / BioTrack / Mock"
+	engine = "biotrack"
+	server = "https://bunk.openthc.org/biotrack/v2013/serverjson.asp"
+	version = 2014001
+
+
+;
+; LeafData
+[bunk/leafdata]
+	name = "OpenTHC / LeafData / Mock"
+	engine = "leafdata"
+	server = "https://bunk.openthc.org/leafdata/v2018"
+	version = 2018031
+
+
+;
+; METRC
+[bunk/metrc]
+	name = "OpenTHC / METRC / Mock"
+	engine = "metrc"
+	server = "https://bunk.openthc.org/metrc/v2015"
+	version = 2015001
+	service-key = ""
+

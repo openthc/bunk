@@ -1,0 +1,16 @@
+# dirs
+.vscode/
+Custom/
+lib/RBE/
+var/
+vendor/
+
+# files
+composer.lock
+
+etc/app.ini
+etc/cre.ini
+
+test/report.xsl
+
+webroot/test-output/
