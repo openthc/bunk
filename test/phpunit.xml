@@ -3,6 +3,8 @@
 	OpenTHC PHPUnit Configuration File
 -->
 <phpunit
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
 	backupGlobals="false"
 	backupStaticAttributes="false"
 	bootstrap="boot.php"
@@ -19,97 +21,38 @@
 	timeoutForMediumTests="10"
 	timeoutForLargeTests="60"
 	verbose="false"
-	>
+>
+
+	<coverage/>
 
 	<php>
 
-		<env name="debug-http" value="false" />
+		<env name="debug-http" value="false"/>
 
-		<env name="api-uri" value="https://cre.openthc.dev/" />
+		<env name="test-host" value="sso.openthc.dev"/>
+		<env name="test-hash" value="CONFIG_AND_PUT_A_SECRET_HERE" />
 
-		<!-- root/system accounts -->
-		<env name="api-program-0" value="019KAGVSC0QPM7X728Z15ZTE37" />
-		<env name="api-company-0" value="019KAGVSC05RHV4QAS76VPV6J7" />
-		<env name="api-license-0" value="019KAGVX9M1FRBJ7EZQDTMD6JA" />
+		<const name="TEST_BROWSERSTACK_USER" value=""/>
+		<const name="TEST_BROWSERSTACK_AUTH" value=""/>
+		<const name="TEST_BROWSERSTACK_BASE" value="hub-cloud.browserstack.com"/>
 
-		<env name="api-program-a" value="019KAGVSC04QR1WM5H86QRCGXG" />
-		<env name="api-program-b" value="" />
-		<env name="api-program-c" value="019KAGVSC0XHVSZMJGXA37B05S" />
-
-		<!-- Farmer / Grower / Producer -->
-		<env name="api-company-g0" value="019KAGVX9M209XSPAMRCXSRYF2" />
-		<env name="api-license-g0" value="019KAGVX9MNVQVXP6A24ND2CBW" />
-		<env name="api-contact-g0" value="" />
-		<env name="api-license-g0-secret" value="" />
-
-		<!-- Processor / Manufacturer / Distributor -->
-		<env name="api-company-p0" value="019KAGVX9MY0BZDEJFRXBW82T4" />
-		<env name="api-license-p0" value="019KAGVX9MQQS4S9MC1WX5A76G" />
-		<env name="api-contact-p0" value="" />
-		<env name="api-license-p0-secret" value="" />
-
-		<!-- Laboratory -->
-		<env name="api-company-l0" value="019KAGVX9MXFHHT41X08Y6JX23" />
-		<env name="api-license-l0" value="019KAGVX9MMGS6HQZ6787CB92R" />
-		<env name="api-contact-l0" value="" />
-		<env name="api-license-l0-secret" value="" />
-
-		<!-- Retail / Dispensary -->
-		<env name="api-company-r0" value="019KAGVX9MH3QJW8QGE7CXNAAQ" />
-		<env name="api-license-r0" value="019KAGVX9MD60MW90N4GTB75Y1" />
-		<env name="api-contact-r0" value="" />
-		<env name="api-license-r0-secret" value="" />
+		<const name="USER_A_USERNAME" value="test@openthc.com"/>
+		<const name="USER_A_PASSWORD" value="password"/>
+		<const name="USER_A_PASSWORD_FAIL" value="password-fail"/>
 
 	</php>
 
 	<testsuites>
-
-		<testsuite name="Auth">
-			<directory>0_Auth</directory>
+		<testsuite name="All">
+			<directory>0_Core/</directory>
+			<directory>1_Auth/</directory>
+			<directory>2_Account/</directory>
+			<directory>3_oAuth2/</directory>
 		</testsuite>
-
-		<testsuite name="Basic">
-			<directory>1_Basic</directory>
-		</testsuite>
-
-		<testsuite name="Lot-Source">
-			<directory>2_Lot_Source</directory>
-		</testsuite>
-
-		<testsuite name="Plant">
-			<directory>3_Plant</directory>
-		</testsuite>
-
-		<testsuite name="Plant-Collect">
-			<directory>4_Plant_Collect</directory>
-		</testsuite>
-
-		<testsuite name="Lot-Process">
-			<directory>5_Lot_Process</directory>
-		</testsuite>
-
-		<testsuite name="Laboratory">
-			<directory>6_Laboratory</directory>
-		</testsuite>
-
-		<testsuite name="Lot-Package">
-			<directory>7_Lot_Package</directory>
-		</testsuite>
-
-		<testsuite name="B2B">
-			<directory>8_B2B</directory>
-		</testsuite>
-
-		<testsuite name="B2C">
-			<directory>9_B2C</directory>
-		</testsuite>
-
 	</testsuites>
-
 	<logging>
 		<!-- <log type="coverage-html" target="../webroot/test-output" /> -->
-		<log type="junit" target="../webroot/test-output/output.xml" />
-		<log type="testdox-html" target="../webroot/test-output/testdox.html" />
+		<junit outputFile="../webroot/test-output/output.xml" />
+		<!-- <log type="testdox-html" target="../webroot/test-output/testdox.html" /> -->
 	</logging>
-
 </phpunit>
