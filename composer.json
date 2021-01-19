@@ -17,6 +17,7 @@
 		"ext-session": "*",
 		"ext-sockets": "*",
 		"edoceo/radix": "dev-master",
+		"erusev/parsedown": "1.7.4",
 		"openthc/common": "dev-master"
 	},
 	"require-dev": {
