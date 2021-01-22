@@ -1,6 +1,6 @@
 <?php
 /**
- * Generate Fake Areas for LeafData
+ * Generate Fake Inventories for LeafData
  */
 
 use OpenTHC\Bunk\Module\LeafData;
@@ -28,14 +28,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
 			$oid = LeafData::generateId($min + $idx);
 
 			$ret['data'][] = array(
-				'global_id' => sprintf('LDTEST1.AR%s', $oid),
+				'global_id' => sprintf('LDTEST1.IN%s', $oid),
 				'created_at' => date('m/d/Y g:ia'),
-				'deleted_at' => null,
-				'updated_at' => date('m/d/Y g:ia'),
-				'name' => sprintf('Test Room %s', $oid),
-				"type" => "non-quarantine",
-				"is_quarantine_area" => "0",
-				"external_id" => null,
+				"deleted_at" => null,
+				"updated_at" => date('m/d/Y g:ia'),
 			);
 
 		}

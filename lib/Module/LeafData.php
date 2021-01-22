@@ -7,6 +7,9 @@ namespace OpenTHC\Bunk\Module;
 
 class LeafData extends \OpenTHC\Module\Base
 {
+	/**
+	 * Generic ID Generator
+	 */
 	static function generateId($idx=0, $pre=null)
 	{
 		$t = intval(substr($_SERVER['REQUEST_TIME'], -6));
@@ -14,14 +17,11 @@ class LeafData extends \OpenTHC\Module\Base
 		$x = base_convert($t, 10, 36);
 		$x = strtoupper($x);
 		return $x;
-		//return $RES->withJSON(array(array(
-		//	'global_id' => sprintf('BLD001.AR%s', $x),
-		//)));
 	}
 
 	/**
-		@param $a Slim Application
-	*/
+	 * @param $a Slim Application
+	 */
 	function __invoke($a)
 	{
 
@@ -30,86 +30,66 @@ class LeafData extends \OpenTHC\Module\Base
 			return _page_doc_merge('leafdata');
 		});
 
-		// Can I add a Helper Here?
+		$a->map(['GET','POST','DELETE'], '/areas', function($REQ, $RES, $ARG) {
+			return require_once(APP_ROOT . '/lib/leafdata/areas.php');
+		});
 
+		$a->map(['GET','POST','DELETE'], '/batches', function($REQ, $RES, $ARG) {
+			return require_once(APP_ROOT . '/lib/leafdata/batches.php');
+		});
 
-		$a->group('/v2018', function() {
+		$a->map(['GET','POST','DELETE'], '/disposals', function($REQ, $RES, $ARG) {
+			return require_once(APP_ROOT . '/lib/leafdata/disposals.php');
+		});
 
-			$this->get('/areas', function($REQ, $RES, $ARG) {
-				return require_once(APP_ROOT . '/lib/leafdata/areas.php');
-			});
+		$a->map(['GET','POST','DELETE'], '/inventories', function($REQ, $RES, $ARG) {
+			return require_once(APP_ROOT . '/lib/leafdata/inventories.php');
+		});
 
-			$this->get('/batches', function($REQ, $RES, $ARG) {
-				_exit_text('Not Implemented', 501);
-				return require_once(APP_ROOT . '/lib/leafdata/batches.php');
-			});
+		$a->map(['GET','POST','DELETE'], '/inventory_adjustments', function($REQ, $RES, $ARG) {
+			return require_once(APP_ROOT . '/lib/leafdata/inventory_adjustments.php');
+		});
 
-			$this->get('/disposals', function($REQ, $RES, $ARG) {
-				_exit_text('Not Implemented', 501);
-				return require_once(APP_ROOT . '/lib/leafdata/disposals.php');
-			});
+		$a->map(['GET','POST','DELETE'], '/inventory_transfers', function($REQ, $RES, $ARG) {
+			return require_once(APP_ROOT . '/lib/leafdata/inventory_transfers.php');
+		});
 
-			$this->get('/inventory_types', function($REQ, $RES, $ARG) {
-				_exit_text('Not Implemented', 501);
-				return require_once(APP_ROOT . '/lib/leafdata/inventory_types.php');
-			});
+		$a->map(['GET','POST','DELETE'], '/inventory_types', function($REQ, $RES, $ARG) {
+			return require_once(APP_ROOT . '/lib/leafdata/inventory_types.php');
+		});
 
-			$this->get('/inventory', function($REQ, $RES, $ARG) {
-				_exit_text('Not Implemented', 501);
-				return require_once(APP_ROOT . '/lib/leafdata/inventory.php');
-			});
+		$a->map(['GET','POST','DELETE'], '/lab_results', function($REQ, $RES, $ARG) {
+			return require_once(APP_ROOT . '/lib/leafdata/lab_results.php');
+		});
 
-			$this->get('/inventory_adjustments', function($REQ, $RES, $ARG) {
-				_exit_text('Not Implemented', 501);
-				return require_once(APP_ROOT . '/lib/leafdata/inventory_adjustments.php');
-			});
+		$a->map(['GET','POST','DELETE'], '/mmes', function($REQ, $RES, $ARG) {
+			return require_once(APP_ROOT . '/lib/leafdata/mmes.php');
+		});
 
-			$this->get('/inventory_transfers', function($REQ, $RES, $ARG) {
-				_exit_text('Not Implemented', 501);
-				return require_once(APP_ROOT . '/lib/leafdata/inventory_transfers.php');
-			});
+		$a->map(['GET','POST','DELETE'], '/plants', function($REQ, $RES, $ARG) {
+			return require_once(APP_ROOT . '/lib/leafdata/plants.php');
+		});
 
-			$this->get('/inventory_transfers_deliveries', function($REQ, $RES, $ARG) {
-				_exit_text('Not Implemented', 501);
-				return require_once(APP_ROOT . '/lib/leafdata/inventory_transfers_deliveries.php');
-			});
+		$a->map(['GET','POST','DELETE'], '/plants_by_area', function($REQ, $RES, $ARG) {
+			_exit_text('Not Implemented', 501);
+			return require_once(APP_ROOT . '/lib/leafdata/plants.php');
+		});
 
-			$this->get('/lab_results', function($REQ, $RES, $ARG) {
-				_exit_text('Not Implemented', 501);
-				return require_once(APP_ROOT . '/lib/leafdata/lab_results.php');
-			});
+		$a->map(['GET','POST','DELETE'], '/sales', function($REQ, $RES, $ARG) {
+			return require_once(APP_ROOT . '/lib/leafdata/sales.php');
+		});
 
-			$this->get('/mmes', function($REQ, $RES, $ARG) {
-				//_exit_text('Not Implemented', 501);
-				//return require_once(APP_ROOT . '/lib/leafdata/mmes.php');
-				return $RES->withJSON(array());
-			});
+		$a->map(['GET','POST','DELETE'], '/strains', function($REQ, $RES, $ARG) {
+			return require_once(APP_ROOT . '/lib/leafdata/strains.php');
+		});
 
-			$this->get('/plants', function($REQ, $RES, $ARG) {
-				_exit_text('Not Implemented', 501);
-				return require_once(APP_ROOT . '/lib/leafdata/plants.php');
-			});
+		$a->map(['GET','POST','DELETE'], '/taxes', function($REQ, $RES, $ARG) {
+			_exit_text('Not Implemented', 501);
+			return require_once(APP_ROOT . '/lib/leafdata/taxes.php');
+		});
 
-			$this->get('/sales', function($REQ, $RES, $ARG) {
-				_exit_text('Not Implemented', 501);
-				return require_once(APP_ROOT . '/lib/leafdata/sales.php');
-			});
-
-			$this->get('/strains', function($REQ, $RES, $ARG) {
-				_exit_text('Not Implemented', 501);
-				return require_once(APP_ROOT . '/lib/leafdata/strains.php');
-			});
-
-			$this->get('/taxes', function($REQ, $RES, $ARG) {
-				_exit_text('Not Implemented', 501);
-				return require_once(APP_ROOT . '/lib/leafdata/taxes.php');
-			});
-
-			$this->get('/users', function($REQ, $RES, $ARG) {
-				_exit_text('Not Implemented', 501);
-				return require_once(APP_ROOT . '/lib/leafdata/users.php');
-			});
-
+		$a->map(['GET','POST','DELETE'], '/users', function($REQ, $RES, $ARG) {
+			return require_once(APP_ROOT . '/lib/leafdata/users.php');
 		});
 
 	}
