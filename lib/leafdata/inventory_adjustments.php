@@ -66,12 +66,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
 			"global_user_id" => "WASTATE1.US2FE",
 			"global_inventory_id" => "WAG010101.INZFC",
 			"global_adjusted_by_user_id" => "WASTATE1.US3"
-			
+
 		);
 
 		return $RES->withJSON($ret);
 		break;
-		
+
 	case 'DELETE':
 		return $RES->write("");
 		break;

@@ -84,11 +84,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		}
 
 		return $RES->withJSON($ret);
-	
+
 	break;
 
 	case 'POST':
-		
+
 		$ret = array(
 			"external_id" => 12345,
 			"is_initial_inventory" => 0,
