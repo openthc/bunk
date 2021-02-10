@@ -5,8 +5,15 @@
 
 namespace Test;
 
-class OpenTHC_Bunk_LeafData_Test extends OpenTHC_Base_TestCase
+class LeafData extends \PHPUnit\Framework\TestCase
 {
+	public $ghc;
+
+	protected function setUp() : void
+	{
+		$this->ghc = $this->_api();
+	}
+
 	/**
 	* Intends to become an assert wrapper for a bunch of common response checks
 	* @param $res, Response Object
@@ -33,14 +40,14 @@ class OpenTHC_Bunk_LeafData_Test extends OpenTHC_Base_TestCase
 			echo "\n<<<$dump<<<\n{$this->raw}\n###\n";
 		}
 
-		$ret = \json_decode($this->raw, true);
-
 		//$this->assertEquals('HTTPS', $res->getProtocol());
 		$this->assertEquals($code, $res->getStatusCode());
 		// $this->assertEquals('application/json', $res->getHeaderLine('content-type')); // RFCs
-		$this->assertEquals('text/json; charset=UTF-8', $res->getHeaderLine('content-type')); // LeafData
+		// $this->assertEquals('text/json; charset=UTF-8', $res->getHeaderLine('content-type')); // LeafData
+		$ret = \json_decode($this->raw, true);
 		$this->assertIsArray($ret);
-		// $this->assertCount(2, $ret);
+
+		$this->assertCount(9, $ret);
 
 		// $this->assertIsArray($x['data']);
 		// $this->assertIsArray($x['meta']);
@@ -137,16 +144,14 @@ class OpenTHC_Bunk_LeafData_Test extends OpenTHC_Base_TestCase
 	}
 
 	/**
-		@param $b The Base URL
-	*/
+	 * @param $b The Base URL
+	 */
 	protected function _api($opt=null)
 	{
 		// create our http client (Guzzle)
 		$cfg = array(
-			'base_uri' => $_ENV['leafdata-url'],
+			'base_uri' => sprintf('https://%s/leafdata', getenv('OPENTHC_BUNK_HOST')),
 			'headers' => [
-				// Setting here doesn't work @see https://github.com/guzzle/guzzle/issues/1678#issuecomment-281921604
-				// 'host' => 'watest.leafdatazone.com',
 				'x-mjf-mme-code' => null,
 				'x-mjf-key' => null,
 			],
@@ -162,15 +167,8 @@ class OpenTHC_Bunk_LeafData_Test extends OpenTHC_Base_TestCase
 
 		if (!empty($opt['license'])) {
 			$cfg['headers']['x-mjf-mme-code'] = $opt['license'];
-			$cfg['headers']['x-mjf-key'] = $opt['license-secret'];
+			$cfg['headers']['x-mjf-key'] = $opt['license-key'];
 		}
-
-		// Override Host Header Here
-		// $ghhs = \GuzzleHttp\HandlerStack::create();
-		// $ghhs->push(\GuzzleHttp\Middleware::mapRequest(function (\Psr\Http\Message\RequestInterface $R) {
-		// 	return $R->withHeader('host', 'watest.leafdatazone.com');
-		// }));
-		// $cfg['handler'] = $ghhs;
 
 		$c = new \GuzzleHttp\Client($cfg);
 
