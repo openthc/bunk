@@ -76,40 +76,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		return $RES->withJSON($ret);
 
 	case 'POST':
-<<<<<<< HEAD
-=======
-
-		$ret = array(
-			"inventory_transfer" => array(
-				"manifest_type" => "delivery",
-				"multi_stop" => 0,
-				"external_id" => "12345",
-				"est_departed_at" => date('m/d/Y g:ia'),
-				"est_arrival_at" => date('m/d/Y g:ia'),
-				"vehicle_description" => "blue mini van",
-				"vehicle_license_plate" => "RTE123",
-				"vehicle_vin" => "J1234567890",
-				"global_to_mme_id" => "WASTATE1.MM24M",
-				"transporter_name1" => "John",
-				"transporter_name2" => "",
-				"inventory_transfer_items" => array(
-					"external_id" => "",
-					"is_sample" => 1,
-					"sample_type" => "product_sample",
-					"product_sample_type" => "budtender_sample",
-					"retest" => 0,
-					"qty" => 1.00,
-					"uom" => "gm",
-					"global_inventory_id" => "WAG010101.INZFC"
-				)
-			)
-		);
-
-		return $RES->withJSON($ret);
-
-
-	case 'DELETE':
->>>>>>> fake responses
 
 		$ret = array(
 			"inventory_transfer" => array(

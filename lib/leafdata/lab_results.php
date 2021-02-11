@@ -31,18 +31,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
 				'global_id' => sprintf('LDTEST1.LR%s', $oid),
 				'created_at' => date('m/d/Y g:ia'),
 				"deleted_at" => null,
-<<<<<<< HEAD
 				"updated_at" => date('m/d/Y g:ia'),
 				"id" => 26853,
-				"created_at" => date('m/d/Y g:ia'),
-				"updated_at" => date('m/d/Y g:ia'),
-=======
-				"updated_at" => "02\/01\/2018 03:00pm",
-				"id" => 26853,
-				"created_at" => "09/25/2018 11:01am",
-				"updated_at" => "09/25/2018 11:01am",
->>>>>>> fake responses
-				"deleted_at" => null,
 				"mme_id" => "2425",
 				"lab1_mme_id" => null,
 				"lab2_mme_id" => null,
@@ -252,13 +242,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
 				"high_cbd" => true,
 				"general_use" => false,
 				"inventory" => [
-<<<<<<< HEAD
 					"created_at" => date('m/d/Y g:ia'),
 					"updated_at" => date('m/d/Y g:ia'),
-=======
-					"created_at" => "09/25/2018 10:50am",
-					"updated_at" => "09/25/2018 11:01am",
->>>>>>> fake responses
 					"external_id" => "",
 					"released_by_state" => null,
 					"lab_retest_id" => null,
@@ -266,11 +251,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 					"net_weight" => "0.00",
 					"inventory_created_at" => "",
 					"inventory_expires_at" => "",
-<<<<<<< HEAD
 					"inventory_packaged_at" => date('m/d/Y g:ia'),
-=======
-					"inventory_packaged_at" => "09/25/2018",
->>>>>>> fake responses
 					"qty" => "5.0000",
 					"packed_qty" => null,
 					"cost" => "0.00",
@@ -303,13 +284,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
 					"global_created_by_mme_id" => "WAWA1.MM1VB",
 				],
 				"inventory_type" => [
-<<<<<<< HEAD
 					"created_at" => date('m/d/Y g:ia'),
 					"updated_at" => date('m/d/Y g:ia'),
-=======
-					"created_at" => "09/25/2018 10:50am",
-					"updated_at" => "09/25/2018 10:50am",
->>>>>>> fake responses
 					"external_id" => "",
 					"name" => "White Widow Bubble Hash",
 					"description" => "",
@@ -339,13 +315,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
 				],
 				"for_inventory" => [
 					"id" => 344280,
-<<<<<<< HEAD
 					"created_at" => date('m/d/Y g:ia'),
 					"updated_at" => date('m/d/Y g:ia'),
-=======
-					"created_at" => "09/25/2018 10:48am",
-					"updated_at" => "09/25/2018 11:01am",
->>>>>>> fake responses
 					"mme_id" => "2423",
 					"user_id" => "4",
 					"external_id" => "",
@@ -385,13 +356,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
 					"global_original_id" => null,
 					"propagation_source" => "none",
 					"inventory_type" => [
-<<<<<<< HEAD
 						"created_at" => date('m/d/Y g:ia'),
 						"updated_at" => date('m/d/Y g:ia'),
-=======
-						"created_at" => "09/25/2018 10:47am",
-						"updated_at" => "09/25/2018 10:47am",
->>>>>>> fake responses
 						"external_id" => "",
 						"name" => "White Widow Bubble Hash",
 						"description" => "",
