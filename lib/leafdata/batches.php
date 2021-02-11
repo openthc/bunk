@@ -60,11 +60,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
 				"harvested_end_at" => "",
 				"flower_wet_weight" => 0.00,
 				"other_wet_weight" => 0.00,
-				"global_id" => LeafData::generateId(1),
-				"global_mme_id" => LeafData::generateId(2),
-				"global_user_id" => LeafData::generateId(3),
-				"global_strain_id" => LeafData::generateId(4),
-				"global_area_id" => LeafData::generateId(5),
+				"global_id" => LeafData::generateId($min + $idx),
+				"global_mme_id" => LeafData::generateId($min + $idx),
+				"global_user_id" => LeafData::generateId($min + $idx),
+				"global_strain_id" => LeafData::generateId($min + $idx),
+				"global_area_id" => LeafData::generateId($min + $idx),
 				"global_mother_plant_id" => null,
 				"global_flower_area_id" => null,
 				"global_other_area_id" => null
@@ -119,7 +119,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
 			"global_flower_area_id" => null,
 			"global_other_area_id" => null
 		);
+
 		return $RES->withJSON($ret);
+		
 		break;
 	case 'DELETE':
 
