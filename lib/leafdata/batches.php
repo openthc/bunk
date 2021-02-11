@@ -121,7 +121,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		);
 
 		return $RES->withJSON($ret);
-
 		break;
 	case 'DELETE':
 		return $RES->write("");
