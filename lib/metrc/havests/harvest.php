@@ -1,5 +1,6 @@
-<?php 
+<?php
 	
+	namespace OpenTHC\Bunk\METRC\Harvests;
 	use OpenTHC\Bunk\Module\METRC;
 
 	$ret = array(

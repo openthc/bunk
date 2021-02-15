@@ -1,5 +1,7 @@
 <?php 
 	
+	namespace OpenTHC\Bunk\METRC;
+	
 	use OpenTHC\Bunk\Module\METRC;
 
 	$ret = array(

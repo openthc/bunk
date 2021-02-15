@@ -23,51 +23,51 @@ class METRC extends \OpenTHC\Module\Base
 			});
 
 			$this->get('/harvests/v1/active', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/harvests_active.php');
+				return require_once( APP_ROOT . '/lib/metrc/harvests/harvests_active.php');
 			});
 
 			$this->get('/harvests/v1/inactive', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/harvests_active.php');
+				return require_once( APP_ROOT . '/lib/metrc/harvests/harvests_active.php');
 			});
 
 			$this->get('/harvests/v1/onhold', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/harvests_active.php');
+				return require_once( APP_ROOT . '/lib/metrc/harvests/harvests_active.php');
 			});
 
 			$this->get('/harvests/v1/{id}', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/harvest.php');
+				return require_once( APP_ROOT . '/lib/metrc/harvests/harvest.php');
 			});
 
 			$this->get('/harvests/v1/waste/types', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/waste_types.php');
+				return require_once( APP_ROOT . '/lib/metrc/harvests/waste_types.php');
 			});
 
 			$this->post('/harvests/v1/create/packages', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/create_packages.php');
+				return require_once( APP_ROOT . '/lib/metrc/harvests/create_packages.php');
 			});
 
 			$this->post('/harvests/v1/create/packages/testing', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/create_packages.php');
+				return require_once( APP_ROOT . '/lib/metrc/harvests/create_packages.php');
 			});
 
 			$this->put('/harvests/v1/move', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/move.php');
+				return require_once( APP_ROOT . '/lib/metrc/harvests/move.php');
 			});
 
 			$this->post('/harvests/v1/removewaste', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/remove_waste.php');
+				return require_once( APP_ROOT . '/lib/metrc/harvests/remove_waste.php');
 			});
 
 			$this->put('/harvests/v1/move', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/move.php');
+				return require_once( APP_ROOT . '/lib/metrc/harvests/move.php');
 			});
 
 			$this->put('/harvests/v1/finish', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/harvests_finish.php');
+				return require_once( APP_ROOT . '/lib/metrc/harvests/harvests_finish.php');
 			});
 
 			$this->put('/harvests/v1/unfinish', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/harvests_unfinish.php');
+				return require_once( APP_ROOT . '/lib/metrc/harvests/harvests_unfinish.php');
 			});
 
 			$this->get('/items/v1/active', function($REQ, $RES, $ARG) {
