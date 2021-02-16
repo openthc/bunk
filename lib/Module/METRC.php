@@ -70,12 +70,52 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/harvests/harvests_unfinish.php');
 			});
 
+			$this->get('/items/v1/{id}', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/items/active.php');
+			});
+
 			$this->get('/items/v1/active', function($REQ, $RES, $ARG) {
-				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
+				return require_once( APP_ROOT . '/lib/metrc/items/active.php');
+			});
+
+			$this->get('/items/v1/categories', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/items/categories.php');
+			});
+
+			$this->get('/items/v1/brands', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/items/brands.php');
+			});
+
+			$this->post('/items/v1/create', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/items/create.php');
+			});
+
+			$this->post('/items/v1/update', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/items/update.php');
 			});
 
 			$this->get('/labtests/v1/states', function($REQ, $RES, $ARG) {
-				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
+				return require_once( APP_ROOT . '/lib/metrc/labtests/states.php');
+			});
+
+			$this->get('/labtests/v1/types', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/labtests/types.php');
+			});
+
+			$this->get('/labtests/v1/results', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/labtests/results.php');
+			});
+
+			$this->post('/labtests/v1/record', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/labtests/record.php');
+			});
+
+			$this->put('/labtests/v1/labtestdocument', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/labtests/labtestdocument.php');
+			});
+
+			$this->put('/labtests/v1/release', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/labtests/release.php');
 			});
 
 			$this->get('/packages/v1/active', function($REQ, $RES, $ARG) {
