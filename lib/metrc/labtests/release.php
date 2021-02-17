@@ -1,6 +1,6 @@
 <?php
 
-	namespace OpenTHC\Bunk\Metrc\labtests;
+	namespace OpenTHC\Bunk\Metrc\Labtests;
 	use OpenTHC\Bunk\Module\METRC;
 
 	$ret = array(

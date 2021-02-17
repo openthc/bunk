@@ -118,6 +118,26 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/labtests/release.php');
 			});
 
+			$this->get('/locations/v1/', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/locations/id.php');
+			});
+
+			$this->get('/locations/v1/active', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/locations/active.php');
+			});
+
+			$this->get('/locations/v1/types', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/locations/types.php');
+			});
+
+			$this->post('/locations/v1/create', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/locations/create.php');
+			});
+
+			$this->get('/locations/v1/update', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/locations/update.php');
+			});
+
 			$this->get('/packages/v1/active', function($REQ, $RES, $ARG) {
 				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
 			});
