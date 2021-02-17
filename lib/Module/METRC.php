@@ -139,11 +139,71 @@ class METRC extends \OpenTHC\Module\Base
 			});
 
 			$this->get('/packages/v1/active', function($REQ, $RES, $ARG) {
-				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
+				return require_once( APP_ROOT . '/lib/metrc/packages/active.php');
 			});
 
-			$this->get('/plantbatches/v1/active', function($REQ, $RES, $ARG) {
-				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
+			$this->get('/packages/v1/inactive', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/packages/active.php');
+			});
+
+			$this->get('/packages/v1/label', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/packages/active.php');
+			});
+			
+			$this->get('/packages/v1/onhold', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/packages/active.php');
+			});	
+
+			$this->get('/packages/v1/types', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/packages/types.php');
+			});
+
+			$this->get('/packages/v1/reasons', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/packages/reasons.php');
+			});
+
+			$this->post('/packages/v1/create', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/packages/create.php');
+			});
+
+			$this->post('/packages/v1/testing', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/packages/create.php');
+			});
+
+			$this->post('/packages/v1/create/plantings', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/packages/plantings.php');
+			});
+
+			$this->post('/packages/v1/change/items', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/packages/item.php');
+			});
+
+			$this->put('/packages/v1/change/note', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/packages/note.php');
+			});
+
+			$this->post('/packages/v1/change/locations', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/packages/locations.php');
+			});
+
+			$this->post('/packages/v1/adjust', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/packages/adjust.php');
+			});
+
+			$this->post('/packages/v1/change/finish', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/packages/finish.php');
+			});
+
+			$this->post('/packages/v1/change/unfinish', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/packages/unfinish.php');
+			});
+
+			$this->post('/packages/v1/change/remediate', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/packages/remediate.php');
+			});
+
+			$this->get('/plantbatches/v1/onhold', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/locations/active.php');
 			});
 
 			$this->get('/plants/v1/vegetative', function($REQ, $RES, $ARG) {
