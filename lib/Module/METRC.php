@@ -202,8 +202,8 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/packages/remediate.php');
 			});
 
-			$this->get('/plantbatches/v1/onhold', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/locations/active.php');
+			$this->get('/plantbatches/v1/', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plant_batches/id.php');
 			});
 
 			$this->get('/plants/v1/vegetative', function($REQ, $RES, $ARG) {
