@@ -1,6 +1,6 @@
 <?php
 
-	namespace OpenTHC\Bunk\Metrc\Strains;
+	namespace OpenTHC\Bunk\Metrc\Sales;
 	use OpenTHC\Bunk\Module\METRC;
 
 	$ret = array(

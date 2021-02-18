@@ -331,15 +331,15 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/plants/harvest_plants.php');
 			});
 
-			$this->get('/rooms/v1/active', function($REQ, $RES, $ARG) {
-				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
-			});
-
 			$this->get('/sales/v1/customertypes', function($REQ, $RES, $ARG) {
 				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
 			});
 
-			$this->get('/strains/v1/active', function($REQ, $RES, $ARG) {
+			$this->map(['GET', 'POST', 'PUT', 'DELETE'], '/strains/v1', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/strains/strains.php');
+			});
+
+			$this->get('/sales/v1/customertypes', function($REQ, $RES, $ARG) {
 				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
 			});
 
