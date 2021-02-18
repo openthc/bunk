@@ -251,8 +251,84 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/plant_batches/destroy.php');
 			});
 
+			$this->get('/plants/v1/', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/id.php');
+			});
+
+			$this->get('/plants/v1/label', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/id.php');
+			});
+
 			$this->get('/plants/v1/vegetative', function($REQ, $RES, $ARG) {
-				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
+				return require_once( APP_ROOT . '/lib/metrc/plants/vegetative.php');
+			});
+			
+			$this->get('/plants/v1/flowering', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/flowering.php');
+			});
+
+			$this->get('/plants/v1/onhold', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/flowering.php');
+			});
+
+			$this->get('/plants/v1/inactive', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/inactive.php');
+			});
+
+			$this->map(['GET', 'POST'], '/plants/v1/additives', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/additives.php');
+			});
+
+			$this->get('/plants/v1/growthphases', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/growth_phases.php');
+			});
+
+			$this->get('/plants/v1/type', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/type.php');
+			});
+
+			$this->get('/plants/v1/methods', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/methods.php');
+			});
+
+			$this->get('/plants/v1/reasons', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/reasons.php');
+			});
+
+			$this->post('/plants/v1/moveplants', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/move_plants.php');
+			});
+
+			$this->post('/plants/v1/changegrowthphases', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/change_growth_phases.php');
+			});
+
+			$this->post('/plants/v1/destroyplants', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/destroy_plants.php');
+			});
+
+			$this->post('/plants/v1/destroyplants', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/destroy_plants.php');
+			});
+
+			$this->post('/plants/v1/bylocation', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/by_location.php');
+			});
+
+			$this->post('/plants/v1/plantings', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/plantings.php');
+			});
+
+			$this->post('/plants/v1/create/plantbatch/packages', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/packages.php');
+			});
+
+			$this->post('/plants/v1/manicureplant', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/manicure_plant.php');
+			});
+
+			$this->post('/plants/v1/create/plantbatch/harvestplants', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plants/harvest_plants.php');
 			});
 
 			$this->get('/rooms/v1/active', function($REQ, $RES, $ARG) {
