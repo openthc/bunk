@@ -206,6 +206,51 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/plant_batches/id.php');
 			});
 
+			$this->get('/plantbatches/v1/active', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plant_batches/active.php');
+			});
+
+			$this->get('/plantbatches/v1/inactive', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plant_batches/active.php');
+			});
+
+			$this->get('/plantbatches/v1/types', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plant_batches/types.php');
+			});
+
+			$this->post('/plantbatches/v1/createplantings', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plant_batches/create_plantings.php');
+			});
+
+			$this->post('/plantbatches/v1/createpackages', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plant_batches/create_packages.php');
+			});
+			
+			$this->post('/plantbatches/v1/split', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plant_batches/split.php');
+			});
+
+			
+			$this->post('/plantbatches/v1/frommotherplant', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plant_batches/from_mother_plant.php');
+			});
+
+			$this->post('/plantbatches/v1/changegrowthphase', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plant_batches/change_growth_phase.php');
+			});
+
+			$this->put('/plantbatches/v1/moveplantbatches', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plant_batches/move_plant_batches.php');
+			});
+
+			$this->post('/plantbatches/v1/additives', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plant_batches/additives.php');
+			});
+
+			$this->post('/plantbatches/v1/destroy', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/plant_batches/destroy.php');
+			});
+
 			$this->get('/plants/v1/vegetative', function($REQ, $RES, $ARG) {
 				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
 			});

@@ -4,7 +4,8 @@
 	use OpenTHC\Bunk\Module\METRC;
 
 	$ret = array(
-
+		"Seed",
+		"Clone"
 	);
 
 	return $RES->withJSON($ret);

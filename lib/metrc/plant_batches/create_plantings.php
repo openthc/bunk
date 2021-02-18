@@ -5,24 +5,22 @@
 
 	$ret = array(
 		[
-			"PlantBatch"=> "B. Kush 5-30",
-			"GroupName"=> "New Plant Batch",
+			"Name"=> "B. Kush 5-30",
 			"Type"=> "Clone",
 			"Count"=> 25,
-			"Location"=> null,
 			"Strain"=> "Spring Hill Kush",
+			"Location"=> null,
 			"PatientLicenseNumber"=> "X00001",
-			"ActualDate"=> "2015-12-15T00=>00=>00Z"
+			"ActualDate"=> "2015-12-15"
 		  ],
 		  [
-			"PlantBatch"=> "B. Kush 5-31",
-			"GroupName"=> "New Plant Batch",
+			"Name"=> "B. Kush 5-31",
 			"Type"=> "Seed",
 			"Count"=> 50,
-			"Location"=> null,
 			"Strain"=> "Spring Hill Kush",
-			"PatientLicenseNumber"=> null,
-			"ActualDate"=> "2015-12-15T00=>00=>00Z"
+			"Location"=> null,
+			"PatientLicenseNumber"=> "X00002",
+			"ActualDate"=> "2015-12-15"
 		  ]
 	);
 
