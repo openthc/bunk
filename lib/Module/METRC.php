@@ -335,9 +335,6 @@ class METRC extends \OpenTHC\Module\Base
 				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
 			});
 
-			$this->map(['GET', 'POST', 'PUT', 'DELETE'], '/strains/v1', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/strains/strains.php');
-			});
 
 			$this->get('/sales/v1/customertypes', function($REQ, $RES, $ARG) {
 				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
@@ -346,6 +343,24 @@ class METRC extends \OpenTHC\Module\Base
 			$this->get('/transfers/v1/incoming', function($REQ, $RES, $ARG) {
 				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
 			});
+
+			$this->map(['GET', 'DELETE'], '/strains/v1', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/strains/strains.php');
+			});
+
+			$this->get('/strains/v1/update', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/strains/update.php');
+			});
+
+			$this->get('/strains/v1/active', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/strains/active.php');
+			});
+
+			$this->get('/strains/v1/create', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/strains/create.php');
+			});
+
+			// TODO: Implement transfers tweak fake responses
 
 			$this->get('/transfers/v1/outgoing', function($REQ, $RES, $ARG) {
 				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
