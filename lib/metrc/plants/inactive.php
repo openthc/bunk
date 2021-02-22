@@ -31,7 +31,7 @@
 			"DestroyedDate" => null,
 			"DestroyedNote" => null,
 			"DestroyedByUserName" => null,
-			"LastModified" => "0001-01-01T00 =>00 =>00+00 =>00"
+			"LastModified" => "0001-01-01T00:00:00+00:00"
 		  ],
 		  [
 			"Id" => 10022,
@@ -60,7 +60,7 @@
 			"DestroyedDate" => null,
 			"DestroyedNote" => null,
 			"DestroyedByUserName" => null,
-			"LastModified" => "0001-01-01T00 =>00 =>00+00 =>00"
+			"LastModified" => "0001-01-01T00:00:00+00:00"
 		  ]
 	);
 
