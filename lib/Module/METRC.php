@@ -268,7 +268,7 @@ class METRC extends \OpenTHC\Module\Base
 			});
 
 			$this->get('/plants/v1/onhold', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/plants/flowering.php');
+				return require_once( APP_ROOT . '/lib/metrc/plants/onhold.php');
 			});
 
 			$this->get('/plants/v1/inactive', function($REQ, $RES, $ARG) {
@@ -307,10 +307,6 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/plants/destroy_plants.php');
 			});
 
-			$this->post('/plants/v1/destroyplants', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/plants/destroy_plants.php');
-			});
-
 			$this->post('/plants/v1/bylocation', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/plants/by_location.php');
 			});
@@ -332,7 +328,7 @@ class METRC extends \OpenTHC\Module\Base
 			});
 
 			$this->get('/sales/v1/customertypes', function($REQ, $RES, $ARG) {
-				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
+				return require_once( APP_ROOT . '/lib/metrc/sales/customer_types.php');
 			});
 
 
@@ -343,6 +339,11 @@ class METRC extends \OpenTHC\Module\Base
 			$this->get('/transfers/v1/incoming', function($REQ, $RES, $ARG) {
 				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
 			});
+
+			$this->get('/transfers/v1/incoming', function($REQ, $RES, $ARG) {
+				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
+			});
+
 
 			$this->map(['GET', 'DELETE'], '/strains/v1', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/strains/strains.php');
