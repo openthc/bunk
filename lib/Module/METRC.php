@@ -384,19 +384,15 @@ class METRC extends \OpenTHC\Module\Base
 			});
 
 			$this->get('/transfers/v1/incoming', function($REQ, $RES, $ARG) {
-				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
-			});
-
-			$this->get('/transfers/v1/incoming', function($REQ, $RES, $ARG) {
-				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
+				return require_once( APP_ROOT . '/lib/metrc/transfer/incoming.php');
 			});
 
 			$this->get('/transfers/v1/outgoing', function($REQ, $RES, $ARG) {
-				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
+				return require_once( APP_ROOT . '/lib/metrc/transfer/outgoing.php');
 			});
 
 			$this->get('/transfers/v1/rejected', function($REQ, $RES, $ARG) {
-				die("{$_SERVER['REQUEST_URI']} is not implemented yet");
+				return require_once( APP_ROOT . '/lib/metrc/transfer/rejected.php');
 			});
 
 			$this->get('/unitsofmeasure/v1/active', function($REQ, $RES, $ARG) {
