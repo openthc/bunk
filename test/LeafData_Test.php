@@ -150,7 +150,7 @@ class LeafData_Test extends \Test\Base_Test
 	{
 		// create our http client (Guzzle)
 		$cfg = array(
-			'base_uri' => sprintf('https://%s/leafdata/', getenv('api-uri')),
+			'base_uri' => sprintf('https://%s/leafdata/', getenv('OPENTHC_BUNK_HOST')),
 			'headers' => [
 				'x-mjf-mme-code' => null,
 				'x-mjf-key' => null,
