@@ -16,10 +16,10 @@ $con = $app->getContainer();
 // 404 Handler
 $con['notFoundHandler'] = function($c) {
 	return function ($REQ, $RES) {
-		return $RES->withJSON(array(
-			'status' => 'failure',
-			'detail' => 'Not Found',
-		), 404);
+		return $RES->withJSON([
+			'data' => null,
+			'meta' => [ 'detail' => 'Not Found [BWF-021]' ]
+		], 404);
 	};
 };
 
@@ -32,7 +32,5 @@ $app->group('/leafdata', 'OpenTHC\Bunk\Module\LeafData');
 // METRC Fake Interface
 $app->group('/metrc', 'OpenTHC\Bunk\Module\METRC');
 
-// OpenTHC Bunk Interface
-$app->group('/openthc', 'OpenTHC\Bunk\Module\OpenTHC');
-
+// Go!
 $app->run();
