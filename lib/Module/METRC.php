@@ -419,13 +419,22 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/transfer/required_labtest_batches.php');
 			});
 
-			$this->get('/transfers/v1/delivery/packages/state', function($REQ, $RES, $ARG) {
+			$this->get('/transfers/v1/delivery/packages/states', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/packages_state.php');
 			});
 
 			$this->map(['POST', 'PUT', 'DELETE'], '/transfers/v1/delivery/external/incoming', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/external_incoming.php');
 			});
+
+			$this->get('/transfers/v1/templates/{id}/deliveries', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/transfer/templates_delivery.php');
+			});
+			
+			$this->map(['GET','POST', 'PUT', 'DELETE'], '/transfers/v1/templates', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/transfer/templates.php');
+			});
+
 
 			$this->get('/transfers/v1/types', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/types.php');

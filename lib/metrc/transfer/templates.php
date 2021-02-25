@@ -8,7 +8,7 @@
 		case 'GET':
 
 			$ret = array(
-				{
+				[
 					"Id" => 1,
 					"ManifestNumber" => null,
 					"ShipmentLicenseType" => 0,
