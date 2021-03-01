@@ -58,10 +58,6 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/harvests/remove_waste.php');
 			});
 
-			$this->put('/harvests/v1/move', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/harvests/move.php');
-			});
-
 			$this->put('/harvests/v1/finish', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/harvests/harvests_finish.php');
 			});

@@ -1,6 +1,6 @@
 <?php
 
-	namespace OpenTHC\Bunk\Metrc\;
+	namespace OpenTHC\Bunk\Metrc;
 
 	use OpenTHC\Bunk\Module\METRC;
 
