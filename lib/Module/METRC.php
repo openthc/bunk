@@ -66,10 +66,6 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/harvests/harvests_unfinish.php');
 			});
 
-			$this->get('/items/v1/{id}', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/items/active.php');
-			});
-
 			$this->get('/items/v1/active', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/items/active.php');
 			});
@@ -84,6 +80,10 @@ class METRC extends \OpenTHC\Module\Base
 
 			$this->post('/items/v1/create', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/items/create.php');
+			});
+
+			$this->get('/items/v1/{id}', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/items/active.php');
 			});
 
 			$this->post('/items/v1/update', function($REQ, $RES, $ARG) {
