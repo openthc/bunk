@@ -20,7 +20,7 @@ mkdir -p "$output_base"
 #
 # Lint
 echo '<h1>Linting...</h1>' > "$output_main"
-find ../api/ ../bin/ ../lib/ ../sbin/ ../view/ -type f -name '*.php' -exec php -l {} \; \
+find ../boot.php ../lib/ ../test/ -type f -name '*.php' -exec php -l {} \; \
 	| grep -v 'No syntax' || true \
 	2>&1 >"$output_base/phplint.txt"
 
