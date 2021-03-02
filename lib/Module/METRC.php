@@ -391,10 +391,6 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/transfer/rejected.php');
 			});
 
-			$this->get('/transfers/v1/rejected', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/transfer/rejected.php');
-			});
-
 			$this->get('/transfers/v1/{id}/deliveries', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/deliveries.php');
 			});
