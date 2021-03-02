@@ -391,23 +391,19 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/transfer/rejected.php');
 			});
 
-			$this->get('/transfers/v1/{id}/deliveries', function($REQ, $RES, $ARG) {
+			$this->get('/transfers/v1/{delv_id}/deliveries', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/deliveries.php');
 			});
 
-			$this->get('/transfers/v1/delivery/{id}/packages', function($REQ, $RES, $ARG) {
+			$this->get('/transfers/v1/delivery/{pack_id}/packages', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/delivery_packages.php');
 			});
 
-			$this->get('/transfers/v1/delivery/{id}/packages/wholesale', function($REQ, $RES, $ARG) {
+			$this->get('/transfers/v1/delivery/{whole_id}/packages/wholesale', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/packages_wholesale.php');
 			});
 
-			$this->get('/transfers/v1/delivery/package/{id}/requiredlabtestbatches', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/transfer/required_labtest_batches.php');
-			});
-
-			$this->get('/transfers/v1/delivery/package/{id}/requiredlabtestbatches', function($REQ, $RES, $ARG) {
+			$this->get('/transfers/v1/delivery/package/{lab_id}/requiredlabtestbatches', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/required_labtest_batches.php');
 			});
 
