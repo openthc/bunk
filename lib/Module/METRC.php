@@ -86,6 +86,10 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/items/active.php');
 			});
 
+			$this->delete('/items/v1/{id}', function($REQ, $RES, $ARG) {
+				return "";
+			});
+
 			$this->post('/items/v1/update', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/items/update.php');
 			});
@@ -100,6 +104,10 @@ class METRC extends \OpenTHC\Module\Base
 
 			$this->get('/labtests/v1/results', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/labtests/results.php');
+			});
+
+			$this->put('/labtests/v1/results/release', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/labtests/release.php');
 			});
 
 			$this->post('/labtests/v1/record', function($REQ, $RES, $ARG) {
@@ -118,6 +126,10 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/locations/id.php');
 			});
 
+			$this->delete('/locations/v1', function($REQ, $RES, $ARG) {
+				return "";
+			});
+
 			$this->get('/locations/v1/active', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/locations/active.php');
 			});
@@ -130,7 +142,7 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/locations/create.php');
 			});
 
-			$this->get('/locations/v1/update', function($REQ, $RES, $ARG) {
+			$this->post('/locations/v1/update', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/locations/update.php');
 			});
 
@@ -139,6 +151,10 @@ class METRC extends \OpenTHC\Module\Base
 			});
 
 			$this->get('/packages/v1/inactive', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/packages/active.php');
+			});
+
+			$this->get('/packages/v1', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/packages/active.php');
 			});
 
@@ -162,7 +178,7 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/packages/create.php');
 			});
 
-			$this->post('/packages/v1/testing', function($REQ, $RES, $ARG) {
+			$this->post('/packages/v1/create/testing', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/packages/create.php');
 			});
 
@@ -170,7 +186,7 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/packages/plantings.php');
 			});
 
-			$this->post('/packages/v1/change/items', function($REQ, $RES, $ARG) {
+			$this->post('/packages/v1/change/item', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/packages/item.php');
 			});
 
@@ -182,19 +198,23 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/packages/locations.php');
 			});
 
+			$this->get('/packages/v1/adjust/reasons', function($REQ, $RES, $ARG) {
+				return require_once( APP_ROOT . '/lib/metrc/packages/reasons.php');
+			});
+
 			$this->post('/packages/v1/adjust', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/packages/adjust.php');
 			});
 
-			$this->post('/packages/v1/change/finish', function($REQ, $RES, $ARG) {
+			$this->post('/packages/v1/finish', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/packages/finish.php');
 			});
 
-			$this->post('/packages/v1/change/unfinish', function($REQ, $RES, $ARG) {
+			$this->post('/packages/v1/unfinish', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/packages/unfinish.php');
 			});
 
-			$this->post('/packages/v1/change/remediate', function($REQ, $RES, $ARG) {
+			$this->post('/packages/v1/remediate', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/packages/remediate.php');
 			});
 
@@ -226,8 +246,8 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/plant_batches/split.php');
 			});
 
-			
-			$this->post('/plantbatches/v1/frommotherplant', function($REQ, $RES, $ARG) {
+
+			$this->post('/plantbatches/v1/create/packages/frommotherplant', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/plant_batches/from_mother_plant.php');
 			});
 
@@ -279,15 +299,15 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/plants/growth_phases.php');
 			});
 
-			$this->get('/plants/v1/type', function($REQ, $RES, $ARG) {
+			$this->get('/plants/v1/types', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/plants/type.php');
 			});
 
-			$this->get('/plants/v1/methods', function($REQ, $RES, $ARG) {
+			$this->get('/plants/v1/waste/methods', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/plants/methods.php');
 			});
 
-			$this->get('/plants/v1/reasons', function($REQ, $RES, $ARG) {
+			$this->get('/plants/v1/waste/reasons', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/plants/reasons.php');
 			});
 
@@ -303,11 +323,11 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/plants/destroy_plants.php');
 			});
 
-			$this->post('/plants/v1/bylocation', function($REQ, $RES, $ARG) {
+			$this->post('/plants/v1/additives/bylocation', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/plants/by_location.php');
 			});
 
-			$this->post('/plants/v1/plantings', function($REQ, $RES, $ARG) {
+			$this->post('/plants/v1/create/plantings', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/plants/plantings.php');
 			});
 
@@ -315,11 +335,11 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/plants/packages.php');
 			});
 
-			$this->post('/plants/v1/manicureplant', function($REQ, $RES, $ARG) {
+			$this->post('/plants/v1/manicureplants', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/plants/manicure_plant.php');
 			});
 
-			$this->post('/plants/v1/create/plantbatch/harvestplants', function($REQ, $RES, $ARG) {
+			$this->post('/plants/v1/harvestplants', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/plants/harvest_plants.php');
 			});
 
@@ -359,7 +379,7 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/sales/receipts_active.php');
 			});
 
-			$this->map(['GET', 'POST', 'PUT', 'DELETE'],'/sales/v1/receipts/transactions', function($REQ, $RES, $ARG) {
+			$this->map(['GET', 'POST', 'PUT', 'DELETE'],'/sales/v1/transactions', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/sales/transactions.php');
 			});
 
@@ -367,7 +387,7 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/strains/strains.php');
 			});
 
-			$this->get('/strains/v1/update', function($REQ, $RES, $ARG) {
+			$this->post('/strains/v1/update', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/strains/update.php');
 			});
 
@@ -375,7 +395,7 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/strains/active.php');
 			});
 
-			$this->get('/strains/v1/create', function($REQ, $RES, $ARG) {
+			$this->post('/strains/v1/create', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/strains/create.php');
 			});
 

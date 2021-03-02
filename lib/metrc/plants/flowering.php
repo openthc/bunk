@@ -61,6 +61,7 @@
 			"DestroyedNote"=> null,
 			"DestroyedByUserName"=> null,
 			"LastModified"=> "0001-01-01T00=>00=>00+00=>00"
+		]
 	);
 
 	return $RES->withJSON($ret);

@@ -176,4 +176,3 @@
 			
 			return $RES->write("");
 	}
-}
