@@ -12,4 +12,6 @@
 			"Name"=> "Darth Buds",
 			"Status"=> "NotPaid"
 		]
-	)
+	);
+
+	return $RES->withJSON($Ret);
