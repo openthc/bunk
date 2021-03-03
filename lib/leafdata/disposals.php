@@ -32,6 +32,23 @@ switch ($_SERVER['REQUEST_METHOD']) {
 				'created_at' => date('m/d/Y g:ia'),
 				"deleted_at" => null,
 				"updated_at" => date('m/d/Y g:ia'),
+				"hold_starts_at" => date('m/d/Y g:ia'),
+				"hold_ends_at" => date('m/d/Y g:ia'),
+				"external_id" => "",
+				"whole_plant" => null,
+				"reason" => "quality control",
+				"method" => "",
+				"disposal_at" => date('m/d/Y g:ia'),
+				"phase" => "",
+				"type" => null,
+				"qty" => "200.0000",
+				"uom" => "gm",
+				"source" => "inventory",
+				"disposal_cert" => null,
+				"deleted_at" => null,
+				"global_id" => "WAG010101.DI9",
+				"batch_type" => "",
+				"global_mme_id" => "WAWA1.MM1LS",
 			);
 
 		}
