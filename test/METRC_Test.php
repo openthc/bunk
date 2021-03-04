@@ -5,7 +5,9 @@
 
 namespace Test;
 
-class OpenTHC_Bunk_METRC_Test extends OpenTHC_Base_TestCase
+class METRC_Test extends OpenTHC_Base_TestCase
 {
-
+	function assertValidResponse($res, $code=200, $dump=null) {
+		
+	}
 }

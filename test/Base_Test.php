@@ -37,7 +37,7 @@ class OpenTHC_Base_TestCase extends \PHPUnit\Framework\TestCase
 	}
 
 
-	function _data_stash_get()
+	function _data_stash_get($f)
 	{
 		if (is_file($f)) {
 			if (is_readable($f)) {

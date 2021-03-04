@@ -15,6 +15,7 @@ class MMEs_Test extends \Test\LeafData
 		$res = $this->ghc->get('mmes');
 		$this->assertNotEmpty($res);
 		$this->assertEquals(200, $res->getStatusCode());
+		$this->assertValidResponse($res);
 
 		$raw = $res->getBody()->getContents();
 		$this->assertNotEmpty($raw);
@@ -23,13 +24,6 @@ class MMEs_Test extends \Test\LeafData
 		// $this->assertValidResponse($res);
 		$this->assertIsArray($ret);
 
-	}
-
-
-	function test_get()
-	{
-		$res = $this->ghc->get($this->path);
-		$this->assertValidResponse($res);
 	}
 
 	function test_post()
