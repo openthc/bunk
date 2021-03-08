@@ -150,8 +150,8 @@ class LeafData extends \PHPUnit\Framework\TestCase
 	{
 		// create our http client (Guzzle)
 		$cfg = array(
-			'base_uri' => sprintf('https://%s/%s', 
-			getenv('OPENTHC_BUNK_HOST'), getenv('')),
+			'base_uri' => sprintf('https://%s/leafdata', 
+			getenv('api-uri')),
 			'headers' => [
 				'x-mjf-mme-code' => null,
 				'x-mjf-key' => null,
