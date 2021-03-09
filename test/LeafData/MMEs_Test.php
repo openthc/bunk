@@ -7,7 +7,7 @@ namespace Test\LeafData;
 
 class MMEs_Test extends \Test\LeafData
 {
-	protected $path = '/mmes';
+	protected $path = 'mmes';
 
 	function test_get()
 	{
@@ -35,7 +35,7 @@ class MMEs_Test extends \Test\LeafData
 	function test_delete()
 	{
 		$res = $this->ghc->delete($this->path);
-		$this->assertValidResponse($res);
+		$this->assertValidDelete($res);
 	}
 
 }

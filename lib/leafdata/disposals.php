@@ -100,5 +100,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
 
 	case 'DELETE':
-
+		return $RES->write("");
+		break;
 }

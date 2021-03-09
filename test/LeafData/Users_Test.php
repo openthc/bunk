@@ -7,7 +7,7 @@ namespace Test\LeafData;
 
 class User_Tests extends \Test\LeafData
 {
-	protected $path = '/users';
+	protected $path = 'users';
 
 	function test_get()
 	{
@@ -24,6 +24,6 @@ class User_Tests extends \Test\LeafData
 	function test_delete()
 	{
 		$res = $this->ghc->delete($this->path);
-		$this->assertValidResponse($res);
+		$this->assertValidDelete($res);
 	}
 }

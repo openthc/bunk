@@ -7,7 +7,7 @@ namespace Test\LeafData;
 
 class Batches_Test extends \Test\LeafData
 {
-	protected $path = '/batches';
+	protected $path = 'batches';
 
 	function test_get()
 	{
@@ -24,6 +24,6 @@ class Batches_Test extends \Test\LeafData
 	function test_delete()
 	{
 		$res = $this->ghc->delete($this->path);
-		$this->assertValidResponse($res);
+		$this->assertValidDelete($res);
 	}
 }

@@ -396,4 +396,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		return $RES->withJSON($ret);
 	case 'POST':
 	case 'DELETE':
+		return $RES->write("");
+		break;
 }

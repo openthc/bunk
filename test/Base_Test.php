@@ -15,7 +15,6 @@ class OpenTHC_Base_TestCase extends \PHPUnit\Framework\TestCase
 		$this->ghc = $this->_api();
 	}
 
-
 	/**
 		HTTP Utility
 	*/
@@ -58,6 +57,11 @@ class OpenTHC_Base_TestCase extends \PHPUnit\Framework\TestCase
 		}
 
 		return file_put_contents($f, $d);
+	}
+
+	function assertValidDelete($res) {
+		$this->assertEquals(200, $res->getStatusCode());
+		$this->assertEmpty($res->getBody()->getContents());
 	}
 
 }
