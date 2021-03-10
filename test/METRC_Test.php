@@ -5,7 +5,7 @@
 
 namespace Test;
 
-class METRC_Test extends OpenTHC_Base_TestCase
+class Metrc_Test extends OpenTHC_Base_TestCase
 {
 
 	public $ghc;
