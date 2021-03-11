@@ -2,7 +2,7 @@
 
 	namespace Test\Metrc;
 
-	class Metrc_Response_Test extends \Test\Metrc
+	class Metrc_Response_Test extends \Test\Metrc_TestCase
 	{
 		
 		private $metrc_curl = array(
