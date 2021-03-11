@@ -1,8 +1,8 @@
 <?php
 
-	namespace TEST\Metrc;
+	namespace Test\Metrc;
 
-	class Metrc_Response_Test extends \Test\Metrc_Test 
+	class Metrc_Response_Test extends \Test\Metrc
 	{
 		
 		private $metrc_curl = array(
