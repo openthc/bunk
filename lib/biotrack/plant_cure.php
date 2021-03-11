@@ -26,11 +26,11 @@ $ret = array(
 	'transactionid' => _rnd_transaction_id(),
 	'derivatives' => array(
 		array(
-			"barcode_id" => 0358560579655604,
+			"barcode_id" => "0358560579655604",
 			"barcode_type" => 9
 		),
 		array(
-			"barcode_id" => 0358560579655605,
+			"barcode_id" => "0358560579655605",
 			"barcode_type" => 27
 		)
 	),
