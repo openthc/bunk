@@ -16,13 +16,13 @@ class Metrc_TestCase extends OpenTHC_Base_TestCase
 	}
 
 	function assertValidResponse($res, $code=200, $dump=null) {
-		
+		return 0;
 	}
 
 	protected function _api($opt=null)
 	{
 		// create our http client (Guzzle)
-		$cfg =[
+		$cfg = [
 			'base_uri' => sprintf('https://%s/metrc/', getenv('api-uri')),
 			'headers' => [
 				'x-mjf-mme-code' => null,

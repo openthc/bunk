@@ -58,7 +58,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 	case 'POST':
 
 		$pct = rand(1,100);
-
+		$ret_code = 200;
 
 		switch ($ret_code) {
 			case 200:
@@ -80,7 +80,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 					'global_plant_id' => null,
 					'global_inventory_id' => 'WAJ413091.INT9CT'
 				];
-				_exit_json($ret);
+				$RES->withJSON($ret);
 				break;
 			case 422:
 				_exit_json([
