@@ -126,8 +126,10 @@
 			foreach ($this->metrc_urls as $url) {
 				$res = $this->ghc->request($url['action'], $url['url']);
 
-				if ($url['action'] <> "DELETE"){
-					$this->assertValidResponse($res);
+				echo $res->getHeaderLine('');
+
+				if ($url['action'] <> "DELETE") {
+					$this->assertValidResponses($res, $url['url']);
 				} else {
 					$this->assertValidDelete($res);
 				}

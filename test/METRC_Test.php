@@ -15,8 +15,12 @@ class Metrc_TestCase extends OpenTHC_Base_TestCase
 		$this->ghc = $this->_api();
 	}
 
-	function assertValidResponse($res, $code=200, $dump=null) {
-		return 0;
+	function assertValidResponses($res, $dump) {
+		$code = $res->getStatusCode();
+		$raw = $res->getBody()->getContents();
+		$this->assertNotEmpty($raw, "{$dump} is empty");
+		$this->assertEquals(200, $code, "expected 200 got {$code} by {$dump}");
+		$this->assertIsArray($raw, "{$dump} isn't array");
 	}
 
 	protected function _api($opt=null)
@@ -44,7 +48,7 @@ class Metrc_TestCase extends OpenTHC_Base_TestCase
 		}
 
 		$c = new \GuzzleHttp\Client([
-			'base_uri' => sprintf('https://%s/metrc/', getenv('api-uri')),
+			'base_uri' => sprintf('https://%s/metrc/v2015', getenv('api-uri')),
 			'headers' => [
 				'x-mjf-mme-code' => null,
 				'x-mjf-key' => null,
