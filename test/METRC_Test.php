@@ -27,7 +27,7 @@ class Metrc_TestCase extends OpenTHC_Base_TestCase
 	{
 		// create our http client (Guzzle)
 		$cfg = [
-			'base_uri' => sprintf('https://%s/metrc/', getenv('api-uri')),
+			'base_uri' => sprintf('https://%s/metrc/v2015/', getenv('api-uri')),
 			'headers' => [
 				'x-mjf-mme-code' => null,
 				'x-mjf-key' => null,
