@@ -9,7 +9,7 @@
 			['action' => 'GET', 'url' =>'unitsofmeasure/v1/active'],
 			['action' => 'GET', 'url' => 'harvests/v1/active'],
 			['action' => 'GET', 'url' => 'harvests/v1/inactive'],
-			['action' => 'GET', 'url' => 'harvests/v1'],
+			['action' => 'GET', 'url' => 'harvests/v1/1'],
 			['action' => 'GET', 'url' => 'harvests/v1/waste/types'],
 			['action' => 'POST', 'url' => 'harvests/v1/create/packages'],
 			['action' => 'POST', 'url' => 'harvests/v1/create/packages/testing'],
