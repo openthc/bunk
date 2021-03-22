@@ -21,8 +21,8 @@
 			['action' => 'GET', 'url' => 'items/v1/categories'],
 			['action' => 'GET', 'url' => 'items/v1/brands'],
 			['action' => 'POST', 'url' => 'items/v1/create'],
-			['action' => 'GET', 'url' => 'items/v1/{id}'],
-			['action' => 'DELETE', 'url' => 'items/v1/{id}'],
+			['action' => 'GET', 'url' => 'items/v1/3'],
+			['action' => 'DELETE', 'url' => 'items/v1/1'],
 			['action' => 'POST', 'url' => 'items/v1/update'],
 			['action' => 'GET', 'url' => 'labtests/v1/states'],
 			['action' => 'GET', 'url' => 'labtests/v1/types'],
@@ -31,9 +31,9 @@
 			['action' => 'POST', 'url' => 'labtests/v1/record'],
 			['action' => 'PUT', 'url' => 'labtests/v1/labtestdocument'],
 			['action' => 'PUT', 'url' => 'labtests/v1/release'],
-			['action' => 'GET', 'url' => 'locations/v1/'],
-			['action' => 'DELETE', 'url' => 'locations/v1/'],
-			['action' => 'GET', 'url' => 'locations/v1/create'],
+			['action' => 'GET', 'url' => 'locations/v1'],
+			['action' => 'DELETE', 'url' => 'locations/v1'],
+			['action' => 'POST', 'url' => 'locations/v1/create'],
 			['action' => 'POST', 'url' => 'locations/v1/update'],
 			['action' => 'GET', 'url' => 'packages/v1/active'],
 			['action' => 'GET', 'url' => 'packages/v1/inactive'],
@@ -42,7 +42,7 @@
 			['action' => 'GET', 'url' => 'packages/v1/onhold'],
 			['action' => 'GET', 'url' => 'packages/v1/reasons'],
 			['action' => 'POST', 'url' => 'packages/v1/create'],
-			['action' => 'POSTT', 'url' => 'packages/v1/create/testing'],
+			['action' => 'POST', 'url' => 'packages/v1/create/testing'],
 			['action' => 'POST', 'url' => 'packages/v1/create/plantings'],
 			['action' => 'POST', 'url' => 'packages/v1/change/item'],
 			['action' => 'PUT', 'url' => 'packages/v1/change/note'],
@@ -64,7 +64,7 @@
 			['action' => 'POST', 'url' => 'plantbatches/v1/destroy'],
 			['action' => 'GET', 'url' => 'plants/v1'],
 			['action' => 'GET', 'url' => 'plants/v1/label'],
-			['action' => 'GET', 'url' => 'plants/v1/vegatative'],
+			['action' => 'GET', 'url' => 'plants/v1/vegetative'],
 			['action' => 'GET', 'url' => 'plants/v1/flowering'],
 			['action' => 'GET', 'url' => 'plants/v1/onhold'],
 			['action' => 'GET', 'url' => 'plants/v1/inactive'],
@@ -89,7 +89,7 @@
 			['action' => 'POST', 'url' => 'sales/v1/deliveries'],
 			['action' => 'PUT', 'url' => 'sales/v1/deliveries'],
 			['action' => 'DELETE', 'url' => 'sales/v1/deliveries'],
-			['action' => 'GET', 'url' => 'sales/v1/returnreasons'],
+			['action' => 'GET', 'url' => 'sales/v1/delivery/returnreasons'],
 			['action' => 'PUT', 'url' => 'sales/v1/deliveries/complete'],
 			['action' => 'GET', 'url' => 'sales/v1/receipts'],
 			['action' => 'POST', 'url' => 'sales/v1/receipts'],
@@ -126,10 +126,10 @@
 			foreach ($this->metrc_urls as $url) {
 				$res = $this->ghc->request($url['action'], $url['url']);
 
-				if ($url['action'] <> "DELETE") {
-					$this->assertValidResponses($res, $url['url']);
+				if ($url['action'] != "DELETE") {
+					$this->assertValidResponses($res, $url['url'], $url['action']);
 				} else {
-					$this->assertValidDelete($res);
+					$this->assertValidDelete($res, $url['url']);
 				}
 			}
 		}

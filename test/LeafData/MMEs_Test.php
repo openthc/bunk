@@ -35,7 +35,7 @@ class MMEs_Test extends \Test\LeafData
 	function test_delete()
 	{
 		$res = $this->ghc->delete($this->path);
-		$this->assertValidDelete($res);
+		$this->assertValidDelete($res, $this->path);
 	}
 
 }

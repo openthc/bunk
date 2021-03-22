@@ -59,9 +59,9 @@ class OpenTHC_Base_TestCase extends \PHPUnit\Framework\TestCase
 		return file_put_contents($f, $d);
 	}
 
-	function assertValidDelete($res) {
-		$this->assertEquals(200, $res->getStatusCode());
-		$this->assertEmpty($res->getBody()->getContents());
+	function assertValidDelete($res, $url) {
+		$this->assertEquals(200, $res->getStatusCode(), "DELETE: not working {$url}");
+		$this->assertEmpty($res->getBody()->getContents(), "{$url} not empty");
 	}
 
 }

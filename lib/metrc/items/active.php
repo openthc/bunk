@@ -78,4 +78,4 @@
 		  ],
 	);
 
-	$RES->withJSON($ret);
+	return $RES->withJSON($ret);
