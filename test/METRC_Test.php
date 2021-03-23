@@ -20,7 +20,6 @@ class Metrc_TestCase extends OpenTHC_Base_TestCase
 		$raw = $res->getBody()->getContents();
 		$this->assertNotEmpty($raw, "{$action}: {$dump} is empty");
 		$this->assertEquals(200, $code, "expected 200 got {$code} by {$dump}");
-		// $this->assertIsArray($raw, "{$dump} isn't array");
 	}
 
 	protected function _api($opt=null)
