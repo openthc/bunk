@@ -15,7 +15,7 @@
 	convertWarningsToExceptions="true"
 	processIsolation="false"
 	stopOnError="false"
-	stopOnFailure="true"
+	stopOnFailure="false"
 	stopOnRisky="false"
 	timeoutForSmallTests="1"
 	timeoutForMediumTests="10"
@@ -36,9 +36,9 @@
 
 	<testsuites>
 		
-		<!-- <testsuite name="BioTrack">
+		<testsuite name="BioTrack">
 			<directory>BioTrack</directory>
-		</testsuite> -->
+		</testsuite>
 
 		<testsuite name="LeafData">
 			<directory>LeafData</directory>
