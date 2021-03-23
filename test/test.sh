@@ -23,11 +23,12 @@ echo '<h1>Linting...</h1>' > "$output_main"
 find ../boot.php ../lib/ ../test/ -type f -name '*.php' -exec php -l {} \; \
 	| grep -v 'No syntax' || true \
 	2>&1 >"$output_base/phplint.txt"
+[ -s "$output_base/phplint.txt" ] || echo "Linting OK" >"$output_base/phplint.txt"
 
 
 #
 # PHPUnit
-echo '<h1>Running Tests...</h1>' > "$output_main"
+echo '<h1>PHPUnit...</h1>' > "$output_main"
 ../vendor/bin/phpunit \
 	--verbose \
 	--log-junit "$output_base/output.xml" \
