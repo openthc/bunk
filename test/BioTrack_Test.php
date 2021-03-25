@@ -5,7 +5,7 @@
 
 namespace Test;
 
-class OpenTHC_Bunk_BioTrack_Test extends OpenTHC_Base_TestCase
+class BioTrack_Test extends \Test\Base_Test
 {
 	protected $_sid;
 

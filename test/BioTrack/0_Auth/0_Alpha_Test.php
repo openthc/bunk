@@ -5,7 +5,7 @@
 
 namespace Test\Auth;
 
-class Alpha extends \Test\OpenTHC_Bunk_BioTrack_Test
+class Alpha extends \Test\BioTrack_Test
 {
 	function test_auth_fail()
 	{

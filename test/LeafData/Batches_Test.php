@@ -5,7 +5,7 @@
 
 namespace Test\LeafData;
 
-class Batches_Test extends \Test\LeafData
+class Batches_Test extends \Test\LeafData_Test
 {
 	protected $path = 'batches';
 

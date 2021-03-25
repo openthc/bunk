@@ -5,7 +5,7 @@
 
 namespace Test\LeafData;
 
-class Lab_Results_Test extends \Test\LeafData
+class Lab_Results_Test extends \Test\LeafData_Test
 {
 	protected $path = 'lab_results';
 

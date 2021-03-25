@@ -5,7 +5,7 @@
 
 namespace Test;
 
-class LeafData extends OpenTHC_Base_TestCase
+class LeafData_Test extends \Test\Base_Test
 {
 	public $ghc;
 

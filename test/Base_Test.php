@@ -5,7 +5,7 @@
 
 namespace Test;
 
-class OpenTHC_Base_TestCase extends \PHPUnit\Framework\TestCase
+class Base_Test extends \PHPUnit\Framework\TestCase
 {
 	protected $ghc; // API Guzzle HTTP Client
 	protected $raw; // Raw Response Buffer

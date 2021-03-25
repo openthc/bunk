@@ -5,7 +5,7 @@
 
 namespace Test\LeafData;
 
-class Inventory_Transfers_Test extends \Test\LeafData
+class Inventory_Transfers_Test extends \Test\LeafData_Test
 {
 	protected $path = 'inventory_transfers';
 

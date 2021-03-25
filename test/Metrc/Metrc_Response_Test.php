@@ -5,7 +5,7 @@
 
 namespace Test\Metrc;
 
-class Metrc_Response_Test extends \Test\Metrc_TestCase
+class Metrc_Response_Test extends \Test\Metrc_Test
 {
 
 	protected $metrc_urls = array(

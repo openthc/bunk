@@ -5,7 +5,7 @@
 
 namespace Test\Basic;
 
-class Alpha extends \Test\OpenTHC_Bunk_BioTrack_Test
+class Alpha extends \Test\BioTrack_Test
 {
 	protected function setUp() : void
 	{
