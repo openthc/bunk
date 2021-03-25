@@ -5,7 +5,7 @@
 
 namespace Test;
 
-class LeafData extends \PHPUnit\Framework\TestCase
+class LeafData extends OpenTHC_Base_TestCase
 {
 	public $ghc;
 
@@ -26,12 +26,12 @@ class LeafData extends \PHPUnit\Framework\TestCase
 		// Dump on Errors
 		$hrc = $res->getStatusCode();
 		switch ($hrc) {
-		case 422:
-		case 500:
-			if (empty($dump)) {
-				$dump = sprintf('%d Response Code', $hrc);
-			}
-			break;
+			case 422:
+			case 500:
+				if (empty($dump)) {
+					$dump = sprintf('%d Response Code', $hrc);
+				}
+				break;
 		}
 
 		$this->raw = $res->getBody()->getContents();
@@ -47,7 +47,7 @@ class LeafData extends \PHPUnit\Framework\TestCase
 		$ret = \json_decode($this->raw, true);
 		$this->assertIsArray($ret);
 
-		$this->assertCount(9, $ret);
+		// $this->assertCount(9, $ret);
 
 		// $this->assertIsArray($x['data']);
 		// $this->assertIsArray($x['meta']);
@@ -150,7 +150,7 @@ class LeafData extends \PHPUnit\Framework\TestCase
 	{
 		// create our http client (Guzzle)
 		$cfg = array(
-			'base_uri' => sprintf('https://%s/leafdata', getenv('OPENTHC_BUNK_HOST')),
+			'base_uri' => sprintf('https://%s/leafdata/', getenv('api-uri')),
 			'headers' => [
 				'x-mjf-mme-code' => null,
 				'x-mjf-key' => null,

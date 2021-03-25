@@ -15,7 +15,6 @@ class OpenTHC_Base_TestCase extends \PHPUnit\Framework\TestCase
 		$this->ghc = $this->_api();
 	}
 
-
 	/**
 		HTTP Utility
 	*/
@@ -37,7 +36,7 @@ class OpenTHC_Base_TestCase extends \PHPUnit\Framework\TestCase
 	}
 
 
-	function _data_stash_get()
+	function _data_stash_get($f)
 	{
 		if (is_file($f)) {
 			if (is_readable($f)) {
@@ -58,6 +57,11 @@ class OpenTHC_Base_TestCase extends \PHPUnit\Framework\TestCase
 		}
 
 		return file_put_contents($f, $d);
+	}
+
+	function assertValidDelete($res, $url) {
+		$this->assertEquals(200, $res->getStatusCode(), "DELETE: not working {$url}");
+		$this->assertEmpty($res->getBody()->getContents(), "{$url} not empty");
 	}
 
 }

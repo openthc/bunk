@@ -41,8 +41,23 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		}
 
 		return $RES->withJSON($ret);
-
+	
+		break;
 	case 'POST':
-	case 'DELETE':
 
+		$ret['data'][] = array(
+			"name" => "Openthc User",
+			"type" => "non-quarantined",
+			"external_id" => "Vault",
+			"created_at" => date('m/d/Y g:ia'),
+			"updated_at" => date('m/d/Y g:ia'),
+			"global_id" => LeafData::generateId(0)
+		);
+
+		return $RES->withJSON($ret);
+	
+		break;
+	case 'DELETE':
+		return $RES->write("");
+		break;
 }

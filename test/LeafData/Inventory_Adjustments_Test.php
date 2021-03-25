@@ -7,7 +7,7 @@ namespace Test\LeafData;
 
 class Inventory_Adjustments_Test extends \Test\LeafData
 {
-	protected $path = '/inventory_adjustments';
+	protected $path = 'inventory_adjustments';
 
 	function test_get()
 	{
@@ -24,6 +24,6 @@ class Inventory_Adjustments_Test extends \Test\LeafData
 	function test_delete()
 	{
 		$res = $this->ghc->delete($this->path);
-		$this->assertValidResponse($res);
+		$this->assertValidDelete($res, $this->path);
 	}
 }

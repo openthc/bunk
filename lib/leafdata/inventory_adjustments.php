@@ -32,13 +32,47 @@ switch ($_SERVER['REQUEST_METHOD']) {
 				'created_at' => date('m/d/Y g:ia'),
 				"deleted_at" => null,
 				"updated_at" => date('m/d/Y g:ia'),
+				"created_at" => date('m/d/Y g:ia'),
+				"external_id" => "",
+				"adjusted_at" => date('m/d/Y g:ia'),
+				"qty" => 2.00,
+				"uom" => "ea",
+				"reason" => "transfer",
+				"memo" => "",
+				"global_mme_id" => "WASTATE1.MM17",
+				"global_user_id" => "WASTATE1.US5",
+				"global_inventory_id" => "WAL050505.IN8F",
+				"global_adjusted_by_user_id" => null
 			);
 
 		}
 
 		return $RES->withJSON($ret);
+		break;
 
 	case 'POST':
-	case 'DELETE':
 
+		$ret = array(
+			"external_id" => "",
+			"adjusted_at" => date('m/d/Y g:ia'),
+			"qty" => -2.00,
+			"uom" => "gm",
+			"reason" => "budtender_sample",
+			"memo" => "",
+			"updated_at" => date('m/d/Y g:ia'),
+			"created_at" => date('m/d/Y g:ia'),
+			"global_id" => "WAG010101.IA1KQQ",
+			"global_mme_id" => "WASTATE1.MM24L",
+			"global_user_id" => "WASTATE1.US2FE",
+			"global_inventory_id" => "WAG010101.INZFC",
+			"global_adjusted_by_user_id" => "WASTATE1.US3"
+			
+		);
+
+		return $RES->withJSON($ret);
+		break;
+		
+	case 'DELETE':
+		return $RES->write("");
+		break;
 }
