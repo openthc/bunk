@@ -1,0 +1,12 @@
+#
+# OpenTHC PHPStan for PIPE
+#
+
+parameters:
+	bootstrapFiles:
+		- ./boot.php
+	level: 6
+	paths:
+		- ../lib
+		- ../test
+	tipsOfTheDay: false
