@@ -1,17 +1,21 @@
 <?php
+/**
+ *
+ */
 
-	namespace OpenTHC\Bunk\Metrc\Locations;
-	use OpenTHC\Bunk\Module\METRC;
+namespace OpenTHC\Bunk\Metrc\Locations;
 
-	$ret = array(
-		[
-			"Name" => "Harvest Location",
-			"LocationTypeName" => "Default"
-		  ],
-		  [
-			"Name" => "Plants Location",
-			"LocationTypeName" => "Planting"
-		  ]
-	);
+use OpenTHC\Bunk\Module\METRC;
 
-	return $RES->withJSON($ret);
+$ret = array(
+	[
+		"Name" => "Harvest Location",
+		"LocationTypeName" => "Default"
+	],
+	[
+		"Name" => "Plants Location",
+		"LocationTypeName" => "Planting"
+	]
+);
+
+return $RES->withJSON($ret);

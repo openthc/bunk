@@ -1,13 +1,17 @@
 <?php
+/**
+ *
+ */
 
-	namespace OpenTHC\Bunk\Metrc\Transfers;
-	use OpenTHC\Bunk\Module\METRC;
+namespace OpenTHC\Bunk\Metrc\Transfers;
 
-	$ret = array(
-		"Shipped",
-		"Rejected",
-		"Accepted",
-		"Returned"
-	);
+use OpenTHC\Bunk\Module\METRC;
 
-	return $RES->withJSON($ret);
+$ret = array(
+	"Shipped",
+	"Rejected",
+	"Accepted",
+	"Returned"
+);
+
+return $RES->withJSON($ret);

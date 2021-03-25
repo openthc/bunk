@@ -1,17 +1,21 @@
 <?php
+/**
+ *
+ */
 
-	namespace OpenTHC\Bunk\Metrc\Packages;
-	use OpenTHC\Bunk\Module\METRC;
+namespace OpenTHC\Bunk\Metrc\Packages;
 
-	$ret = array(
+use OpenTHC\Bunk\Module\METRC;
+
+$ret = array(
+	[
+		"Name" => "Drying",
+		"RequiresNote" => false
+		],
 		[
-			"Name" => "Drying",
-			"RequiresNote" => false
-		  ],
-		  [
-			"Name" => "Entry Error",
-			"RequiresNote" => false
-		  ]
-	);
+		"Name" => "Entry Error",
+		"RequiresNote" => false
+		]
+);
 
-	return $RES->withJSON($ret);
+return $RES->withJSON($ret);

@@ -1,11 +1,15 @@
 <?php
+/**
+ *
+ */
 
-	namespace OpenTHC\Bunk\Metrc\Plant_Batches;
-	use OpenTHC\Bunk\Module\METRC;
+namespace OpenTHC\Bunk\Metrc\Plant_Batches;
 
-	$ret = array(
-		"Seed",
-		"Clone"
-	);
+use OpenTHC\Bunk\Module\METRC;
 
-	return $RES->withJSON($ret);
+$ret = array(
+	"Seed",
+	"Clone"
+);
+
+return $RES->withJSON($ret);

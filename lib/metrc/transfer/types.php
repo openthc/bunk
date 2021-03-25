@@ -1,26 +1,30 @@
 <?php
+/**
+ *
+ */
 
-	namespace OpenTHC\Bunk\Metrc\Transfers;
-	use OpenTHC\Bunk\Module\METRC;
+namespace OpenTHC\Bunk\Metrc\Transfers;
 
-	$ret = array(
-		[
-			"Name" => "Transfer",
-			"ForLicensedShipments" => true,
-			"ForExternalIncomingShipments" => false,
-			"ForExternalOutgoingShipments" => false,
-			"RequiresDestinationGrossWeight" => false,
-			"RequiresPackagesGrossWeight" => false
-		],
-		[
-			"Name" => "Wholesale",
-			"ForLicensedShipments" => true,
-			"ForExternalIncomingShipments" => false,
-			"ForExternalOutgoingShipments" => false,
-			"RequiresDestinationGrossWeight" => false,
-			"RequiresPackagesGrossWeight" => false
-		]
-		
-	);
+use OpenTHC\Bunk\Module\METRC;
 
-	return $RES->withJSON($ret);
+$ret = array(
+	[
+		"Name" => "Transfer",
+		"ForLicensedShipments" => true,
+		"ForExternalIncomingShipments" => false,
+		"ForExternalOutgoingShipments" => false,
+		"RequiresDestinationGrossWeight" => false,
+		"RequiresPackagesGrossWeight" => false
+	],
+	[
+		"Name" => "Wholesale",
+		"ForLicensedShipments" => true,
+		"ForExternalIncomingShipments" => false,
+		"ForExternalOutgoingShipments" => false,
+		"RequiresDestinationGrossWeight" => false,
+		"RequiresPackagesGrossWeight" => false
+	]
+
+);
+
+return $RES->withJSON($ret);

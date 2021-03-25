@@ -1,17 +1,21 @@
 <?php
+/**
+ *
+ */
 
-	namespace OpenTHC\Bunk\METRC\Item;
-	use OpenTHC\Bunk\Module\METRC;
+namespace OpenTHC\Bunk\METRC\Item;
 
-	$ret = array(
-		[
-			"Name"=> "Skunk Nasty",
-			"Status"=> "Paid"
-		],
-		[
-			"Name"=> "Darth Buds",
-			"Status"=> "NotPaid"
-		]
-	);
+use OpenTHC\Bunk\Module\METRC;
 
-	return $RES->withJSON($ret);
+$ret = array(
+	[
+		"Name"=> "Skunk Nasty",
+		"Status"=> "Paid"
+	],
+	[
+		"Name"=> "Darth Buds",
+		"Status"=> "NotPaid"
+	]
+);
+
+return $RES->withJSON($ret);

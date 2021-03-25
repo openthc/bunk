@@ -1,18 +1,22 @@
-<?php 
-	
-	namespace OpenTHC\Bunk\METRC\Harvests;
-	use OpenTHC\Bunk\Module\METRC;
+<?php
+/**
+ *
+ */
 
-	$ret = 	array(
-		[
-			"Name"=> "Plant Material"
-		],
-		[
-			"Name"=> "Fibrous"
-		],
-		[
-			"Name"=> "Root Ball"
-		]
-	);
+namespace OpenTHC\Bunk\METRC\Harvests;
 
-	return $RES->withJSON($ret);
+use OpenTHC\Bunk\Module\METRC;
+
+$ret = 	array(
+	[
+		"Name"=> "Plant Material"
+	],
+	[
+		"Name"=> "Fibrous"
+	],
+	[
+		"Name"=> "Root Ball"
+	]
+);
+
+return $RES->withJSON($ret);

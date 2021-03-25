@@ -1,17 +1,21 @@
 <?php
+/**
+ *
+ */
 
-	namespace OpenTHC\Bunk\Metrc\Plants;
-	use OpenTHC\Bunk\Module\METRC;
+namespace OpenTHC\Bunk\Metrc\Plants;
 
-	$ret = array(
-		[
-		"Name" => "Contamination",
-		"RequiresNote" => false
-	],
+use OpenTHC\Bunk\Module\METRC;
+
+$ret = array(
 	[
-		"Name" => "Male Plants",
-		"RequiresNote" => false
-	]
-	);
+	"Name" => "Contamination",
+	"RequiresNote" => false
+],
+[
+	"Name" => "Male Plants",
+	"RequiresNote" => false
+]
+);
 
-	return $RES->withJSON($ret);
+return $RES->withJSON($ret);

@@ -1,15 +1,19 @@
 <?php
+/**
+ *
+ */
 
-	namespace OpenTHC\Bunk\Metrc\Labtests;
-	use OpenTHC\Bunk\Module\METRC;
+namespace OpenTHC\Bunk\Metrc\Labtests;
 
-	$ret = array(
-		[
-			"PackageLabel" => "ABCDEF012345670000010041"
-		],
-		[
-			"PackageLabel" => "ABCDEF012345670000010042"
-		]
-	);
+use OpenTHC\Bunk\Module\METRC;
 
-	return $RES->withJSON($ret);
+$ret = array(
+	[
+		"PackageLabel" => "ABCDEF012345670000010041"
+	],
+	[
+		"PackageLabel" => "ABCDEF012345670000010042"
+	]
+);
+
+return $RES->withJSON($ret);

@@ -1,20 +1,24 @@
 <?php
+/**
+ *
+ */
 
-	namespace OpenTHC\Bunk\Metrc\Transfers;
-	use OpenTHC\Bunk\Module\METRC;
+namespace OpenTHC\Bunk\Metrc\Transfers;
 
-	$ret = array(
-		[
-			"PackageId" => 2,
-			"LabTestBatchId" => 1,
-			"LabTestBatchName" => "Cannabinoids"
-		],
-		[
-			"PackageId" => 2,
-			"LabTestBatchId" => 2,
-			"LabTestBatchName" => "Category I Residual Pesticides (required)"
-		]
-		
-	);
+use OpenTHC\Bunk\Module\METRC;
 
-	return $RES->withJSON($ret);
+$ret = array(
+	[
+		"PackageId" => 2,
+		"LabTestBatchId" => 1,
+		"LabTestBatchName" => "Cannabinoids"
+	],
+	[
+		"PackageId" => 2,
+		"LabTestBatchId" => 2,
+		"LabTestBatchName" => "Category I Residual Pesticides (required)"
+	]
+
+);
+
+return $RES->withJSON($ret);

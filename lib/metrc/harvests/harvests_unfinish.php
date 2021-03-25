@@ -1,15 +1,19 @@
-<?php 
-	
-	namespace OpenTHC\Bunk\METRC\Harvests;
-	use OpenTHC\Bunk\Module\METRC;
+<?php
+/**
+ *
+ */
 
-	$ret = array(
-		[
-			"Id" => 1,
-		],
-		[
-			"Id" => 2,
-		]
-	);
+namespace OpenTHC\Bunk\METRC\Harvests;
 
-	return $RES->withJSON($ret);
+use OpenTHC\Bunk\Module\METRC;
+
+$ret = array(
+	[
+		"Id" => 1,
+	],
+	[
+		"Id" => 2,
+	]
+);
+
+return $RES->withJSON($ret);

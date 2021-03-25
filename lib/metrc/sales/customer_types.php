@@ -1,13 +1,17 @@
 <?php
+/**
+ *
+ */
 
-	namespace OpenTHC\Bunk\Metrc\Sales;
-	use OpenTHC\Bunk\Module\METRC;
+namespace OpenTHC\Bunk\Metrc\Sales;
 
-	$ret = array(
-		"Consumer",
-		"Patient",
-		"Caregiver",
-		"ExternalPatient"
-	);
+use OpenTHC\Bunk\Module\METRC;
 
-	return $RES->withJSON($ret);
+$ret = array(
+	"Consumer",
+	"Patient",
+	"Caregiver",
+	"ExternalPatient"
+);
+
+return $RES->withJSON($ret);

@@ -1,14 +1,18 @@
 <?php
+/**
+ *
+ */
 
-	namespace OpenTHC\Bunk\Metrc\Packages;
-	use OpenTHC\Bunk\Module\METRC;
+namespace OpenTHC\Bunk\Metrc\Packages;
 
-	$ret = array(
-		"Product",
-		"ImmaturePlant",
-		"VegetativePlant",
-		"PlantWaste",
-		"HarvestWaste"
-	);
+use OpenTHC\Bunk\Module\METRC;
 
-	return $RES->withJSON($ret);
+$ret = array(
+	"Product",
+	"ImmaturePlant",
+	"VegetativePlant",
+	"PlantWaste",
+	"HarvestWaste"
+);
+
+return $RES->withJSON($ret);
