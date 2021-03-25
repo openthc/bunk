@@ -53,7 +53,7 @@ $ret = array(
 		"ActualReturnDepartureDateTime"=> null,
 		"EstimatedReturnArrivalDateTime"=> null,
 		"ActualReturnArrivalDateTime"=> null
-		]
+	]
 );
 
 return $RES->withJSON($ret);

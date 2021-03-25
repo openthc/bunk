@@ -57,7 +57,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 				"ActualReturnDepartureDateTime" => null,
 				"EstimatedReturnArrivalDateTime" => null,
 				"ActualReturnArrivalDateTime" => null
-				]
+			]
 		);
 
 		return $RES->withJSON($ret);
@@ -65,6 +65,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		break;
 
 	case 'POST':
+
+		// @todo this should be validating the inputs and have an empty response
+		// this is the request object
 
 		$ret = array(
 			[
@@ -79,40 +82,40 @@ switch ($_SERVER['REQUEST_METHOD']) {
 				"VehicleLicensePlateNumber" => null,
 				"Destinations" => [
 					[
-					"RecipientLicenseNumber" => "123-XYZ",
-					"TransferTypeName" => "Transfer",
-					"PlannedRoute" => "I will drive down the road to the place.",
-					"EstimatedDepartureDateTime" => "2018-03-06T09:15:00.000",
-					"EstimatedArrivalDateTime" => "2018-03-06T12:24:00.000",
-					"Transporters" => [
-						[
-						"TransporterFacilityLicenseNumber" => "123-ABC",
-						"DriverOccupationalLicenseNumber" => "50",
-						"DriverName" => "X",
-						"DriverLicenseNumber" => "5",
-						"PhoneNumberForQuestions" => "18005555555",
-						"VehicleMake" => "X",
-						"VehicleModel" => "X",
-						"VehicleLicensePlateNumber" => "X",
-						"IsLayover" => false,
-						"EstimatedDepartureDateTime" => "2018-03-06T12:00:00.000",
-						"EstimatedArrivalDateTime" => "2018-03-06T21:00:00.000",
-						"TransporterDetails" => null
-						]
-					],
-					"Packages" => [
-						[
-						"PackageLabel" => "ABCDEF012345670000010026",
-						"WholesalePrice" => null
+						"RecipientLicenseNumber" => "123-XYZ",
+						"TransferTypeName" => "Transfer",
+						"PlannedRoute" => "I will drive down the road to the place.",
+						"EstimatedDepartureDateTime" => "2018-03-06T09:15:00.000",
+						"EstimatedArrivalDateTime" => "2018-03-06T12:24:00.000",
+						"Transporters" => [
+							[
+								"TransporterFacilityLicenseNumber" => "123-ABC",
+								"DriverOccupationalLicenseNumber" => "50",
+								"DriverName" => "X",
+								"DriverLicenseNumber" => "5",
+								"PhoneNumberForQuestions" => "18005555555",
+								"VehicleMake" => "X",
+								"VehicleModel" => "X",
+								"VehicleLicensePlateNumber" => "X",
+								"IsLayover" => false,
+								"EstimatedDepartureDateTime" => "2018-03-06T12:00:00.000",
+								"EstimatedArrivalDateTime" => "2018-03-06T21:00:00.000",
+								"TransporterDetails" => null
+							]
 						],
-						[
-						"PackageLabel" => "ABCDEF012345670000010027",
-						"WholesalePrice" => null
+						"Packages" => [
+							[
+								"PackageLabel" => "ABCDEF012345670000010026",
+								"WholesalePrice" => null
+							],
+							[
+								"PackageLabel" => "ABCDEF012345670000010027",
+								"WholesalePrice" => null
+							]
 						]
 					]
-					]
 				]
-				]
+			]
 		);
 
 		return $RES->withJSON($ret);
@@ -120,6 +123,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		break;
 
 	case 'PUT':
+
+		// @todo This sould be the same implemenation as POS
 
 		$ret = array(
 			[
@@ -169,7 +174,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 					]
 					]
 				]
-				]
+			]
 		);
 
 		return $RES->withJSON($ret);

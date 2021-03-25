@@ -50,8 +50,8 @@ $ret = array(
 		"GrossUnitOfWeightName"=> null,
 		"ReceivedQuantity"=> 10.0,
 		"ReceivedUnitOfMeasureName"=> "Ounces"
-		],
-		[
+	],
+	[
 		"PackageId"=> 2,
 		"PackageLabel"=> "ABCDEF012345670000010027",
 		"PackageType"=> "Product",

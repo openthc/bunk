@@ -1,6 +1,7 @@
 <?php
 /**
- *
+ * Product(Item) Create
+ * @todo this should be validating the INPUT and have an empty response
  */
 
 namespace OpenTHC\Bunk\METRC\Item;
