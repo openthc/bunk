@@ -1,6 +1,7 @@
 <?php
 
-namespace Test\Metrc;
+namespace Test\Metrc\Transfer;
+
 class Transfer_Response_Test extends \Test\Metrc_Test
 {
 	

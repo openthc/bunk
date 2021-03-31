@@ -1,6 +1,6 @@
 <?php 
 
-	namespace Test\Metrc;
+	namespace Test\Metrc\Packages;
 
 	class Packages_Test extends \Test\Metrc_Test {
 

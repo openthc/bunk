@@ -1,17 +1,17 @@
 <?php 
 
-	namespace Test\Metrc;
+	namespace Test\Metrc\Strains;
 
-	class Location_Test extends \Test\Metrc_Test {
+	class Strains_Test extends \Test\Metrc_Test {
 
 		protected $metrc_urls = array(
-			['action' => 'GET', 'url' => 'locations/v1'],
-			['action' => 'DELETE', 'url' => 'locations/v1'],
-			['action' => 'POST', 'url' => 'locations/v1/create'],
-			['action' => 'POST', 'url' => 'locations/v1/update'],
+			['action' => 'GET', 'url' => 'strains/v1'],
+			['action' => 'DELETE', 'url' => 'strains/v1'],
+			['action' => 'POST', 'url' => 'strains/v1/update'],
+			['action' => 'GET', 'url' => 'strains/v1/active'],
+			['action' => 'POST', 'url' => 'strains/v1/create'],
 		);
 
-		
 		function test_valid_response() {
 			foreach ($this->metrc_urls as $url) {
 				$res = $this->ghc->request($url['action'], $url['url']);
@@ -23,4 +23,5 @@
 				}
 			}
 		}
+
 	}

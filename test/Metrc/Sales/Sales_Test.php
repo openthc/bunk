@@ -1,6 +1,6 @@
 <?php 
 
-	namespace Test\Metrc;
+	namespace Test\Metrc\Sales;
 
 	class Sales_Test extends \Test\Metrc_Test {
 

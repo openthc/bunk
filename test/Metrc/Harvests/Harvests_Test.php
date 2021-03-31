@@ -1,12 +1,10 @@
 <?php 
 
-	namespace Test\Metrc;
+	namespace Test\Metrc\Harvests;
 
 	class Harvest_Test extends \Test\Metrc_Test {
 
 		protected $metrc_urls = array(
-			['action' => 'GET', 'url' => 'facilities/v1'],
-			['action' => 'GET', 'url' =>'unitsofmeasure/v1/active'],
 			['action' => 'GET', 'url' => 'harvests/v1/active'],
 			['action' => 'GET', 'url' => 'harvests/v1/inactive'],
 			['action' => 'GET', 'url' => 'harvests/v1/1'],

@@ -1,6 +1,6 @@
 <?php 
 
-	namespace Test\Metrc;
+	namespace Test\Metrc\PlantBatches;
 
 	class PlantBatches_Test extends \Test\Metrc_Test {
 
