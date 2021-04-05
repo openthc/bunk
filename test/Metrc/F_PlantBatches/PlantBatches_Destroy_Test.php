@@ -2,9 +2,9 @@
 
 namespace Test\Metrc\F_PlantBatches;
 
-class PlantBatches_Test extends \Test\Metrc_Test {
+class PlantBatches_Destroy_Test extends \Test\Metrc_Test {
 
-	protected $path = 'plantbatches/v1';
+	protected $path = 'plantbatches/v1/destroy';
 
 	function test_get()
 	{

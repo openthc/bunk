@@ -12,5 +12,4 @@ class A_Location_Test extends \Test\Metrc_Test {
 		$this->assertValidResponse($res);
 	}
 
-	
 }
