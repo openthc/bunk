@@ -2,11 +2,12 @@
 
 namespace Test\Metrc\J_Transfer;
 
-class Transfer_Response_Test extends \Test\Metrc_Test
+class Transfer_Incoming_Test extends \Test\Metrc_Test
 {
 	
+	protected $path = 'transfers/v1/incoming';
+
 	protected $metrc_urls = array(
-		['action' => 'GET', 'url' => 'transfers/v1/incoming'],
 		['action' => 'GET', 'url' => 'transfers/v1/outgoing'],
 		['action' => 'GET', 'url' => 'transfers/v1/rejected'],
 		['action' => 'GET', 'url' => 'transfers/v1/{incoming}/deliveries'],
@@ -22,18 +23,10 @@ class Transfer_Response_Test extends \Test\Metrc_Test
 		['action' => 'GET', 'url' => 'transfers/v1/types'],
 	);
 
-
-	function test_valid_response() {
-		foreach ($this->metrc_urls as $url) {
-			$res = $this->ghc->request($url['action'], $url['url']);
-
-			if ($url['action'] == "GET") {
-				$this->assertValidResponses($res, $url['url'], $url['action']);
-			} else {
-				$this->assertValidDelete($res, $url['url']);
-			}
-		}
+	function test_get()
+	{
+		$res = $this->ghc->get($this->path);
+		$this->assertValidResponse($res);
 	}
-	
-	
+
 }
