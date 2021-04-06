@@ -2,7 +2,7 @@
 
 namespace Test\Metrc\F_PlantBatches;
 
-class PlantBatches_Test extends \Test\Metrc_Test {
+class I_PlantBatches_Test extends \Test\Metrc_Test {
 
 	protected $path = 'plantbatches/v1';
 

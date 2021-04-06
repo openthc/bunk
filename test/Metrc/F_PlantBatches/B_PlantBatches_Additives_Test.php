@@ -2,9 +2,9 @@
 
 namespace Test\Metrc\F_PlantBatches;
 
-class _PlantBatches_Split_Test extends \Test\Metrc_Test {
+class B_PlantBatches_Additives_Test extends \Test\Metrc_Test {
 
-	protected $path = 'plantbatches/v1/split';
+	protected $path = 'plantbatches/v1/additives';
 
 	function test_post()
 	{
