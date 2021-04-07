@@ -6,9 +6,9 @@ class J_Harvests_Waste_Types_Test extends \Test\Metrc_Test {
 	
 	protected $path = 'harvests/v1/waste/types';
 
-	function test_post()
+	function test_get()
 	{
-		$res = $this->ghc->post($this->path);
+		$res = $this->ghc->get($this->path);
 		$this->assertValidResponse($res);
 	}
 	

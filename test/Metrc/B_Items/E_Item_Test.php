@@ -4,7 +4,7 @@ namespace Test\Metrc\B_Items;
 
 class E_Item_Test extends \Test\Metrc_Test {
 
-	protected $path =  'items/v1';
+	protected $path =  'items/v1/3';
 	
 	function test_get()
 	{
@@ -15,7 +15,7 @@ class E_Item_Test extends \Test\Metrc_Test {
 	function test_delete()
 	{
 		$res = $this->ghc->delete($this->path);
-		$this->assertValidDelete($res, $this->path);
+		$this->assertValidResponse($res);
 	}
 
 }

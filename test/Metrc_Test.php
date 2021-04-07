@@ -18,8 +18,12 @@ class Metrc_Test extends \Test\Base_Test
 	function assertValidResponse($res, $code=200, $dump=null) {
 		$code = $res->getStatusCode();
 		$raw = $res->getBody()->getContents();
-		$this->assertNotEmpty($raw, "{$action}: {$dump} is empty");
-		$this->assertEquals(200, $code, "expected 200 got {$code} by {$dump}");
+
+		if (!empty($dump)) {
+			echo "\n<<<$dump<<<\n{$this->raw}\n###\n";
+		}
+
+		$this->assertEquals(200, $code);
 	}
 
 	protected function _api($opt=null)

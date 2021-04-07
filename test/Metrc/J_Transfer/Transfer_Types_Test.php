@@ -2,7 +2,7 @@
 
 namespace Test\Metrc\J_Transfer;
 
-class Transfer_Delivery_Packages_Test extends \Test\Metrc_Test
+class Transfer_Types_Test extends \Test\Metrc_Test
 {
 	
 	protected $path = 'transfers/v1/types';
