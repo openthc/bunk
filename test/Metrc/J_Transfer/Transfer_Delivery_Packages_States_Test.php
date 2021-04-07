@@ -2,10 +2,10 @@
 
 namespace Test\Metrc\J_Transfer;
 
-class Transfer_Incoming_Test extends \Test\Metrc_Test
+class Transfer_Delivery_Packages_Test extends \Test\Metrc_Test
 {
 	
-	protected $path = 'transfers/v1/incoming';
+	protected $path = 'transfers/v1/delivery/packages/states';
 
 	function test_get()
 	{
