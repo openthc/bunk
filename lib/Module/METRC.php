@@ -55,10 +55,10 @@ class METRC extends \OpenTHC\Module\Base
 			});
 
 			$this->post('/harvests/v1/removewaste', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/harvests/remove_waste.php');
+				return $RES->write("");
 			});
 
-			$this->post('/harvests/v1/rename', function($REQ, $RES, $ARG) {
+			$this->put('/harvests/v1/rename', function($REQ, $RES, $ARG) {
 				return $RES->write("");
 			});
 
@@ -111,7 +111,6 @@ class METRC extends \OpenTHC\Module\Base
 			});
 
 			$this->put('/labtests/v1/results/release', function($REQ, $RES, $ARG) {
-				// return require_once( APP_ROOT . '/lib/metrc/labtests/release.php');
 				return $RES->write("");
 			});
 
