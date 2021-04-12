@@ -143,7 +143,7 @@ class B_Harvests_Create_Packages_Test extends \Test\Metrc_Test {
 
 	function test_post()
 	{
-		$res = $this->ghc->post($this->path, ['body' => $this->body]);
+		$res = $this->ghc->request('POST', $this->path, ['body' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 }

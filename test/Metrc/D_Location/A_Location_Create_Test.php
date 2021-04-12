@@ -5,10 +5,24 @@ namespace Test\Metrc\D_Location;
 class A_Location_Test extends \Test\Metrc_Test {
 
 	protected $path = 'locations/v1/create';
+	protected $body;
+
+	protected function setUp() : void {
+		$this->body = array(
+			[
+				"Name" => "Harvest Location",
+				"LocationTypeName" => "Default"
+			],
+			[
+				"Name" => "Plants Location",
+				"LocationTypeName" => "Planting"
+			]
+		);
+	}
 
 	function test_post()
 	{
-		$res = $this->ghc->post($this->path);
+		$res = $this->ghc->post($this->path, ['body' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 

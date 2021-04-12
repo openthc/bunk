@@ -99,7 +99,7 @@ class F_Item_Update_Test extends \Test\Metrc_Test {
 	
 	function test_post()
 	{
-		$res = $this->ghc->post($this->path);
+		$res = $this->ghc->post($this->path, ['body' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 
