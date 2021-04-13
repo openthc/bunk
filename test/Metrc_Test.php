@@ -17,10 +17,10 @@ class Metrc_Test extends \Test\Base_Test
 
 	function assertValidResponse($res, $code=200, $dump=null) {
 		$code = $res->getStatusCode();
-		$raw = $res->getBody()->getContents();
 
 		if (!empty($dump)) {
-			echo "\n<<<$dump<<<\n{$this->raw}\n###\n";
+			$raw = $res->getBody()->getContents();
+			echo "\n<<<$dump<<<\n{$raw}\n###\n";
 		}
 
 		$this->assertEquals(200, $code);

@@ -4,7 +4,7 @@ namespace Test\Metrc\F_PlantBatches;
 
 class K_PlantBatches_ChangeGrowthPhase_Test extends \Test\Metrc_Test {
 
-	protected $path = '/plantbatches/v1/changegrowthphase';
+	protected $path = 'plantbatches/v1/changegrowthphase';
 	protected $body;
 
 	protected function setUp() : void {
