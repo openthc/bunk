@@ -15,11 +15,15 @@ class Metrc_Test extends \Test\Base_Test
 		$this->ghc = $this->_api();
 	}
 
-	function assertValidResponses($res, $dump, $action) {
+	function assertValidResponse($res, $code=200, $dump=null) {
 		$code = $res->getStatusCode();
-		$raw = $res->getBody()->getContents();
-		$this->assertNotEmpty($raw, "{$action}: {$dump} is empty");
-		$this->assertEquals(200, $code, "expected 200 got {$code} by {$dump}");
+
+		if (!empty($dump)) {
+			$raw = $res->getBody()->getContents();
+			echo "\n<<<$dump<<<\n{$raw}\n###\n";
+		}
+
+		$this->assertEquals(200, $code);
 	}
 
 	protected function _api($opt=null)
