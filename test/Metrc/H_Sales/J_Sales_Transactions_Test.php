@@ -8,6 +8,7 @@ class J_Sales_Transactions_Test extends \Test\Metrc_Test {
 	protected $body;
 
 	protected function setUp() : void {
+		parent::setUp();
 		$this->body = array(
 			[
 				"PackageLabel"=> "ABCDEF012345670000010331",
@@ -26,13 +27,13 @@ class J_Sales_Transactions_Test extends \Test\Metrc_Test {
 
 	function test_post()
 	{
-		$res = $this->ghc->post($this->path, ['body' => $this->body]);
+		$res = $this->ghc->post($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 
 	function test_put()
 	{
-		$res = $this->ghc->put($this->path, ['body' => $this->body]);
+		$res = $this->ghc->put($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 

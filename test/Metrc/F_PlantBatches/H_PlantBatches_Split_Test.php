@@ -7,7 +7,8 @@ class H_PlantBatches_Split_Test extends \Test\Metrc_Test {
 	protected $path = 'plantbatches/v1/split';
 	protected $body;
 
-	protected function setUp() : void { 
+	protected function setUp() : void {
+		parent::setUp();
 		$this->body = array(
 			[
 				"PlantBatch"=> "B. Kush 5-30",
@@ -34,7 +35,7 @@ class H_PlantBatches_Split_Test extends \Test\Metrc_Test {
 
 	function test_post()
 	{
-		$res = $this->ghc->post($this->path, ['body' => $this->body]);
+		$res = $this->ghc->post($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 

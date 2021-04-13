@@ -5,9 +5,10 @@ namespace Test\Metrc\A_Harvests;
 class D_Harvests_Finish_Test extends \Test\Metrc_Test {
 	
 	protected $path = 'harvests/v1/finish';
-	protected $body;
+	private $body;
 
 	protected function setUp() : void {
+		parent::setUp();
 		$this->body = array(
 			[
 				"Id" => 1,
@@ -22,7 +23,7 @@ class D_Harvests_Finish_Test extends \Test\Metrc_Test {
 
 	function test_post()
 	{
-		$res = $this->ghc->put($this->path, [ 'body' => $this->body]);
+		$res = $this->ghc->put($this->path, [ 'json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 	

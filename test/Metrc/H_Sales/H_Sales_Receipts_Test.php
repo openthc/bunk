@@ -8,6 +8,7 @@ class H_Sales_Receipts_Test extends \Test\Metrc_Test {
 	protected $body;
 
 	protected function setUp() : void {
+		parent::setUp();
 		$this->body =  array(
 			[
 				"SalesDateTime"=> "2016-10-04T16:44:53.000",
@@ -41,13 +42,13 @@ class H_Sales_Receipts_Test extends \Test\Metrc_Test {
 
 	function test_post()
 	{
-		$res = $this->ghc->post($this->path, ['body' => $this->body]);
+		$res = $this->ghc->post($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 
 	function test_put()
 	{
-		$res = $this->ghc->put($this->path, ['body' => $this->body]);
+		$res = $this->ghc->put($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 

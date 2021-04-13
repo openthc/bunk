@@ -2,12 +2,13 @@
 
 namespace Test\Metrc\A_Harvests;
 
-class G_Harvests_Rename_Test extends \Test\Metrc_Test {
+class K_Harvests_Rename_Test extends \Test\Metrc_Test {
 
 	protected $path = 'harvests/v1/rename';
 	protected $body;
 
 	protected function setUp() : void {
+		parent::setUp();
 		$this->body = array(
 			[
 				"Id"=> 1,
@@ -24,7 +25,7 @@ class G_Harvests_Rename_Test extends \Test\Metrc_Test {
 
 	function test_put()
 	{
-		$res = $this->ghc->put($this->path, ['body' => $this->body]);
+		$res = $this->ghc->put($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 	

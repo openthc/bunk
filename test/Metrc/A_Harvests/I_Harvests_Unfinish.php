@@ -8,7 +8,8 @@ class I_Harvests_Unfinish_Test extends \Test\Metrc_Test {
 	protected $body;
 
 	protected function setUp() : void {
-		$this->body = $ret = array(
+		parent::setUp();
+		$this->body = array(
 			[
 				"Id" => 1,
 				"ActualDate" => "2015-12-15"
@@ -22,7 +23,7 @@ class I_Harvests_Unfinish_Test extends \Test\Metrc_Test {
 
 	function test_put()
 	{
-		$res = $this->ghc->put($this->path, [ 'body' => $this->body ]);
+		$res = $this->ghc->put($this->path, [ 'json' => $this->body ]);
 		$this->assertValidResponse($res);
 	}
 	

@@ -8,6 +8,7 @@ class Packages_Create_Testing_Test extends \Test\Metrc_Test {
 	protected $body;
 
 	protected function setUp() : void {
+		parent::setUp();
 		$this->body = array(
 			[
 				"Tag" => "ABCDEF012345670000020201",
@@ -95,7 +96,7 @@ class Packages_Create_Testing_Test extends \Test\Metrc_Test {
 
 	function test_post()
 	{
-		$res = $this->ghc->post($this->path, ['body' => $this->body]);
+		$res = $this->ghc->post($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 

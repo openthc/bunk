@@ -8,6 +8,7 @@ class C_PlantBatches_Create_Packages_FromOtherPlant_Test extends \Test\Metrc_Tes
 	protected $body;
 
 	protected function setUp() : void {
+		parent::setUp();
 		$this->body = array(
 			[
 				"Id"=> null,
@@ -40,7 +41,7 @@ class C_PlantBatches_Create_Packages_FromOtherPlant_Test extends \Test\Metrc_Tes
 
 	function test_post()
 	{
-		$res = $this->ghc->post($this->path, ['body' => $this->body]);
+		$res = $this->ghc->post($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 

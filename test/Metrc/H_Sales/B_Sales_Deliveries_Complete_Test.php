@@ -8,6 +8,7 @@ class B_Sales_Deliveries_Complete_Test extends \Test\Metrc_Test {
 	protected $body;
 
 	protected function setUp() : void {
+		parent::setUp();
 		$this->body =  array(
 			[
 				"Id"=> 6,
@@ -30,7 +31,7 @@ class B_Sales_Deliveries_Complete_Test extends \Test\Metrc_Test {
 
 	function test_put()
 	{
-		$res = $this->ghc->put($this->path, ['body' => $this->body]);
+		$res = $this->ghc->put($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 

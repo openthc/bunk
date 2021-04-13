@@ -8,6 +8,7 @@ class D_Item_Create_Test extends \Test\Metrc_Test {
 	protected $body;
 
 	protected function setUp() : void {
+		parent::setUp();
 		$this->body = [
 			"Id" =>  1,
 			"Name" =>  "Buds",
@@ -48,7 +49,7 @@ class D_Item_Create_Test extends \Test\Metrc_Test {
 
 	function test_post()
 	{
-		$res = $this->ghc->post($this->path, [ 'body' => $this->body ]);
+		$res = $this->ghc->post($this->path, [ 'json' => $this->body ]);
 		$this->assertValidResponse($res);
 	}
 

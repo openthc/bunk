@@ -8,6 +8,7 @@ class I_Plants_HarvestPlants_Test extends \Test\Metrc_Test {
 	protected $body;
 
 	protected function setUp() : void {
+		parent::setUp();
 		$this->body = array(
 			[
 				"Plant"=> "ABCDEF012345670000010011",
@@ -32,7 +33,7 @@ class I_Plants_HarvestPlants_Test extends \Test\Metrc_Test {
 
 	function test_post()
 	{
-		$res = $this->ghc->post($this->path, ['body' => $this->body]);
+		$res = $this->ghc->post($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 }

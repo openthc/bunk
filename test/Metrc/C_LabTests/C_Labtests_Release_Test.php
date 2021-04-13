@@ -8,6 +8,7 @@ class C_Lab_Release_Test extends \Test\Metrc_Test {
 	protected $body;
 
 	protected function setUp() : void {
+		parent::setUp();
 		$this->body = array(
 			[
 				"PackageLabel" => "ABCDEF012345670000010041"
@@ -20,7 +21,7 @@ class C_Lab_Release_Test extends \Test\Metrc_Test {
 
 	function test_put()
 	{
-		$res = $this->ghc->put($this->path, ['body' => $this->body]);
+		$res = $this->ghc->put($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 

@@ -9,6 +9,7 @@ class B_Harvests_Create_Packages_Test extends \Test\Metrc_Test {
 	private $body;
 
 	protected function setUp() : void {
+		parent::setUp();
 		$this->body = array(
 			[
 				"Tag"=> "ABCDEF012345670000020201",
@@ -143,7 +144,7 @@ class B_Harvests_Create_Packages_Test extends \Test\Metrc_Test {
 
 	function test_post()
 	{
-		$res = $this->ghc->request('POST', $this->path, ['body' => $this->body]);
+		$res = $this->ghc->request('POST', $this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 }

@@ -8,6 +8,7 @@ class G_Harvests_Remove_Waste_Test extends \Test\Metrc_Test {
 	protected $body;
 
 	protected function setUp() : void {
+		parent::setUp();
 		$this->body = array(
 			[
 				"Id" =>  1,
