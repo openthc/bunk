@@ -28,5 +28,4 @@ class A_Labtests_Document_Test extends \Test\Metrc_Test {
 		$res = $this->ghc->put($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
-
 }

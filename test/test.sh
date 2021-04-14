@@ -46,19 +46,13 @@ xsltproc \
 # PHPUnit
 echo '<h1>PHPUnit...</h1>' > "$output_main"
 
-/usr/bin/php \
-  -d'xdebug.remote_enable=1' \
-  -d 'xdebug.profiler_enable=on' \
-  -d'xdebug.remote_autostart=1' \
-  -d'xdebug.remote_host=127.0.0.1' \
-  -d'xdebug.remote_port=9000' \
-	../vendor/bin/phpunit \
-	--verbose \
-	--log-junit "$output_base/phpunit.xml" \
-	--testdox-html "$output_base/testdox.html" \
-	--testdox-text "$output_base/testdox.txt" \
-	--testdox-xml "$output_base/testdox.xml" \
-	"$@" 2>&1 | tee "$output_base/phpunit.txt" || true
+../vendor/bin/phpunit \
+--verbose \
+--log-junit "$output_base/phpunit.xml" \
+--testdox-html "$output_base/testdox.html" \
+--testdox-text "$output_base/testdox.txt" \
+--testdox-xml "$output_base/testdox.xml" \
+"$@" 2>&1 | tee "$output_base/phpunit.txt" || true
 
 
 #

@@ -31,5 +31,4 @@ class F_Harvests_Move_Test extends \Test\Metrc_Test {
 		$res = $this->ghc->put($this->path, [ 'json' => $this->body ]);
 		$this->assertValidResponse($res);
 	}
-	
 }

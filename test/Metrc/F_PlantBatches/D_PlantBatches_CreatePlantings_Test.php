@@ -36,5 +36,4 @@ class D_PlantBatches_CreatePlantings_Test extends \Test\Metrc_Test {
 		$res = $this->ghc->post($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
-
 }

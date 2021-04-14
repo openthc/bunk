@@ -460,4 +460,3 @@ class METRC extends \OpenTHC\Module\Base
 	}
 
 }
-

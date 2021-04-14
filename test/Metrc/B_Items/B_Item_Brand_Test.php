@@ -11,5 +11,4 @@ class B_Item_Brand_Test extends \Test\Metrc_Test {
 		$res = $this->ghc->get($this->path);
 		$this->assertValidResponse($res);
 	}
-
 }

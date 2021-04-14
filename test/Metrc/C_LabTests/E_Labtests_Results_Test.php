@@ -11,5 +11,4 @@ class E_Results_Test extends \Test\Metrc_Test {
 		$res = $this->ghc->get($this->path);
 		$this->assertValidResponse($res);
 	}
-
 }

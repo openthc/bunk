@@ -26,5 +26,4 @@ class D_Harvests_Finish_Test extends \Test\Metrc_Test {
 		$res = $this->ghc->put($this->path, [ 'json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
-	
 }

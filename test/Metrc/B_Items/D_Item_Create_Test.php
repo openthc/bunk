@@ -52,5 +52,4 @@ class D_Item_Create_Test extends \Test\Metrc_Test {
 		$res = $this->ghc->post($this->path, [ 'json' => $this->body ]);
 		$this->assertValidResponse($res);
 	}
-
 }

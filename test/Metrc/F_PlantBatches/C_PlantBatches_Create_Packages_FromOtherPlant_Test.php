@@ -44,5 +44,4 @@ class C_PlantBatches_Create_Packages_FromOtherPlant_Test extends \Test\Metrc_Tes
 		$res = $this->ghc->post($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
-
 }

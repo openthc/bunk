@@ -11,5 +11,4 @@ class G_Item_Categories_Test extends \Test\Metrc_Test {
 		$res = $this->ghc->get($this->path);
 		$this->assertValidResponse($res);
 	}
-
 }

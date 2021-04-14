@@ -17,5 +17,4 @@ class E_Item_Test extends \Test\Metrc_Test {
 		$res = $this->ghc->delete($this->path);
 		$this->assertValidResponse($res);
 	}
-
 }
