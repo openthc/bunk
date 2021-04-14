@@ -45,13 +45,14 @@ xsltproc \
 #
 # PHPUnit
 echo '<h1>PHPUnit...</h1>' > "$output_main"
+
 ../vendor/bin/phpunit \
-	--verbose \
-	--log-junit "$output_base/phpunit.xml" \
-	--testdox-html "$output_base/testdox.html" \
-	--testdox-text "$output_base/testdox.txt" \
-	--testdox-xml "$output_base/testdox.xml" \
-	"$@" 2>&1 | tee "$output_base/phpunit.txt" || true
+--verbose \
+--log-junit "$output_base/phpunit.xml" \
+--testdox-html "$output_base/testdox.html" \
+--testdox-text "$output_base/testdox.txt" \
+--testdox-xml "$output_base/testdox.xml" \
+"$@" 2>&1 | tee "$output_base/phpunit.txt" || true
 
 
 #

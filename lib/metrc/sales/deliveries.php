@@ -45,91 +45,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
 	case 'POST':
 
-		$ret = array(
-			[
-				"SalesDateTime"=> "2017-04-04T10:10:19.000",
-				"SalesCustomerType"=> "Consumer",
-				"PatientLicenseNumber"=> null,
-				"ConsumerId"=> null,
-				"DriverName"=> "John Doe",
-				"DriverOccupationalLicenseNumber"=> "1",
-				"DriverVehicleLicenseNumber"=> "1",
-				"PhoneNumberForQuestions"=> "+1-123-456-7890",
-				"VehicleMake"=> "Car",
-				"VehicleModel"=> "Small",
-				"VehicleLicensePlateNumber"=> "000000",
-				"RecipientName"=> null,
-				"RecipientAddressStreet1"=> "1 Someplace Road",
-				"RecipientAddressStreet2"=> "Ste 9",
-				"RecipientAddressCity"=> "Denver",
-				"RecipientAddressState"=> "CO",
-				"RecipientAddressPostalCode"=> "11111",
-				"PlannedRoute"=> "Drive to destination.",
-				"EstimatedDepartureDateTime"=> "2017-04-04T11:00:00.000",
-				"EstimatedArrivalDateTime"=> "2017-04-04T13:00:00.000",
-				"Transactions"=> [
-					[
-					"PackageLabel"=> "ABCDEF012345670000000001",
-					"Quantity"=> 1.0,
-					"UnitOfMeasure"=> "Ounces",
-					"TotalAmount"=> 9.99
-					],
-					[
-					"PackageLabel"=> "ABCDEF012345670000000002",
-					"Quantity"=> 1.0,
-					"UnitOfMeasure"=> "Ounces",
-					"TotalAmount"=> 9.99
-					]
-				]
-				]
-		);
-
-		return $RES->withJSON($ret);
+			return $RES->write("");
 		break;
 
 	case 'PUT':
-
-		$ret = array(
-			[
-				"Id"=> 6,
-				"SalesDateTime"=> "2017-04-04T10:10:19.000",
-				"SalesCustomerType"=> "Consumer",
-				"PatientLicenseNumber"=> null,
-				"ConsumerId"=> null,
-				"DriverName"=> "John Doe",
-				"DriverOccupationalLicenseNumber"=> "1",
-				"DriverVehicleLicenseNumber"=> "1",
-				"PhoneNumberForQuestions"=> "+1-123-456-7890",
-				"VehicleMake"=> "Car",
-				"VehicleModel"=> "Small",
-				"VehicleLicensePlateNumber"=> "000000",
-				"RecipientName"=> null,
-				"RecipientAddressStreet1"=> "1 Someplace Road",
-				"RecipientAddressStreet2"=> "Ste 9",
-				"RecipientAddressCity"=> "Denver",
-				"RecipientAddressState"=> "CO",
-				"RecipientAddressPostalCode"=> "11111",
-				"PlannedRoute"=> "Drive to destination.",
-				"EstimatedDepartureDateTime"=> "2017-04-04T11:00:00.000",
-				"EstimatedArrivalDateTime"=> "2017-04-04T13:00:00.000",
-				"Transactions"=> [
-					[
-					"PackageLabel"=> "ABCDEF012345670000000001",
-					"Quantity"=> 1.0,
-					"UnitOfMeasure"=> "Ounces",
-					"TotalAmount"=> 9.99
-					],
-					[
-					"PackageLabel"=> "ABCDEF012345670000000002",
-					"Quantity"=> 1.0,
-					"UnitOfMeasure"=> "Ounces",
-					"TotalAmount"=> 9.99
-					]
-				]
-			]
-		);
-
-		return $RES->withJSON($ret);
+			return $RES->write("");
 		break;
 
 	case 'Delete':
