@@ -32,26 +32,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
 	case 'POST':
 	case 'PUT':
-
-		$ret = array(
-			[
-				"PackageLabel"=> "ABCDEF012345670000010331",
-				"Quantity"=> 1.0,
-				"UnitOfMeasure"=> "Ounces",
-				"TotalAmount"=> 9.99
-				],
-				[
-				"PackageLabel"=> "ABCDEF012345670000010332",
-				"Quantity"=> 1.0,
-				"UnitOfMeasure"=> "Ounces",
-				"TotalAmount"=> 9.99
-				]
-		);
-
-		return $RES->withJSON($ret);
-
-		break;
-
 	case 'Delete':
 		return $RES->write("");
 		break;
