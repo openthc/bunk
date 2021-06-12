@@ -45,9 +45,7 @@ xsltproc \
 #
 # PHPUnit
 echo '<h1>PHPUnit...</h1>' > "$output_main"
-
-/usr/bin/php \
-	../vendor/bin/phpunit \
+../vendor/bin/phpunit \
 	--verbose \
 	--log-junit "$output_base/phpunit.xml" \
 	--testdox-html "$output_base/testdox.html" \
