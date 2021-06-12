@@ -3,9 +3,9 @@
  * Test Authentication
  */
 
-namespace Test\Auth;
+namespace Test\BioTrack;
 
-class Alpha extends \Test\BioTrack_Test
+class A_Auth_Test extends \Test\BioTrack_Test
 {
 	function test_auth_fail()
 	{
