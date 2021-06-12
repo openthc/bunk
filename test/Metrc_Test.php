@@ -5,7 +5,7 @@
 
 namespace Test;
 
-class Metrc_Test extends \Test\Base_Test
+class Metrc_Test extends \Test\Base_Case
 {
 
 	public $ghc;
@@ -26,7 +26,7 @@ class Metrc_Test extends \Test\Base_Test
 		$this->assertEquals(200, $code);
 	}
 
-	protected function _api($opt=null)
+	protected function _api($opt=null) : object
 	{
 		// create our http client (Guzzle)
 		$cfg = [

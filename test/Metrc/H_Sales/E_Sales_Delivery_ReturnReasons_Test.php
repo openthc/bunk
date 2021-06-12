@@ -1,9 +1,9 @@
-<?php 
+<?php
 
 namespace Test\Metrc\H_Sales;
 
-class E_Sales_Deliveries_ReturnReasons_Test extends \Test\Metrc_Test {
-	
+class E_Sales_Delivery_ReturnReasons_Test extends \Test\Metrc_Test {
+
 	protected $path = 'sales/v1/delivery/returnreasons';
 
 	function test_get()

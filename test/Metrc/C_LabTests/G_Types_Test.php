@@ -2,7 +2,7 @@
 
 namespace Test\Metrc\C_LabTests;
 
-class G_Item_Categories_Test extends \Test\Metrc_Test {
+class G_Types_Test extends \Test\Metrc_Test {
 
 	protected $path = 'labtests/v1/types';
 

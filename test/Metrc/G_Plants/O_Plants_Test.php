@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 namespace Test\Metrc\G_Plants;
 
-class Plants_Test extends \Test\Metrc_Test {
+class O_Plants_Test extends \Test\Metrc_Test {
 
 	protected $path = 'plants/v1';
 

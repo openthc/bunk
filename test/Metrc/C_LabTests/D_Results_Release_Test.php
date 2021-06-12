@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 namespace Test\Metrc\C_LabTests;
 
-class C_Lab_Release_Test extends \Test\Metrc_Test {
+class D_Results_Release_Test extends \Test\Metrc_Test {
 
-	protected $path = 'labtests/v1/release';
+	protected $path = 'labtests/v1/results/release';
 	protected $body;
 
 	protected function setUp() : void {
@@ -24,5 +24,4 @@ class C_Lab_Release_Test extends \Test\Metrc_Test {
 		$res = $this->ghc->put($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
-
 }

@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 namespace Test\Metrc\D_Location;
 
-class B_Location_Test extends \Test\Metrc_Test {
+class D_Delete_Test extends \Test\Metrc_Test {
 
 	protected $path = 'locations/v1';
 
@@ -17,5 +17,5 @@ class B_Location_Test extends \Test\Metrc_Test {
 		$res = $this->ghc->delete($this->path);
 		$this->assertValidDelete($res, $this->path);
 	}
-	
+
 }

@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 namespace Test\Metrc\H_Sales;
 
-class F_Sales_Recipts_Active_Test extends \Test\Metrc_Test {
+class F_Sales_Receipts_Active_Test extends \Test\Metrc_Test {
 
 	protected $path =  'sales/v1/receipts/active';
 

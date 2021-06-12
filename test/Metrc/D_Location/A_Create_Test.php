@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 namespace Test\Metrc\D_Location;
 
-class A_Location_Test extends \Test\Metrc_Test {
+class A_Create_Test extends \Test\Metrc_Test {
 
 	protected $path = 'locations/v1/create';
 	protected $body;

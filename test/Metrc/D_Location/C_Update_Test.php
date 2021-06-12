@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 namespace Test\Metrc\D_Location;
 
-class C_Location_Test extends \Test\Metrc_Test {
+class C_Update_Test extends \Test\Metrc_Test {
 
 	protected $path = 'locations/v1/update';
 	protected $body;
@@ -28,5 +28,5 @@ class C_Location_Test extends \Test\Metrc_Test {
 		$res = $this->ghc->post($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
-	
+
 }

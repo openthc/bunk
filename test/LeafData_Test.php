@@ -5,7 +5,7 @@
 
 namespace Test;
 
-class LeafData_Test extends \Test\Base_Test
+class LeafData_Test extends \Test\Base_Case
 {
 	public $ghc;
 
