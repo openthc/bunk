@@ -3,9 +3,9 @@
  * Test Basic Sync
  */
 
-namespace Test\Basic;
+namespace Test\BioTrack;
 
-class Alpha extends \Test\BioTrack_Test
+class B_Sync_Test extends \Test\BioTrack_Test
 {
 	protected function setUp() : void
 	{
@@ -199,5 +199,10 @@ class Alpha extends \Test\BioTrack_Test
 		$this->assertEquals(1, $res['success']);
 		$this->assertIsArray($res['vendor']);
 
+	}
+
+	function test_tax_file()
+	{
+		// _curl_post '{ "action": "tax_obligation_file" }'
 	}
 }

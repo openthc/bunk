@@ -5,7 +5,7 @@
 
 namespace Test;
 
-class BioTrack_Test extends \Test\Base_Test
+class BioTrack_Test extends \Test\Base_Case
 {
 	protected $_sid;
 
