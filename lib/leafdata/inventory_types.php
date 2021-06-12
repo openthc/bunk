@@ -63,7 +63,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		}
 
 		return $RES->withJSON($ret);
-	
+
 	case 'POST':
 
 		$ret = array(
@@ -83,5 +83,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
 		return $RES->withJSON($ret);
 
-	break;
+		break;
+
+	case 'DELETE':
+		$ret = [];
+		return $RES->withJSON($ret);
+		break;
+
 }

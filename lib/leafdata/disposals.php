@@ -58,7 +58,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 	case 'POST':
 
 		$pct = rand(1,100);
-		$ret_code = 200;
+		$ret_code = ($pct < 5) ? 422 : 200;
 
 		switch ($ret_code) {
 			case 200:
@@ -97,9 +97,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
 		$ret = [];
 
-
-
 	case 'DELETE':
-		return $RES->write("");
+		$ret = [];
+		return $RES->withJSON($ret);
 		break;
 }

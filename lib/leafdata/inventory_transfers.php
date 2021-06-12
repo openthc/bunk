@@ -107,6 +107,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
 
 	case 'DELETE':
-		return $RES->write("");
+		$ret = [];
+		return $RES->withJSON($ret);
 		break;
 }

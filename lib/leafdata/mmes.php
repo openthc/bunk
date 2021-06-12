@@ -26,12 +26,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
 		return $RES->withJSON($ret);
 
-	case 'POST':
+	case 'POST': // pass thru
 	case 'DELETE':
-
 		return $RES->withJSON([
 			'error' => true,
-			'error_message' => 'OpenTHC Bunk Error',
-		], 500);
+			'error_message' => 'OpenTHC Bunk Not Implemented [LLM-033]',
+		], 501);
 
 }

@@ -123,6 +123,19 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		return $RES->withJSON($ret);
 		break;
 	case 'DELETE':
-		return $RES->write("");
+
+		$ret = [];
+		// $pct =
+		// {"error":true,"error_message":"","validation_messages":{"global_id":["This batch has active inventory associated and may not be deleted."]}}
+		// $ret = [
+		// 	'error' => true,
+		// 	'error_message' => '',
+		// 	'validation_messages' => [
+
+		// 	]
+		// ];
+
+		return $RES->withJSON($ret);
+
 		break;
 }
