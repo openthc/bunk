@@ -24,8 +24,8 @@
 	"require-dev": {
 		"behat/behat": "3.8.1",
 		"phpmd/phpmd": "2.9.1",
-		"phpstan/phpstan": "0.12.82",
-		"phpunit/phpunit": "9.5.3",
+		"phpstan/phpstan": "0.12.89",
+		"phpunit/phpunit": "9.5.5",
 		"sebastian/phpcpd": "6.0.3"
 	}
 }
