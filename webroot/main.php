@@ -13,6 +13,12 @@ $app = new OpenTHC\App($cfg);
 // App Container
 $con = $app->getContainer();
 
+// Clear Error Handlers to get all the spew and logs
+if ($cfg['debug']) {
+	unset($con['errorHandler']);
+	unset($con['phpErrorHandler']);
+}
+
 // 404 Handler
 $con['notFoundHandler'] = function($c) {
 	return function ($REQ, $RES) {
@@ -26,10 +32,10 @@ $con['notFoundHandler'] = function($c) {
 // BioTrack Fake Interface
 $app->group('/biotrack', 'OpenTHC\Bunk\Module\BioTrack');
 
-// LeafData Info
+// LeafData Fake Interface
 $app->group('/leafdata', 'OpenTHC\Bunk\Module\LeafData');
 
-// METRC Fake Interface
+// Metrc Fake Interface
 $app->group('/metrc', 'OpenTHC\Bunk\Module\METRC');
 
 // Go!
