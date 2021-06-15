@@ -9,5 +9,6 @@
 --ignore-dir=node_modules/
 --ignore-dir=var/
 --ignore-dir=vendor/
+--ignore-dir=webroot/test-output/
 
 --ignore-file=is:composer.lock
