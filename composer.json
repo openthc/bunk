@@ -7,25 +7,21 @@
 			"OpenTHC\\Bunk\\": "./lib",
 			"Custom\\": "./Custom",
 			"Test\\": "./test"
-		}
+		},
+		"exclude-from-classmap": [
+			"/vendor/erusev/parsedown-extra/test"
+		]
 	},
 	"require": {
-		"php": ">=7.3.0",
-		"ext-curl": "*",
-		"ext-date": "*",
-		"ext-json": "*",
-		"ext-PDO": "*",
-		"ext-session": "*",
-		"ext-sockets": "*",
 		"edoceo/radix": "dev-master",
 		"erusev/parsedown-extra": "0.8.1",
 		"openthc/common": "dev-master"
 	},
 	"require-dev": {
 		"behat/behat": "3.8.1",
-		"phpmd/phpmd": "2.9.1",
-		"phpstan/phpstan": "0.12.89",
-		"phpunit/phpunit": "9.5.5",
+		"phpmd/phpmd": "2.10.1",
+		"phpstan/phpstan": "0.12.92",
+		"phpunit/phpunit": "9.5.6",
 		"sebastian/phpcpd": "6.0.3"
 	}
 }
