@@ -7,18 +7,36 @@ namespace Test\BioTrack;
 
 class V_Vehicle_Test extends \Test\BioTrack_Test
 {
+	protected function setUp() : void
+	{
+		parent::setUp();
+		$this->auth('g');
+	}
+
 	function test_create()
 	{
-		// _curl_post '{ "action": "vehicle_add" }'
+		$res = $this->post_json('', [
+			'action' => 'vehicle_add',
+		]);
+		$res = $this->assertValidResponse($res);
+
 	}
 
 	function test_update()
 	{
-		// _curl_post '{ "action": "vehicle_modify" }'
+		$res = $this->post_json('', [
+			'action' => 'vehicle_modify',
+		]);
+		$res = $this->assertValidResponse($res);
+
 	}
 
 	function test_delete()
 	{
-		// _curl_post '{ "action": "vehicle_remove" }'
+		$res = $this->post_json('', [
+			'action' => 'vehicle_remove',
+		]);
+		$res = $this->assertValidResponse($res);
+
 	}
 }

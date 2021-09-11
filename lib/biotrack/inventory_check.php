@@ -2,6 +2,8 @@
 /**
 */
 
+use \OpenTHC\Bunk\BioTrack\Base;
+
 $ret = array(
 	'data' => array(),
 	'success' => 1,

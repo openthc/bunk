@@ -1,4 +1,10 @@
 <?php
+/**
+ *
+ */
+
+use \OpenTHC\Bunk\BioTrack\Base;
+
 return $RES->withJSON(array(
 	'success' => 1,
 	'inventory_adjust' => array(

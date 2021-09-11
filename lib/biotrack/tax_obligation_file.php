@@ -1,7 +1,9 @@
 <?php
 /**
-	Save the Tax Obligation File
-*/
+ * Save the Tax Obligation File
+ */
+
+use \OpenTHC\Bunk\BioTrack\Base;
 
 //use Edoceo\Radix\DB\SQL;
 
@@ -22,7 +24,7 @@
 //SQL::init(sprintf('sqlite:%s/var/%09d.db', APP_ROOT, $_SESSION['ubi']));
 //SQL::query('CREATE TABLE sync_tax_report (id INTEGER PRIMARY KEY, meta TEXT)');
 
-$txn = _rnd_transaction_id();
+$txn = Base::_rnd_transaction_id();
 
 $ts_alpha = mktime(0, 0, 1, $json['month'], 1, $json['year']);
 $ts_omega = mktime(23, 59, 59, $json['month'] + 1, 0, $json['year']);

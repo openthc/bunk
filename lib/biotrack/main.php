@@ -3,8 +3,8 @@
  * A Mock BioTrackTHC API
  */
 
-//require_once(APP_ROOT . '/lib/RBE/BioTrack.php');
-require_once(__DIR__ . '/lib.php');
+use \OpenTHC\Bunk\BioTrack\Base;
+
 
 class BioTrack_Response extends Slim\Http\Response
 {
@@ -16,12 +16,8 @@ class BioTrack_Response extends Slim\Http\Response
 
 $RES = new BioTrack_Response();
 
-$auth_db = new \Redis();
-$auth_db->connect('127.0.0.1');
-
 $time = $_SERVER['REQUEST_TIME'];
-
-$mime = strtok($_SERVER['HTTP_CONTENT_TYPE'], ';');
+$type_sent = strtolower(strtok($_SERVER['HTTP_CONTENT_TYPE'], ';'));
 
 // Parse/Load JSON
 $post = file_get_contents('php://input');
@@ -29,8 +25,8 @@ $post = file_get_contents('php://input');
 if (empty($post)) {
 	return $RES->withJSON(array(
 		'success' => 0,
-		'_detail' => 'There was no JSON input [MFB#034]',
-	));
+		'_detail' => 'There was no JSON input [OBM-034]',
+	), 400);
 }
 
 // Good JSON?
@@ -38,10 +34,10 @@ $json = json_decode($post, true);
 if (empty($json)) {
 	return $RES->withJSON(array(
 		'success' => 0,
-		'_detail' => 'Error Decoding Input [MFB#041]',
+		'_detail' => 'Error Decoding Input [OBM-041]',
 		'_errors' => json_last_error_msg(),
 		'_input' => $post,
-	), 400, JSON_PRETTY_PRINT);
+	), 400);
 }
 
 // API
@@ -73,15 +69,10 @@ if (!preg_match('/^\w+$/', $json['action'])) {
 	), 400);
 }
 
-// Load Session from Redis
+// Load Given Session ID
 if (!empty($json['sessionid'])) {
-
-	$h = $json['sessionid'];
-	$h = preg_match('/^([0-9a-f]{128})$/', $h, $m) ? $m[1] : null;
-	$k = sprintf('api-fake/' . $h);
-	$x = $auth_db->hGetAll($k);
-	$_SESSION = $x;
-
+	session_id($json['sessionid']);
+	session_start();
 }
 
 // Manual Switch based on action, for dummy/simple API calls
@@ -127,7 +118,7 @@ case 'sale_void':
 
 	return $RES->withJSON(array(
 		'success' => 1,
-		'transactionid' => _rnd_transaction_id(),
+		'transactionid' => Base::_rnd_transaction_id(),
 		'sessiontime' => $_SERVER['REQUEST_TIME'],
 	));
 

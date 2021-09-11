@@ -1,20 +1,28 @@
 <?php
 /**
+ * Bunk Inventory Sample
+ */
 
-*/
+use \OpenTHC\Bunk\BioTrack\Base;
 
-return $RES->withJSON(array(
-	'success' => 1,
-	'inventory_sample' => array(
-		0 => array(
-			"inventoryid" => "2891345622130160",
-			"vendor_license" => "123456",
-			"location" => "999999",
-			"quantity" => "1.00",
-			"sample_type" => "1",
-			"sessiontime" => $time,
-			"transactionid" => "4863",
-			"transactionid_original" => "4863",
-		),
-	)
-));
+$ret = [];
+$ret['success'] = 1;
+$ret['inventory_sample'] = [];
+
+$max = rand(2,10);
+$txn = Base::_rnd_transaction_id();
+
+for ($idx=0; $idx<$max; $idx++) {
+	$ret['inventory_sample'][] = array(
+		"inventoryid" => Base::_rnd_barcode(),
+		"vendor_license" => "123456",
+		"location" => "999999",
+		"quantity" => "1.00",
+		"sample_type" => "1",
+		"sessiontime" => $time,
+		"transactionid" => $txn,
+		"transactionid_original" => $txn,
+	);
+}
+
+return $RES->withJSON($ret);

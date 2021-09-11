@@ -33,7 +33,7 @@ class BioTrack_Test extends \Test\Base_Case
 
 	protected function setUp() : void
 	{
-		$this->ghc = $this->_api();
+		$this->ghc = $this->_api(sprintf('https://%s/biotrack/v2013/serverjson.asp', getenv('OPENTHC_TEST_HOST')));
 	}
 
 	function auth($t)
@@ -42,11 +42,11 @@ class BioTrack_Test extends \Test\Base_Case
 		$arg = [
 			'action' => 'login',
 			'license_number' => $_ENV[sprintf('biotrack-company-%s', $t)],
-			'username' => $_ENV[sprintf('biotrack-username-%s', $t)],
-			'password' => $_ENV[sprintf('biotrack-password-%s', $t)],
+			'username' => $_ENV['biotrack-username'],
+			'password' => $_ENV['biotrack-password'],
 		];
 
-		$res = $this->post('', $arg);
+		$res = $this->post_json('', $arg);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		// var_dump($res);
@@ -54,15 +54,12 @@ class BioTrack_Test extends \Test\Base_Case
 	}
 
 	/**
-		HTTP Utility
-	*/
-	function post($url, $arg)
+	 * Always sets this parameter
+	 */
+	protected function post_json($url, $arg)
 	{
 		$arg['API'] = '4.0';
-		$arg['sessionid'] = $this->_sid;
-		$arg['training'] = $_ENV['biotrack-training-mode'];
-		// var_dump($arg);
-		return parent::post($url, $arg);
+		return parent::post_json($url, $arg);
 	}
 
 	/**
@@ -75,17 +72,26 @@ class BioTrack_Test extends \Test\Base_Case
 		$this->assertNotEmpty($res);
 
 		// Dump on Errors
-		$hrc = $res->getStatusCode();
-		switch ($hrc) {
+		$res_code = $res->getStatusCode();
+		switch ($res_code) {
 		case 422:
 		case 500:
 			if (empty($dump)) {
-				$dump = sprintf('%d Response Code', $hrc);
+				$dump = sprintf('%d Response Code', $res_code);
 			}
 			break;
 		}
 
+		if ($res_code != $code) {
+			$dump = sprintf('%d Response Code', $res_code);
+		}
+
 		$this->raw = $res->getBody()->getContents();
+
+		$res_type = $res->getHeaderLine('content-type');
+		if ('application/json' != $res_type) {
+			$dump = 'MIME-TYPE';
+		}
 
 		if (!empty($dump)) {
 			echo "\n<<<$dump<<<\n{$this->raw}\n###\n";
@@ -95,42 +101,13 @@ class BioTrack_Test extends \Test\Base_Case
 
 		//$this->assertEquals('HTTPS', $res->getProtocol());
 		$this->assertEquals($code, $res->getStatusCode());
-		$this->assertEquals('application/json', $res->getHeaderLine('content-type')); // RFCs
+		$this->assertEquals('application/json', $res_type); // RFCs
 		// $this->assertEquals('text/json; charset=UTF-8', $res->getHeaderLine('content-type'));
 		$this->assertIsArray($ret);
 		$this->assertArrayHasKey('success', $ret);
 
 		return $ret;
 
-	}
-
-	/**
-		@param $b The Base URL
-	*/
-	protected function _api($opt=null)
-	{
-		// create our http client (Guzzle)
-		$cfg = array(
-			'base_uri' => $_ENV['biotrack-uri'],
-			'allow_redirects' => false,
-			'debug' => $_ENV['debug-http'],
-			'request.options' => array(
-				'exceptions' => false,
-			),
-			'http_errors' => false,
-			'cookies' => true,
-		);
-
-		// Override Host Header Here
-		// $ghhs = \GuzzleHttp\HandlerStack::create();
-		// $ghhs->push(\GuzzleHttp\Middleware::mapRequest(function (\Psr\Http\Message\RequestInterface $R) {
-		// 	return $R->withHeader('host', 'xx.biotrack.net');
-		// }));
-		// $cfg['handler'] = $ghhs;
-
-		$c = new \GuzzleHttp\Client($cfg);
-
-		return $c;
 	}
 
 }

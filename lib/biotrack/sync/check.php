@@ -1,8 +1,9 @@
 <?php
 /**
-	Fake sync_check
-*/
+ * Bunk sync_check
+ */
 
+use \OpenTHC\Bunk\BioTrack\Base;
 
 $ret = array(
 	'success' => 1,
@@ -10,11 +11,11 @@ $ret = array(
 );
 
 // Build Response of all Table descriptors
-foreach (Bunk_BioTrack::$obj_list as $stub => $name) {
+foreach (Base::$obj_list as $stub => $name) {
 	$ret['summary'][] = array(
 		'table' => $stub,
-		'match' => mt_rand(0, 1), // @todo Toggle 0|1
-		'sum' => _rnd_transaction_id(),
+		'match' => rand(0, 1), // @todo Toggle 0|1
+		'sum' => Base::_rnd_transaction_id(),
 	);
 }
 

@@ -7,20 +7,54 @@ namespace Test\BioTrack;
 
 class C_Section_Test extends \Test\BioTrack_Test
 {
+	protected function setUp() : void
+	{
+		parent::setUp();
+		$this->auth('g');
+	}
+
 	function test_create()
 	{
-		// _curl_post '{ "action": "inventory_room_add" }'
-		// _curl_post '{ "action": "plant_room_add" }'
+		$res = $this->post_json('', [
+			'action' => 'inventory_room_add',
+		]);
+		$res = $this->assertValidResponse($res);
+
+		$res = $this->post_json('', [
+			'action' => 'plant_room_add',
+		]);
+		$res = $this->assertValidResponse($res);
+
 	}
+
+
 	function test_update()
 	{
-		// _curl_post '{ "action": "inventory_room_modify" }'
-		// _curl_post '{ "action": "plant_room_modify" }'
+		$res = $this->post_json('', [
+			'action' => 'inventory_room_modify',
+		]);
+		$res = $this->assertValidResponse($res);
+
+
+		$res = $this->post_json('', [
+			'action' => 'plant_room_modify',
+		]);
+		$res = $this->assertValidResponse($res);
+
 	}
+
+
 	function test_delete()
 	{
-		// _curl_post '{ "action": "inventory_room_remove" }'
-		// _curl_post '{ "action": "plant_room_remove" }'
+		$res = $this->post_json('', [
+			'action' => 'inventory_room_remove',
+		]);
+		$res = $this->assertValidResponse($res);
+
+		$res = $this->post_json('', [
+			'action' => 'plant_room_remove',
+		]);
+		$res = $this->assertValidResponse($res);
 	}
 
 }

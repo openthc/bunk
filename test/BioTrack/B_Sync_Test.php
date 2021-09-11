@@ -27,8 +27,8 @@ class B_Sync_Test extends \Test\BioTrack_Test
 			];
 		}
 
-		$res = $this->post('', $arg);
-		$res = $this->assertValidResponse($res);
+		$res = $this->post_json('', $arg);
+		$res = $this->assertValidResponse($res, 200);
 		$this->assertEquals(1, $res['success']);
 		$this->assertIsArray($res['summary']);
 		$res = $res['summary'];
@@ -52,7 +52,7 @@ class B_Sync_Test extends \Test\BioTrack_Test
 			];
 		}
 
-		$res = $this->post('', $arg);
+		$res = $this->post_json('', $arg);
 		$res = $this->assertValidResponse($res);
 		// var_dump($res);
 		$this->assertEquals(1, $res['success']);
@@ -66,133 +66,133 @@ class B_Sync_Test extends \Test\BioTrack_Test
 	function test_sync_fetch()
 	{
 		// Check if all the things exist and are correct
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_employee',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		// $this->assertIsArray($res['employee']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_id_preassign',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		// $this->assertIsArray($res['id_preassign']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_inventory',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		// $this->assertIsArray($res['inventory']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_inventory_adjust',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		// $this->assertIsArray($res['inventory_adjust']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_inventory_qa_sample',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		// $this->assertIsArray($res['inventory_qa_sample']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_inventory_room',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		$this->assertIsArray($res['inventory_room']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_inventory_sample',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		// $this->assertIsArray($res['inventory_sample']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_inventory_transfer',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		// $this->assertIsArray($res['inventory_transfer']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_inventory_transfer_inbound',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		// $this->assertIsArray($res['inventory_transfer_inbound']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_manifest',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		// $this->assertIsArray($res['manifest']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_plant',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		// $this->assertIsArray($res['plant']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_plant_derivative',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		// $this->assertIsArray($res['plant_derivative']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_plant_room',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		$this->assertIsArray($res['plant_room']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_qa_lab',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		$this->assertIsArray($res['qa_lab']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_sale',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		// $this->assertIsArray($res['sale']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_tax_report',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		// $this->assertIsArray($res['tax_report']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_third_party_transporter',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		$this->assertIsArray($res['third_party_transporter']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_vehicle',
 		]);
 		$res = $this->assertValidResponse($res);
 		$this->assertEquals(1, $res['success']);
 		// $this->assertIsArray($res['vehicle']);
 
-		$res = $this->post('', [
+		$res = $this->post_json('', [
 			'action' => 'sync_vendor',
 		]);
 		$res = $this->assertValidResponse($res);
@@ -201,8 +201,4 @@ class B_Sync_Test extends \Test\BioTrack_Test
 
 	}
 
-	function test_tax_file()
-	{
-		// _curl_post '{ "action": "tax_obligation_file" }'
-	}
 }

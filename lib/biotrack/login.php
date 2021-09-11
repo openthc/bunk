@@ -14,6 +14,14 @@ if (empty($json['license_number'])) {
 	));
 }
 
+if (empty($json['username'])) {
+	return $RES->withJSON([
+		'success' => 0,
+		'error' => 'Invalid username or password.',
+		'_request' => $json,
+	]);
+}
+
 
 // Validate against Fixed List
 // The parameter called 'license_number' is really the UBI or Company ID
@@ -63,18 +71,11 @@ if (!empty($cfg['login_fail'])) {
 	//}
 }
 
+session_start();
 
-// Fake some session in Redis for an hour
-$hash = hash('sha512', openssl_random_pseudo_bytes(512));
-$hkey = sprintf('api-fake/%s', $hash);
-
-$auth_db->hset($hkey, 'ubi', $ubi);
-$auth_db->hset($hkey, 'lic', $lic);
-$auth_db->expire($hkey, 3600);
-
-return $RES->withJSON(array(
+return $RES->withJSON([
 	'success' => 1,
 	'admin' => 1,
-	'sessionid' => $hash,
+	'sessionid' => session_id(),
 	'time' => $_SERVER['REQUEST_TIME'],
-));
+]);

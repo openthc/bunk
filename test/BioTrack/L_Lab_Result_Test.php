@@ -7,26 +7,64 @@ namespace Test\BioTrack;
 
 class L_Lab_Result_Test extends \Test\BioTrack_Test
 {
+	protected function setUp() : void
+	{
+		parent::setUp();
+		$this->auth('g');
+	}
+
+	/**
+	 *
+	 */
 	function test_search()
 	{
-		// _curl_post '{ "action": "inventory_qa_check" }'
-		// _curl_post '{ "action": "inventory_qa_check_all" }'
+		$res = $this->post_json('', [
+			'action' => 'inventory_qa_check',
+		]);
+		$res = $this->assertValidResponse($res);
+
+		$res = $this->post_json('', [
+			'action' => 'inventory_qa_check_all',
+		]);
+		$res = $this->assertValidResponse($res);
 	}
 
+	/**
+	 *
+	 */
 	function test_create()
 	{
-		// _curl_post '{ "action": "inventory_qa_sample" }'
-		// _curl_post '{ "action": "inventory_qa_sample_non_mandatory" }'
+		$res = $this->post_json('', [
+			'action' => 'inventory_qa_sample',
+		]);
+		$res = $this->assertValidResponse($res);
+
+		$res = $this->post_json('', [
+			'action' => 'inventory_qa_sample_non_mandatory',
+		]);
+		$res = $this->assertValidResponse($res);
 	}
 
+	/**
+	 *
+	 */
 	function test_single()
 	{
-		// _curl_post '{ "action": "inventory_qa_sample_results" }'
+		$res = $this->post_json('', [
+			'action' => 'inventory_qa_sample_results',
+		]);
+		$res = $this->assertValidResponse($res);
 	}
 
+	/**
+	 *
+	 */
 	function test_delete()
 	{
-		// _curl_post '{ "action": "inventory_qa_sample_void" }'
+		$res = $this->post_json('', [
+			'action' => 'inventory_qa_sample_void',
+		]);
+		$res = $this->assertValidResponse($res);
 	}
 
 }

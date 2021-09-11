@@ -3,6 +3,9 @@
 	Generate Bunk Third Party Transport
 */
 
+use \OpenTHC\Bunk\BioTrack\Base;
+
+
 
 $t0 = array(
 	'ubi' => '999222001',
@@ -14,8 +17,8 @@ $t0 = array(
 	'retail' => 0,
 	'deleted' => 0,
 	'medical' => 0,
-	'transactionid' => _rnd_transaction_id(),
-	'transactionid_original' => _rnd_transaction_id(),
+	'transactionid' => Base::_rnd_transaction_id(),
+	'transactionid_original' => Base::_rnd_transaction_id(),
 );
 
 $ret = array(

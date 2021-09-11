@@ -3,6 +3,9 @@
  * Return the Tax Obligation Reports
  */
 
+use \OpenTHC\Bunk\BioTrack\Base;
+
+
 return $RES->withJSON(array(
 	'success' => 1,
 	'tax_report'=> array(

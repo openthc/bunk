@@ -1,6 +1,10 @@
 <?php
 /**
+ *
 */
+
+use \OpenTHC\Bunk\BioTrack\Base;
+
 /*
   die('{
   "derivatives": [
@@ -23,7 +27,7 @@
 $ret = array(
 	'success' => 1,
 	'sessiontime' => $time,
-	'transactionid' => _rnd_transaction_id(),
+	'transactionid' => Base::_rnd_transaction_id(),
 	'derivatives' => array(
 		array(
 			"barcode_id" => "0358560579655604",

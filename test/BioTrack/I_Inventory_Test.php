@@ -7,6 +7,12 @@ namespace Test\BioTrack;
 
 class I_Inventory_Test extends \Test\BioTrack_Test
 {
+	protected function setUp() : void
+	{
+		parent::setUp();
+		$this->auth('g');
+	}
+
 }
 
 // #

@@ -3,6 +3,9 @@
 	Return a Transfer Manifest
 */
 
+use \OpenTHC\Bunk\BioTrack\Base;
+
+
 $out = array();
 $out['success'] = 1;
 $out['manifest'] = array();

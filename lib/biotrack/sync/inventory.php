@@ -3,6 +3,9 @@
 	Fake Inventory Sync
 */
 
+use \OpenTHC\Bunk\BioTrack\Base;
+
+
 return $RES->withJSON(array(
 	'success' => 1,
 	'inventory' => array(
@@ -15,8 +18,8 @@ return $RES->withJSON(array(
 			'remaining_quantity'=>'300.00',
 			'sessiontime'=>$time,
 			'strain'=>'dutch treat',
-			'transactionid'=>_rnd_transaction_id(),
-			'transactionid_original'=>_rnd_transaction_id(),
+			'transactionid'=>Base::_rnd_transaction_id(),
+			'transactionid_original'=>Base::_rnd_transaction_id(),
 			'usable_weight'=>'300.00',
 			'wet'=>'0',
 			'net_package'=>'100.00',
@@ -31,8 +34,8 @@ return $RES->withJSON(array(
 			'remaining_quantity'=>'200.00',
 			'sessiontime'=>$time,
 			'strain'=>'blue dream',
-			'transactionid'=>_rnd_transaction_id(),
-			'transactionid_original'=>_rnd_transaction_id(),
+			'transactionid'=>Base::_rnd_transaction_id(),
+			'transactionid_original'=>Base::_rnd_transaction_id(),
 			'usable_weight'=>'100.00',
 			'wet'=>'0',
 			'net_package'=>'50.00',

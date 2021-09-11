@@ -3,6 +3,9 @@
  * Fake Incoming Transfer
  */
 
+use \OpenTHC\Bunk\BioTrack\Base;
+
+
 $transfer_incoming = array(
 	"deleted" => "1",
 	"inventoryid" => "0000000090000191",

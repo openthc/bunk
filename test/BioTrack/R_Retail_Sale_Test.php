@@ -7,23 +7,55 @@ namespace Test\BioTrack;
 
 class R_Retail_Sale_Test extends \Test\BioTrack_Test
 {
-	function create()
+	protected function setUp() : void
 	{
+		parent::setUp();
+		$this->auth('g');
+	}
+
+	/**
+	 *
+	 */
+	function test_create()
+	{
+		$res = $this->post_json('', [
+			'action' => 'employee_remove',
+		]);
+		$res = $this->assertValidResponse($res);
 		// _curl_post '{ "action": "sale_dispense" }'
 	}
-	function update()
+
+	/**
+	 *
+	 */
+	function test_update()
 	{
-		// _curl_post '{ "action": "sale_modify" }'
+		$res = $this->post_json('', [
+			'action' => 'sale_modify',
+		]);
+		$res = $this->assertValidResponse($res);
 	}
 
-	function refund()
+	/**
+	 *
+	 */
+	function test_refund()
 	{
-		// _curl_post '{ "action": "sale_refund" }'
+		$res = $this->post_json('', [
+			'action' => 'sale_refund',
+		]);
+		$res = $this->assertValidResponse($res);
 	}
 
-	function delete()
+	/**
+	 *
+	 */
+	function test_delete()
 	{
-		// _curl_post '{ "action": "sale_void" }'
+		$res = $this->post_json('', [
+			'action' => 'sale_void',
+		]);
+		$res = $this->assertValidResponse($res);
 	}
 
 }

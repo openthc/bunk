@@ -3,6 +3,9 @@
 	Sync Vendor
 */
 
+use \OpenTHC\Bunk\BioTrack\Base;
+
+
 $ret = array(
 	'success' => 1,
 	'vendor' => array(),
@@ -36,7 +39,7 @@ $ret['vendor'][] = array(
 	'retail' => 0,
 	'deleted' => 0,
 	'medical' => 0,
-	'transactionid' => _rnd_transaction_id(),
+	'transactionid' => 991111,
 	'transactionid_original' => 911111,
 );
 
@@ -55,8 +58,8 @@ $ret['vendor'][] = array(
 	'retail' => 0,
 	'deleted' => 0,
 	'medical' => 0,
-	'transactionid' => _rnd_transaction_id(),
-	'transactionid_original' => 922222,
+	'transactionid' => 991111,
+	'transactionid_original' => 911111,
 );
 
 $ret['vendor'][] = array(
@@ -74,8 +77,8 @@ $ret['vendor'][] = array(
 	'retail' => 0,
 	'deleted' => 0,
 	'medical' => 0,
-	'transactionid' => _rnd_transaction_id(),
-	'transactionid_original' => 933333,
+	'transactionid' => 991111,
+	'transactionid_original' => 911111,
 );
 
 $ret['vendor'][] = array(
@@ -93,8 +96,8 @@ $ret['vendor'][] = array(
 	'retail' => 0,
 	'deleted' => 0,
 	'medical' => 0,
-	'transactionid' => _rnd_transaction_id(),
-	'transactionid_original' => 944444,
+	'transactionid' => 991111,
+	'transactionid_original' => 911111,
 );
 
 $ret['vendor'][] = array(
@@ -112,8 +115,8 @@ $ret['vendor'][] = array(
 	'retail' => 0,
 	'deleted' => 0,
 	'medical' => 0,
-	'transactionid' => _rnd_transaction_id(),
-	'transactionid_original' => 955555,
+	'transactionid' => 991111,
+	'transactionid_original' => 911111,
 );
 
 $ret['vendor'][] = array(
@@ -131,8 +134,8 @@ $ret['vendor'][] = array(
 	'retail' => 0,
 	'deleted' => 0,
 	'medical' => 0,
-	'transactionid' => _rnd_transaction_id(),
-	'transactionid_original' => 966666,
+	'transactionid' => 991111,
+	'transactionid_original' => 911111,
 );
 
 $ret['vendor'][] = array(
@@ -150,8 +153,8 @@ $ret['vendor'][] = array(
 	'retail' => 1,
 	'deleted' => 0,
 	'medical' => 1,
-	'transactionid' => _rnd_transaction_id(),
-	'transactionid_original' => 999999,
+	'transactionid' => 991111,
+	'transactionid_original' => 911111,
 );
 
 

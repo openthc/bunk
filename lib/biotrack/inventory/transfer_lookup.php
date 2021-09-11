@@ -5,6 +5,7 @@
 
 use \OpenTHC\Bunk\BioTrack\Base;
 
+
 /*
 {
 	"action":"inventory_transfer_lookup",
@@ -29,7 +30,7 @@ $ret = array(
 
 $ret['data'][] = array(
 	'description' => null,
-	'sample_id' => _rnd_barcode(),
+	'sample_id' => Base::_rnd_barcode(),
 	'strain' => 'Dreadbread',
 	"barcode_id" => "6033571320007909",
 	"is_medical" => 0,
