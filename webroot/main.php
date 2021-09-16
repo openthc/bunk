@@ -32,6 +32,9 @@ $con['notFoundHandler'] = function($c) {
 // BioTrack Fake Interface
 $app->group('/biotrack', 'OpenTHC\Bunk\Module\BioTrack');
 
+// BioTrack Fake Interface
+$app->group('/ccrs', 'OpenTHC\Bunk\Module\CCRS');
+
 // LeafData Fake Interface
 $app->group('/leafdata', 'OpenTHC\Bunk\Module\LeafData');
 
