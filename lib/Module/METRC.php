@@ -18,9 +18,17 @@ class METRC extends \OpenTHC\Module\Base
 
 		$a->group('/v2015', function($C) {
 
+			/**
+			 * Facilities
+			 */
+
 			$this->get('/facilities/v1', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/facilities.php');
 			});
+
+			/**
+			 * Harvests
+			 */
 
 			$this->get('/harvests/v1/active', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/harvests/harvests_active.php');
@@ -30,10 +38,12 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/harvests/harvests_active.php');
 			});
 
+			// @note Swap positions with Inactive
 			$this->get('/harvests/v1/onhold', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/harvests/harvests_active.php');
 			});
 
+			// @note out of order from API doc. will slim crash if we have it at the top/bottom?
 			$this->get('/harvests/v1/{id}', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/harvests/harvest.php');
 			});
@@ -70,6 +80,10 @@ class METRC extends \OpenTHC\Module\Base
 				return $RES->write("");
 			});
 
+			/**
+			 * Items
+			 */
+
 			$this->get('/items/v1/active', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/items/active.php');
 			});
@@ -97,6 +111,10 @@ class METRC extends \OpenTHC\Module\Base
 			$this->post('/items/v1/update', function($REQ, $RES, $ARG) {
 				return $RES->write("");
 			});
+
+			/**
+			 * Lab Tests
+			 */
 
 			$this->get('/labtests/v1/states', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/labtests/states.php');
@@ -126,10 +144,16 @@ class METRC extends \OpenTHC\Module\Base
 				return $RES->write("");
 			});
 
+			/**
+			 * Locations
+			 */
+
+			// @note Missing /locations/v1/{id}
 			$this->get('/locations/v1', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/locations/id.php');
 			});
 
+			// @note Missing /locations/v1/{id}
 			$this->delete('/locations/v1', function($REQ, $RES, $ARG) {
 				return $RES->write("");
 			});
@@ -150,6 +174,10 @@ class METRC extends \OpenTHC\Module\Base
 				return $RES->write("");
 			});
 
+			/**
+			 * Packages
+			 */
+
 			$this->get('/packages/v1/active', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/packages/active.php');
 			});
@@ -158,10 +186,14 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/packages/active.php');
 			});
 
+			// @note Missing /packages/v1/{id}
 			$this->get('/packages/v1', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/packages/active.php');
 			});
 
+			// @note Difference from API documentation?
+			// This is wrong because this is filtering Packages by the Metrc "Label" field
+			// Likely need to find a way to merge our /packages/v1/{id} to know the right context
 			$this->get('/packages/v1/label', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/packages/active.php');
 			});
@@ -222,6 +254,11 @@ class METRC extends \OpenTHC\Module\Base
 				return $RES->write("");
 			});
 
+			/**
+			 * Plant Batches
+			 */
+
+			// @note Missing /plantbatches/v1/{id}
 			$this->get('/plantbatches/v1', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/plant_batches/id.php');
 			});
@@ -270,10 +307,17 @@ class METRC extends \OpenTHC\Module\Base
 				return $RES->write("");
 			});
 
+			/**
+			 * Plants
+			 */
+
+			// @note Missing /plants/v1/{id}
 			$this->get('/plants/v1', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/plants/id.php');
 			});
 
+			// @note Missing /plants/v1/{label}
+			// @see same issue in Packages
 			$this->get('/plants/v1/label', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/plants/id.php');
 			});
@@ -302,6 +346,7 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/plants/growth_phases.php');
 			});
 
+			// @note Missing GET /plants/v1/additives/types
 			$this->get('/plants/v1/types', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/plants/type.php');
 			});
@@ -346,6 +391,10 @@ class METRC extends \OpenTHC\Module\Base
 				return $RES->write("");
 			});
 
+			/**
+			 * Sales
+			 */
+
 			$this->get('/sales/v1/customertypes', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/sales/customer_types.php');
 			});
@@ -382,10 +431,25 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/sales/receipts_active.php');
 			});
 
+			// @note Missing GET /sales/v1/receipts/{id}
+			// @note Missing POST /sales/v1/receipts
+			// @note Missing PUT /sales/v1/receipts
+			// @note Missing DELETE /sales/v1/receipts/{id}
+
+			// There is convolution here on the GET method and with other methods and otions
 			$this->map(['GET', 'POST', 'PUT', 'DELETE'],'/sales/v1/transactions', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/sales/transactions.php');
 			});
+			// @note Missing GET /sales/v1/transactions/{salesDateStart}/{salesDateEnd}
+			// @note Missing POST /sales/v1/transactions/{date}
+			// @note Missing POST /sales/v1/transactions/{date}
+			// @note Missing PUT /sales/v1/transactions/{date}
 
+			/**
+			 * Strains
+			 */
+
+			//  @note Missing GET /strains/v1/{id}
 			$this->map(['GET', 'DELETE'], '/strains/v1', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/strains/id.php');
 			});
@@ -402,6 +466,12 @@ class METRC extends \OpenTHC\Module\Base
 				return $RES->write("");
 			});
 
+			// @note Missing DELETE /strains/v1/{id}
+
+			/**
+			 * Transfers
+			 */
+
 			$this->get('/transfers/v1/incoming', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/incoming.php');
 			});
@@ -414,18 +484,25 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/transfer/rejected.php');
 			});
 
+			// @note Missing GET /transfers/v1/{id}/deliveries
 			$this->get('/transfers/v1/{delv_id}/deliveries', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/deliveries.php');
 			});
 
+			// @note Missing GET /transfers/v1/delivery/{id}/transporters
+			// @note Missing GET /transfers/v1/delivery/{id}/transporters/details
+
+			// @note Missing GET /transfers/v1/delivery/{id}/packages
 			$this->get('/transfers/v1/delivery/{pack_id}/packages', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/delivery_packages.php');
 			});
 
+			// @note Missing GET /transfers/v1/delivery/{id}/packages/wholesale
 			$this->get('/transfers/v1/delivery/{whole_id}/packages/wholesale', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/packages_wholesale.php');
 			});
 
+			// @note Missing GET /transfers/v1/delivery/package/{id}/requiredlabtestbatches
 			$this->get('/transfers/v1/delivery/package/{lab_id}/requiredlabtestbatches', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/required_labtest_batches.php');
 			});
@@ -434,14 +511,23 @@ class METRC extends \OpenTHC\Module\Base
 				return require_once( APP_ROOT . '/lib/metrc/transfer/packages_state.php');
 			});
 
+			// @note Missing POST /transfers/v1/external/incoming
+			// @note Missing PUT /transfers/v1/external/incoming
+			// @note Missing DELETE /transfers/v1/external/incoming/{id}
 			$this->map(['POST', 'PUT', 'DELETE'], '/transfers/v1/delivery/external/incoming', function($REQ, $RES, $ARG) {
 				return $RES->write("");
 			});
 
+			// @note Missing GET /transfers/v1/templates/delivery/{id}/packages
 			$this->get('/transfers/v1/templates/{id}/deliveries', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/templates_delivery.php');
 			});
-			
+
+			// @note This method is too convoluted with other methods and their options
+			// @note Missing GET /transfers/v1/templates/{id}/deliveries
+			// @note Missing DELETE /transfers/v1/templates/{id}
+			// @note Missing POST /transfers/v1/templates
+			// @note Missing PUT /transfers/v1/templates
 			$this->map(['GET','POST', 'PUT', 'DELETE'], '/transfers/v1/templates', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/templates.php');
 			});
@@ -450,6 +536,10 @@ class METRC extends \OpenTHC\Module\Base
 			$this->get('/transfers/v1/types', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/types.php');
 			});
+
+			/**
+			 * Units of Measure
+			 */
 
 			$this->get('/unitsofmeasure/v1/active', function($REQ, $RES, $ARG) {
 				return require_once(APP_ROOT . '/lib/metrc/unitsofmeasure.php');
