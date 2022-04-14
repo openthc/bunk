@@ -7,7 +7,8 @@ namespace OpenTHC\Bunk\Metrc;
 
 use OpenTHC\Bunk\Module\METRC;
 
-$ret = array(
+$ret = array();
+$facility = array(
 	"HireDate" => "0001-01-01",
 	"IsOwner" => false,
 	"IsManager" => true,
@@ -27,5 +28,6 @@ $ret = array(
 		"LicenseType" => "Medical Cultivation",
 	]
 );
+$ret[] = $facility;
 
 return $RES->withJSON($ret);

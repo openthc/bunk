@@ -27,6 +27,16 @@ $ret = array(
 		"ForPlants" => true,
 		"ForHarvests" => false,
 		"ForPackages" => false
+	],
+	[
+		"Id" => 3,
+		"Name" => "Alpha",
+		"LocationTypeId" => 2,
+		"LocationTypeName" => "Default",
+		"ForPlantBatches" => false,
+		"ForPlants" => true,
+		"ForHarvests" => false,
+		"ForPackages" => false
 	]
 );
 

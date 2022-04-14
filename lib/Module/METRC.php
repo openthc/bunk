@@ -222,6 +222,10 @@ class METRC extends \OpenTHC\Module\Base
 				return $RES->write("");
 			});
 
+			$this->get('/patients/v1/active', function($REQ, $RES, $ARG) {
+				return $RES->withJSON([]);
+			});
+
 			$this->get('/plantbatches/v1', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/plant_batches/id.php');
 			});
