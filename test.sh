@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 #
 # OpenTHC Test Runner
 #
@@ -11,25 +11,52 @@ d=$(dirname "$f")
 
 cd "$d"
 
-output_base="../webroot/test-output"
+output_base="webroot/test-output"
 output_main="$output_base/index.html"
 mkdir -p "$output_base"
+
+code_list=(
+	boot.php
+	lib/
+	test/
+)
 
 
 #
 # Lint
 if [ ! -f "$output_base/phplint.txt" ]
 then
+
 	echo '<h1>Linting...</h1>' > "$output_main"
+
 	search_list=(
-		../boot.php
-		../lib/
-		../test/
+		boot.php
+		lib/
+		test/
 	)
 	find "${search_list[@]}" -type f -name '*.php' -exec php -l {} \; \
 		| grep -v 'No syntax' || true \
-		>"$output_base/phplint.txt" 2>&1
+		2>&1 \
+		>"$output_base/phplint.txt"
+
 	[ -s "$output_base/phplint.txt" ] || echo "Linting OK" >"$output_base/phplint.txt"
+
+fi
+
+
+#
+# PHP-CPD
+if [ ! -f "$output_base/phpcpd.txt" ]
+then
+
+	echo '<h1>CPD Check</h1>' > "$output_main"
+
+	vendor/bin/phpcpd \
+		--fuzzy \
+		"${code_list[@]}" \
+		2>&1 \
+		> "$output_base/phpcpd.txt"
+
 fi
 
 
@@ -38,8 +65,8 @@ fi
 if [ ! -f "$output_base/phpstan.html" ]
 then
 	echo '<h1>PHPStan...</h1>' > "$output_main"
-	../vendor/bin/phpstan analyze --error-format=junit --no-progress > "$output_base/phpstan.xml" || true
-	[ -f "phpstan.xsl" ] || wget -q 'https://openthc.com/pub/phpstan.xsl'
+	vendor/bin/phpstan analyze --error-format=junit --no-progress > "$output_base/phpstan.xml" || true
+	[ -f "phpstan.xsl" ] || curl -qs 'https://openthc.com/pub/phpstan.xsl' > "test/phpstan.xsl"
 	xsltproc \
 		--nomkdir \
 		--output "$output_base/phpstan.html" \
@@ -51,7 +78,7 @@ fi
 #
 # PHPUnit
 echo '<h1>PHPUnit...</h1>' > "$output_main"
-../vendor/bin/phpunit \
+vendor/bin/phpunit \
 	--verbose \
 	--log-junit "$output_base/phpunit.xml" \
 	--testdox-html "$output_base/testdox.html" \
