@@ -103,6 +103,13 @@ switch ($_SERVER['REQUEST_METHOD']) {
 			)
 		);
 
+		// Error 500 Level
+		// {
+		// 	"error": true,
+		// 	"error_message": "All items must have a lab result.",
+		// 	"validation_messages": []
+		// }
+
 		return $RES->withJSON($ret);
 
 

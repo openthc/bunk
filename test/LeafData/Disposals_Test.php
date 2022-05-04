@@ -17,7 +17,7 @@ class Disposals_Test extends \Test\LeafData_Test
 
 	function test_post()
 	{
-		$res = $this->ghc->post($this->path);
+		$res = $this->ghc->post_json($this->path);
 		$this->assertValidResponse($res);
 	}
 
