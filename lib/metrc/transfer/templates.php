@@ -14,7 +14,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		$ret = array(
 			[
 				"Id" => 1,
-				"ManifestNumber" => null,
+				"ManifestNumber" => 1,
 				"ShipmentLicenseType" => 0,
 				"ShipperFacilityLicenseNumber" => "123-ABC",
 				"ShipperFacilityName" => "Lofty Med-Cultivation B",

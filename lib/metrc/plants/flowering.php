@@ -65,6 +65,35 @@ $ret = array(
 		"DestroyedNote"=> null,
 		"DestroyedByUserName"=> null,
 		"LastModified"=> "0001-01-01T00=>00=>00+00=>00"
+		],
+		[
+		"Id"=> 22042701,
+		"Label"=> "",
+		"State"=> "Tracked",
+		"GrowthPhase"=> "Flowering",
+		"PlantBatchId"=> 10,
+		"PlantBatchName"=> "Alpha Strain 2022-04-20T16:20:00-07:00",
+		"PlantBatchTypeName"=> "Clone",
+		"StrainId"=> 202,
+		"StrainName"=> "Alpha Strain",
+		"LocationId"=> null,
+		"LocationName"=> null,
+		"LocationTypeName"=> null,
+		"PatientLicenseNumber"=> null,
+		"HarvestId"=> null,
+		"HarvestedUnitOfWeightName"=> null,
+		"HarvestedUnitOfWeightAbbreviation"=> null,
+		"HarvestedWetWeight"=> null,
+		"HarvestCount"=> 0,
+		"IsOnHold"=> false,
+		"PlantedDate"=> "2022-04-20",
+		"VegetativeDate"=> "2022-04-20",
+		"FloweringDate"=> "2022-04-20",
+		"HarvestedDate"=> null,
+		"DestroyedDate"=> null,
+		"DestroyedNote"=> null,
+		"DestroyedByUserName"=> null,
+		"LastModified"=> "0001-01-01T00=>00=>00+00=>00"
 	]
 );
 

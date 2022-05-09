@@ -18,7 +18,18 @@ $ret = array(
 		"SativaPercentage" => 40.0,
 		"IsUsed" => false,
 		"Genetics" => "60% Indica / 40% Sativa"
-	]
+	],
+	[
+		"Id" => 202,
+		"Name" => "Alpha Strain",
+		"TestingStatus" => "ThirdParty",
+		"ThcLevel" => null,
+		"CbdLevel" => null,
+		"IndicaPercentage" => 50.0,
+		"SativaPercentage" => 50.0,
+		"IsUsed" => false,
+		"Genetics" => ""
+	],
 );
 
 return $RES->withJSON($ret);

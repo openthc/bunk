@@ -7,7 +7,8 @@ namespace OpenTHC\Bunk\Metrc\Packages;
 
 use OpenTHC\Bunk\Module\METRC;
 
-$ret = array(
+$ret = array();
+$package = array(
 	"Id" => 2,
 	"Label" => "ABCDEF012345670000010042",
 	"PackageType" => "Product",
@@ -101,5 +102,6 @@ $ret = array(
 		"IsUsed" => false
 	]
 );
+$ret[] = $package;
 
 return $RES->withJSON($ret);
