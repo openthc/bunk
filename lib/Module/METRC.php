@@ -155,7 +155,7 @@ class METRC extends \OpenTHC\Module\Base
 			});
 
 			$this->get('/packages/v1/inactive', function($REQ, $RES, $ARG) {
-				return require_once( APP_ROOT . '/lib/metrc/packages/active.php');
+				return require_once( APP_ROOT . '/lib/metrc/packages/inactive.php');
 			});
 
 			$this->get('/packages/v1', function($REQ, $RES, $ARG) {
@@ -165,10 +165,10 @@ class METRC extends \OpenTHC\Module\Base
 			$this->get('/packages/v1/label', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/packages/active.php');
 			});
-			
+
 			$this->get('/packages/v1/onhold', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/packages/active.php');
-			});	
+			});
 
 			$this->get('/packages/v1/types', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/packages/types.php');
@@ -249,7 +249,7 @@ class METRC extends \OpenTHC\Module\Base
 			$this->post('/plantbatches/v1/createpackages', function($REQ, $RES, $ARG) {
 				return $RES->write("");
 			});
-			
+
 			$this->post('/plantbatches/v1/split', function($REQ, $RES, $ARG) {
 				return $RES->write("");
 			});

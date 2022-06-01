@@ -28,18 +28,26 @@ if ($src_size != $rec_size) {
 $src_data = array_slice($src_data, 4);
 foreach ($src_data as $idx => $rec) {
 
+	// LicenseNumber must be numeric:
+	// Invalid LicenseeID:
+	// License Number doesn't match the file name
 	if ( ! preg_match('/^\d{6}$/', $rec[0])) {
 		_exit_text(sprintf('Record %d; Invalid License', $idx), 400);
 	}
+
 	if ( ! preg_match('/^.+$/', $rec[1])) {
 		_exit_text(sprintf('Record %d; Invalid Section Name', $idx), 400);
 	}
 	if ( ! preg_match('/^(FALSE|TRUE)$/', $rec[2])) {
 		_exit_text(sprintf('Record %d; Invalid Quarantine Value', $idx), 400);
 	}
+
+	// Duplicate External Identifier (on INSERT)
 	if ( ! preg_match('/^\w{1,100}$/', $rec[3])) {
 		_exit_text(sprintf('Record %d; Invalid External Value', $idx), 400);
 	}
+
+
 	if ( ! preg_match('/^\w+\s+\w+$/', $rec[4])) {
 		_exit_text(sprintf('Record %d; Invalid CreatedBy Value', $idx), 400);
 	}
@@ -58,6 +66,10 @@ foreach ($src_data as $idx => $rec) {
 			_exit_text(sprintf('Record %d; Invalid CreatedDate Value', $idx), 400);
 		}
 	}
+
+	// UpdatedBy is required for Update or Delete Operations:
+	// UpdatedDate is required for Update or Delete Operations:
+	// License Number doesn't match the file name
 
 	CCRS::assertOperation($idx, $rec[8]);
 

@@ -64,11 +64,11 @@ class Base_Case extends \PHPUnit\Framework\TestCase
 
 	/**
 	*/
-	protected function _api()
+	protected function _api($url)
 	{
 		// create our http client (Guzzle)
 		$c = new \GuzzleHttp\Client(array(
-			'base_uri' => $_ENV['api-uri'],
+			'base_uri' => $url,
 			'allow_redirects' => false,
 			'debug' => $_ENV['debug-http'],
 			'request.options' => array(
@@ -93,18 +93,18 @@ class Base_Case extends \PHPUnit\Framework\TestCase
 
 	/**
 	*/
-	protected function _post_form($u, $a)
+	protected function post_form($u, $a)
 	{
-		$res = $this->httpClient->post($u, [ 'form_params' => $a ]);
+		$res = $this->ghc->post($u, [ 'form_params' => $a ]);
 		return $res;
 	}
 
 
 	/**
 	*/
-	protected function _post_json($u, $a)
+	protected function post_json($u, $a)
 	{
-		$res = $this->httpClient->post($u, [ 'json' => $a ]);
+		$res = $this->ghc->post($u, [ 'json' => $a ]);
 		return $res;
 	}
 

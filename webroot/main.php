@@ -1,6 +1,6 @@
 <?php
 /**
- * Front Controller - via Slim
+ * Main Controller - via Slim
  */
 
 require_once(dirname(dirname(__FILE__)) . '/boot.php');
