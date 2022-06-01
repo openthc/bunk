@@ -28,16 +28,16 @@ if [ ! -f "$output_base/phplint.txt" ]
 then
 
 	echo '<h1>Linting...</h1>' > "$output_main"
-
-	search_list=(
+	code_list=(
 		boot.php
 		lib/
 		test/
 	)
-	find "${search_list[@]}" -type f -name '*.php' -exec php -l {} \; \
-		| grep -v 'No syntax' || true \
+	find "${code_list[@]}" -type f -name '*.php' -exec php -l {} \; \
+		| grep -v 'No syntax' \
+		>"$output_base/phplint.txt" \
 		2>&1 \
-		>"$output_base/phplint.txt"
+		|| true
 
 	[ -s "$output_base/phplint.txt" ] || echo "Linting OK" >"$output_base/phplint.txt"
 
@@ -54,8 +54,9 @@ then
 	vendor/bin/phpcpd \
 		--fuzzy \
 		"${code_list[@]}" \
+		> "$output_base/phpcpd.txt" \
 		2>&1 \
-		> "$output_base/phpcpd.txt"
+		|| true
 
 fi
 
@@ -79,7 +80,7 @@ fi
 # PHPUnit
 echo '<h1>PHPUnit...</h1>' > "$output_main"
 vendor/bin/phpunit \
-	--verbose \
+	--configuration "test/phpunit.xml" \
 	--log-junit "$output_base/phpunit.xml" \
 	--testdox-html "$output_base/testdox.html" \
 	--testdox-text "$output_base/testdox.txt" \
