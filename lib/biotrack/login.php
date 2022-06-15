@@ -9,7 +9,7 @@ if (empty($json['license_number'])) {
 	return $RES->withJSON(array(
 		'success' => 0,
 		// 'errorcode' => null, // Not Set by BioTrack
-		'error' =>  'BUNK#012: Company identifier not provided (license_number)',
+		'error' => 'Company identifier not provided (license_number) [LBL-012]',
 		'_request' => $json,
 	));
 }
@@ -50,7 +50,7 @@ default:
 		'success' => 0,
 		// 'error' => null, // Not Set by BioTrack
 		// 'errorcode' => null, // Not Set by BioTrack
-		'_detail' =>  'Invalid Company Identifier, only Test IDs allowed [LBL#040]',
+		'_detail' =>  'Invalid Company Identifier, only Test IDs allowed [LBL-040]',
 		'_request' => $json,
 	));
 
