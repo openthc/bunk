@@ -33,7 +33,9 @@ class BioTrack_Test extends \OpenTHC\Bunk\Test\Base_Case
 
 	protected function setUp() : void
 	{
-		$this->ghc = $this->_api(sprintf('https://%s/biotrack/v2013/serverjson.asp', getenv('OPENTHC_TEST_HOST')));
+		$url_base = rtrim(getenv('OPENTHC_TEST_BASE'), '/');
+		$url = sprintf('%s/biotrack/v2013/serverjson.asp', $url_base);
+		$this->ghc = $this->_api($url);
 	}
 
 	function auth($t)
