@@ -3,9 +3,9 @@
  * Test Batches
  */
 
-namespace Test\LeafData;
+namespace OpenTHC\Bunk\Test\LeafData;
 
-class Batches_Test extends \Test\LeafData_Test
+class Batches_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {
 	protected $path = 'batches';
 

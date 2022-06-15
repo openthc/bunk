@@ -3,9 +3,9 @@
  * Test MMEs
  */
 
-namespace Test\LeafData;
+namespace OpenTHC\Bunk\Test\LeafData;
 
-class MMEs_Test extends \Test\LeafData_Test
+class MMEs_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {
 	protected $path = 'mmes';
 

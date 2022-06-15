@@ -1,8 +1,8 @@
-<?php 
+<?php
 
-namespace Test\Metrc\E_Packages;
+namespace OpenTHC\Bunk\Test\Metrc\E_Packages;
 
-class C_Packages_Adjust_Test extends \Test\Metrc_Test {
+class C_Packages_Adjust_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	protected $path = 'packages/v1/adjust';
 	protected $body;

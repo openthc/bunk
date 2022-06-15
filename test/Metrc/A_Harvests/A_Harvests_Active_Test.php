@@ -1,8 +1,8 @@
-<?php 
+<?php
 
-namespace Test\Metrc\A_Harvests;
+namespace OpenTHC\Bunk\Test\Metrc\A_Harvests;
 
-class A_Harvests_Active_Test extends \Test\Metrc_Test {
+class A_Harvests_Active_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	protected $path = 'harvests/v1/active';
 
@@ -11,5 +11,5 @@ class A_Harvests_Active_Test extends \Test\Metrc_Test {
 		$res = $this->ghc->get($this->path);
 		$this->assertValidResponse($res);
 	}
-	
+
 }

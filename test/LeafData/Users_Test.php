@@ -3,9 +3,9 @@
  * Test Users
  */
 
-namespace Test\LeafData;
+namespace OpenTHC\Bunk\Test\LeafData;
 
-class Users_Test extends \Test\LeafData_Test
+class Users_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {
 	protected $path = 'users';
 

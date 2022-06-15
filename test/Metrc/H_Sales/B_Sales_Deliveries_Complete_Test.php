@@ -1,9 +1,9 @@
-<?php 
+<?php
 
-namespace Test\Metrc\H_Sales;
+namespace OpenTHC\Bunk\Test\Metrc\H_Sales;
 
-class B_Sales_Deliveries_Complete_Test extends \Test\Metrc_Test {
-	
+class B_Sales_Deliveries_Complete_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+
 	protected $path = 'sales/v1/deliveries/complete';
 	protected $body;
 

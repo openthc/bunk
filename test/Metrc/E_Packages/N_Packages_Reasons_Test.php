@@ -1,8 +1,8 @@
-<?php 
+<?php
 
-namespace Test\Metrc\E_Packages;
+namespace OpenTHC\Bunk\Test\Metrc\E_Packages;
 
-class N_Packages_Reasons_Test extends \Test\Metrc_Test {
+class N_Packages_Reasons_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	protected $path = 'packages/v1/reasons';
 

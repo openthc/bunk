@@ -1,8 +1,8 @@
-<?php 
+<?php
 
-namespace Test\Metrc\G_Plants;
+namespace OpenTHC\Bunk\Test\Metrc\G_Plants;
 
-class L_Plants_ManicurePlants_Test extends \Test\Metrc_Test {
+class L_Plants_ManicurePlants_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	protected $path = 'plants/v1/manicureplants';
 	protected $body;

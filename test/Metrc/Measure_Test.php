@@ -1,9 +1,9 @@
 <?php
 
-namespace Test\Metrc;
+namespace OpenTHC\Bunk\Test\Metrc;
 
-class Measure_Test extends \Test\Metrc_Test {
-	
+class Measure_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+
     protected $path = 'unitsofmeasure/v1/active';
 
     function test_get()

@@ -3,9 +3,9 @@
  * Test Inventory Transfers
  */
 
-namespace Test\LeafData;
+namespace OpenTHC\Bunk\Test\LeafData;
 
-class Inventory_Transfers_Test extends \Test\LeafData_Test
+class Inventory_Transfers_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {
 	protected $path = 'inventory_transfers';
 

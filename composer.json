@@ -8,8 +8,8 @@
 		],
 		"psr-4": {
 			"OpenTHC\\Bunk\\": "./lib",
-			"Custom\\": "./Custom",
-			"Test\\": "./test"
+			"OpenTHC\\Bunk\\Test\\": "./test",
+			"Custom\\": "./Custom"
 		}
 	},
 	"require": {

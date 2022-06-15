@@ -3,9 +3,9 @@
  * Test Helper for METRC
  */
 
-namespace Test;
+namespace OpenTHC\Bunk\Test;
 
-class Metrc_Test extends \Test\Base_Case
+class Metrc_Test extends \OpenTHC\Bunk\Test\Base_Case
 {
 
 	public $ghc;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Test\Metrc\A_Harvests;
+namespace OpenTHC\Bunk\Test\Metrc\A_Harvests;
 
-class B_Harvests_Create_Packages_Test extends \Test\Metrc_Test {
+class B_Harvests_Create_Packages_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	protected $path = 'harvests/v1/create/packages';
 
@@ -140,7 +140,7 @@ class B_Harvests_Create_Packages_Test extends \Test\Metrc_Test {
 				]
 			]
 		);
-	} 
+	}
 
 	function test_post()
 	{

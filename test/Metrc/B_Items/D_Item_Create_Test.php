@@ -1,8 +1,8 @@
-<?php 
+<?php
 
-namespace Test\Metrc\B_Items;
+namespace OpenTHC\Bunk\Test\Metrc\B_Items;
 
-class D_Item_Create_Test extends \Test\Metrc_Test {
+class D_Item_Create_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	protected $path =  'items/v1/create';
 	protected $body;

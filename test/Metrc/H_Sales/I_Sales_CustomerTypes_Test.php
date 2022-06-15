@@ -1,8 +1,8 @@
-<?php 
+<?php
 
-namespace Test\Metrc\H_Sales;
+namespace OpenTHC\Bunk\Test\Metrc\H_Sales;
 
-class I_Sales_CustomerTypes_Test extends \Test\Metrc_Test {
+class I_Sales_CustomerTypes_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	protected $path = 'sales/v1/customertypes';
 
@@ -11,5 +11,5 @@ class I_Sales_CustomerTypes_Test extends \Test\Metrc_Test {
 		$res = $this->ghc->get($this->path);
 		$this->assertValidResponse($res);
 	}
-	
+
 }

@@ -3,9 +3,9 @@
  * Test Basic Sync
  */
 
-namespace Test\BioTrack;
+namespace OpenTHC\Bunk\Test\BioTrack;
 
-class M_Manifest_Test extends \Test\BioTrack_Test
+class M_Manifest_Test extends \OpenTHC\Bunk\Test\BioTrack_Test
 {
 	protected function setUp() : void
 	{

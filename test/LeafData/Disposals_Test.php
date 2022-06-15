@@ -3,9 +3,9 @@
  * Test Disposals
  */
 
-namespace Test\LeafData;
+namespace OpenTHC\Bunk\Test\LeafData;
 
-class Disposals_Test extends \Test\LeafData_Test
+class Disposals_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {
 	protected $path = 'disposals';
 

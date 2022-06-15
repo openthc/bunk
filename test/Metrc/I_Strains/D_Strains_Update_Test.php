@@ -1,8 +1,8 @@
-<?php 
+<?php
 
-namespace Test\Metrc\I_Strains;
+namespace OpenTHC\Bunk\Test\Metrc\I_Strains;
 
-class D_Strains_Update_Test extends \Test\Metrc_Test {
+class D_Strains_Update_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	protected $path = 'strains/v1/update';
 	protected $body;

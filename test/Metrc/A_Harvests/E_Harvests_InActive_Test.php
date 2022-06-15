@@ -1,9 +1,9 @@
-<?php 
+<?php
 
-namespace Test\Metrc\A_Harvests;
+namespace OpenTHC\Bunk\Test\Metrc\A_Harvests;
 
-class E_Harvests_InActive_Test extends \Test\Metrc_Test {
-	
+class E_Harvests_InActive_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+
 	protected $path = 'harvests/v1/inactive';
 
 	function test_get()

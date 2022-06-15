@@ -1,8 +1,8 @@
-<?php 
+<?php
 
-namespace Test\Metrc\A_Harvests;
+namespace OpenTHC\Bunk\Test\Metrc\A_Harvests;
 
-class G_Harvests_Remove_Waste_Test extends \Test\Metrc_Test {
+class G_Harvests_Remove_Waste_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	protected $path = 'harvests/v1/removewaste';
 	protected $body;
@@ -32,5 +32,5 @@ class G_Harvests_Remove_Waste_Test extends \Test\Metrc_Test {
 		$res = $this->ghc->post($this->path, ['body' => $this->body]);
 		$this->assertValidResponse($res);
 	}
-	
+
 }

@@ -3,9 +3,9 @@
  * Test Sales
  */
 
-namespace Test\LeafData;
+namespace OpenTHC\Bunk\Test\LeafData;
 
-class Sales_Test extends \Test\LeafData_Test
+class Sales_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {
 	protected $path = 'sales';
 

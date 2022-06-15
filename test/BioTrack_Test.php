@@ -3,9 +3,9 @@
  * Test Helper for BioTrack
  */
 
-namespace Test;
+namespace OpenTHC\Bunk\Test;
 
-class BioTrack_Test extends \Test\Base_Case
+class BioTrack_Test extends \OpenTHC\Bunk\Test\Base_Case
 {
 	protected $_sid;
 

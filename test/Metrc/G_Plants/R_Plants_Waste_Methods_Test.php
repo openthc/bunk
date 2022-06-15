@@ -1,8 +1,8 @@
-<?php 
+<?php
 
-namespace Test\Metrc\G_Plants;
+namespace OpenTHC\Bunk\Test\Metrc\G_Plants;
 
-class R_Plants_Waste_Methods_Test extends \Test\Metrc_Test {
+class R_Plants_Waste_Methods_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	protected $path = 'plants/v1/waste/methods';
 

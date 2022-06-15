@@ -3,9 +3,9 @@
  *
  */
 
-namespace Test\CCRS;
+namespace OpenTHC\Bunk\Test\CCRS;
 
-class Lab_Result_Test extends \Test\CCRS_Test
+class Lab_Result_Test extends \OpenTHC\Bunk\Test\CCRS_Test
 {
 
 }

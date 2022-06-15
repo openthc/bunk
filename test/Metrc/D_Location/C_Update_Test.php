@@ -1,8 +1,8 @@
 <?php
 
-namespace Test\Metrc\D_Location;
+namespace OpenTHC\Bunk\Test\Metrc\D_Location;
 
-class C_Update_Test extends \Test\Metrc_Test {
+class C_Update_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	protected $path = 'locations/v1/update';
 	protected $body;

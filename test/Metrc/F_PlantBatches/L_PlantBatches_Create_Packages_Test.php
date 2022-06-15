@@ -1,8 +1,8 @@
-<?php 
+<?php
 
-namespace Test\Metrc\F_PlantBatches;
+namespace OpenTHC\Bunk\Test\Metrc\F_PlantBatches;
 
-class L_PlantBatches_Create_Packages_Test extends \Test\Metrc_Test {
+class L_PlantBatches_Create_Packages_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	protected $path = 'plantbatches/v1/createpackages';
 	protected $body;

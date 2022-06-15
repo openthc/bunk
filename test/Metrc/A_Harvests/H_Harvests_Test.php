@@ -1,8 +1,8 @@
 <?php
 
-namespace Test\Metrc\A_Harvests;
+namespace OpenTHC\Bunk\Test\Metrc\A_Harvests;
 
-class H_Harvests_Test extends \Test\Metrc_Test {
+class H_Harvests_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	protected $path = 'harvests/v1/active';
 

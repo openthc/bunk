@@ -3,9 +3,9 @@
  * Test Lab Results
  */
 
-namespace Test\LeafData;
+namespace OpenTHC\Bunk\Test\LeafData;
 
-class Lab_Results_Test extends \Test\LeafData_Test
+class Lab_Results_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {
 	protected $path = 'lab_results';
 

@@ -3,9 +3,9 @@
  * Test Areas
  */
 
-namespace Test\LeafData;
+namespace OpenTHC\Bunk\Test\LeafData;
 
-class Areas_Test extends \Test\LeafData_Test
+class Areas_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {
 	protected $path = 'areas';
 

@@ -1,8 +1,8 @@
-<?php 
+<?php
 
-namespace Test\Metrc\B_Items;
+namespace OpenTHC\Bunk\Test\Metrc\B_Items;
 
-class F_Item_Update_Test extends \Test\Metrc_Test {
+class F_Item_Update_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	protected $path =  'items/v1/update';
 
@@ -97,7 +97,7 @@ class F_Item_Update_Test extends \Test\Metrc_Test {
 			]
 		);
 	}
-	
+
 	function test_post()
 	{
 		$res = $this->ghc->post($this->path, ['json' => $this->body]);

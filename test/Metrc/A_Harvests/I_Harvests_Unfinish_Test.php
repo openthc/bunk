@@ -1,9 +1,9 @@
-<?php 
+<?php
 
-namespace Test\Metrc\A_Harvests;
+namespace OpenTHC\Bunk\Test\Metrc\A_Harvests;
 
-class I_Harvests_Unfinish_Test extends \Test\Metrc_Test {
-	
+class I_Harvests_Unfinish_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+
 	protected $path = 'harvests/v1/unfinish';
 	protected $body;
 
@@ -26,5 +26,5 @@ class I_Harvests_Unfinish_Test extends \Test\Metrc_Test {
 		$res = $this->ghc->put($this->path, [ 'json' => $this->body ]);
 		$this->assertValidResponse($res);
 	}
-	
+
 }

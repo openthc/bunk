@@ -3,9 +3,9 @@
  * Test Helper for LeafData
  */
 
-namespace Test;
+namespace OpenTHC\Bunk\Test;
 
-class LeafData_Test extends \Test\Base_Case
+class LeafData_Test extends \OpenTHC\Bunk\Test\Base_Case
 {
 	public $ghc;
 

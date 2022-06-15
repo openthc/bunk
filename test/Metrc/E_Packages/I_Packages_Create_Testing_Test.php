@@ -1,8 +1,8 @@
 <?php
 
-namespace Test\Metrc\E_Packages;
+namespace OpenTHC\Bunk\Test\Metrc\E_Packages;
 
-class I_Packages_Create_Testing_Test extends \Test\Metrc_Test {
+class I_Packages_Create_Testing_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	protected $path = 'packages/v1/create/testing';
 	protected $body;

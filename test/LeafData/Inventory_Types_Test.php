@@ -3,9 +3,9 @@
  * Test Inventory Types
  */
 
-namespace Test\LeafData;
+namespace OpenTHC\Bunk\Test\LeafData;
 
-class Inventory_Types_Test extends \Test\LeafData_Test
+class Inventory_Types_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {
 	protected $path = 'inventory_types';
 

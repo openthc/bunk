@@ -3,9 +3,9 @@
  * Test Inventories
  */
 
-namespace Test\LeafData;
+namespace OpenTHC\Bunk\Test\LeafData;
 
-class Inventories_Test extends \Test\LeafData_Test
+class Inventories_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {
 	protected $path = 'inventories';
 

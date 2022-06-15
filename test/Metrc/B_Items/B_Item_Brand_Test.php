@@ -1,8 +1,8 @@
-<?php 
+<?php
 
-namespace Test\Metrc\B_Items;
+namespace OpenTHC\Bunk\Test\Metrc\B_Items;
 
-class B_Item_Brand_Test extends \Test\Metrc_Test {
+class B_Item_Brand_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	protected $path = 'items/v1/brands';
 

@@ -3,9 +3,9 @@
  *
  */
 
-namespace Test\CCRS;
+namespace OpenTHC\Bunk\Test\CCRS;
 
-class Crop_Test extends \Test\CCRS_Test
+class Crop_Test extends \OpenTHC\Bunk\Test\CCRS_Test
 {
 
 }

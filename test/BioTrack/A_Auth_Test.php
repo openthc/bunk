@@ -3,9 +3,9 @@
  * Test Authentication
  */
 
-namespace Test\BioTrack;
+namespace OpenTHC\Bunk\Test\BioTrack;
 
-class A_Auth_Test extends \Test\BioTrack_Test
+class A_Auth_Test extends \OpenTHC\Bunk\Test\BioTrack_Test
 {
 	function test_auth_fail()
 	{

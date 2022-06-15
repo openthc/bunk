@@ -3,7 +3,7 @@
  *
  */
 
-namespace Test;
+namespace OpenTHC\Bunk\Test;
 
 class Base_Case extends \PHPUnit\Framework\TestCase
 {

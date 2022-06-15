@@ -1,8 +1,8 @@
-<?php 
+<?php
 
-namespace Test\Metrc\G_Plants;
+namespace OpenTHC\Bunk\Test\Metrc\G_Plants;
 
-class M_Plants_MovePlants_Test extends \Test\Metrc_Test {
+class M_Plants_MovePlants_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	protected $path = 'plants/v1/moveplants';
 	protected $body;
@@ -23,7 +23,7 @@ class M_Plants_MovePlants_Test extends \Test\Metrc_Test {
 				"ActualDate"=> "2015-12-15"
 				]
 		);
-		
+
 	}
 
 	function test_post()
