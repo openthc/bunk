@@ -6,6 +6,13 @@
 set -o errexit
 set -o nounset
 
+x=${OPENTHC_TEST_BASE:-}
+if [ -z "$x" ]
+then
+	echo "You have to define the environment first"
+	exit 1
+fi
+
 f=$(readlink -f "$0")
 d=$(dirname "$f")
 
@@ -22,17 +29,20 @@ code_list=(
 )
 
 
+OUTPUT_BASE="${output_base}"
+OUTPUT_MAIN="${output_main}"
+SOURCE_LIST="${code_list}"
+
+export OUTPUT_BASE OUTPUT_MAIN SOURCE_LIST
+
+
 #
 # Lint
 if [ ! -f "$output_base/phplint.txt" ]
 then
 
 	echo '<h1>Linting...</h1>' > "$output_main"
-	code_list=(
-		boot.php
-		lib/
-		test/
-	)
+
 	find "${code_list[@]}" -type f -name '*.php' -exec php -l {} \; \
 		| grep -v 'No syntax' \
 		>"$output_base/phplint.txt" \
@@ -46,34 +56,12 @@ fi
 
 #
 # PHP-CPD
-if [ ! -f "$output_base/phpcpd.txt" ]
-then
-
-	echo '<h1>CPD Check</h1>' > "$output_main"
-
-	vendor/bin/phpcpd \
-		--fuzzy \
-		"${code_list[@]}" \
-		> "$output_base/phpcpd.txt" \
-		2>&1 \
-		|| true
-
-fi
+vendor/openthc/common/test/phpcpd.sh
 
 
 #
 # PHPStan
-if [ ! -f "$output_base/phpstan.html" ]
-then
-	echo '<h1>PHPStan...</h1>' > "$output_main"
-	vendor/bin/phpstan analyze --error-format=junit --no-progress > "$output_base/phpstan.xml" || true
-	[ -f "phpstan.xsl" ] || curl -qs 'https://openthc.com/pub/phpstan.xsl' > "test/phpstan.xsl"
-	xsltproc \
-		--nomkdir \
-		--output "$output_base/phpstan.html" \
-		phpstan.xsl \
-		"$output_base/phpstan.xml"
-fi
+vendor/openthc/common/test/phpstan.sh
 
 
 #
