@@ -32,7 +32,7 @@ class G_Harvests_Remove_Waste_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 
 	function test_post()
 	{
-		$res = $this->ghc->post($this->path, ['body' => $this->body]);
+		$res = $this->ghc->post($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 

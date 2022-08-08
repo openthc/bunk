@@ -28,7 +28,7 @@ class G_PlantBatches_MovePlantBatches_Test extends \OpenTHC\Bunk\Test\Metrc_Test
 
 	function test_post()
 	{
-		$res = $this->ghc->post($this->path, ['json' => $this->body]);
+		$res = $this->ghc->put($this->path, ['json' => $this->body]);
 		$this->assertValidResponse($res);
 	}
 

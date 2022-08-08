@@ -18,7 +18,7 @@ class D_Delete_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
 	function test_delete()
 	{
 		$res = $this->ghc->delete($this->path);
-		$this->assertValidDelete($res, $this->path);
+		$this->assertValidResponse($res, 403);
 	}
 
 }
