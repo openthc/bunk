@@ -1,6 +1,8 @@
 <?php
 /**
  * Library of Shit for the mock BioTrack API
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 namespace OpenTHC\Bunk\BioTrack;

@@ -1,6 +1,8 @@
 <?php
 /**
  * Main Controller - via Slim
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 require_once(dirname(dirname(__FILE__)) . '/boot.php');

@@ -1,6 +1,8 @@
 <?php
 /**
  * Test Sales
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 namespace OpenTHC\Bunk\Test\LeafData;

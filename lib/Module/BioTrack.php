@@ -1,6 +1,8 @@
 <?php
 /**
  * BioTrack API Group Controller
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 namespace OpenTHC\Bunk\Module;

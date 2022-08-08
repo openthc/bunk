@@ -1,7 +1,8 @@
 <?php
 /**
-
-*/
+ *
+ * SPDX-License-Identifier: MIT
+ */
 
 //use Edoceo\Radix\DB\SQL;
 

@@ -1,6 +1,8 @@
 <?php
 /**
  * METRC Group
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 namespace OpenTHC\Bunk\Module;
@@ -285,7 +287,7 @@ class METRC extends \OpenTHC\Module\Base
 			$this->get('/plants/v1/vegetative', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/plants/vegetative.php');
 			});
-			
+
 			$this->get('/plants/v1/flowering', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/plants/flowering.php');
 			});
@@ -445,7 +447,7 @@ class METRC extends \OpenTHC\Module\Base
 			$this->get('/transfers/v1/templates/{id}/deliveries', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/templates_delivery.php');
 			});
-			
+
 			$this->map(['GET','POST', 'PUT', 'DELETE'], '/transfers/v1/templates', function($REQ, $RES, $ARG) {
 				return require_once( APP_ROOT . '/lib/metrc/transfer/templates.php');
 			});
@@ -464,4 +466,3 @@ class METRC extends \OpenTHC\Module\Base
 	}
 
 }
-

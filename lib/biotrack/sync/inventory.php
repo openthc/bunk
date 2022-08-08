@@ -1,7 +1,9 @@
 <?php
 /**
-	Fake Inventory Sync
-*/
+ * Fake Inventory Sync
+ *
+ * SPDX-License-Identifier: MIT
+ */
 
 use \OpenTHC\Bunk\BioTrack\Base;
 

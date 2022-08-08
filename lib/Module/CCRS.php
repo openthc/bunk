@@ -2,6 +2,8 @@
 /**
  * LCB CCRS API Group Controller
  * Just shit-hacked this together
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 namespace OpenTHC\Bunk\Module;

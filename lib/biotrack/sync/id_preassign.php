@@ -1,6 +1,8 @@
 <?php
 /**
  * Sync Employee
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 use \OpenTHC\Bunk\BioTrack\Base;

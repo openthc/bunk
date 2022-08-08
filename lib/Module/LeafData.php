@@ -1,6 +1,8 @@
 <?php
 /**
  * LeafData Module
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 namespace OpenTHC\Bunk\Module;

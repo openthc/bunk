@@ -2,6 +2,8 @@
 #
 # OpenTHC Test Runner
 #
+# SPDX-License-Identifier: MIT
+#
 
 set -o errexit
 set -o nounset

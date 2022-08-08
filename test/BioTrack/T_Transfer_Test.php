@@ -1,6 +1,8 @@
 <?php
 /**
- * Test Basic Sync
+ * Test B2B
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 namespace OpenTHC\Bunk\Test\BioTrack;

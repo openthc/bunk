@@ -1,7 +1,9 @@
 <?php
 /**
-	Sync Vehicle
-*/
+ * Sync Vehicle
+ *
+ * SPDX-License-Identifier: MIT
+ */
 
 return $RES->withJSON(array(
 	'success' => 1,

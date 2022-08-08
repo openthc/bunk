@@ -1,6 +1,8 @@
 <?php
 /**
  * Test Helper for LeafData
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 namespace Test\A_System;

@@ -1,6 +1,8 @@
 <?php
 /**
  * Return the Tax Obligation Reports
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 use \OpenTHC\Bunk\BioTrack\Base;

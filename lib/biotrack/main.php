@@ -1,6 +1,8 @@
 <?php
 /**
  * A Mock BioTrackTHC API
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 use \OpenTHC\Bunk\BioTrack\Base;

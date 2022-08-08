@@ -1,7 +1,9 @@
 <?php
 /**
-	Sync Vendor
-*/
+ * Sync Vendor
+ *
+ * SPDX-License-Identifier: MIT
+ */
 
 use \OpenTHC\Bunk\BioTrack\Base;
 

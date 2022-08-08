@@ -1,7 +1,9 @@
 <?php
 /**
-	Return List of Plants
-*/
+ * Return List of Plants
+ *
+ * SPDX-License-Identifier: MIT
+ */
 
 use \OpenTHC\Bunk\BioTrack\Base;
 

@@ -1,6 +1,8 @@
 <?php
 /**
  * Bunk Inventory Sample
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 use \OpenTHC\Bunk\BioTrack\Base;

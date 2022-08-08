@@ -1,6 +1,7 @@
 <?php
-
-namespace OpenTHC\Bunk\Test\Metrc\J_Transfer;
+/**
+ * SPDX-License-Identifier: MIT
+ */
 
 class Transfer_Rejected_Test extends \OpenTHC\Bunk\Test\Metrc_Test
 {

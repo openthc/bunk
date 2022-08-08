@@ -1,6 +1,8 @@
 <?php
 /**
  * Test Authentication
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 namespace OpenTHC\Bunk\Test\BioTrack;

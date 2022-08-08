@@ -2,6 +2,8 @@
 /**
  * Simulate the BioTrack API for Login
  * HI, IL, NM, WA
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 if (empty($json['license_number'])) {

@@ -1,6 +1,8 @@
 <?php
 /**
  * Inactive Plant Batches
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 namespace OpenTHC\Bunk\Metrc\Plant_Batches;

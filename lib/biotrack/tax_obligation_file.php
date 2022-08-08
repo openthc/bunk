@@ -1,6 +1,8 @@
 <?php
 /**
  * Save the Tax Obligation File
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 use \OpenTHC\Bunk\BioTrack\Base;

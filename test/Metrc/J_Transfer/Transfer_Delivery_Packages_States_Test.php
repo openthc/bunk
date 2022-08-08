@@ -1,4 +1,7 @@
 <?php
+/**
+ * SPDX-License-Identifier: MIT
+ */
 
 namespace OpenTHC\Bunk\Test\Metrc\J_Transfer;
 

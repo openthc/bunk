@@ -1,7 +1,9 @@
 <?php
 /**
-	Generate Bunk Third Party Transport
-*/
+ * Generate Bunk Third Party Transport
+ *
+ * SPDX-License-Identifier: MIT
+ */
 
 use \OpenTHC\Bunk\BioTrack\Base;
 

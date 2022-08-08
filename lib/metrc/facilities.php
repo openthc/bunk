@@ -1,6 +1,8 @@
 <?php
 /**
  * Metrc Bunk Facilities (License)
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 namespace OpenTHC\Bunk\Metrc;

@@ -1,7 +1,9 @@
 <?php
 /**
-	Return a Transfer Manifest
-*/
+ * Return a Transfer Manifest
+ *
+ * SPDX-License-Identifier: MIT
+ */
 
 use \OpenTHC\Bunk\BioTrack\Base;
 
