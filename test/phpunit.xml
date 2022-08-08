@@ -14,24 +14,28 @@
 	convertNoticesToExceptions="true"
 	convertWarningsToExceptions="true"
 	processIsolation="false"
-	stopOnError="false"
-	stopOnFailure="false"
-	stopOnRisky="false"
-	timeoutForSmallTests="1"
-	timeoutForMediumTests="10"
-	timeoutForLargeTests="60"
+	stopOnError="true"
+	stopOnFailure="true"
+	stopOnRisky="true"
+	timeoutForSmallTests="2"
+	timeoutForMediumTests="8"
+	timeoutForLargeTests="32"
 	verbose="false"
 	>
 
 	<coverage />
 
 	<php>
-		<env name="debug-http" value="false"/>
+		<env name="debug-http" value="false" />
 
-		<env name="api-uri" value="bunk.openthc.dev" />
-		<env name="biotrack-uri" value="" />
-		<env name="leafdata-uri" value="" />
-		<env name="metrc-uri" value="" />
+		<env name="biotrack-company-g" value="999000001" />
+		<env name="biotrack-company-p" value="999000002" />
+		<env name="biotrack-company-l" value="999000003" />
+		<env name="biotrack-company-r" value="999000004" />
+
+		<env name="biotrack-username" value="USERNAME_SECRET" />
+		<env name="biotrack-password" value="PASSWORD_SECRET" />
+
 	</php>
 
 	<testsuites>
@@ -40,13 +44,14 @@
 			<directory>BioTrack</directory>
 		</testsuite>
 
-		<testsuite name="LeafData">
+		<!-- <testsuite name="LeafData">
 			<directory>LeafData</directory>
-		</testsuite>
+		</testsuite> -->
 
 		<testsuite name="Metrc">
 			<directory>Metrc</directory>
 		</testsuite>
 
 	</testsuites>
+
 </phpunit>
