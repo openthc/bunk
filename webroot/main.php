@@ -5,6 +5,9 @@
 
 require_once(dirname(dirname(__FILE__)) . '/boot.php');
 
+// Rewrite a bunch of URL Stuff before Slim
+_url_host_helper_rewrite();
+
 // App Configuration
 $cfg = [];
 $cfg['debug'] = true;
@@ -30,16 +33,16 @@ $con['notFoundHandler'] = function($c) {
 };
 
 // BioTrack Fake Interface
-$app->group('/biotrack', 'OpenTHC\Bunk\Module\BioTrack');
+$app->group('/biotrack/v2013', 'OpenTHC\Bunk\Module\BioTrack');
 
 // BioTrack Fake Interface
-$app->group('/ccrs', 'OpenTHC\Bunk\Module\CCRS');
+$app->group('/ccrs/v2021', 'OpenTHC\Bunk\Module\CCRS');
 
 // LeafData Fake Interface
-$app->group('/leafdata', 'OpenTHC\Bunk\Module\LeafData');
+$app->group('/leafdata/v2018', 'OpenTHC\Bunk\Module\LeafData');
 
 // Metrc Fake Interface
-$app->group('/metrc', 'OpenTHC\Bunk\Module\METRC');
+$app->group('/metrc/v2015', 'OpenTHC\Bunk\Module\METRC');
 
 // Go!
 $app->run();
