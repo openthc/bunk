@@ -13,7 +13,7 @@
 		}
 	},
 	"require": {
-		"edoceo/radix": "dev-master",
+		"edoceo/radix": "2021.0.0",
 		"openthc/common": "dev-master"
 	},
 	"require-dev": {
