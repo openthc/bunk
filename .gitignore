@@ -25,5 +25,5 @@ release/
 test/*.xsl
 var/
 vendor/
-webroot/pub
+webroot/pub/
 webroot/test-output/
