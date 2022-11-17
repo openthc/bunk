@@ -33,6 +33,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		break;
 
 	case 'POST':
+		return $RES->write('{"Ids": null,"Warnings": []}');
 	case 'PUT':
 	case 'Delete':
 		return $RES->write("");
