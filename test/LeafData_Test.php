@@ -151,10 +151,10 @@ class LeafData_Test extends \OpenTHC\Bunk\Test\Base_Case
 	protected function _api($opt=null)
 	{
 		// create our http client (Guzzle)
-		$url_base = rtrim(getenv('OPENTHC_TEST_BASE'), '/');
-		$url_base = sprintf('%s/leafdata/', $url_base);
+		$base = rtrim(getenv('OPENTHC_TEST_BASE'), '/');
+
 		$cfg = array(
-			'base_uri' => $url_base,
+			'base_uri' => sprintf('%s/leafdata/v2018/', $base),
 			'headers' => [
 				'x-mjf-mme-code' => null,
 				'x-mjf-key' => null,
