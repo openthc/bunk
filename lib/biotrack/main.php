@@ -63,7 +63,7 @@ if (empty($json['action'])) {
 		'_request' => $json,
 	), 400);
 }
-if (!preg_match('/^\w+$/', $json['action'])) {
+if ( ! preg_match('/^\w+$/', $json['action'])) {
 	return $RES->withJSON(array(
 		'success' => 0,
 		'_detail' => 'Invalid "action" parameter',
@@ -72,7 +72,7 @@ if (!preg_match('/^\w+$/', $json['action'])) {
 }
 
 // Load Given Session ID
-if (!empty($json['sessionid'])) {
+if ( ! empty($json['sessionid'])) {
 	session_id($json['sessionid']);
 	session_start();
 }
@@ -84,10 +84,8 @@ switch ($json['action']) {
 case 'employee_add':
 case 'employee_modify':
 case 'employee_remove':
-case 'inventory_room_add':
 case 'inventory_room_modify':
 case 'inventory_room_remove':
-case 'plant_room_add':
 case 'plant_room_modify':
 case 'plant_room_remove':
 case 'vehicle_add':
