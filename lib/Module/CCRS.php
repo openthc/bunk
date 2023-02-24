@@ -125,9 +125,9 @@ class CCRS extends \OpenTHC\Module\Base
 	}
 
 	/**
-	 * @param $a Slim Application
+	 * @param App $a Slim Application
 	 */
-	function __invoke($a)
+	function __invoke(\OpenTHC\App $a)
 	{
 		// Info
 		$a->get('', function($REQ, $RES, $ARG) {

@@ -22,9 +22,9 @@ class LeafData extends \OpenTHC\Module\Base
 	}
 
 	/**
-	 * @param $a Slim Application
+	 * @param \OpenTHC\App $a Slim Application
 	 */
-	function __invoke($a)
+	function __invoke(\OpenTHC\App $a)
 	{
 
 		// Info

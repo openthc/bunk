@@ -31,13 +31,13 @@ class Base
 		'id_preassign' => 'IDs',
 	);
 
-	static function _rnd_barcode($k=null)
+	static function _rnd_barcode($k=null) : string
 	{
 		if (empty($k)) $k = '0000';
 		return "9999{$k}00" . sprintf('%06d', mt_rand(1, 9999));
 	}
 
-	static function _rnd_inventory_type()
+	static function _rnd_inventory_type() : string
 	{
 		$product_type_list = [];
 		$product_type_list = array_keys($product_type_list);
@@ -45,7 +45,7 @@ class Base
 		return $product_type_list[$idx];
 	}
 
-	static function _rnd_license()
+	static function _rnd_license() : string
 	{
 		$license_list = array(
 			'100111111',
@@ -62,7 +62,7 @@ class Base
 		return $license_list[$idx];
 	}
 
-	static function _rnd_product_name()
+	static function _rnd_product_name() : string
 	{
 		$product_list = array(
 			'BTMRND: Matanuska TF',
@@ -82,7 +82,7 @@ class Base
 		return $product_list[$idx];
 	}
 
-	static function _rnd_transaction_id()
+	static function _rnd_transaction_id() : string
 	{
 		static $i = 0;
 		$i++;

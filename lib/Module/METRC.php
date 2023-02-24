@@ -10,9 +10,9 @@ namespace OpenTHC\Bunk\Module;
 class METRC extends \OpenTHC\Module\Base
 {
 	/**
-		@param $a Slim Application
-	*/
-	function __invoke($a)
+	 * @param \OpenTHC\App $a Slim Application
+	 */
+	function __invoke(\OpenTHC\App $a)
 	{
 		$a->get('', function($REQ, $RES, $ARG) {
 			return _page_doc_merge('metrc');
