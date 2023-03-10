@@ -16,7 +16,7 @@ require_once(APP_ROOT . '/vendor/autoload.php');
 /**
  * Shit Hack for a "theme"
  */
-function _page_doc_merge($f)
+function _page_doc_merge(string $f) : void
 {
 	$source = file_get_contents(APP_ROOT . '/webroot/index.html');
 
