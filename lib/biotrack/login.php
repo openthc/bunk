@@ -6,6 +6,8 @@
  * SPDX-License-Identifier: MIT
  */
 
+use Edoceo\Radix\DB\SQL;
+
 if (empty($json['license_number'])) {
 
 	return $RES->withJSON(array(
@@ -74,6 +76,34 @@ if (!empty($cfg['login_fail'])) {
 }
 
 session_start();
+
+$_SESSION['Company'] = [
+	'id' => $json['license_number']
+];
+$sql_file = sprintf('%s/var/biotrack_%s.sqlite', APP_ROOT, $_SESSION['Company']['id']);
+if ( ! is_file($sql_file)) {
+
+	$dsn = sprintf('sqlite:%s', $sql_file);
+	$dbc = new SQL($dsn);
+
+	$dbc->query('CREATE TABLE section (id, name, meta)');
+	// $dbc->query('CREATE TABLE variety (id, name, meta)');
+	// $dbc->query('CREATE TABLE product (id, name, meta)');
+
+	$dbc->query('CREATE TABLE crop (id, name, meta)');
+	$dbc->query('CREATE TABLE crop_collect (id, name, meta)');
+
+	$dbc->query('CREATE TABLE inventory (id, name, meta)');
+	$dbc->query('CREATE TABLE inventory_adjust (id, name, meta)');
+
+	$dbc->query('CREATE TABLE b2b_incoming (id, name, meta)');
+	$dbc->query('CREATE TABLE b2b_incoming_item (id, b2b_incoming_id, name, meta)');
+
+	$dbc->query('CREATE TABLE b2b_outgoing (id, name, meta)');
+	$dbc->query('CREATE TABLE b2b_outgoing_item (id, b2b_outgoing_id, name, meta)');
+
+}
+
 
 return $RES->withJSON([
 	'success' => 1,
