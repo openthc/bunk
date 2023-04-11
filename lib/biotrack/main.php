@@ -27,7 +27,7 @@ $post = file_get_contents('php://input');
 if (empty($post)) {
 	return $RES->withJSON(array(
 		'success' => 0,
-		'_detail' => 'There was no JSON input [OBM-034]',
+		'meta' => [ 'note' => 'There was no JSON input [OBM-034]' ],
 	), 400);
 }
 
@@ -36,9 +36,11 @@ $json = json_decode($post, true);
 if (empty($json)) {
 	return $RES->withJSON(array(
 		'success' => 0,
-		'_detail' => 'Error Decoding Input [OBM-041]',
-		'_errors' => json_last_error_msg(),
-		'_input' => $post,
+		'meta' => [
+			'note' => 'Error Decoding Input [OBM-041]',
+			'json_error' => json_last_error_msg(),
+			'json_source' => $post,
+		]
 	), 400);
 }
 
@@ -48,8 +50,10 @@ if ($json['API'] != '4.0') {
 		'success' => 0,
 		'error' => 'Invalid API Version',
 		'errorcode' => 17,
-		'_detail' => 'The "API" key must be provided, the only allowed value is "4.0"',
-		'_request' => $json,
+		'meta' => [
+			'note' => 'The "API" key must be provided, the only allowed value is "4.0"',
+			'json_source' => $json,
+		]
 	), 400);
 }
 
@@ -59,15 +63,19 @@ if (empty($json['action'])) {
 		'success' => 0,
 		'error' => 'Invalid Action',
 		'errorcode' => 62,
-		'_detail' => 'The "action" parameter must be provided',
-		'_request' => $json,
+		'meta' => [
+			'note' => 'The "action" parameter must be provided',
+			'json_source' => $json,
+		]
 	), 400);
 }
 if ( ! preg_match('/^\w+$/', $json['action'])) {
 	return $RES->withJSON(array(
 		'success' => 0,
-		'_detail' => 'Invalid "action" parameter',
-		'_request' => $json,
+		'meta' => [
+			'note' => 'Invalid "action" parameter',
+			'json_source' => $json,
+		]
 	), 400);
 }
 

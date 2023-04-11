@@ -31,12 +31,18 @@ class Base
 		'id_preassign' => 'IDs',
 	);
 
+	/**
+	 * Generate a 16 Digit GUID
+	 */
 	static function _rnd_barcode($k=null) : string
 	{
 		if (empty($k)) $k = '0000';
 		return "9999{$k}00" . sprintf('%06d', mt_rand(1, 9999));
 	}
 
+	/**
+	 * Generate a Random Inventory Type
+	 */
 	static function _rnd_inventory_type() : string
 	{
 		$product_type_list = [];
@@ -45,6 +51,9 @@ class Base
 		return $product_type_list[$idx];
 	}
 
+	/**
+	 * Pick one of the well-known license at random
+	 */
 	static function _rnd_license() : string
 	{
 		$license_list = array(
@@ -62,6 +71,9 @@ class Base
 		return $license_list[$idx];
 	}
 
+	/**
+	 *
+	 */
 	static function _rnd_product_name() : string
 	{
 		$product_list = array(
@@ -82,11 +94,15 @@ class Base
 		return $product_list[$idx];
 	}
 
+	/**
+	 *
+	 */
 	static function _rnd_transaction_id() : string
 	{
 		static $i = 0;
 		$i++;
-		return floor($_SERVER['REQUEST_TIME'] / 10) + $i;
+		$t = $_SERVER['REQUEST_TIME_FLOAT'] ?: $_SERVER['REQUEST_TIME'] ?: time();
+		return floor($t / 10) + $i;
 	}
 
 }

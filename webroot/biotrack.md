@@ -1,38 +1,45 @@
 # BioTrackTHC Mock API Interface
 
 It's like the *serverjson.asp* interface that BioTrack provides.
-It's compatible with WA, HI, IL, ND, NM interfaces.
+It's compatible with Arkansas, Connecticut, Delaware, Florida, Hawaii, Illinois, New Hampshire, New Mexico, New York, North Dakota, Virginia, and ~Washington~ interfaces.
+
 
 ## Usage
 
  * **$BASE** is $HOST/biotrack/v2013/serverjson.asp
 
-Like the standard BioTrack API you simply login() and get a session token.
+Like the standard BioTrack API you simply login and get a session token.
 This session token is then included with all subsequent calls.
+Notice also the unique `content-type` that BioTrack uses.
 
 	POST /biotrack/v2013/serverjson.asp
 	Content-Type: text/JSON
 
 	{ "license_number": "", "username": "", "password": "" }
 
+
 ## Example
 
-    curl \
-		$HOST/biotrack/v2013/serverjson.asp \
-		-X POST \
-		-H "content-type: application/json" \
-		--data '{
-			"action": "login",
-			"license_number": "",
-			"username": "",
-			"password": ""
-		}'
+This example just does a simple login.
+
+```
+curl \
+	$HOST/biotrack/v2013/serverjson.asp \
+	-X POST \
+	-H "content-type: text/JSON" \
+	--data '{
+		"action": "login",
+		"license_number": "999123456",
+		"username": "user@example.com",
+		"password": "password"
+	}'
+```
 
 
 ## Extended Data
 
 Some responses will come with extended data, maybe useful for debugging.
-They will all begin with an underscore prefix, *_detail* or or something.
+This additional information will be under the `meta` property.
 
 
 ## Supported Calls:
@@ -132,8 +139,16 @@ They will all begin with an underscore prefix, *_detail* or or something.
  * vehicle_remove
 
 
-## See Alsow
+## See Also
 
- * HI Documentation: https://www.biotrack.com/wp-content/uploads/2018/03/JSON-1.pdf
- * IL Documentation: https://www.biotrack.com/wp-content/uploads/2018/04/IL-JSON-2-1.pdf
- * NM Documentation: https://www.biotrack.com/wp-content/uploads/2018/01/JSON-2.pdf
+ * Arkansas
+ * Connecticut
+ * Delaware
+ * Florida
+ * Hawaii https://hicsts.hawaii.gov/ - Documentation: https://www.biotrack.com/wp-content/uploads/2018/03/JSON-1.pdf
+ * Illinois Documentation: https://www.biotrack.com/wp-content/uploads/2018/04/IL-JSON-2-1.pdf
+ * New Hampshire
+ * New Mexico Documentation: https://www.biotrack.com/wp-content/uploads/2018/01/JSON-2.pdf
+ * New York
+ * North Dakota
+ * Virginia
