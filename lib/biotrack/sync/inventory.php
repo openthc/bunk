@@ -191,5 +191,4 @@ return $RES->withJSON(array(
 			'usable_weight' => '1.5050505050505',
 			'wet' => 0,
 		),
-	)
-));
+)));
