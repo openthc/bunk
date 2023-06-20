@@ -160,5 +160,36 @@ return $RES->withJSON(array(
 			'usable_weight' => '300',
 			'wet' => 0,
 		),
+
+		// @gitlab app#1565
+		array(
+			'currentroom' => NULL,
+			'deleted' => 0,
+			'id' => '2023171133000000',
+			'inventoryparentid' => array(
+				0 => '2023171133000001',
+			),
+			'inventorystatus' => NULL,
+			'inventorystatustime' => 1684591739,
+			'inventorytype' => 28,
+			'is_sample' => NULL,
+			'location' => '990001',
+			'net_package' => '1.5',
+			'parentid' => array(
+				0 => '2023171133000002',
+			),
+			'plantid' => NULL,
+			'productname' => 'Preroll',
+			'rec_usableweight' => '0.053',
+			'remaining_quantity' => '99.00',
+			'seized' => NULL,
+			'sessiontime' => 1683396546,
+			'source_id' => NULL,
+			'strain' => 'Green Crack',
+			'transactionid' => Base::_rnd_transaction_id(),
+			'transactionid_original' => Base::_rnd_transaction_id(),
+			'usable_weight' => '1.5050505050505',
+			'wet' => 0,
+		),
 	)
 ));
