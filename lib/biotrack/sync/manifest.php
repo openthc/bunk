@@ -60,7 +60,7 @@ $out['manifest_stop_data'][] = array(
 		"deleted" => "0",
 );
 		// manifest_stop_items
-$opt['manifest_stop_items'][] = array(
+$out['manifest_stop_items'][] = array(
 		"description" => "Usable Marijuana",
 		"inventoryid" => "0000000090000033",
 		"location" => "999999",
@@ -73,4 +73,62 @@ $opt['manifest_stop_items'][] = array(
 		"deleted" => "0",
 );
 
+// @gitlab app#1654
+$out['manifest'][] = array(
+	"origination_city" => "Pena Blanca",
+	"transporter_vehicle_identification" => "ZZZZZZZZZZZZZZZZZ",
+	"sessiontime" => 1688155908,
+	"origination_zip" => "00000",
+	"transporter_dob" => "01/01/1970",
+	"origination_phone" => "855-976-9333",
+	"transactionid_original" => 63744869,
+	"origination_license_number" => "990001",
+	"stopcount" => 1,
+	"origination_state" => "NM",
+	"origination_name" => "Mock Grower",
+	"transactionid" => 63744869,
+	"deleted" => 0,
+	"completion_date" => "1688155908",
+	"transporter_id" => "001",
+	"origination_street" => "123 Main St",
+	"total_item_count" => 1,
+	"transporter_name" => "Contact 1",
+	"manifestid" => "7288034569537775",
+	"transporter_vehicle_details" => "A Vehicle",
+	"location" => "990001",
+	"fulfilled" => 0
+);
+$out['manifest_stop_data'][] = array(
+	'manifestid' => "7288034569537775",
+	'license_number' => "R999999",
+	'city' => "Albuquerque",
+	'travel_route' => "go the distance",
+	'location' => "999999",
+	'street' => "123 Main St",
+	'phone' => "855-976-9333",
+	'stopnumber' => "1",
+	'state' => "NM",
+	'name' => "A Retail",
+	'item_count' => 1,
+	'deleted' => 0,
+	'transactionid' => 63744869,
+	'arrive_time' => "1688191200",
+	'zip' => "00000",
+	'sessiontime' => 1688155908,
+	'depart_time' => "1688191200",
+	'transactionid_original' => 63744869,
+);
+$out['manifest_stop_items'][] = array(
+	'transactionid_original' => 63744869,
+	'quantity' => "1",
+	'stopnumber' => "1",
+	'requiresweighing' => null,
+	'sessiontime' => 1688155908,
+	'transactionid' => 63744869,
+	'deleted' => 0,
+	'location' => "999999",
+	'inventoryid' => "2023184130600000",
+	'description' => "Preroll",
+	'manifestid' => "7288034569537775",
+);
 return $RES->withJSON($out);
