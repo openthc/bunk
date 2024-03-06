@@ -8,7 +8,7 @@ use \OpenTHC\Bunk\BioTrack\Base;
 $ret = null;
 
 // See data files located next to this file
-foreach ($_POST['barcodeid'] as $barcodeid) {
+foreach ($json['barcodeid'] as $barcodeid) {
 	$ret[] = _read_data($barcodeid);
 }
 

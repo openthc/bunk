@@ -169,4 +169,49 @@ class I_Inventory_Test extends \OpenTHC\Bunk\Test\BioTrack_Test
 		$res = $this->assertValidResponse($res);
 	}
 
+	/**
+	 * @test
+	 * Inventory QA Check
+	 */
+	function inventory_qa_check()
+	{
+		$res = $this->post_json('', [
+			'action' => 'inventory_qa_check',
+		]);
+		$res = $this->assertValidResponse($res);
+
+	}
+
+	/**
+	 * @test
+	 * Inventory QA Check All
+	 */
+	function inventory_qa_check_all()
+	{
+		/* // No trivial responses cases found /mbw 2024-058
+		$res = $this->post_json('', [
+			'action' => 'inventory_qa_check_all',
+		]);
+		$res = $this->assertValidResponse($res);
+		*/
+
+		$res = $this->post_json('', [
+			'action' => 'inventory_qa_check_all',
+			'barcodeid' => [ '2024058110000001' ]
+		]);
+		$res = $this->assertValidResponse($res);
+
+		$res = $this->post_json('', [
+			'action' => 'inventory_qa_check_all',
+			'barcodeid' => [ '-' ]
+		]);
+		$res = $this->assertValidResponse($res);
+
+		$res = $this->post_json('', [
+			'action' => 'inventory_qa_check_all',
+			'barcodeid' => [ '2024058110000001', '2024058120000001' ]
+		]);
+		$res = $this->assertValidResponse($res);
+
+	}
 }
