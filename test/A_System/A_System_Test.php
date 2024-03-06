@@ -11,7 +11,7 @@ class A_System_Test extends \PHPUnit\Framework\TestCase
 {
 	function test_env()
 	{
-		$x = getenv('OPENTHC_TEST_BASE');
+		$x = getenv('OPENTHC_TEST_ORIGIN');
 		$this->assertNotEmpty($x);
 	}
 

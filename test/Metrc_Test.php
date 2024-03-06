@@ -30,7 +30,7 @@ class Metrc_Test extends \OpenTHC\Bunk\Test\Base_Case
 
 	protected function _api($opt=null) : object
 	{
-		$base = rtrim(getenv('OPENTHC_TEST_BASE'), '/');
+		$base = rtrim(getenv('OPENTHC_TEST_ORIGIN'), '/');
 
 		// create our http client (Guzzle)
 		$cfg = [
