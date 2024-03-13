@@ -34,6 +34,12 @@ $con['notFoundHandler'] = function($c) {
 	};
 };
 
+// Clear Error Handlers to get all the spew and logs
+if ($cfg['debug']) {
+	unset($con['errorHandler']);
+	unset($con['phpErrorHandler']);
+}
+
 // BioTrack Fake Interface
 $app->group('/biotrack/v2013', 'OpenTHC\Bunk\Module\BioTrack');
 
@@ -45,6 +51,9 @@ $app->group('/leafdata/v2018', 'OpenTHC\Bunk\Module\LeafData');
 
 // Metrc Fake Interface
 $app->group('/metrc/v2015', 'OpenTHC\Bunk\Module\METRC');
+
+// OpenTHC Fake Interface
+// $app->group('/openthc', 'OpenTHC\Bunk\Module\OpenTHC');
 
 // Go!
 $app->run();
