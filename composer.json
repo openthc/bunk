@@ -17,11 +17,10 @@
 		"openthc/common": "dev-master"
 	},
 	"require-dev": {
-		"behat/behat": "3.12.0",
 		"openthc/cre-adapter": "dev-master",
-		"phpmd/phpmd": "2.13.0",
-		"phpstan/phpstan": "1.10.5",
-		"phpunit/phpunit": "9.6.4",
+		"phpmd/phpmd": "2.15.0",
+		"phpstan/phpstan": "1.10.66",
+		"phpunit/phpunit": "9.6.18",
 		"namshi/cuzzle": "^2.0"
 	}
 }
