@@ -66,47 +66,9 @@ class BioTrack_Test extends \OpenTHC\Bunk\Test\Base_Case
 		return parent::post_json($url, $arg);
 	}
 
-	/**
-	* Intends to become an assert wrapper for a bunch of common response checks
-	* @param $res, Response Object
-	* @return void
-	*/
-	function assertValidResponse($res, $code=200, $dump=null)
-	{
-		$this->assertNotEmpty($res);
+	function assertValidResponse($res, $code_expect=200, $type_expect=null, $dump=null) {
 
-		// Dump on Errors
-		$res_code = $res->getStatusCode();
-		switch ($res_code) {
-		case 422:
-		case 500:
-			if (empty($dump)) {
-				$dump = sprintf('%d Response Code', $res_code);
-			}
-			break;
-		}
-
-		if ($res_code != $code) {
-			$dump = sprintf('%d Response Code', $res_code);
-		}
-
-		$this->raw = $res->getBody()->getContents();
-
-		$res_type = $res->getHeaderLine('content-type');
-		if ('application/json' != $res_type) {
-			$dump = 'MIME-TYPE';
-		}
-
-		if (!empty($dump)) {
-			echo "\n<<<$dump<<<\n{$this->raw}\n###\n";
-		}
-
-		$ret = \json_decode($this->raw, true);
-
-		//$this->assertEquals('HTTPS', $res->getProtocol());
-		$this->assertEquals($code, $res->getStatusCode());
-		$this->assertEquals('application/json', $res_type); // RFCs
-		// $this->assertEquals('text/json; charset=UTF-8', $res->getHeaderLine('content-type'));
+		$ret = parent::assertValidResponse($res, $code_expect, $type_expect, $dump);
 		$this->assertIsArray($ret);
 		$this->assertArrayHasKey('success', $ret);
 

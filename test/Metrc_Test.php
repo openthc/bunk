@@ -17,17 +17,6 @@ class Metrc_Test extends \OpenTHC\Bunk\Test\Base_Case
 		$this->ghc = $this->_api();
 	}
 
-	function assertValidResponse($res, $code=200, $dump=null) {
-		$code = $res->getStatusCode();
-
-		if (!empty($dump)) {
-			$raw = $res->getBody()->getContents();
-			echo "\n<<<$dump<<<\n{$raw}\n###\n";
-		}
-
-		$this->assertEquals(200, $code);
-	}
-
 	protected function _api($opt=null) : object
 	{
 		$base = rtrim(getenv('OPENTHC_TEST_ORIGIN'), '/');
