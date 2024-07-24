@@ -14,13 +14,13 @@
 	},
 	"require": {
 		"edoceo/radix": "2021.0.0",
-		"openthc/common": "dev-master"
+		"openthc/common": "dev-main"
 	},
 	"require-dev": {
-		"openthc/cre-adapter": "dev-master",
+		"openthc/cre-adapter": "dev-main",
 		"phpmd/phpmd": "2.15.0",
-		"phpstan/phpstan": "1.10.66",
-		"phpunit/phpunit": "9.6.18",
+		"phpstan/phpstan": "1.11.8",
+		"phpunit/phpunit": "9.6.20",
 		"namshi/cuzzle": "^2.0"
 	}
 }
