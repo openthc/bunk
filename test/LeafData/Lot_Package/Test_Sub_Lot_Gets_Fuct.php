@@ -5,7 +5,7 @@
  * Observe if other Plants Move
  */
 
-namespace Test\Lot_Package;
+namespace OpenTHC\Bunk\Test\LeafData\Lot_Package;
 
 class Test_Sub_Lot_Gets_Fuct extends \OpenTHC\Bunk\Test\LeafData_Test
 {

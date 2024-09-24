@@ -3,7 +3,7 @@
  * Not Sure what to Test Here
  */
 
-namespace Test\Basic;
+namespace OpenTHC\Bunk\Test\LeafData\Basic;
 
 class Batch_Create_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {

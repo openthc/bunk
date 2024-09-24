@@ -2,7 +2,7 @@
 /**
  * Lab Results
  */
-namespace Test\Laboratory;
+namespace OpenTHC\Bunk\Test\LeafData\Laboratory;
 
 class Lab_Result_Create_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {

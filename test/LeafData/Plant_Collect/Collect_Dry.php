@@ -5,7 +5,7 @@
  * Observe if other Plants Move
  */
 
-namespace Test\Plant_Collect;
+namespace OpenTHC\Bunk\Test\LeafData\Plant_Collect;
 
 class Collect_Dry extends \Test\OpenTHC_Bunk_LeafData_Test
 {

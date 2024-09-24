@@ -3,7 +3,7 @@
  * Collect from a Plant Twice
  */
 
-namespace Test\Plant_Collect;
+namespace OpenTHC\Bunk\Test\LeafData\Plant_Collect;
 
 class Collect_Twice_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {

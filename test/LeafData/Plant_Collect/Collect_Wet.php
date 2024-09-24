@@ -5,9 +5,9 @@
  * Observe if other Plants Move
  */
 
-namespace Test\Plant_Collect;
+namespace OpenTHC\Bunk\Test\LeafData\Plant_Collect;
 
-class Harvest_Batch_Zone_Test extends \Test\OpenTHC_Bunk_LeafData_Test
+class Collect_Wet extends \Test\OpenTHC_Bunk_LeafData_Test
 {
 
 	public function x_test_collect_wet_area_fail()

@@ -3,7 +3,7 @@
  * Test the Lot Adjsut Dates
  */
 
-namespace Test\Lot_Process;
+namespace OpenTHC\Bunk\Test\LeafData\Lot_Process;
 
 class Lot_Adjust extends \OpenTHC\Bunk\Test\LeafData_Test
 {

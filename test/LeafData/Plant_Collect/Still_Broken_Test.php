@@ -4,7 +4,7 @@
  * Test to show that 'g' UOM is a failure (they use 'gm')
  */
 
-namespace Test\Plant_Collect;
+namespace OpenTHC\Bunk\Test\LeafData\Plant_Collect;
 
 class Still_Broken_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {

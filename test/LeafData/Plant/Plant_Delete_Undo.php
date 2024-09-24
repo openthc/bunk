@@ -5,9 +5,9 @@
  * Observe if other Plants Move
  */
 
-namespace Plant_Collect;
+namespace OpenTHC\Bunk\Test\LeafData\Plant;
 
-class Collect_Dry extends \Test\OpenTHC_Bunk_LeafData_Test
+class Plant_Delete_Undo extends \Test\OpenTHC_Bunk_LeafData_Test
 {
 	protected function setUp() : void
 	{

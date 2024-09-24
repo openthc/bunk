@@ -4,6 +4,8 @@
 
 */
 
+namespace OpenTHC\Bunk\Test\LeafData\Plant;
+
 class Plant_Create_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {
 	protected function setUp() : void

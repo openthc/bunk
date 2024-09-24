@@ -4,7 +4,7 @@
 
 */
 
-namespace Test\Batch;
+namespace OpenTHC\Bunk\Test\LeafData\Basic;
 
 class Batch_Strain_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {

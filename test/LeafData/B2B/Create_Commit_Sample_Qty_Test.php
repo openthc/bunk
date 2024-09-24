@@ -3,9 +3,9 @@
  * Test Transfer Lag, the object is cached by LeafData poorly
  */
 
-namespace Test\LeafData\B2B;
+namespace OpenTHC\Bunk\Test\LeafData\B2B;
 
-class Transfer_Lag extends \OpenTHC\Bunk\Test\LeafData_Test
+class Create_Commit_Sample_Qty_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {
 	/**
 	 * Intentionally use the wrong values when submitting the transfer accept

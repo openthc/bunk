@@ -3,7 +3,7 @@
  * Inventory
  */
 
-namespace Test\Lot_Process;
+namespace OpenTHC\Bunk\Test\LeafData\Lot_Process;
 
 class Inventory extends \OpenTHC\Bunk\Test\LeafData_Test
 {

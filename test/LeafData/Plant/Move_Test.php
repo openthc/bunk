@@ -20,7 +20,7 @@ Still comes back with the Incorrect Zone (global_area_id)
 But once you Sync you'll see that the Plant record was actually Updated!
  */
 
-namespace Test\Plant;
+namespace OpenTHC\Bunk\Test\LeafData\Plant;
 
 //class Batch_Mess_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 class Move_Test extends \OpenTHC\Bunk\Test\LeafData_Test

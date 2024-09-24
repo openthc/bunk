@@ -12,7 +12,7 @@
  * 		- Can I do batch inventory create?
  */
 
-namespace Laboratory;
+namespace OpenTHC\Bunk\Test\LeafData\Laboratory;
 
 class Lab_Result extends \Test\OpenTHC_Bunk_LeafData_Test
 {

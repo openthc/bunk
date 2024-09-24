@@ -3,6 +3,8 @@
 
 */
 
+namespace OpenTHC\Bunk\Test\LeafData\Basic;
+
 class Batch_Move_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {
 	protected function setUp() : void

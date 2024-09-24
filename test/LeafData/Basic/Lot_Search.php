@@ -3,7 +3,7 @@
  * Try to move Area and Strain at the same time
  */
 
-namespace Test\Basic;
+namespace OpenTHC\Bunk\Test\LeafData\Basic;
 
 class Lot_Search extends \OpenTHC\Bunk\Test\LeafData_Test
 {

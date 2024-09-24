@@ -3,7 +3,7 @@
  * Test Transfer Lag, the object is cached by LeafData poorly
  */
 
-namespace Test\LeafData\B2B;
+namespace OpenTHC\Bunk\Test\LeafData\B2B;
 
 class Transfer_Lag extends \Test\OpenTHC_Bunk_LeafData_Test
 {

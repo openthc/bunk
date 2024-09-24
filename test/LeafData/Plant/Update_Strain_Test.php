@@ -3,7 +3,7 @@
  * Try to Test the Batch Mess Here
  */
 
-namespace Test\Plant;
+ namespace OpenTHC\Bunk\Test\LeafData\Plant;
 
 class Update_Strain_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {

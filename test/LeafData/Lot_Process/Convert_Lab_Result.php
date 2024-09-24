@@ -3,7 +3,7 @@
  * Inventory
  */
 
-namespace Test\Lot_Process;
+namespace OpenTHC\Bunk\Test\LeafData\Lot_Process;
 
 class Convert_Lab_Result extends \Test\OpenTHC_Bunk_LeafData_Test
 {

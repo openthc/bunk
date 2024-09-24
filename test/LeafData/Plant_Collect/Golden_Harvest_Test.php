@@ -3,6 +3,8 @@
  * Golden path tests for the harvest workflow
  */
 
+namespace OpenTHC\Bunk\Test\LeafData\Plant_Collect;
+
 class Golden_Harvest_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {
 

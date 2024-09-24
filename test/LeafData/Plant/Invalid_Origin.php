@@ -4,7 +4,7 @@
  * Plants have invalid Origin Fields
  */
 
-namespace Test\Plant;
+namespace OpenTHC\Bunk\Test\LeafData\Plant;
 
 class Invalid_Origin extends \Test\OpenTHC_Bunk_LeafData_Test
 {

@@ -3,7 +3,7 @@
  * Lab Results
  */
 
-namespace Test\Laboratory;
+namespace OpenTHC\Bunk\Test\LeafData\Laboratory;
 
 require_once(dirname(__FILE__) . "/Lab_Result_Create_Test.php");
 use \Test\Laboratory\Lab_Result_Create;

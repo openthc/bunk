@@ -3,7 +3,7 @@
  * Tests some Routines with Origin Material
  */
 
-namespace Test\Lot_Origin;
+namespace OpenTHC\Bunk\Test\LeafData\Lot_Origin;
 
 class Alpha_Test extends \OpenTHC\Bunk\Test\LeafData_Test
 {
