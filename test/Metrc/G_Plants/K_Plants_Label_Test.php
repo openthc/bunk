@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\G_Plants;
 
-class K_Plants_Label_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class K_Plants_Label_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'plants/v1/label';
 

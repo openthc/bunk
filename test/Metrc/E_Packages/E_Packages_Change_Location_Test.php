@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\E_Packages;
 
-class E_Packages_Change_Location_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class E_Packages_Change_Location_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'packages/v1/change/locations';
 	protected $body;

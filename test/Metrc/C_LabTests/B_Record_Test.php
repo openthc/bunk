@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\C_LabTests;
 
-class B_Record_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class B_Record_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'labtests/v1/record';
 	protected $body;

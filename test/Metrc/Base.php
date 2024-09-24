@@ -5,9 +5,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-namespace OpenTHC\Bunk\Test;
+namespace OpenTHC\Bunk\Test\Metrc;
 
-class Metrc_Test extends \OpenTHC\Bunk\Test\Base_Case
+class Base extends \OpenTHC\Bunk\Test\Base
 {
 
 	public $ghc;

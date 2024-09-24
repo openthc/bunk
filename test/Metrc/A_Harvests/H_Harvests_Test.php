@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\A_Harvests;
 
-class H_Harvests_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class H_Harvests_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'harvests/v1/active';
 

@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc;
 
-class Facilities_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class Facilities_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
     protected $path = 'facilities/v1';
 

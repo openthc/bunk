@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\C_LabTests;
 
-class D_Results_Release_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class D_Results_Release_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'labtests/v1/results/release';
 	protected $body;

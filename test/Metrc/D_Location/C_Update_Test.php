@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\D_Location;
 
-class C_Update_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class C_Update_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'locations/v1/update';
 	protected $body;

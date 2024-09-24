@@ -7,7 +7,7 @@
 
 namespace OpenTHC\Bunk\Test\BioTrack\Plant;
 
-class Destroy_Test extends \OpenTHC\Bunk\Test\BioTrack_Test
+class Destroy_Test extends \OpenTHC\Bunk\Test\BioTrack\Base
 {
 	function testPlant_Destroy_Confirm()
 	{

@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\I_Strains;
 
-class B_Strains_Create_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class B_Strains_Create_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'strains/v1/create';
 	protected $body;

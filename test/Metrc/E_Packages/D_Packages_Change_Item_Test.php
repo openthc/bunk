@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\E_Packages;
 
-class D_Packages_Change_Item_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class D_Packages_Change_Item_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'packages/v1/change/item';
 	protected $body;

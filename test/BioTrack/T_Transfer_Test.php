@@ -7,7 +7,7 @@
 
 namespace OpenTHC\Bunk\Test\BioTrack;
 
-class T_Transfer_Test extends \OpenTHC\Bunk\Test\BioTrack_Test
+class T_Transfer_Test extends \OpenTHC\Bunk\Test\BioTrack\Base
 {
 	protected function setUp() : void
 	{

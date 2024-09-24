@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\J_Transfer;
 
-class Transfer_Outgoing_Test extends \OpenTHC\Bunk\Test\Metrc_Test
+class Transfer_Outgoing_Test extends \OpenTHC\Bunk\Test\Metrc\Base
 {
 
 	protected $path = 'transfers/v1/outgoing';

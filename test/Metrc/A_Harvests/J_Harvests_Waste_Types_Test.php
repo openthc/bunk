@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\A_Harvests;
 
-class J_Harvests_Waste_Types_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class J_Harvests_Waste_Types_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'harvests/v1/waste/types';
 

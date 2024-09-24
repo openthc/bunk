@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\CCRS;
 
-class Crop_Destroy_Test extends \OpenTHC\Bunk\Test\CCRS_Test
+class Crop_Destroy_Test extends \OpenTHC\Bunk\Test\CCRS\Base
 {
 
 }

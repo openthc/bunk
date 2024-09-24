@@ -7,7 +7,7 @@
 
 namespace OpenTHC\Bunk\Test\BioTrack;
 
-class D_Crop_Test extends \OpenTHC\Bunk\Test\BioTrack_Test
+class D_Crop_Test extends \OpenTHC\Bunk\Test\BioTrack\Base
 {
 	protected function setUp() : void
 	{

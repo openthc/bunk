@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\E_Packages;
 
-class Q_Packages_Unfinish_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class Q_Packages_Unfinish_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'packages/v1/unfinish';
 	protected $body;

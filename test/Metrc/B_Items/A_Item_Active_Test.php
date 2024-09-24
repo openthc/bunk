@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\B_Items;
 
-class A_Item_Active_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class A_Item_Active_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'items/v1/active';
 

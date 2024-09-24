@@ -1,11 +1,13 @@
 <?php
 /**
+ * Test Helper for CCRS
+ *
  * SPDX-License-Identifier: MIT
  */
 
 namespace OpenTHC\Bunk\Test\CCRS;
 
-class Product_Test extends \OpenTHC\Bunk\Test\CCRS\Base
+class Base extends \OpenTHC\Bunk\Test\Base
 {
 
 }

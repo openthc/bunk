@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc;
 
-class Measure_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class Measure_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
     protected $path = 'unitsofmeasure/v1/active';
 

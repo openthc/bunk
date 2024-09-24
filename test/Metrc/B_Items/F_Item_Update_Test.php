@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\B_Items;
 
-class F_Item_Update_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class F_Item_Update_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path =  'items/v1/update';
 

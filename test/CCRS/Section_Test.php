@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\CCRS;
 
-class Section_Test extends \OpenTHC\Bunk\Test\CCRS_Test
+class Section_Test extends \OpenTHC\Bunk\Test\CCRS\Base
 {
 
 }

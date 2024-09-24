@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\C_LabTests;
 
-class F_States_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class F_States_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'labtests/v1/states';
 

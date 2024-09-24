@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\D_Location;
 
-class A_Create_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class A_Create_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'locations/v1/create';
 	protected $body;

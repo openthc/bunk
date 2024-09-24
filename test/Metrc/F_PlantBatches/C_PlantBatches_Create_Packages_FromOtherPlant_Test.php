@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\F_PlantBatches;
 
-class C_PlantBatches_Create_Packages_FromOtherPlant_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class C_PlantBatches_Create_Packages_FromOtherPlant_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'plantbatches/v1/create/packages/frommotherplant';
 	protected $body;

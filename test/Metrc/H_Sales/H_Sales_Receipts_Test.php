@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\H_Sales;
 
-class H_Sales_Receipts_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class H_Sales_Receipts_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'sales/v1/receipts';
 	protected $body;

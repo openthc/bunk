@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\F_PlantBatches;
 
-class F_PlantBatches_Inactive_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class F_PlantBatches_Inactive_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'plantbatches/v1/inactive';
 

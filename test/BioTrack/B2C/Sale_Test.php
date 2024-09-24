@@ -7,7 +7,7 @@
 
 namespace OpenTHC\Bunk\Test\BioTrack\B2C;
 
-class Sale_Test extends \OpenTHC\Bunk\Test\BioTrack_Test
+class Sale_Test extends \OpenTHC\Bunk\Test\BioTrack\Base
 {
 	protected function setUp() : void
 	{

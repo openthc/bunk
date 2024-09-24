@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\F_PlantBatches;
 
-class H_PlantBatches_Split_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class H_PlantBatches_Split_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'plantbatches/v1/split';
 	protected $body;

@@ -5,9 +5,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-namespace OpenTHC\Bunk\Test;
+namespace OpenTHC\Bunk\Test\BioTrack;
 
-class BioTrack_Test extends \OpenTHC\Bunk\Test\Base_Case
+class Base extends \OpenTHC\Bunk\Test\Base
 {
 	protected $_sid;
 

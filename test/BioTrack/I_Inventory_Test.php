@@ -7,7 +7,7 @@
 
 namespace OpenTHC\Bunk\Test\BioTrack;
 
-class I_Inventory_Test extends \OpenTHC\Bunk\Test\BioTrack_Test
+class I_Inventory_Test extends \OpenTHC\Bunk\Test\BioTrack\Base
 {
 	protected function setUp() : void
 	{
@@ -180,6 +180,18 @@ class I_Inventory_Test extends \OpenTHC\Bunk\Test\BioTrack_Test
 		]);
 		$res = $this->assertValidResponse($res);
 
+		$res = $this->post_json('', [
+			'action' => 'inventory_qa_check',
+			'sample_id' => '',
+		]);
+		$res = $this->assertValidResponse($res);
+
+		$res = $this->post_json('', [
+			'action' => 'inventory_qa_check',
+			'sample_id' => '2024058110000001',
+		]);
+		$res = $this->assertValidResponse($res);
+
 	}
 
 	/**
@@ -188,12 +200,10 @@ class I_Inventory_Test extends \OpenTHC\Bunk\Test\BioTrack_Test
 	 */
 	function inventory_qa_check_all()
 	{
-		/* // No trivial responses cases found /mbw 2024-058
 		$res = $this->post_json('', [
 			'action' => 'inventory_qa_check_all',
 		]);
 		$res = $this->assertValidResponse($res);
-		*/
 
 		$res = $this->post_json('', [
 			'action' => 'inventory_qa_check_all',

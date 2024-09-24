@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\D_Location;
 
-class D_Delete_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class D_Delete_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'locations/v1';
 

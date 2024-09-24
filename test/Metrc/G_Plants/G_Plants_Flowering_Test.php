@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\G_Plants;
 
-class G_Plants_Flowering_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class G_Plants_Flowering_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'plants/v1/flowering';
 

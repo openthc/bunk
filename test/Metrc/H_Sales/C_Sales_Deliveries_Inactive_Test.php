@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\H_Sales;
 
-class C_Sales_Deliveries_Inactive_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class C_Sales_Deliveries_Inactive_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'sales/v1/deliveries/inactive';
 

@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\A_Harvests;
 
-class C_Harvests_Create_Packages_Testing_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class C_Harvests_Create_Packages_Testing_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'harvests/v1/create/packages/testing';
 

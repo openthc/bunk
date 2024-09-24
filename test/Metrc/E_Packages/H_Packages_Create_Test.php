@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test\Metrc\E_Packages;
 
-class H_Packages_Create_Test extends \OpenTHC\Bunk\Test\Metrc_Test {
+class H_Packages_Create_Test extends \OpenTHC\Bunk\Test\Metrc\Base {
 
 	protected $path = 'packages/v1/create';
 	protected $body;
