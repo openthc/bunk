@@ -1,11 +1,13 @@
 <?php
 /**
  * Test the Sale Actions on the BioTrackTHC API
+ *
+ * SPDX-License-Identifier: MIT
  */
 
-namespace Test\B2C;
+namespace OpenTHC\Bunk\Test\BioTrack\B2C;
 
-class B2C_Sale extends \OpenTHC\Bunk\Test\BioTrack_Test
+class Sale_Test extends \OpenTHC\Bunk\Test\BioTrack_Test
 {
 	protected function setUp() : void
 	{

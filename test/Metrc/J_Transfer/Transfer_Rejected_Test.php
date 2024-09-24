@@ -3,6 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
+namespace OpenTHC\Bunk\Test\Metrc\J_Transfer;
+
 class Transfer_Rejected_Test extends \OpenTHC\Bunk\Test\Metrc_Test
 {
 

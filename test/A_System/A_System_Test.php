@@ -5,9 +5,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-namespace Test\A_System;
+namespace OpenTHC\Bunk\Test\A_System;
 
-class A_System_Test extends \PHPUnit\Framework\TestCase
+class A_System_Test extends \OpenTHC\Bunk\Test\Base
 {
 	function test_env()
 	{

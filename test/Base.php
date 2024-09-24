@@ -5,7 +5,7 @@
 
 namespace OpenTHC\Bunk\Test;
 
-class Base_Case extends \OpenTHC\Test\Base
+class Base extends \OpenTHC\Test\Base
 {
 	protected $ghc; // API Guzzle HTTP Client
 	protected $raw; // Raw Response Buffer

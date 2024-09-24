@@ -1,11 +1,11 @@
 <?php
 /**
- *
+ * SPDX-License-Identifier: MIT
  */
 
-namespace Test\Basic;
+namespace OpenTHC\Bunk\Test\BioTrack\Basic;
 
-class Vehicle extends \OpenTHC\Bunk\Test\BioTrack_Test
+class Vehicle_Test extends \OpenTHC\Bunk\Test\BioTrack_Test
 {
 	protected function setUp() : void
 	{

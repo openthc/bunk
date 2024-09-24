@@ -1,11 +1,13 @@
 <?php
 /**
  * Test Plant Destruction
+ *
+ * SPDX-License-Identifier: MIT
  */
 
-namespace Test\Plant;
+namespace OpenTHC\Bunk\Test\BioTrack\Plant;
 
-class Destroy extends \OpenTHC\Bunk\Test\BioTrack_Test
+class Destroy_Test extends \OpenTHC\Bunk\Test\BioTrack_Test
 {
 	function testPlant_Destroy_Confirm()
 	{

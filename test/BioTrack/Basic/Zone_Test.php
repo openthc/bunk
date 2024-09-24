@@ -1,8 +1,11 @@
 <?php
 /**
  * Tests for BioTrack "Inventory Rooms" and "Plant Rooms" (Zones)
+ *
+ * SPDX-License-Identifier: MIT
  */
-namespace Test\Basic;
+
+namespace OpenTHC\Bunk\Test\BioTrack\Basic;
 
 class Zone_Test extends \OpenTHC\Bunk\Test\BioTrack_Test
 {

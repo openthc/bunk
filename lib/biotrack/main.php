@@ -7,16 +7,7 @@
 
 use \OpenTHC\Bunk\BioTrack\Base;
 
-
-class BioTrack_Response extends Slim\Http\Response
-{
-	function withJSON($json, $code=200, $opts=JSON_PRETTY_PRINT)
-	{
-		return parent::withJSON($json, $code, $opts);
-	}
-}
-
-$RES = new BioTrack_Response();
+$RES = new \OpenTHC\Bunk\BioTrack\Response();
 
 $time = $_SERVER['REQUEST_TIME'];
 $type_sent = strtolower(strtok($_SERVER['HTTP_CONTENT_TYPE'], ';'));
@@ -155,8 +146,10 @@ return $RES->withJSON([
 	'success' => 0,
 	'error' => 'Unhandled Request',
 	'errorcode' => 999,
-	'_request' => $json,
-	'_action_base' => $action_base,
-	'_action_file' => $action_file,
-	'_action_path' => $action_path,
+	'@openthc' => [
+		'request_body' => $json,
+		'action_base' => $action_base,
+		'action_file' => $action_file,
+		'action_path' => $action_path,
+	]
 ], 500);
