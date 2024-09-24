@@ -7,9 +7,9 @@
 	xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
 	backupGlobals="false"
 	backupStaticAttributes="false"
-	bootstrap="boot.php"
+	bootstrap="../boot.php"
 	cacheResult="false"
-	colors="true"
+	colors="false"
 	convertErrorsToExceptions="true"
 	convertNoticesToExceptions="true"
 	convertWarningsToExceptions="true"
@@ -26,13 +26,16 @@
 	<coverage />
 
 	<php>
-		<env name="debug-http" value="false" />
+
+		<const name="OPENTHC_TEST_ORIGIN" value="https://bunk.openthc.example.com" />
+
+		<!-- If defined, it will spew debug -->
+		<!-- <const name="OPENTHC_TEST_HTTP_DEBUG" value="0" /> -->
 
 		<!--
 			Put the URL of your SSO Instance Here
 			eg: https://bunk.openthc.example.com
 		 -->
-		<env name="OPENTHC_TEST_ORIGIN" value="" />
 
 		<env name="biotrack-company-g" value="999000001" />
 		<env name="biotrack-company-p" value="999000002" />
