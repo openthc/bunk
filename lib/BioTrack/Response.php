@@ -7,7 +7,7 @@
 
 namespace OpenTHC\Bunk\BioTrack;
 
-class Response extends Slim\Http\Response
+class Response extends \Slim\Http\Response
 {
 	function withJSON($json, $code=200, $opts=0)
 	{
