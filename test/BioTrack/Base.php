@@ -9,6 +9,8 @@ namespace OpenTHC\Bunk\Test\BioTrack;
 
 class Base extends \OpenTHC\Bunk\Test\Base
 {
+	protected $cre;
+
 	protected $_sid;
 
 	protected $_sync_table_list = [
@@ -35,25 +37,32 @@ class Base extends \OpenTHC\Bunk\Test\Base
 
 	protected function setUp() : void
 	{
-		$url_base = rtrim(getenv('OPENTHC_TEST_ORIGIN'), '/');
+		$url_base = rtrim($_ENV['OPENTHC_TEST_ORIGIN'], '/');
 		$url = sprintf('%s/biotrack/v2013/serverjson.asp', $url_base);
-		$this->ghc = $this->_api($url);
+
+		// $this->ghc = $this->_api($url);
+		// $this->ghc = null;
+
+		$cfg = [];
+		$cfg['id'] = 'openthc/bunk/test';
+		$cfg['name'] = 'openthc/bunk/test';
+		$cfg['server'] = $url;
+		$cfg['session'] = $this->_sid;
+		$this->cre = new \OpenTHC\CRE\BioTrack($cfg);
+		$this->cre->setLicense([
+			'id' => 'TEST',
+			'code' => 'TEST',
+			'guid' => 'TEST',
+			'name' => 'TEST',
+		]);
+
 	}
 
 	function auth($t)
 	{
-		// Good Login
-		$arg = [
-			'action' => 'login',
-			'license_number' => $_ENV[sprintf('biotrack-company-%s', $t)],
-			'username' => $_ENV['biotrack-username'],
-			'password' => $_ENV['biotrack-password'],
-		];
-
-		$res = $this->post_json('', $arg);
-		$res = $this->assertValidResponse($res);
+		$res = $this->cre->auth($_ENV[sprintf('biotrack-company-%s', $t)], $_ENV['biotrack-username'], $_ENV['biotrack-password']);
+		$this->assertIsArray($res);
 		$this->assertEquals(1, $res['success']);
-		// var_dump($res);
 		$this->_sid = $res['sessionid'];
 	}
 
@@ -68,11 +77,40 @@ class Base extends \OpenTHC\Bunk\Test\Base
 
 	function assertValidResponse($res, $code_expect=200, $type_expect=null, $dump=null) {
 
-		$ret = parent::assertValidResponse($res, $code_expect, $type_expect, $dump);
-		$this->assertIsArray($ret);
-		$this->assertArrayHasKey('success', $ret);
+		// $res = parent::assertValidResponse($res, $code_expect, $type_expect, $dump);
+		$this->assertIsArray($res);
 
-		return $ret;
+		// our API Style Response
+		$key_list = array_keys($res);
+		if (in_array('code', $key_list) && in_array('data', $key_list) && in_array('meta', $key_list)) {
+
+			$code_actual = $res['code'];
+			switch ($code_actual) {
+			case 200:
+				$this->assertEquals(1, $res['data']['success']);
+				break;
+			case 400:
+			case 403:
+				$this->assertEquals(0, $res['data']['success']);
+				break;
+			}
+
+			return $res['data'];
+
+		}
+
+		$this->assertArrayHasKey('success', $res);
+		switch ($code_expect) {
+		case 200:
+			$this->assertEquals(1, $res['success']);
+			break;
+		case 400:
+		case 403:
+			$this->assertEquals(0, $res['success']);
+			break;
+		}
+
+		return $res;
 
 	}
 

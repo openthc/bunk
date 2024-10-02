@@ -7,18 +7,13 @@
 
 namespace OpenTHC\Bunk\Test\BioTrack;
 
-class A_Auth_Test extends \OpenTHC\Bunk\Test\BioTrack_Test
+class A_Auth_Test extends \OpenTHC\Bunk\Test\BioTrack\Base
 {
 	function test_auth_fail()
 	{
-		$res = $this->post_json('', [
-			'action' => 'login',
-			'training' => 0,
-			'license_number' => $_ENV['biotrack-company-g'],
-			'username' => '',
-			'password' => '',
-		]);
-		$res = $this->assertValidResponse($res);
+		$res = $this->cre->auth('999000403', 'fail@openthc.example.org', 'password');
+		// $res = $this->assertValidResponse($res);
+		$this->assertIsArray($res);
 		$this->assertEquals(0, $res['success']);
 
 		$this->assertArrayHasKey('error', $res);
@@ -30,15 +25,9 @@ class A_Auth_Test extends \OpenTHC\Bunk\Test\BioTrack_Test
 	function test_auth_good()
 	{
 		// Good Login
-		$res = $this->post_json('', [
-			'action' => 'login',
-			'training' => 0, // $_ENV['biotrack-training-mode'],
-			'license_number' => $_ENV['biotrack-company-g'],
-			'username' => $_ENV['biotrack-username'],
-			'password' => $_ENV['biotrack-password'],
-		]);
-
-		$res = $this->assertValidResponse($res);
+		$res = $this->cre->auth($_ENV['biotrack-company-g'], $_ENV['biotrack-username'], $_ENV['biotrack-password']);
+		// $res = $this->assertValidResponse($res);
+		$this->assertIsArray($res);
 		$this->assertEquals(1, $res['success']);
 
 		$this->assertArrayHasKey('time', $res);

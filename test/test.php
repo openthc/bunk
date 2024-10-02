@@ -8,19 +8,21 @@ require_once(dirname(__DIR__) . '/boot.php');
 
 // $arg = \OpenTHC\Docopt::parse($doc, ?$argv=[]);
 // Parse CLI
+
+// needs optionsFirst = false
+// test [options] -- lets test run w/o a command and still pass options
+// test <command> [options] -- allows a command to be a first option
+// test phpunit [options]  -- shows an avaible command -- but never parsed
 $doc = <<<DOC
 OpenTHC Help Test
 
 Usage:
+	test [options]
 	test <command> [options]
-	test phpunit
-	test phpstan
-	test phplint
+	test phpunit [options]
 
 Options:
-	--phpunit-filter=<FILTER>   Some Filter for PHPUnit
-	--phpunit-filter=<FILTER>   Some Filter for PHPUnit
-
+	--filter=<FILTER>   Some Filter for PHPUnit
 DOC;
 
 $res = Docopt::handle($doc, [
@@ -34,7 +36,9 @@ $cli_args = $res->args;
 // 	echo "\n";
 // 	exit(1);
 // }
-// var_dump($cli_args);
+if (empty($cli_args['<command>'])) {
+	$cli_args['<command>'] = 'all';
+}
 
 define('OPENTHC_TEST_OUTPUT_BASE', \OpenTHC\Test\Helper::output_path_init());
 
@@ -92,11 +96,12 @@ $arg[] = '--testdox-text';
 $arg[] = sprintf('%s/testdox.txt', OPENTHC_TEST_OUTPUT_BASE);
 $arg[] = '--testdox-xml';
 $arg[] = sprintf('%s/testdox.xml', OPENTHC_TEST_OUTPUT_BASE);
-// // Filter?
+// Filter?
 if ( ! empty($cli_args['--filter'])) {
 	$arg[] = '--filter';
 	$arg[] = $cli_args['--filter'];
 }
+
 
 ob_start();
 $cmd = new \PHPUnit\TextUI\Command();
