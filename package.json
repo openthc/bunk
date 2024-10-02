@@ -1,0 +1,28 @@
+{
+  "name": "@openthc/www",
+  "description": "OpenTHC Bunk Interface",
+  "author": "OpenTHC, Inc.",
+  "version": "420.24.242",
+  "homepage": "https://openthc.org/bunk",
+  "license": "GPL-3.0-only",
+  "main": "main.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "6.6.0",
+    "bootstrap": "5.3.3",
+    "jquery": "3.7.1"
+  },
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openthc/bunk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/openthc/bunk/issues"
+  }
+}
