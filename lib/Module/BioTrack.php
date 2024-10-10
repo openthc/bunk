@@ -15,12 +15,12 @@ class BioTrack extends \OpenTHC\Module\Base
 	function __invoke(\OpenTHC\App $a)
 	{
 
-		// Info
+		// Documentation
 		$a->get('', function($REQ, $RES, $ARG) {
-			return _page_doc_merge('biotrack');
+			return _page_doc_merge('biotrack-v2013');
 		});
 
-		// Info
+		// Ping
 		$a->get('/ping', function($REQ, $RES, $ARG) {
 			return $RES->withJSON([
 				'data' => [
