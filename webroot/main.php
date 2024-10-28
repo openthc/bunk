@@ -53,7 +53,7 @@ $app->group('/leafdata/v2018', 'OpenTHC\Bunk\Module\LeafData');
 
 // Metrc Fake Interface
 $app->group('/metrc/v2015', 'OpenTHC\Bunk\Module\METRC');
-// $app->group('/metrc/v2023', 'OpenTHC\Bunk\Module\Metrc2023');
+$app->group('/metrc/v2023', 'OpenTHC\Bunk\Module\Metrc2023');
 
 // OpenTHC Fake Interface
 // $app->group('/openthc', 'OpenTHC\Bunk\Module\OpenTHC');
