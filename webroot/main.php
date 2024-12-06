@@ -44,6 +44,7 @@ if ($cfg['debug']) {
 $app->group('/biotrack/v2013', 'OpenTHC\Bunk\Module\BioTrack');
 $app->group('/biotrack/v2021', 'OpenTHC\Bunk\Module\BioTrack2021');
 $app->group('/biotrack/v2022', 'OpenTHC\Bunk\Module\BioTrack2022');
+$app->group('/biotrack/v2024', 'OpenTHC\Bunk\Module\BioTrack2024');
 
 // BioTrack Fake Interface
 $app->group('/ccrs/v2021', 'OpenTHC\Bunk\Module\CCRS');
