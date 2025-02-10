@@ -36,14 +36,16 @@ class Base extends \OpenTHC\Test\Base
 		$logger = new \Monolog\Logger('guzzle.to.curl');
 		$this->testHandler = new \Monolog\Handler\TestHandler();
 		$logger->pushHandler($this->testHandler);
-		$handler = \GuzzleHttp\HandlerStack::create();
-		$handler->after('cookies', new \Namshi\Cuzzle\Middleware\CurlFormatterMiddleware($logger));
+
+		// Had to drop because of Guzzle update
+		// $handler = \GuzzleHttp\HandlerStack::create();
+		// $handler->after('cookies', new \Namshi\Cuzzle\Middleware\CurlFormatterMiddleware($logger));
 
 		// create our http client (Guzzle)
 		$c = new \GuzzleHttp\Client(array(
 			'base_uri' => $url,
 			'allow_redirects' => false,
-			'debug' => $_ENV['debug-http'],
+			'debug' => $_ENV['OPENTHC_TEST_HTTP_DEBUG'],
 			'request.options' => array(
 				'exceptions' => false,
 			),

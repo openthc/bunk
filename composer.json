@@ -20,7 +20,6 @@
 		"openthc/cre-adapter": "dev-main",
 		"phpmd/phpmd": "2.15.0",
 		"phpstan/phpstan": "1.11.8",
-		"phpunit/phpunit": "9.6.20",
-		"namshi/cuzzle": "^2.0"
+		"phpunit/phpunit": "9.6.20"
 	}
 }
