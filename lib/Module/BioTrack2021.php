@@ -1,6 +1,6 @@
 <?php
 /**
- * BioTrack 2021 API Group Controller
+ * BioTrack v2021 API Group Controller
  *
  * SPDX-License-Identifier: MIT
  */

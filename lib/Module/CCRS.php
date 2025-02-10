@@ -140,12 +140,12 @@ class CCRS extends \OpenTHC\Module\Base
 		});
 
 		// Lot (Inventory)
-		$a->post('/lot', function($REQ, $RES, $ARG) {
+		$a->post('/inventory', function($REQ, $RES, $ARG) {
 			return require_once(APP_ROOT . '/lib/CCRS/lot.php');
 		});
 
 		// Lot Adjust (Inventory Adjustment)
-		$a->post('/lot-adjust', function($REQ, $RES, $ARG) {
+		$a->post('/inventory/adjust', function($REQ, $RES, $ARG) {
 			return require_once(APP_ROOT . '/lib/CCRS/lot-adjust.php');
 		});
 
@@ -155,7 +155,7 @@ class CCRS extends \OpenTHC\Module\Base
 		});
 
 		// Lab Result (Lab Test)
-		$a->post('/lab-result', function($REQ, $RES, $ARG) {
+		$a->post('/lab/result', function($REQ, $RES, $ARG) {
 			return require_once(APP_ROOT . '/lib/CCRS/lab-result.php');
 		});
 
@@ -165,7 +165,7 @@ class CCRS extends \OpenTHC\Module\Base
 		});
 
 		// Crop Destroy
-		$a->post('/crop-destroy', function($REQ, $RES, $ARG) {
+		$a->post('/crop/finish', function($REQ, $RES, $ARG) {
 			return require_once(APP_ROOT . '/lib/CCRS/crop-destroy.php');
 		});
 

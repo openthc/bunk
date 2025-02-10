@@ -1,6 +1,6 @@
 <?php
 /**
- * BioTrack 2022 API Group Controller
+ * BioTrack v2022 API Group Controller
  *
  * SPDX-License-Identifier: MIT
  */
@@ -115,7 +115,7 @@ class BioTrack2022 extends \OpenTHC\Module\Base
 			//   }
 		});
 
-		// Patient Lookup
+		// Some Session Pinger
 		$a->get('/heartbeat', function($REQ, $RES, $ARG) {
 			return $RES->withJSON([
 				'Status' => 'success',
