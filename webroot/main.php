@@ -49,9 +49,6 @@ $app->group('/biotrack/v2024', 'OpenTHC\Bunk\Module\BioTrack2024');
 // BioTrack Fake Interface
 $app->group('/ccrs/v2021', 'OpenTHC\Bunk\Module\CCRS');
 
-// LeafData Fake Interface
-$app->group('/leafdata/v2018', 'OpenTHC\Bunk\Module\LeafData');
-
 // Metrc Fake Interface
 $app->group('/metrc/v2015', 'OpenTHC\Bunk\Module\Metrc2015');
 $app->group('/metrc/v2023', 'OpenTHC\Bunk\Module\Metrc2023');

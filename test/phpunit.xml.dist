@@ -23,8 +23,6 @@
 	verbose="false"
 	>
 
-	<coverage />
-
 	<php>
 
 		<const name="OPENTHC_TEST_ORIGIN" value="https://bunk.openthc.example.com" />
@@ -70,16 +68,12 @@
 			<directory>CCRS</directory>
 		</testsuite>
 
-		<!--
-		<testsuite name="LeafData">
-			<directory>LeafData</directory>
-		</testsuite>
-		-->
-
 		<testsuite name="Metrc">
 			<directory>Metrc</directory>
 		</testsuite>
 
 	</testsuites>
+
+	<coverage />
 
 </phpunit>
