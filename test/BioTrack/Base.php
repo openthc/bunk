@@ -38,7 +38,7 @@ class Base extends \OpenTHC\Bunk\Test\Base
 	protected function setUp() : void
 	{
 		$url_base = rtrim($_ENV['OPENTHC_TEST_ORIGIN'], '/');
-		$url = sprintf('%s/biotrack/v2013/serverjson.asp', $url_base);
+		$url = sprintf('%s/biotrack/v2014/serverjson.asp', $url_base);
 
 		// $this->ghc = $this->_api($url);
 		// $this->ghc = null;

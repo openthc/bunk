@@ -1,7 +1,7 @@
 <?php
 /**
-	Sync Vendor
-*/
+ * Sync Vendor
+ */
 
 use Edoceo\Radix\DB\SQL;
 

@@ -1,13 +1,13 @@
 <?php
 /**
- * BioTrack v2013 API Group Controller
+ * BioTrack v2014 API Group Controller
  *
  * SPDX-License-Identifier: MIT
  */
 
 namespace OpenTHC\Bunk\Module;
 
-class BioTrack extends \OpenTHC\Module\Base
+class BioTrack2014 extends \OpenTHC\Module\Base
 {
 	/**
 	 * @param \OpenTHC\App $a Slim Application
@@ -17,7 +17,7 @@ class BioTrack extends \OpenTHC\Module\Base
 
 		// Documentation
 		$a->get('', function($REQ, $RES, $ARG) {
-			return _page_doc_merge('biotrack-v2013');
+			return _page_doc_merge('biotrack-v2014');
 		});
 
 		// Ping

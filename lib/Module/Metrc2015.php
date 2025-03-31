@@ -7,7 +7,7 @@
 
 namespace OpenTHC\Bunk\Module;
 
-class METRC extends \OpenTHC\Module\Base
+class Metrc2015 extends \OpenTHC\Module\Base
 {
 	/**
 	 * @param \OpenTHC\App $a Slim Application

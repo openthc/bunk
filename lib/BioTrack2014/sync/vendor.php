@@ -13,57 +13,6 @@ $ret = array(
 	'vendor' => array(),
 );
 
-//foreach ($res_license as $rec) {
-//
-//	$addr = $meta['address1'];
-//	if (false === strpos($addr, $meta['address2'])) {
-//		$addr.= ' ' . $meta['address2'];
-//		$meta['address2'] = null;
-//	}
-//
-//	if (empty($meta['locationtype'])) {
-//		$meta['locationtype'] = 1;
-//		$meta['producer'] = 1;
-//	}
-
-$ret['vendor'][] = array(
-	'ubi' => '999000001',
-	'location' => '990001',
-	'name' => 'Mock Grower',
-	'locationtype' => 1,
-	'address1' => '111 FAKE ST   STE 1',
-	'address2' => 'STE 1',
-	'city' => 'Oakland',
-	'state' => 'CA',
-	'zip' => '94601',
-	'processor' => 0,
-	'producer' => 1,
-	'retail' => 0,
-	'deleted' => 0,
-	'medical' => 0,
-	'transactionid' => 991111,
-	'transactionid_original' => 911111,
-);
-
-$ret['vendor'][] = array(
-	'ubi' => '999000002',
-	'location' => '990002',
-	'name' => 'Bunk Producer/Processor',
-	'locationtype' => 2,
-	'address1' => '123 FAKE ST   STE 2',
-	'address2' => 'STE 2',
-	'city' => 'Oakland',
-	'state' => 'CA',
-	'zip' => '94601',
-	'processor' => 1,
-	'producer' => 1,
-	'retail' => 0,
-	'deleted' => 0,
-	'medical' => 0,
-	'transactionid' => 991111,
-	'transactionid_original' => 911111,
-);
-
 $ret['vendor'][] = array(
 	'ubi' => '999000003',
 	'location' => '990003',
@@ -141,10 +90,48 @@ $ret['vendor'][] = array(
 );
 
 $ret['vendor'][] = array(
-	'ubi' => '999999999',
-	'location' => '999999',
-	'name' => 'Mock Test Company',
-	'locationtype' => 1,
+	'ubi' => '999000007',
+	'location' => '990007',
+	'name' => 'Bunk Producer/Processor',
+	'locationtype' => 5,
+	'address1' => '777 FAKE ST',
+	'address2' => 'STE 7',
+	'city' => 'Oakland',
+	'state' => 'CA',
+	'zip' => '94601',
+	'processor' => 1,
+	'producer' => 1,
+	'retail' => 0,
+	'deleted' => 0,
+	'medical' => 0,
+	'transactionid' => 991111,
+	'transactionid_original' => 911111,
+);
+
+$ret['vendor'][] = array(
+	'ubi' => '999000008',
+	'location' => '990008',
+	'name' => 'Bunk Producer/Processor',
+	'locationtype' => 5,
+	'address1' => '888 FAKE ST',
+	'address2' => 'STE 8',
+	'city' => 'Oakland',
+	'state' => 'CA',
+	'zip' => '94601',
+	'processor' => 1,
+	'producer' => 1,
+	'retail' => 0,
+	'deleted' => 0,
+	'medical' => 0,
+	'transactionid' => 991111,
+	'transactionid_original' => 911111,
+);
+
+$ret['vendor'][] = array(
+	'ubi' => '999000009',
+	'location' => '990009',
+	'name' => 'Bunk Producer/Processor',
+	'locationtype' => 5,
 	'address1' => '999 FAKE ST',
 	'address2' => 'STE 9',
 	'city' => 'Oakland',
@@ -152,12 +139,11 @@ $ret['vendor'][] = array(
 	'zip' => '94601',
 	'processor' => 1,
 	'producer' => 1,
-	'retail' => 1,
+	'retail' => 0,
 	'deleted' => 0,
-	'medical' => 1,
+	'medical' => 0,
 	'transactionid' => 991111,
 	'transactionid_original' => 911111,
 );
-
 
 return $RES->withJSON($ret, 200, JSON_PRETTY_PRINT);

@@ -41,7 +41,7 @@ if ($cfg['debug']) {
 }
 
 // BioTrack Fake Interface
-$app->group('/biotrack/v2013', 'OpenTHC\Bunk\Module\BioTrack');
+$app->group('/biotrack/v2014', 'OpenTHC\Bunk\Module\BioTrack2014');
 $app->group('/biotrack/v2021', 'OpenTHC\Bunk\Module\BioTrack2021');
 $app->group('/biotrack/v2022', 'OpenTHC\Bunk\Module\BioTrack2022');
 $app->group('/biotrack/v2024', 'OpenTHC\Bunk\Module\BioTrack2024');
@@ -53,7 +53,7 @@ $app->group('/ccrs/v2021', 'OpenTHC\Bunk\Module\CCRS');
 $app->group('/leafdata/v2018', 'OpenTHC\Bunk\Module\LeafData');
 
 // Metrc Fake Interface
-$app->group('/metrc/v2015', 'OpenTHC\Bunk\Module\METRC');
+$app->group('/metrc/v2015', 'OpenTHC\Bunk\Module\Metrc2015');
 $app->group('/metrc/v2023', 'OpenTHC\Bunk\Module\Metrc2023');
 
 // OpenTHC Fake Interface

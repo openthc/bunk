@@ -24,8 +24,7 @@ return $RES->withJSON(array(
 ));
 }
 
-// @todo Find a real API example
-$barcodeid = (is_array($_POST['barcodeid']) ? $_POST['barcodeid'][0] : $_POST['barcodeid']);
+$barcodeid = is_array($_POST['sample_id']);
 if (empty($barcodeid)) {
 	return $RES->withJSON(array(
 		'success' => 0,
