@@ -1,66 +1,154 @@
-		Array
-(
-    [RBE_BioTrack_WA/login] => 51309
-    [RBE_BioTrack_WA/sync_check] => 20597
-    [RBE_BioTrack_WA/inventory_qa_check] => 18553
-    [RBE_BioTrack_WA/inventory_qa_check_all] => 18553
-    [RBE_BioTrack_WA/inventory_move] => 13325
-    [RBE_BioTrack_WA/plant_modify] => 9787
-    [RBE_BioTrack_WA/inventory_manifest_lookup] => 8253
-    [RBE_BioTrack_WA/inventory_transfer_outbound_return_lookup] => 8183
-    [RBE_BioTrack_WA/inventory_destroy] => 5522
-    [RBE_BioTrack_WA/inventory_convert] => 5304
-    [RBE_BioTrack_WA/inventory_sample] => 4228
-    [RBE_BioTrack_WA/inventory_adjust] => 4193
-    [RBE_BioTrack_WA/plant_destroy] => 4145
-    [RBE_BioTrack_WA/inventory_split] => 2960
-    [RBE_BioTrack_WA/inventory_manifest] => 1985
-    [RBE_BioTrack_WA/inventory_modify] => 1932
-    [RBE_BioTrack_WA/plant_new] => 1846
-    [RBE_BioTrack_WA/inventory_new] => 1430
-    [RBE_BioTrack_WA/inventory_transfer_outbound] => 1381
-    [RBE_BioTrack_WA/plant_move] => 1303
-    [RBE_BioTrack_WA/inventory_transfer_outbound_modify] => 1145
-    [RBE_BioTrack_WA/plant_harvest_schedule] => 1122
-    [RBE_BioTrack_WA/inventory_destroy_schedule] => 1007
-    [RBE_BioTrack_WA/inventory_create_lot] => 727
-    [RBE_BioTrack_WA/inventory_qa_sample] => 620
-    [RBE_BioTrack_WA/plant_cure] => 591
-    [RBE_BioTrack_WA/plant_destroy_schedule] => 591
-    [RBE_BioTrack_WA/inventory_manifest_void] => 571
-    [RBE_BioTrack_WA/plant_harvest] => 405
-    [RBE_BioTrack_WA/inventory_transfer_lookup] => 359
-    [RBE_BioTrack_WA/inventory_convert_undo] => 291
-    [RBE_BioTrack_WA/inventory_manifest_modify] => 180
-    [RBE_BioTrack_WA/plant_waste_weigh] => 171
-    [RBE_BioTrack_WA/inventory_room_add] => 168
-    [RBE_BioTrack_WA/inventory_manifest_pickup] => 155
-    [RBE_BioTrack_WA/inventory_transfer_inbound] => 143
-    [RBE_BioTrack_WA/plant_harvest_undo] => 117
-    [RBE_BioTrack_WA/inventory_transfer_outbound_return] => 110
-    [RBE_BioTrack_WA/inventory_qa_sample_non_mandatory] => 83
-    [RBE_BioTrack_WA/inventory_manifest_void_items] => 74
-    [RBE_BioTrack_WA/user_modify] => 74
-    [RBE_BioTrack_WA/inventory_room_remove] => 73
-    [RBE_BioTrack_WA/inventory_adjust_usable] => 69
-    [RBE_BioTrack_WA/employee_remove] => 56
-    [RBE_BioTrack_WA/employee_add] => 53
-    [RBE_BioTrack_WA/inventory_room_modify] => 49
-    [RBE_BioTrack_WA/vehicle_add] => 45
-    [RBE_BioTrack_WA/inventory_qa_sample_void] => 43
-    [RBE_BioTrack_WA/inventory_manifest_void_stop] => 41
-    [RBE_BioTrack_WA/tax_obligation_file] => 38
-    [RBE_BioTrack_WA/plant_convert_to_inventory] => 37
-    [RBE_BioTrack_WA/inventory_manifest_third_party] => 35
-    [RBE_BioTrack_WA/plant_room_add] => 32
-    [RBE_BioTrack_WA/plant_destroy_schedule_undo] => 27
-    [RBE_BioTrack_WA/inventory_destroy_schedule_undo] => 22
-    [RBE_BioTrack_WA/plant_room_modify] => 18
-    [RBE_BioTrack_WA/vehicle_remove] => 15
-    [RBE_BioTrack_WA/user_remove] => 11
-    [RBE_BioTrack_WA/plant_room_remove] => 10
-    [RBE_BioTrack_WA/user_add] => 10
-    [RBE_BioTrack_WA/employee_modify] => 9
-    [RBE_BioTrack_WA/plant_new_undo] => 8
-    [RBE_BioTrack_WA/plant_yield_modify] => 4
-)
+# BioTrackTHC Mock API Interface
+
+It's like the *serverjson.asp* interface that BioTrack provides.
+It's compatible with Arkansas, Connecticut, Delaware, Florida, Hawaii, Illinois, New Hampshire, New Mexico, New York, North Dakota, Virginia, and ~Washington~ interfaces.
+
+
+## Usage
+
+ * **$BASE** is $HOST/biotrack/v2013/serverjson.asp
+
+Like the standard BioTrack API you simply login and get a session token.
+This session token is then included with all subsequent calls.
+Notice also the unique `content-type` that BioTrack uses.
+
+	POST /biotrack/v2013/serverjson.asp
+	Content-Type: text/JSON
+
+	{ "license_number": "", "username": "", "password": "" }
+
+
+## Example
+
+This example just does a simple login.
+
+```
+curl \
+	$HOST/biotrack/v2013/serverjson.asp \
+	-X POST \
+	-H "content-type: text/JSON" \
+	--data '{
+		"action": "login",
+		"license_number": "999123456",
+		"username": "user@example.com",
+		"password": "password"
+	}'
+```
+
+
+## Extended Data
+
+Some responses will come with extended data, maybe useful for debugging.
+This additional information will be under the `meta` property.
+
+
+## Supported Calls:
+
+ * employee_add
+ * employee_modify
+ * employee_remove
+ * employee_remove
+ * inventory_adjust
+ * inventory_adjust
+ * inventory_adjust_usable
+ * inventory_check
+ * inventory_convert
+ * inventory_convert_undo
+ * inventory_create_lot
+ * inventory_destroy
+ * inventory_destroy_schedule
+ * inventory_destroy_schedule_undo
+ * inventory_manifest
+ * inventory_manifest_lookup
+ * inventory_manifest_pickup
+ * inventory_manifest_third_party
+ * inventory_manifest_void
+ * inventory_manifest_void
+ * inventory_manifest_void_items
+ * inventory_manifest_void_items
+ * inventory_manifest_void_stop
+ * inventory_manifest_void_stop
+ * inventory_modify
+ * inventory_modify
+ * inventory_move
+ * inventory_new
+ * inventory_qa_check
+ * inventory_qa_check_all
+ * inventory_qa_sample
+ * inventory_qa_sample_non_mandatory
+ * inventory_qa_sample_results
+ * inventory_qa_sample_void
+ * inventory_qa_sample_void
+ * inventory_room_add
+ * inventory_room_modify
+ * inventory_room_remove
+ * inventory_sample
+ * inventory_split
+ * inventory_transfer_inbound
+ * inventory_transfer_inbound_modify
+ * inventory_transfer_lookup
+ * inventory_transfer_outbound
+ * inventory_transfer_outbound_modify
+ * inventory_transfer_outbound_return_lookup
+ * inventory_transfer_outbound_void
+ * login
+ * plant_convert_to_inventory
+ * plant_cure
+ * plant_destroy
+ * plant_destroy_schedule
+ * plant_harvest
+ * plant_harvest_schedule
+ * plant_modify
+ * plant_modify
+ * plant_move
+ * plant_new
+ * plant_room_add
+ * plant_room_modify
+ * plant_room_remove
+ * plant_waste_weigh
+ * plant_yield_modify
+ * sale_dispense
+ * sale_modify
+ * sale_refund
+ * sale_void
+ * sync_check
+ * sync_employee
+ * sync_inventory
+ * sync_inventory_adjust
+ * sync_inventory_qa_sample
+ * sync_inventory_room
+ * sync_inventory_sample
+ * sync_inventory_transfer
+ * sync_inventory_transfer_inbound
+ * sync_manifest
+ * sync_plant
+ * sync_plant_derivative
+ * sync_plant_room
+ * sync_qa_lab
+ * sync_sale
+ * sync_tax_report
+ * sync_third_party_transporter
+ * sync_vehicle
+ * sync_vendor
+ * tax_obligation_file
+ * user_add
+ * user_modify
+ * user_remove
+ * vehicle_add
+ * vehicle_modify
+ * vehicle_remove
+
+
+## See Also
+
+ * Arkansas
+ * Connecticut
+ * Delaware
+ * Florida
+ * Hawaii https://hicsts.hawaii.gov/ - Documentation: https://www.biotrack.com/wp-content/uploads/2018/03/JSON-1.pdf
+ * Illinois Documentation: https://www.biotrack.com/wp-content/uploads/2018/04/IL-JSON-2-1.pdf
+ * New Hampshire
+ * New Mexico Documentation: https://www.biotrack.com/wp-content/uploads/2018/01/JSON-2.pdf
+ * New York
+ * North Dakota
+ * Virginia

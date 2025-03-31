@@ -7,11 +7,25 @@
 
 define('APP_ROOT', __DIR__);
 
-error_reporting(E_ALL & ~ E_NOTICE);
+define('APP_VERSION', '420.24.262');
+
+error_reporting(E_ALL & ~ E_NOTICE & ~ E_WARNING);
 
 openlog('openthc-bunk', LOG_ODELAY|LOG_PID, LOG_LOCAL0);
 
 require_once(APP_ROOT . '/vendor/autoload.php');
+
+if ( ! \OpenTHC\Config::init(APP_ROOT) ) {
+	_exit_html_fail('<h1>Invalid Application Configuration [OBB-019]</h1>', 500);
+}
+
+define('OPENTHC_SERVICE_ID', \OpenTHC\Config::get('openthc/bunk/id'));
+define('OPENTHC_SERVICE_ORIGIN', \OpenTHC\Config::get('openthc/bunk/origin'));
+
+require_once('/opt/openthc/cre-adapter/lib/BioTrack.php');
+require_once('/opt/openthc/cre-adapter/lib/BioTrack/Contact.php');
+require_once('/opt/openthc/cre-adapter/lib/BioTrack/Section.php');
+require_once('/opt/openthc/cre-adapter/lib/BioTrack/Vehicle.php');
 
 /**
  * Shit Hack for a "theme"
@@ -20,7 +34,7 @@ function _page_doc_merge(string $f) : void
 {
 	$source = file_get_contents(APP_ROOT . '/webroot/index.html');
 
-	$file = sprintf('%s/webroot/%s.md', APP_ROOT, $f);
+	$file = sprintf('%s/doc/%s.md', APP_ROOT, $f);
 	$text = file_get_contents($file);
 
 	$t0 = strtok($text, "\n");
@@ -73,7 +87,7 @@ function _url_host_helper_rewrite() : void
 		case 'mcp-tracking.nmhealth.org':
 		case 'mminventory.health.nd.gov':
 			// BioTrack
-			$_SERVER['REQUEST_URI'] = sprintf('/biotrack/v2013/serverjson.asp?%s', http_build_query($_GET));
+			$_SERVER['REQUEST_URI'] = sprintf('/biotrack/v2014/serverjson.asp?%s', http_build_query($_GET));
 			break;
 		case 'cannabisreporting.lcb.wa.gov':
 			// CCRS
