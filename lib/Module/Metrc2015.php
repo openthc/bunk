@@ -15,7 +15,7 @@ class Metrc2015 extends \OpenTHC\Module\Base
 	function __invoke(\OpenTHC\App $a)
 	{
 		$a->get('', function($REQ, $RES, $ARG) {
-			return _page_doc_merge('metrc');
+			return _page_doc_merge('Metrc2015');
 		});
 
 		$a->get('/facilities/v1', function($REQ, $RES, $ARG) {
