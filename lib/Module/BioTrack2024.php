@@ -65,52 +65,9 @@ class BioTrack2024 extends \OpenTHC\Module\Base
 			// No 200 response given
 			return $RES->withJSON();
 		});
-		$a->delete('/v1/user/{id}', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'SessionTime' => 0,
-				'TransactionID' => 0,
-				'User' => [
-					'Active' => true,
-					'Admin' => true,
-					'ID' => 0,
-					'Permission' => [
-						'string',
-					],
-					'TransactionID' => 0,
-					'Username' => 'string',
-				],
-			]);
-		});
-		$a->get('/v1/user/{id}', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'User' => [
-					'Active' => true,
-					'Admin' => true,
-					'ID' => 0,
-					'Permission' => [
-						'string',
-					],
-					'TransactionID' => 0,
-					'Username' => 'string',
-				],
-			]);
-		});
-		$a->put('/v1/user/{id}', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'SessionTime' => 0,
-				'TransactionID' => 0,
-				'User' => [
-					'Active' => true,
-					'Admin' => true,
-					'ID' => 0,
-					'Permission' => [
-						'string',
-					],
-					'TransactionID' => 0,
-					'Username' => 'string',
-				],
-			]);
-		});
+		$a->delete('/v1/user/{id}', '\OpenTHC\Bunk\BioTrack\UserDelete');
+		$a->get('/v1/user/{id}', '\OpenTHC\Bunk\BioTrack2024\UserDetail');
+		$a->put('/v1/user/{id}', 'OpenTHC\Bunk\BioTrack2024\UserUpdate');
 
 		// Permission
 		$a->get('/v1/permission', function($REQ, $RES, $ARG) {
@@ -284,345 +241,17 @@ class BioTrack2024 extends \OpenTHC\Module\Base
 		});
 
 		// Plant
-		$a->get('/v1/plant', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'NextCursor' => 0,
-				'NextTransactionID' => 0,
-				'Plant' => [
-					[
-						'BirthDate' => 'string',
-						'Converted' => true,
-						'CureCollections' => 0,
-						'Deleted' => true,
-						'DestroyReason' => 'string',
-						'DestroyReasonID' => 0,
-						'DestroyScheduled' => true,
-						'DestroyScheduledTime' => 'string',
-						'ExternalID' => 'string',
-						'HarvestBatchID' => 'string',
-						'HarvestCollections' => 0,
-						'HarvestScheduled' => true,
-						'ID' => 'string',
-						'Location' => 'string',
-						'Mother' => true,
-						'OrgID' => 0,
-						'ParentPlantID' => 'string',
-						'RoomID' => 0,
-						'SessionTime' => 0,
-						'SourceInventoryID' => 'string',
-						'State' => 'string',
-						'StateID' => 0,
-						'Strain' => 'string',
-						'TransactionID' => 0,
-					],
-				],
-			]);
-		});
-		$a->post('/v1/plant', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'Plant' => [
-					[
-						'BirthDate' => 'string',
-						'Converted' => true,
-						'CureCollections' => 0,
-						'Deleted' => true,
-						'DestroyReason' => 'string',
-						'DestroyReasonID' => 0,
-						'DestroyScheduled' => true,
-						'DestroyScheduledTime' => 'string',
-						'ExternalID' => 'string',
-						'HarvestBatchID' => 'string',
-						'HarvestCollections' => 0,
-						'HarvestScheduled' => true,
-						'ID' => 'string',
-						'Location' => 'string',
-						'Mother' => true,
-						'OrgID' => 0,
-						'ParentPlantID' => 'string',
-						'RoomID' => 0,
-						'SessionTime' => 0,
-						'SourceInventoryID' => 'string',
-						'State' => 'string',
-						'StateID' => 0,
-						'Strain' => 'string',
-						'TransactionID' => 0,
-					],
-				],
-				'SourceInventory' => [
-					'ActiveSampleInventoryID' => 'string',
-					'Deleted' => true,
-					'Destroyed' => true,
-					'Dried' => true,
-					'ExpirationDate' => 'string',
-					'ExternalID' => 'string',
-					'ID' => 'string',
-					'Initial' => true,
-					'InventoryParentID' => [
-						'string',
-					],
-					'InventoryType' => 0,
-					'IsSample' => true,
-					'LabSample' => [
-						[
-							'Amount' => 0,
-							'AmountUsed' => 0,
-							'CertOfAnalysisHyperlink' => 'string',
-							'Deleted' => true,
-							'ID' => 0,
-							'InventoryID' => 'string',
-							'InventoryType' => 0,
-							'LabLicense' => 'string',
-							'LocationLicense' => 'string',
-							'Medical' => true,
-							'MedicalGrade' => true,
-							'ParentID' => 'string',
-							'QualityControlDataHyperlink' => 'string',
-							'Result' => 'string',
-							'RnD' => true,
-							'SampleUse' => 'string',
-							'SessionTime' => 0,
-							'TestingData' => [
-								[
-									'LabAnalysisTime' => '2024-01-31T10:00:00.000Z',
-									'SamplePreparationTime' => '2024-01-31T10:00:00.000Z',
-									'TestID' => 0,
-									'TestResult' => [
-										[
-											'LabProvided' => true,
-											'TestPanel' => 'string',
-											'TestPass' => true,
-											'TestValue' => 0,
-											'TransactionID' => 0,
-										],
-									],
-								],
-							],
-							'TransactionID' => 0,
-						],
-					],
-					'LocationLicense' => 'string',
-					'MedUsableWeight' => 0,
-					'Medicated' => true,
-					'NetPackageWeight' => 0,
-					'PackageDate' => 'string',
-					'ProductName' => 'string',
-					'ProductionBatchID' => 0,
-					'QAStatus' => 'string',
-					'RecUsableWeight' => 0,
-					'RemainingAmount' => 0,
-					'Remediated' => true,
-					'RemediationCount' => 0,
-					'RemediationEligible' => true,
-					'Restocked' => true,
-					'Rework' => true,
-					'RoomID' => 0,
-					'Seized' => true,
-					'SessionTime' => 0,
-					'SourcePlantID' => 'string',
-					'StateProductIdentifier' => 'string',
-					'Status' => 'string',
-					'Strain' => 'string',
-					'TransactionID' => 0,
-					'UOM' => 'string',
-					'UnitBased' => true,
-					'UsableWeight' => 0,
-				],
-				'TransactionID' => 0,
-			]);
-		});
-		$a->put('/v1/plant/convert/inventory', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'Inventory' => [
-					[
-						'ActiveSampleInventoryID' => 'string',
-						'Deleted' => true,
-						'Destroyed' => true,
-						'Dried' => true,
-						'ExpirationDate' => 'string',
-						'ExternalID' => 'string',
-						'ID' => 'string',
-						'Initial' => true,
-						'InventoryParentID' => [
-							'string',
-						],
-						'InventoryType' => 0,
-						'IsSample' => true,
-						'LabSample' => [
-							[
-								'Amount' => 0,
-								'AmountUsed' => 0,
-								'CertOfAnalysisHyperlink' => 'string',
-								'Deleted' => true,
-								'ID' => 0,
-								'InventoryID' => 'string',
-								'InventoryType' => 0,
-								'LabLicense' => 'string',
-								'LocationLicense' => 'string',
-								'Medical' => true,
-								'MedicalGrade' => true,
-								'ParentID' => 'string',
-								'QualityControlDataHyperlink' => 'string',
-								'Result' => 'string',
-								'RnD' => true,
-								'SampleUse' => 'string',
-								'SessionTime' => 0,
-								'TestingData' => [
-									[
-										'LabAnalysisTime' => '2024-01-31T10:00:00.000Z',
-										'SamplePreparationTime' => '2024-01-31T10:00:00.000Z',
-										'TestID' => 0,
-										'TestResult' => [
-											[
-												'LabProvided' => true,
-												'TestPanel' => 'string',
-												'TestPass' => true,
-												'TestValue' => 0,
-												'TransactionID' => 0,
-											],
-										],
-									],
-								],
-								'TransactionID' => 0,
-							],
-						],
-						'LocationLicense' => 'string',
-						'MedUsableWeight' => 0,
-						'Medicated' => true,
-						'NetPackageWeight' => 0,
-						'PackageDate' => 'string',
-						'ProductName' => 'string',
-						'ProductionBatchID' => 0,
-						'QAStatus' => 'string',
-						'RecUsableWeight' => 0,
-						'RemainingAmount' => 0,
-						'Remediated' => true,
-						'RemediationCount' => 0,
-						'RemediationEligible' => true,
-						'Restocked' => true,
-						'Rework' => true,
-						'RoomID' => 0,
-						'Seized' => true,
-						'SessionTime' => 0,
-						'SourcePlantID' => 'string',
-						'StateProductIdentifier' => 'string',
-						'Status' => 'string',
-						'Strain' => 'string',
-						'TransactionID' => 0,
-						'UOM' => 'string',
-						'UnitBased' => true,
-						'UsableWeight' => 0,
-					],
-				],
-				'Sessiontime' => 'string',
-				'TransactionID' => 0,
-			]);
-		});
-		$a->put('/v1/plant/destroy', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'DestroyReason' => 'string',
-				'Plant' => [
-					[
-						'BirthDate' => 'string',
-						'Converted' => true,
-						'CureCollections' => 0,
-						'Deleted' => true,
-						'DestroyReason' => 'string',
-						'DestroyReasonID' => 0,
-						'DestroyScheduled' => true,
-						'DestroyScheduledTime' => 'string',
-						'ExternalID' => 'string',
-						'HarvestBatchID' => 'string',
-						'HarvestCollections' => 0,
-						'HarvestScheduled' => true,
-						'ID' => 'string',
-						'Location' => 'string',
-						'Mother' => true,
-						'OrgID' => 0,
-						'ParentPlantID' => 'string',
-						'RoomID' => 0,
-						'SessionTime' => 0,
-						'SourceInventoryID' => 'string',
-						'State' => 'string',
-						'StateID' => 0,
-						'Strain' => 'string',
-						'TransactionID' => 0,
-					],
-				],
-				'ReasonExtended' => 0,
-				'SessionTime' => 0,
-				'TransactionID' => 0,
-			]);
-		});
-		$a->put('/v1/plant/destroy/schedule', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'DestroyReason' => 'string',
-				'Plant' => [
-					[
-						'BirthDate' => 'string',
-						'Converted' => true,
-						'CureCollections' => 0,
-						'Deleted' => true,
-						'DestroyReason' => 'string',
-						'DestroyReasonID' => 0,
-						'DestroyScheduled' => true,
-						'DestroyScheduledTime' => 'string',
-						'ExternalID' => 'string',
-						'HarvestBatchID' => 'string',
-						'HarvestCollections' => 0,
-						'HarvestScheduled' => true,
-						'ID' => 'string',
-						'Location' => 'string',
-						'Mother' => true,
-						'OrgID' => 0,
-						'ParentPlantID' => 'string',
-						'RoomID' => 0,
-						'SessionTime' => 0,
-						'SourceInventoryID' => 'string',
-						'State' => 'string',
-						'StateID' => 0,
-						'Strain' => 'string',
-						'TransactionID' => 0,
-					],
-				],
-				'ReasonExtended' => 0,
-				'SessionTime' => 0,
-				'TransactionID' => 0,
-			]);
-		});
-		$a->put('/v1/plant/destroy/schedule/undo', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'Plant' => [
-					[
-						'BirthDate' => 'string',
-						'Converted' => true,
-						'CureCollections' => 0,
-						'Deleted' => true,
-						'DestroyReason' => 'string',
-						'DestroyReasonID' => 0,
-						'DestroyScheduled' => true,
-						'DestroyScheduledTime' => 'string',
-						'ExternalID' => 'string',
-						'HarvestBatchID' => 'string',
-						'HarvestCollections' => 0,
-						'HarvestScheduled' => true,
-						'ID' => 'string',
-						'Location' => 'string',
-						'Mother' => true,
-						'OrgID' => 0,
-						'ParentPlantID' => 'string',
-						'RoomID' => 0,
-						'SessionTime' => 0,
-						'SourceInventoryID' => 'string',
-						'State' => 'string',
-						'StateID' => 0,
-						'Strain' => 'string',
-						'TransactionID' => 0,
-					],
-				],
-				'SessionTime' => 0,
-				'TransactionID' => 0,
-			]);
-		});
+		$a->get('/v1/plant', 'OpenTHC\BioTrack2024\PlantSearch');
+		$a->post('/v1/plant', 'OpenTHC\BioTrack2024\PlantUpdate');
+		// Plant Additive
+		$a->get('/v1/plant/additive', 'PlantAdditivieSearch');
+		$a->post('/v1/plant/additive', 'PlantAdditiveUpdate');
+		$a->put('/v1/plant/additive', 'PlantAdditiveUpdate');
+
+		$a->put('/v1/plant/convert/inventory', 'OpenTHC\BioTrack2024\PlantConvert');
+		$a->put('/v1/plant/destroy', 'OpenTHC\BioTrack2024\PlantDestroy');
+		$a->put('/v1/plant/destroy/schedule', 'OpenTHC\BioTrack2024\PlantDestroySchedule');
+		$a->put('/v1/plant/destroy/schedule/undo', 'OpenTHC\BioTrack2024\PlantDestroyScheduleUndo');
 		$a->post('/v1/plant/initial', function($REQ, $RES, $ARG) {
 			return $RES->withJSON([
 				'Data' => [
@@ -760,6 +389,7 @@ class BioTrack2024 extends \OpenTHC\Module\Base
 				],
 			]);
 		});
+
 		$a->get('/v1/plant/{id}', function($REQ, $RES, $ARG) {
 			return $RES->withJSON([
 				'BirthDate' => 'string',
@@ -922,65 +552,6 @@ class BioTrack2024 extends \OpenTHC\Module\Base
 					'StateID' => 0,
 					'Strain' => 'string',
 					'TransactionID' => 0,
-				],
-				'SessionTime' => 0,
-				'TransactionID' => 0,
-			]);
-		});
-
-		// Plant Additive
-		$a->get('/v1/plant/additive', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'NextCursor' => 0,
-				'NextTransactionID' => 0,
-				'PlantAdditive' => [
-					[
-						'AdditiveName' => 'string',
-						'AppliedQuantity' => 0,
-						'AppliedQuantityUOM' => 'string',
-						'CreatedOn' => 'string',
-						'Deleted' => true,
-						'ID' => 0,
-						'LocationLicense' => 'string',
-						'PlantID' => 'string',
-						'TransactionID' => 0,
-					],
-				],
-			]);
-		});
-		$a->post('/v1/plant/additive', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'NextCursor' => 0,
-				'NextTransactionID' => 0,
-				'PlantAdditive' => [
-					[
-						'AdditiveName' => 'string',
-						'AppliedQuantity' => 0,
-						'AppliedQuantityUOM' => 'string',
-						'CreatedOn' => 'string',
-						'Deleted' => true,
-						'ID' => 0,
-						'LocationLicense' => 'string',
-						'PlantID' => 'string',
-						'TransactionID' => 0,
-					],
-				],
-			]);
-		});
-		$a->put('/v1/plant/additive', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'PlantAdditive' => [
-					[
-						'AdditiveName' => 'string',
-						'AppliedQuantity' => 0,
-						'AppliedQuantityUOM' => 'string',
-						'CreatedOn' => 'string',
-						'Deleted' => true,
-						'ID' => 0,
-						'LocationLicense' => 'string',
-						'PlantID' => 'string',
-						'TransactionID' => 0,
-					],
 				],
 				'SessionTime' => 0,
 				'TransactionID' => 0,
@@ -4320,6 +3891,1206 @@ class BioTrack2024 extends \OpenTHC\Module\Base
 			]
 			);
 		});
+		// Inventory Transfer
+		$a->get('/v1/inventory/transfer', function($REQ, $RES, $ARG) {
+			return $RES->withJSON([
+				'InventoryTransfer' => [
+					[
+						'Deleted' => true,
+						'ID' => 0,
+						'InboundLicense' => 'string',
+						'Invoice' => [
+							'Accepted' => true,
+							'BuyerLocationLicense' => 'string',
+							'Deleted' => true,
+							'Inventory' => [
+								[
+									'Amount' => 0,
+									'Deleted' => true,
+									'ID' => 0,
+									'InventoryID' => 'string',
+									'InvoiceID' => 'string',
+									'Price' => 0,
+									'TransactionID' => 0,
+								],
+							],
+							'InvoiceID' => 'string',
+							'LocationLicense' => 'string',
+							'Payment' => [
+								[
+									'Accepted' => true,
+									'AcceptedLocationID' => 'string',
+									'AcceptedOn' => 'string',
+									'Amount' => 0,
+									'BuyerLocationLicense' => 'string',
+									'BuyerUserID' => 0,
+									'CreatedOn' => 'string',
+									'Deleted' => true,
+									'ID' => 0,
+									'InvoiceID' => 'string',
+									'Rejected' => true,
+									'RejectedLocationLicense' => 'string',
+									'RejectedOn' => 'string',
+									'RejectedReason' => 'string',
+									'TransactionID' => 0,
+									'UpdatedOn' => 'string',
+								],
+							],
+							'Refund' => true,
+							'SessionTime' => 0,
+							'TransactionID' => 0,
+						],
+						'InvoiceID' => 'string',
+						'IsRejected' => true,
+						'Item' => [
+							[
+								'Amount' => 0,
+								'Deleted' => true,
+								'Description' => 'string',
+								'ID' => 0,
+								'Inventory' => [
+									'ActiveSampleInventoryID' => 'string',
+									'Deleted' => true,
+									'Destroyed' => true,
+									'Dried' => true,
+									'ExpirationDate' => 'string',
+									'ExternalID' => 'string',
+									'ID' => 'string',
+									'Initial' => true,
+									'InventoryParentID' => [
+										'string',
+									],
+									'InventoryType' => 0,
+									'IsSample' => true,
+									'LabSample' => [
+										[
+											'Amount' => 0,
+											'AmountUsed' => 0,
+											'CertOfAnalysisHyperlink' => 'string',
+											'Deleted' => true,
+											'ID' => 0,
+											'InventoryID' => 'string',
+											'InventoryType' => 0,
+											'LabLicense' => 'string',
+											'LocationLicense' => 'string',
+											'Medical' => true,
+											'MedicalGrade' => true,
+											'ParentID' => 'string',
+											'QualityControlDataHyperlink' => 'string',
+											'Result' => 'string',
+											'RnD' => true,
+											'SampleUse' => 'string',
+											'SessionTime' => 0,
+											'TestingData' => [
+												[
+													'LabAnalysisTime' => '2024-01-31T10:00:00.000Z',
+													'SamplePreparationTime' => '2024-01-31T10:00:00.000Z',
+													'TestID' => 0,
+													'TestResult' => [
+														[
+															'LabProvided' => true,
+															'TestPanel' => 'string',
+															'TestPass' => true,
+															'TestValue' => 0,
+															'TransactionID' => 0,
+														],
+													],
+												],
+											],
+											'TransactionID' => 0,
+										],
+									],
+									'LocationLicense' => 'string',
+									'MedUsableWeight' => 0,
+									'Medicated' => true,
+									'NetPackageWeight' => 0,
+									'PackageDate' => 'string',
+									'ProductName' => 'string',
+									'ProductionBatchID' => 0,
+									'QAStatus' => 'string',
+									'RecUsableWeight' => 0,
+									'RemainingAmount' => 0,
+									'Remediated' => true,
+									'RemediationCount' => 0,
+									'RemediationEligible' => true,
+									'Restocked' => true,
+									'Rework' => true,
+									'RoomID' => 0,
+									'Seized' => true,
+									'SessionTime' => 0,
+									'SourcePlantID' => 'string',
+									'StateProductIdentifier' => 'string',
+									'Status' => 'string',
+									'Strain' => 'string',
+									'TransactionID' => 0,
+									'UOM' => 'string',
+									'UnitBased' => true,
+									'UsableWeight' => 0,
+								],
+								'InventoryID' => 'string',
+								'InventoryTransferID' => 0,
+								'IsRejected' => true,
+								'IsReturn' => true,
+								'ManifestID' => 'string',
+								'Received' => true,
+								'ReceivedAmount' => 0,
+								'ReceivedTime' => 'string',
+								'TransactionID' => 0,
+							],
+						],
+						'ManifestID' => 'string',
+						'ManifestStopNumber' => 0,
+						'OutboundLicense' => 'string',
+						'Received' => true,
+						'ReceivedTime' => 'string',
+						'SessionTime' => 0,
+						'TransactionID' => 0,
+						'TransferType' => 'string',
+					],
+				],
+				'NextCursor' => 0,
+				'NextTransactionID' => 0,
+			]
+			);
+		});
+		$a->post('/v1/inventory/transfer', function($REQ, $RES, $ARG) {
+			return $RES->withJSON([
+				'Inventory' => [
+					[
+						'ActiveSampleInventoryID' => 'string',
+						'Deleted' => true,
+						'Destroyed' => true,
+						'Dried' => true,
+						'ExpirationDate' => 'string',
+						'ExternalID' => 'string',
+						'ID' => 'string',
+						'Initial' => true,
+						'InventoryParentID' => [
+							'string',
+						],
+						'InventoryType' => 0,
+						'IsSample' => true,
+						'LabSample' => [
+							[
+								'Amount' => 0,
+								'AmountUsed' => 0,
+								'CertOfAnalysisHyperlink' => 'string',
+								'Deleted' => true,
+								'ID' => 0,
+								'InventoryID' => 'string',
+								'InventoryType' => 0,
+								'LabLicense' => 'string',
+								'LocationLicense' => 'string',
+								'Medical' => true,
+								'MedicalGrade' => true,
+								'ParentID' => 'string',
+								'QualityControlDataHyperlink' => 'string',
+								'Result' => 'string',
+								'RnD' => true,
+								'SampleUse' => 'string',
+								'SessionTime' => 0,
+								'TestingData' => [
+									[
+										'LabAnalysisTime' => '2024-01-31T10:00:00.000Z',
+										'SamplePreparationTime' => '2024-01-31T10:00:00.000Z',
+										'TestID' => 0,
+										'TestResult' => [
+											[
+												'LabProvided' => true,
+												'TestPanel' => 'string',
+												'TestPass' => true,
+												'TestValue' => 0,
+												'TransactionID' => 0,
+											],
+										],
+									],
+								],
+								'TransactionID' => 0,
+							],
+						],
+						'LocationLicense' => 'string',
+						'MedUsableWeight' => 0,
+						'Medicated' => true,
+						'NetPackageWeight' => 0,
+						'PackageDate' => 'string',
+						'ProductName' => 'string',
+						'ProductionBatchID' => 0,
+						'QAStatus' => 'string',
+						'RecUsableWeight' => 0,
+						'RemainingAmount' => 0,
+						'Remediated' => true,
+						'RemediationCount' => 0,
+						'RemediationEligible' => true,
+						'Restocked' => true,
+						'Rework' => true,
+						'RoomID' => 0,
+						'Seized' => true,
+						'SessionTime' => 0,
+						'SourcePlantID' => 'string',
+						'StateProductIdentifier' => 'string',
+						'Status' => 'string',
+						'Strain' => 'string',
+						'TransactionID' => 0,
+						'UOM' => 'string',
+						'UnitBased' => true,
+						'UsableWeight' => 0,
+					],
+				],
+				'InventoryTransfer' => [
+					[
+						'Deleted' => true,
+						'ID' => 0,
+						'InboundLicense' => 'string',
+						'Invoice' => [
+							'Accepted' => true,
+							'BuyerLocationLicense' => 'string',
+							'Deleted' => true,
+							'Inventory' => [
+								[
+									'Amount' => 0,
+									'Deleted' => true,
+									'ID' => 0,
+									'InventoryID' => 'string',
+									'InvoiceID' => 'string',
+									'Price' => 0,
+									'TransactionID' => 0,
+								],
+							],
+							'InvoiceID' => 'string',
+							'LocationLicense' => 'string',
+							'Payment' => [
+								[
+									'Accepted' => true,
+									'AcceptedLocationID' => 'string',
+									'AcceptedOn' => 'string',
+									'Amount' => 0,
+									'BuyerLocationLicense' => 'string',
+									'BuyerUserID' => 0,
+									'CreatedOn' => 'string',
+									'Deleted' => true,
+									'ID' => 0,
+									'InvoiceID' => 'string',
+									'Rejected' => true,
+									'RejectedLocationLicense' => 'string',
+									'RejectedOn' => 'string',
+									'RejectedReason' => 'string',
+									'TransactionID' => 0,
+									'UpdatedOn' => 'string',
+								],
+							],
+							'Refund' => true,
+							'SessionTime' => 0,
+							'TransactionID' => 0,
+						],
+						'InvoiceID' => 'string',
+						'IsRejected' => true,
+						'Item' => [
+							[
+								'Amount' => 0,
+								'Deleted' => true,
+								'Description' => 'string',
+								'ID' => 0,
+								'Inventory' => [
+									'ActiveSampleInventoryID' => 'string',
+									'Deleted' => true,
+									'Destroyed' => true,
+									'Dried' => true,
+									'ExpirationDate' => 'string',
+									'ExternalID' => 'string',
+									'ID' => 'string',
+									'Initial' => true,
+									'InventoryParentID' => [
+										'string',
+									],
+									'InventoryType' => 0,
+									'IsSample' => true,
+									'LabSample' => [
+										[
+											'Amount' => 0,
+											'AmountUsed' => 0,
+											'CertOfAnalysisHyperlink' => 'string',
+											'Deleted' => true,
+											'ID' => 0,
+											'InventoryID' => 'string',
+											'InventoryType' => 0,
+											'LabLicense' => 'string',
+											'LocationLicense' => 'string',
+											'Medical' => true,
+											'MedicalGrade' => true,
+											'ParentID' => 'string',
+											'QualityControlDataHyperlink' => 'string',
+											'Result' => 'string',
+											'RnD' => true,
+											'SampleUse' => 'string',
+											'SessionTime' => 0,
+											'TestingData' => [
+												[
+													'LabAnalysisTime' => '2024-01-31T10:00:00.000Z',
+													'SamplePreparationTime' => '2024-01-31T10:00:00.000Z',
+													'TestID' => 0,
+													'TestResult' => [
+														[
+															'LabProvided' => true,
+															'TestPanel' => 'string',
+															'TestPass' => true,
+															'TestValue' => 0,
+															'TransactionID' => 0,
+														],
+													],
+												],
+											],
+											'TransactionID' => 0,
+										],
+									],
+									'LocationLicense' => 'string',
+									'MedUsableWeight' => 0,
+									'Medicated' => true,
+									'NetPackageWeight' => 0,
+									'PackageDate' => 'string',
+									'ProductName' => 'string',
+									'ProductionBatchID' => 0,
+									'QAStatus' => 'string',
+									'RecUsableWeight' => 0,
+									'RemainingAmount' => 0,
+									'Remediated' => true,
+									'RemediationCount' => 0,
+									'RemediationEligible' => true,
+									'Restocked' => true,
+									'Rework' => true,
+									'RoomID' => 0,
+									'Seized' => true,
+									'SessionTime' => 0,
+									'SourcePlantID' => 'string',
+									'StateProductIdentifier' => 'string',
+									'Status' => 'string',
+									'Strain' => 'string',
+									'TransactionID' => 0,
+									'UOM' => 'string',
+									'UnitBased' => true,
+									'UsableWeight' => 0,
+								],
+								'InventoryID' => 'string',
+								'InventoryTransferID' => 0,
+								'IsRejected' => true,
+								'IsReturn' => true,
+								'ManifestID' => 'string',
+								'Received' => true,
+								'ReceivedAmount' => 0,
+								'ReceivedTime' => 'string',
+								'TransactionID' => 0,
+							],
+						],
+						'ManifestID' => 'string',
+						'ManifestStopNumber' => 0,
+						'OutboundLicense' => 'string',
+						'Received' => true,
+						'ReceivedTime' => 'string',
+						'SessionTime' => 0,
+						'TransactionID' => 0,
+						'TransferType' => 'string',
+					],
+				],
+				'Manifest' => [
+					'City' => 'string',
+					'Completed' => true,
+					'CompletionDate' => 'string',
+					'CreatedOn' => 'string',
+					'Deleted' => true,
+					'Driver' => [
+						[
+							'DateofBirth' => 'string',
+							'ID' => 0,
+							'Name' => 'string',
+						],
+					],
+					'DriverArrived' => true,
+					'InTransit' => true,
+					'IsAccepted' => true,
+					'IsParked' => true,
+					'LicenseNumber' => 'string',
+					'Links' => [
+						[
+							'Href' => 'string',
+							'Method' => 'string',
+							'Rel' => 'string',
+						],
+					],
+					'ManifestID' => 'string',
+					'Name' => 'string',
+					'Phone' => 'string',
+					'Received' => true,
+					'SessionTime' => 0,
+					'State' => 'string',
+					'Stop' => [
+						[
+							'ApproximateArrival' => '2024-01-31T10:00:00.000Z',
+							'ApproximateDeparture' => '2024-01-31T10:00:00.000Z',
+							'ApproximateRoute' => 'string',
+							'City' => 'string',
+							'DriverArrived' => true,
+							'DriverArrivedTime' => 'string',
+							'ID' => 0,
+							'Invoice' => [
+								'Accepted' => true,
+								'BuyerLocationLicense' => 'string',
+								'Deleted' => true,
+								'Inventory' => [
+									[
+										'Amount' => 0,
+										'Deleted' => true,
+										'ID' => 0,
+										'InventoryID' => 'string',
+										'InvoiceID' => 'string',
+										'Price' => 0,
+										'TransactionID' => 0,
+									],
+								],
+								'InvoiceID' => 'string',
+								'LocationLicense' => 'string',
+								'Payment' => [
+									[
+										'Accepted' => true,
+										'AcceptedLocationID' => 'string',
+										'AcceptedOn' => 'string',
+										'Amount' => 0,
+										'BuyerLocationLicense' => 'string',
+										'BuyerUserID' => 0,
+										'CreatedOn' => 'string',
+										'Deleted' => true,
+										'ID' => 0,
+										'InvoiceID' => 'string',
+										'Rejected' => true,
+										'RejectedLocationLicense' => 'string',
+										'RejectedOn' => 'string',
+										'RejectedReason' => 'string',
+										'TransactionID' => 0,
+										'UpdatedOn' => 'string',
+									],
+								],
+								'Refund' => true,
+								'SessionTime' => 0,
+								'TransactionID' => 0,
+							],
+							'InvoiceID' => 'string',
+							'Item' => [
+								[
+									'Deleted' => true,
+									'Description' => 'string',
+									'ID' => 0,
+									'InventoryID' => 'string',
+									'ManifestID' => 'string',
+									'Quantity' => 0,
+									'QuantityReceived' => 0,
+									'SessionTime' => 0,
+									'StopNumber' => 0,
+									'TransactionID' => 0,
+								],
+							],
+							'ItemsCount' => 0,
+							'Links' => [
+								[
+									'Href' => 'string',
+									'Method' => 'string',
+									'Rel' => 'string',
+								],
+							],
+							'LocationLicense' => 'string',
+							'ManifestID' => 'string',
+							'Name' => 'string',
+							'ParkedTime' => 'string',
+							'Phone' => 'string',
+							'ResumedDirections' => 'string',
+							'ResumedEstimatedArrival' => 'string',
+							'ResumedEstimatedDeparture' => 'string',
+							'ResumedTime' => 'string',
+							'State' => 'string',
+							'StopNumber' => 0,
+							'TransporterParked' => true,
+							'TransporterResumed' => true,
+							'ZipCode' => 'string',
+						],
+					],
+					'StopCount' => 0,
+					'Street' => 'string',
+					'ThirdPartyTransporter' => [
+						'LicenseNumber' => 'string',
+						'Name' => 'string',
+					],
+					'TotalItemCount' => 0,
+					'TransactionID' => 0,
+					'Type' => 'string',
+					'UpdatedOn' => 'string',
+					'Vehicle' => [
+						'Description' => 'string',
+						'ID' => 'string',
+					],
+					'Zip' => 'string',
+				],
+				'SessionTime' => 0,
+				'TransactionID' => 0,
+			]
+			);
+		});
+		$a->get('/v1/inventory/transfer/inbound', function($REQ, $RES, $ARG) {
+			return $RES->withJSON([
+				'InventoryTransfer' => [
+					[
+						'Deleted' => true,
+						'ID' => 0,
+						'InboundLicense' => 'string',
+						'Invoice' => [
+							'Accepted' => true,
+							'BuyerLocationLicense' => 'string',
+							'Deleted' => true,
+							'Inventory' => [
+								[
+									'Amount' => 0,
+									'Deleted' => true,
+									'ID' => 0,
+									'InventoryID' => 'string',
+									'InvoiceID' => 'string',
+									'Price' => 0,
+									'TransactionID' => 0,
+								],
+							],
+							'InvoiceID' => 'string',
+							'LocationLicense' => 'string',
+							'Payment' => [
+								[
+									'Accepted' => true,
+									'AcceptedLocationID' => 'string',
+									'AcceptedOn' => 'string',
+									'Amount' => 0,
+									'BuyerLocationLicense' => 'string',
+									'BuyerUserID' => 0,
+									'CreatedOn' => 'string',
+									'Deleted' => true,
+									'ID' => 0,
+									'InvoiceID' => 'string',
+									'Rejected' => true,
+									'RejectedLocationLicense' => 'string',
+									'RejectedOn' => 'string',
+									'RejectedReason' => 'string',
+									'TransactionID' => 0,
+									'UpdatedOn' => 'string',
+								],
+							],
+							'Refund' => true,
+							'SessionTime' => 0,
+							'TransactionID' => 0,
+						],
+						'InvoiceID' => 'string',
+						'IsRejected' => true,
+						'Item' => [
+							[
+								'Amount' => 0,
+								'Deleted' => true,
+								'Description' => 'string',
+								'ID' => 0,
+								'Inventory' => [
+									'ActiveSampleInventoryID' => 'string',
+									'Deleted' => true,
+									'Destroyed' => true,
+									'Dried' => true,
+									'ExpirationDate' => 'string',
+									'ExternalID' => 'string',
+									'ID' => 'string',
+									'Initial' => true,
+									'InventoryParentID' => [
+										'string',
+									],
+									'InventoryType' => 0,
+									'IsSample' => true,
+									'LabSample' => [
+										[
+											'Amount' => 0,
+											'AmountUsed' => 0,
+											'CertOfAnalysisHyperlink' => 'string',
+											'Deleted' => true,
+											'ID' => 0,
+											'InventoryID' => 'string',
+											'InventoryType' => 0,
+											'LabLicense' => 'string',
+											'LocationLicense' => 'string',
+											'Medical' => true,
+											'MedicalGrade' => true,
+											'ParentID' => 'string',
+											'QualityControlDataHyperlink' => 'string',
+											'Result' => 'string',
+											'RnD' => true,
+											'SampleUse' => 'string',
+											'SessionTime' => 0,
+											'TestingData' => [
+												[
+													'LabAnalysisTime' => '2024-01-31T10:00:00.000Z',
+													'SamplePreparationTime' => '2024-01-31T10:00:00.000Z',
+													'TestID' => 0,
+													'TestResult' => [
+														[
+															'LabProvided' => true,
+															'TestPanel' => 'string',
+															'TestPass' => true,
+															'TestValue' => 0,
+															'TransactionID' => 0,
+														],
+													],
+												],
+											],
+											'TransactionID' => 0,
+										],
+									],
+									'LocationLicense' => 'string',
+									'MedUsableWeight' => 0,
+									'Medicated' => true,
+									'NetPackageWeight' => 0,
+									'PackageDate' => 'string',
+									'ProductName' => 'string',
+									'ProductionBatchID' => 0,
+									'QAStatus' => 'string',
+									'RecUsableWeight' => 0,
+									'RemainingAmount' => 0,
+									'Remediated' => true,
+									'RemediationCount' => 0,
+									'RemediationEligible' => true,
+									'Restocked' => true,
+									'Rework' => true,
+									'RoomID' => 0,
+									'Seized' => true,
+									'SessionTime' => 0,
+									'SourcePlantID' => 'string',
+									'StateProductIdentifier' => 'string',
+									'Status' => 'string',
+									'Strain' => 'string',
+									'TransactionID' => 0,
+									'UOM' => 'string',
+									'UnitBased' => true,
+									'UsableWeight' => 0,
+								],
+								'InventoryID' => 'string',
+								'InventoryTransferID' => 0,
+								'IsRejected' => true,
+								'IsReturn' => true,
+								'ManifestID' => 'string',
+								'Received' => true,
+								'ReceivedAmount' => 0,
+								'ReceivedTime' => 'string',
+								'TransactionID' => 0,
+							],
+						],
+						'ManifestID' => 'string',
+						'ManifestStopNumber' => 0,
+						'OutboundLicense' => 'string',
+						'Received' => true,
+						'ReceivedTime' => 'string',
+						'SessionTime' => 0,
+						'TransactionID' => 0,
+						'TransferType' => 'string',
+					],
+				],
+				'NextCursor' => 0,
+				'NextTransactionID' => 0,
+				'SessionTime' => 0,
+			]
+			);
+		});
+		$a->get('/v1/inventory/transfer/inbound/{id}', function($REQ, $RES, $ARG) {
+			return $RES->withJSON([
+				'InventoryTransfer' => [
+					'Deleted' => true,
+					'ID' => 0,
+					'InboundLicense' => 'string',
+					'Invoice' => [
+						'Accepted' => true,
+						'BuyerLocationLicense' => 'string',
+						'Deleted' => true,
+						'Inventory' => [
+							[
+								'Amount' => 0,
+								'Deleted' => true,
+								'ID' => 0,
+								'InventoryID' => 'string',
+								'InvoiceID' => 'string',
+								'Price' => 0,
+								'TransactionID' => 0,
+							],
+						],
+						'InvoiceID' => 'string',
+						'LocationLicense' => 'string',
+						'Payment' => [
+							[
+								'Accepted' => true,
+								'AcceptedLocationID' => 'string',
+								'AcceptedOn' => 'string',
+								'Amount' => 0,
+								'BuyerLocationLicense' => 'string',
+								'BuyerUserID' => 0,
+								'CreatedOn' => 'string',
+								'Deleted' => true,
+								'ID' => 0,
+								'InvoiceID' => 'string',
+								'Rejected' => true,
+								'RejectedLocationLicense' => 'string',
+								'RejectedOn' => 'string',
+								'RejectedReason' => 'string',
+								'TransactionID' => 0,
+								'UpdatedOn' => 'string',
+							],
+						],
+						'Refund' => true,
+						'SessionTime' => 0,
+						'TransactionID' => 0,
+					],
+					'InvoiceID' => 'string',
+					'IsRejected' => true,
+					'Item' => [
+						[
+							'Amount' => 0,
+							'Deleted' => true,
+							'Description' => 'string',
+							'ID' => 0,
+							'Inventory' => [
+								'ActiveSampleInventoryID' => 'string',
+								'Deleted' => true,
+								'Destroyed' => true,
+								'Dried' => true,
+								'ExpirationDate' => 'string',
+								'ExternalID' => 'string',
+								'ID' => 'string',
+								'Initial' => true,
+								'InventoryParentID' => [
+									'string',
+								],
+								'InventoryType' => 0,
+								'IsSample' => true,
+								'LabSample' => [
+									[
+										'Amount' => 0,
+										'AmountUsed' => 0,
+										'CertOfAnalysisHyperlink' => 'string',
+										'Deleted' => true,
+										'ID' => 0,
+										'InventoryID' => 'string',
+										'InventoryType' => 0,
+										'LabLicense' => 'string',
+										'LocationLicense' => 'string',
+										'Medical' => true,
+										'MedicalGrade' => true,
+										'ParentID' => 'string',
+										'QualityControlDataHyperlink' => 'string',
+										'Result' => 'string',
+										'RnD' => true,
+										'SampleUse' => 'string',
+										'SessionTime' => 0,
+										'TestingData' => [
+											[
+												'LabAnalysisTime' => '2024-01-31T10:00:00.000Z',
+												'SamplePreparationTime' => '2024-01-31T10:00:00.000Z',
+												'TestID' => 0,
+												'TestResult' => [
+													[
+														'LabProvided' => true,
+														'TestPanel' => 'string',
+														'TestPass' => true,
+														'TestValue' => 0,
+														'TransactionID' => 0,
+													],
+												],
+											],
+										],
+										'TransactionID' => 0,
+									],
+								],
+								'LocationLicense' => 'string',
+								'MedUsableWeight' => 0,
+								'Medicated' => true,
+								'NetPackageWeight' => 0,
+								'PackageDate' => 'string',
+								'ProductName' => 'string',
+								'ProductionBatchID' => 0,
+								'QAStatus' => 'string',
+								'RecUsableWeight' => 0,
+								'RemainingAmount' => 0,
+								'Remediated' => true,
+								'RemediationCount' => 0,
+								'RemediationEligible' => true,
+								'Restocked' => true,
+								'Rework' => true,
+								'RoomID' => 0,
+								'Seized' => true,
+								'SessionTime' => 0,
+								'SourcePlantID' => 'string',
+								'StateProductIdentifier' => 'string',
+								'Status' => 'string',
+								'Strain' => 'string',
+								'TransactionID' => 0,
+								'UOM' => 'string',
+								'UnitBased' => true,
+								'UsableWeight' => 0,
+							],
+							'InventoryID' => 'string',
+							'InventoryTransferID' => 0,
+							'IsRejected' => true,
+							'IsReturn' => true,
+							'ManifestID' => 'string',
+							'Received' => true,
+							'ReceivedAmount' => 0,
+							'ReceivedTime' => 'string',
+							'TransactionID' => 0,
+						],
+					],
+					'ManifestID' => 'string',
+					'ManifestStopNumber' => 0,
+					'OutboundLicense' => 'string',
+					'Received' => true,
+					'ReceivedTime' => 'string',
+					'SessionTime' => 0,
+					'TransactionID' => 0,
+					'TransferType' => 'string',
+				],
+			]
+			);
+		});
+		$a->get('/v1/inventory/transfer/rejected', function($REQ, $RES, $ARG) {
+			return $RES->withJSON([
+				'InventoryTransfer' => [
+					[
+						'Deleted' => true,
+						'ID' => 0,
+						'InboundLicense' => 'string',
+						'Invoice' => [
+							'Accepted' => true,
+							'BuyerLocationLicense' => 'string',
+							'Deleted' => true,
+							'Inventory' => [
+								[
+									'Amount' => 0,
+									'Deleted' => true,
+									'ID' => 0,
+									'InventoryID' => 'string',
+									'InvoiceID' => 'string',
+									'Price' => 0,
+									'TransactionID' => 0,
+								],
+							],
+							'InvoiceID' => 'string',
+							'LocationLicense' => 'string',
+							'Payment' => [
+								[
+									'Accepted' => true,
+									'AcceptedLocationID' => 'string',
+									'AcceptedOn' => 'string',
+									'Amount' => 0,
+									'BuyerLocationLicense' => 'string',
+									'BuyerUserID' => 0,
+									'CreatedOn' => 'string',
+									'Deleted' => true,
+									'ID' => 0,
+									'InvoiceID' => 'string',
+									'Rejected' => true,
+									'RejectedLocationLicense' => 'string',
+									'RejectedOn' => 'string',
+									'RejectedReason' => 'string',
+									'TransactionID' => 0,
+									'UpdatedOn' => 'string',
+								],
+							],
+							'Refund' => true,
+							'SessionTime' => 0,
+							'TransactionID' => 0,
+						],
+						'InvoiceID' => 'string',
+						'IsRejected' => true,
+						'Item' => [
+							[
+								'Amount' => 0,
+								'Deleted' => true,
+								'Description' => 'string',
+								'ID' => 0,
+								'Inventory' => [
+									'ActiveSampleInventoryID' => 'string',
+									'Deleted' => true,
+									'Destroyed' => true,
+									'Dried' => true,
+									'ExpirationDate' => 'string',
+									'ExternalID' => 'string',
+									'ID' => 'string',
+									'Initial' => true,
+									'InventoryParentID' => [
+										'string',
+									],
+									'InventoryType' => 0,
+									'IsSample' => true,
+									'LabSample' => [
+										[
+											'Amount' => 0,
+											'AmountUsed' => 0,
+											'CertOfAnalysisHyperlink' => 'string',
+											'Deleted' => true,
+											'ID' => 0,
+											'InventoryID' => 'string',
+											'InventoryType' => 0,
+											'LabLicense' => 'string',
+											'LocationLicense' => 'string',
+											'Medical' => true,
+											'MedicalGrade' => true,
+											'ParentID' => 'string',
+											'QualityControlDataHyperlink' => 'string',
+											'Result' => 'string',
+											'RnD' => true,
+											'SampleUse' => 'string',
+											'SessionTime' => 0,
+											'TestingData' => [
+												[
+													'LabAnalysisTime' => '2024-01-31T10:00:00.000Z',
+													'SamplePreparationTime' => '2024-01-31T10:00:00.000Z',
+													'TestID' => 0,
+													'TestResult' => [
+														[
+															'LabProvided' => true,
+															'TestPanel' => 'string',
+															'TestPass' => true,
+															'TestValue' => 0,
+															'TransactionID' => 0,
+														],
+													],
+												],
+											],
+											'TransactionID' => 0,
+										],
+									],
+									'LocationLicense' => 'string',
+									'MedUsableWeight' => 0,
+									'Medicated' => true,
+									'NetPackageWeight' => 0,
+									'PackageDate' => 'string',
+									'ProductName' => 'string',
+									'ProductionBatchID' => 0,
+									'QAStatus' => 'string',
+									'RecUsableWeight' => 0,
+									'RemainingAmount' => 0,
+									'Remediated' => true,
+									'RemediationCount' => 0,
+									'RemediationEligible' => true,
+									'Restocked' => true,
+									'Rework' => true,
+									'RoomID' => 0,
+									'Seized' => true,
+									'SessionTime' => 0,
+									'SourcePlantID' => 'string',
+									'StateProductIdentifier' => 'string',
+									'Status' => 'string',
+									'Strain' => 'string',
+									'TransactionID' => 0,
+									'UOM' => 'string',
+									'UnitBased' => true,
+									'UsableWeight' => 0,
+								],
+								'InventoryID' => 'string',
+								'InventoryTransferID' => 0,
+								'IsRejected' => true,
+								'IsReturn' => true,
+								'ManifestID' => 'string',
+								'Received' => true,
+								'ReceivedAmount' => 0,
+								'ReceivedTime' => 'string',
+								'TransactionID' => 0,
+							],
+						],
+						'ManifestID' => 'string',
+						'ManifestStopNumber' => 0,
+						'OutboundLicense' => 'string',
+						'Received' => true,
+						'ReceivedTime' => 'string',
+						'SessionTime' => 0,
+						'TransactionID' => 0,
+						'TransferType' => 'string',
+					],
+				],
+				'NextCursor' => 0,
+				'NextTransactionID' => 0,
+				'SessionTime' => 0,
+			]
+			);
+		});
+		$a->get('/v1/inventory/transfer/rules', function($REQ, $RES, $ARG) {
+			return $RES->withJSON([
+				'TransferRule' => [
+					[
+						'Deleted' => true,
+						'DestinationIsLab' => true,
+						'DestinationLocationType' => 0,
+						'ID' => 0,
+						'InventoryType' => 0,
+						'QAPassRequired' => true,
+						'RnDSampleAllowed' => true,
+						'SourceLocationType' => 0,
+						'TransportLicenseeTypeID' => 0,
+					],
+				],
+				'NextCursor' => 0,
+			]
+			);
+		});
+		$a->get('/v1/inventory/transfer/{id}', function($REQ, $RES, $ARG) {
+			return $RES->withJSON([
+				'InventoryTransfer' => [
+					'Deleted' => true,
+					'ID' => 0,
+					'InboundLicense' => 'string',
+					'Invoice' => [
+						'Accepted' => true,
+						'BuyerLocationLicense' => 'string',
+						'Deleted' => true,
+						'Inventory' => [
+							[
+								'Amount' => 0,
+								'Deleted' => true,
+								'ID' => 0,
+								'InventoryID' => 'string',
+								'InvoiceID' => 'string',
+								'Price' => 0,
+								'TransactionID' => 0,
+							],
+						],
+						'InvoiceID' => 'string',
+						'LocationLicense' => 'string',
+						'Payment' => [
+							[
+								'Accepted' => true,
+								'AcceptedLocationID' => 'string',
+								'AcceptedOn' => 'string',
+								'Amount' => 0,
+								'BuyerLocationLicense' => 'string',
+								'BuyerUserID' => 0,
+								'CreatedOn' => 'string',
+								'Deleted' => true,
+								'ID' => 0,
+								'InvoiceID' => 'string',
+								'Rejected' => true,
+								'RejectedLocationLicense' => 'string',
+								'RejectedOn' => 'string',
+								'RejectedReason' => 'string',
+								'TransactionID' => 0,
+								'UpdatedOn' => 'string',
+							],
+						],
+						'Refund' => true,
+						'SessionTime' => 0,
+						'TransactionID' => 0,
+					],
+					'InvoiceID' => 'string',
+					'IsRejected' => true,
+					'Item' => [
+						[
+							'Amount' => 0,
+							'Deleted' => true,
+							'Description' => 'string',
+							'ID' => 0,
+							'Inventory' => [
+								'ActiveSampleInventoryID' => 'string',
+								'Deleted' => true,
+								'Destroyed' => true,
+								'Dried' => true,
+								'ExpirationDate' => 'string',
+								'ExternalID' => 'string',
+								'ID' => 'string',
+								'Initial' => true,
+								'InventoryParentID' => [
+									'string',
+								],
+								'InventoryType' => 0,
+								'IsSample' => true,
+								'LabSample' => [
+									[
+										'Amount' => 0,
+										'AmountUsed' => 0,
+										'CertOfAnalysisHyperlink' => 'string',
+										'Deleted' => true,
+										'ID' => 0,
+										'InventoryID' => 'string',
+										'InventoryType' => 0,
+										'LabLicense' => 'string',
+										'LocationLicense' => 'string',
+										'Medical' => true,
+										'MedicalGrade' => true,
+										'ParentID' => 'string',
+										'QualityControlDataHyperlink' => 'string',
+										'Result' => 'string',
+										'RnD' => true,
+										'SampleUse' => 'string',
+										'SessionTime' => 0,
+										'TestingData' => [
+											[
+												'LabAnalysisTime' => '2024-01-31T10:00:00.000Z',
+												'SamplePreparationTime' => '2024-01-31T10:00:00.000Z',
+												'TestID' => 0,
+												'TestResult' => [
+													[
+														'LabProvided' => true,
+														'TestPanel' => 'string',
+														'TestPass' => true,
+														'TestValue' => 0,
+														'TransactionID' => 0,
+													],
+												],
+											],
+										],
+										'TransactionID' => 0,
+									],
+								],
+								'LocationLicense' => 'string',
+								'MedUsableWeight' => 0,
+								'Medicated' => true,
+								'NetPackageWeight' => 0,
+								'PackageDate' => 'string',
+								'ProductName' => 'string',
+								'ProductionBatchID' => 0,
+								'QAStatus' => 'string',
+								'RecUsableWeight' => 0,
+								'RemainingAmount' => 0,
+								'Remediated' => true,
+								'RemediationCount' => 0,
+								'RemediationEligible' => true,
+								'Restocked' => true,
+								'Rework' => true,
+								'RoomID' => 0,
+								'Seized' => true,
+								'SessionTime' => 0,
+								'SourcePlantID' => 'string',
+								'StateProductIdentifier' => 'string',
+								'Status' => 'string',
+								'Strain' => 'string',
+								'TransactionID' => 0,
+								'UOM' => 'string',
+								'UnitBased' => true,
+								'UsableWeight' => 0,
+							],
+							'InventoryID' => 'string',
+							'InventoryTransferID' => 0,
+							'IsRejected' => true,
+							'IsReturn' => true,
+							'ManifestID' => 'string',
+							'Received' => true,
+							'ReceivedAmount' => 0,
+							'ReceivedTime' => 'string',
+							'TransactionID' => 0,
+						],
+					],
+					'ManifestID' => 'string',
+					'ManifestStopNumber' => 0,
+					'OutboundLicense' => 'string',
+					'Received' => true,
+					'ReceivedTime' => 'string',
+					'SessionTime' => 0,
+					'TransactionID' => 0,
+					'TransferType' => 'string',
+				],
+			]
+			);
+		});
+		$a->put('/v1/inventory/transfer/{id}/receive', 'InventoryTransferReceiveUpdate');
+		$a->put('/v1/inventory/transfer/{id}/void', 'InventoryTransferVoid');
+
 		$a->get('/v1/inventory/type', function($REQ, $RES, $ARG) {
 			return $RES->withJSON([
 				'InventoryTypes' => [
@@ -4348,6 +5119,7 @@ class BioTrack2024 extends \OpenTHC\Module\Base
 			]
 			);
 		});
+
 		$a->get('/v1/inventory/{id}', function($REQ, $RES, $ARG) {
 			return $RES->withJSON([
 				'Inventory' => [
@@ -5621,44 +6393,332 @@ class BioTrack2024 extends \OpenTHC\Module\Base
 			]
 			);
 		});
-		$a->get('/v1/lab', function($REQ, $RES, $ARG) {
+
+		$a->get('/v1/lab', 'LabSearch');
+		$a->get('/v1/lab/sample', 'LabSampleSearch');
+		$a->get('/v1/lab/sample/{id}', function($REQ, $RES, $ARG) {
 			return $RES->withJSON([
-				'Labs' => [
-					[
-						'Address1' => 'string',
-						'City' => 'string',
-						'Deleted' => 0,
-						'ID' => 0,
-						'LicenseNumber' => 'string',
-						'Name' => 'string',
-						'Phone' => 'string',
-						'State' => 'string',
-						'TransactionID' => 0,
-						'Zip' => 'string',
+				"LabSample" => [
+					"Amount" => 0,
+					"AmountUsed" => 0,
+					"CertOfAnalysisHyperlink" => "string",
+					"Deleted" => true,
+					"ID" => 0,
+					"InventoryID" => "string",
+					"InventoryType" => 0,
+					"LabLicense" => "string",
+					"LocationLicense" => "string",
+					"Medical" => true,
+					"MedicalGrade" => true,
+					"ParentID" => "string",
+					"QualityControlDataHyperlink" => "string",
+					"Result" => "string",
+					"RnD" => true,
+					"SampleUse" => "string",
+					"SessionTime" => 0,
+					"TestingData" => [
+						[
+							"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
+							"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
+							"TestID" => 0,
+							"TestResult" => [
+								[
+									"LabProvided" => true,
+									"TestPanel" => "string",
+									"TestPass" => true,
+									"TestValue" => 0,
+									"TransactionID" => 0
+								]
+							]
+						]
 					],
-				],
-				'NextCursor' => 0,
-				'NextTransactionID' => 0,
-			]
-			);
+					"TransactionID" => 0
+				]
+			]);
 		});
-		$a->get('/v1/lab/{id}', function($REQ, $RES, $ARG) {
+		$a->post('/v1/lab/sample/{id}/result', function($REQ, $RES, $ARG) {
 			return $RES->withJSON([
-				'Lab' => [
-					'Address1' => 'string',
-					'City' => 'string',
-					'Deleted' => 0,
-					'ID' => 0,
-					'LicenseNumber' => 'string',
-					'Name' => 'string',
-					'Phone' => 'string',
-					'State' => 'string',
-					'TransactionID' => 0,
-					'Zip' => 'string',
+				"Inventory" => [
+					[
+						"ActiveSampleInventoryID" => "string",
+						"Deleted" => true,
+						"Destroyed" => true,
+						"Dried" => true,
+						"ExpirationDate" => "string",
+						"ExternalID" => "string",
+						"ID" => "string",
+						"Initial" => true,
+						"InventoryParentID" => [
+							"string"
+						],
+						"InventoryType" => 0,
+						"IsSample" => true,
+						"LabSample" => [
+							[
+								"Amount" => 0,
+								"AmountUsed" => 0,
+								"CertOfAnalysisHyperlink" => "string",
+								"Deleted" => true,
+								"ID" => 0,
+								"InventoryID" => "string",
+								"InventoryType" => 0,
+								"LabLicense" => "string",
+								"LocationLicense" => "string",
+								"Medical" => true,
+								"MedicalGrade" => true,
+								"ParentID" => "string",
+								"QualityControlDataHyperlink" => "string",
+								"Result" => "string",
+								"RnD" => true,
+								"SampleUse" => "string",
+								"SessionTime" => 0,
+								"TestingData" => [
+									[
+										"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
+										"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
+										"TestID" => 0,
+										"TestResult" => [
+											[
+												"LabProvided" => true,
+												"TestPanel" => "string",
+												"TestPass" => true,
+												"TestValue" => 0,
+												"TransactionID" => 0
+											]
+										]
+									]
+								],
+								"TransactionID" => 0
+							]
+						],
+						"LocationLicense" => "string",
+						"MedUsableWeight" => 0,
+						"Medicated" => true,
+						"NetPackageWeight" => 0,
+						"PackageDate" => "string",
+						"ProductName" => "string",
+						"ProductionBatchID" => 0,
+						"QAStatus" => "string",
+						"RecUsableWeight" => 0,
+						"RemainingAmount" => 0,
+						"Remediated" => true,
+						"RemediationCount" => 0,
+						"RemediationEligible" => true,
+						"Restocked" => true,
+						"Rework" => true,
+						"RoomID" => 0,
+						"Seized" => true,
+						"SessionTime" => 0,
+						"SourcePlantID" => "string",
+						"StateProductIdentifier" => "string",
+						"Status" => "string",
+						"Strain" => "string",
+						"TransactionID" => 0,
+						"UOM" => "string",
+						"UnitBased" => true,
+						"UsableWeight" => 0
+					]
 				],
-			]
-			);
+				"LabSample" => [
+					[
+						"Amount" => 0,
+						"AmountUsed" => 0,
+						"CertOfAnalysisHyperlink" => "string",
+						"Deleted" => true,
+						"ID" => 0,
+						"InventoryID" => "string",
+						"InventoryType" => 0,
+						"LabLicense" => "string",
+						"LocationLicense" => "string",
+						"Medical" => true,
+						"MedicalGrade" => true,
+						"ParentID" => "string",
+						"QualityControlDataHyperlink" => "string",
+						"Result" => "string",
+						"RnD" => true,
+						"SampleUse" => "string",
+						"SessionTime" => 0,
+						"TestingData" => [
+							[
+								"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
+								"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
+								"TestID" => 0,
+								"TestResult" => [
+									[
+										"LabProvided" => true,
+										"TestPanel" => "string",
+										"TestPass" => true,
+										"TestValue" => 0,
+										"TransactionID" => 0
+									]
+								]
+							]
+						],
+						"TransactionID" => 0
+					]
+				],
+				"TransactionID" => 0
+			]);
 		});
+		$a->put('/v1/lab/sample/{id}/result', function($REQ, $RES, $ARG) {
+			return $RES->withJSON([
+				"Inventory" => [
+					[
+						"ActiveSampleInventoryID" => "string",
+						"Deleted" => true,
+						"Destroyed" => true,
+						"Dried" => true,
+						"ExpirationDate" => "string",
+						"ExternalID" => "string",
+						"ID" => "string",
+						"Initial" => true,
+						"InventoryParentID" => ["string"],
+						"InventoryType" => 0,
+						"IsSample" => true,
+						"LabSample" => [
+							[
+								"Amount" => 0,
+								"AmountUsed" => 0,
+								"CertOfAnalysisHyperlink" => "string",
+								"Deleted" => true,
+								"ID" => 0,
+								"InventoryID" => "string",
+								"InventoryType" => 0,
+								"LabLicense" => "string",
+								"LocationLicense" => "string",
+								"Medical" => true,
+								"MedicalGrade" => true,
+								"ParentID" => "string",
+								"QualityControlDataHyperlink" => "string",
+								"Result" => "string",
+								"RnD" => true,
+								"SampleUse" => "string",
+								"SessionTime" => 0,
+								"TestingData" => [
+									[
+										"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
+										"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
+										"TestID" => 0,
+										"TestResult" => [
+											[
+												"LabProvided" => true,
+												"TestPanel" => "string",
+												"TestPass" => true,
+												"TestValue" => 0,
+												"TransactionID" => 0
+											]
+										]
+									]
+								],
+								"TransactionID" => 0
+							]
+						],
+						"LocationLicense" => "string",
+						"MedUsableWeight" => 0,
+						"Medicated" => true,
+						"NetPackageWeight" => 0,
+						"PackageDate" => "string",
+						"ProductName" => "string",
+						"ProductionBatchID" => 0,
+						"QAStatus" => "string",
+						"RecUsableWeight" => 0,
+						"RemainingAmount" => 0,
+						"Remediated" => true,
+						"RemediationCount" => 0,
+						"RemediationEligible" => true,
+						"Restocked" => true,
+						"Rework" => true,
+						"RoomID" => 0,
+						"Seized" => true,
+						"SessionTime" => 0,
+						"SourcePlantID" => "string",
+						"StateProductIdentifier" => "string",
+						"Status" => "string",
+						"Strain" => "string",
+						"TransactionID" => 0,
+						"UOM" => "string",
+						"UnitBased" => true,
+						"UsableWeight" => 0
+					]
+				],
+				"LabSample" => [
+					[
+						"Amount" => 0,
+						"AmountUsed" => 0,
+						"CertOfAnalysisHyperlink" => "string",
+						"Deleted" => true,
+						"ID" => 0,
+						"InventoryID" => "string",
+						"InventoryType" => 0,
+						"LabLicense" => "string",
+						"LocationLicense" => "string",
+						"Medical" => true,
+						"MedicalGrade" => true,
+						"ParentID" => "string",
+						"QualityControlDataHyperlink" => "string",
+						"Result" => "string",
+						"RnD" => true,
+						"SampleUse" => "string",
+						"SessionTime" => 0,
+						"TestingData" => [
+							[
+								"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
+								"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
+								"TestID" => 0,
+								"TestResult" => [
+									[
+										"LabProvided" => true,
+										"TestPanel" => "string",
+										"TestPass" => true,
+										"TestValue" => 0,
+										"TransactionID" => 0
+									]
+								]
+							]
+						],
+						"TransactionID" => 0
+					]
+				],
+				"TransactionID" => 0
+			]);
+		});
+		$a->get('/v1/lab/test', $this->makeClassName('LabTestSearch'));
+		$a->get('/v1/lab/test/medical/{id}', function($REQ, $RES, $ARG) {
+			return $RES->withJSON([
+				"Test" => [
+					[
+						"ID" => 0,
+						"Name" => "string",
+						"Panels" => [
+							[
+								"AddToTotal" => true,
+								"InventoryType" => 0,
+								"Name" => "string",
+								"PassFailCondition" => "string",
+								"PassFailConditional" => true,
+								"PassFailLimit" => "string",
+								"TestValueRecordOnly" => true,
+								"TotalPanel" => true,
+								"UOM" => "string"
+							]
+						]
+					]
+				]
+			]);
+		});
+		$a->get('/v1/lab/test/{id}', 'LabTestDetail');
+
+		$a->get('/v1/lab/user', 'LabUserSearch');
+		$a->post('/v1/lab/user', 'LabUserCreate');
+		$a->post('/v1/lab/user/password-reset-request', function($REQ, $RES, $ARG) {
+			// No 200 response documented
+			return $RES->withJSON();
+		});
+		$a->delete('/v1/lab/user/{id}', 'LabUserDelete');
+		$a->get('/v1/lab/user/{id}', 'LabUserDetail');
+		$a->put('/v1/lab/user/{id}', 'LabUserUpdate');
+
+		$a->get('/v1/lab/{id}', 'LabDetail');
 
 		// Employee
 		$a->get('/v1/employee', function($REQ, $RES, $ARG) {
@@ -10180,2614 +11240,13 @@ class BioTrack2024 extends \OpenTHC\Module\Base
 			);
 		});
 
-		// Inventory Transfer
-		$a->get('/v1/inventory/transfer', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'InventoryTransfer' => [
-					[
-						'Deleted' => true,
-						'ID' => 0,
-						'InboundLicense' => 'string',
-						'Invoice' => [
-							'Accepted' => true,
-							'BuyerLocationLicense' => 'string',
-							'Deleted' => true,
-							'Inventory' => [
-								[
-									'Amount' => 0,
-									'Deleted' => true,
-									'ID' => 0,
-									'InventoryID' => 'string',
-									'InvoiceID' => 'string',
-									'Price' => 0,
-									'TransactionID' => 0,
-								],
-							],
-							'InvoiceID' => 'string',
-							'LocationLicense' => 'string',
-							'Payment' => [
-								[
-									'Accepted' => true,
-									'AcceptedLocationID' => 'string',
-									'AcceptedOn' => 'string',
-									'Amount' => 0,
-									'BuyerLocationLicense' => 'string',
-									'BuyerUserID' => 0,
-									'CreatedOn' => 'string',
-									'Deleted' => true,
-									'ID' => 0,
-									'InvoiceID' => 'string',
-									'Rejected' => true,
-									'RejectedLocationLicense' => 'string',
-									'RejectedOn' => 'string',
-									'RejectedReason' => 'string',
-									'TransactionID' => 0,
-									'UpdatedOn' => 'string',
-								],
-							],
-							'Refund' => true,
-							'SessionTime' => 0,
-							'TransactionID' => 0,
-						],
-						'InvoiceID' => 'string',
-						'IsRejected' => true,
-						'Item' => [
-							[
-								'Amount' => 0,
-								'Deleted' => true,
-								'Description' => 'string',
-								'ID' => 0,
-								'Inventory' => [
-									'ActiveSampleInventoryID' => 'string',
-									'Deleted' => true,
-									'Destroyed' => true,
-									'Dried' => true,
-									'ExpirationDate' => 'string',
-									'ExternalID' => 'string',
-									'ID' => 'string',
-									'Initial' => true,
-									'InventoryParentID' => [
-										'string',
-									],
-									'InventoryType' => 0,
-									'IsSample' => true,
-									'LabSample' => [
-										[
-											'Amount' => 0,
-											'AmountUsed' => 0,
-											'CertOfAnalysisHyperlink' => 'string',
-											'Deleted' => true,
-											'ID' => 0,
-											'InventoryID' => 'string',
-											'InventoryType' => 0,
-											'LabLicense' => 'string',
-											'LocationLicense' => 'string',
-											'Medical' => true,
-											'MedicalGrade' => true,
-											'ParentID' => 'string',
-											'QualityControlDataHyperlink' => 'string',
-											'Result' => 'string',
-											'RnD' => true,
-											'SampleUse' => 'string',
-											'SessionTime' => 0,
-											'TestingData' => [
-												[
-													'LabAnalysisTime' => '2024-01-31T10:00:00.000Z',
-													'SamplePreparationTime' => '2024-01-31T10:00:00.000Z',
-													'TestID' => 0,
-													'TestResult' => [
-														[
-															'LabProvided' => true,
-															'TestPanel' => 'string',
-															'TestPass' => true,
-															'TestValue' => 0,
-															'TransactionID' => 0,
-														],
-													],
-												],
-											],
-											'TransactionID' => 0,
-										],
-									],
-									'LocationLicense' => 'string',
-									'MedUsableWeight' => 0,
-									'Medicated' => true,
-									'NetPackageWeight' => 0,
-									'PackageDate' => 'string',
-									'ProductName' => 'string',
-									'ProductionBatchID' => 0,
-									'QAStatus' => 'string',
-									'RecUsableWeight' => 0,
-									'RemainingAmount' => 0,
-									'Remediated' => true,
-									'RemediationCount' => 0,
-									'RemediationEligible' => true,
-									'Restocked' => true,
-									'Rework' => true,
-									'RoomID' => 0,
-									'Seized' => true,
-									'SessionTime' => 0,
-									'SourcePlantID' => 'string',
-									'StateProductIdentifier' => 'string',
-									'Status' => 'string',
-									'Strain' => 'string',
-									'TransactionID' => 0,
-									'UOM' => 'string',
-									'UnitBased' => true,
-									'UsableWeight' => 0,
-								],
-								'InventoryID' => 'string',
-								'InventoryTransferID' => 0,
-								'IsRejected' => true,
-								'IsReturn' => true,
-								'ManifestID' => 'string',
-								'Received' => true,
-								'ReceivedAmount' => 0,
-								'ReceivedTime' => 'string',
-								'TransactionID' => 0,
-							],
-						],
-						'ManifestID' => 'string',
-						'ManifestStopNumber' => 0,
-						'OutboundLicense' => 'string',
-						'Received' => true,
-						'ReceivedTime' => 'string',
-						'SessionTime' => 0,
-						'TransactionID' => 0,
-						'TransferType' => 'string',
-					],
-				],
-				'NextCursor' => 0,
-				'NextTransactionID' => 0,
-			]
-			);
-		});
-		$a->post('/v1/inventory/transfer', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'Inventory' => [
-					[
-						'ActiveSampleInventoryID' => 'string',
-						'Deleted' => true,
-						'Destroyed' => true,
-						'Dried' => true,
-						'ExpirationDate' => 'string',
-						'ExternalID' => 'string',
-						'ID' => 'string',
-						'Initial' => true,
-						'InventoryParentID' => [
-							'string',
-						],
-						'InventoryType' => 0,
-						'IsSample' => true,
-						'LabSample' => [
-							[
-								'Amount' => 0,
-								'AmountUsed' => 0,
-								'CertOfAnalysisHyperlink' => 'string',
-								'Deleted' => true,
-								'ID' => 0,
-								'InventoryID' => 'string',
-								'InventoryType' => 0,
-								'LabLicense' => 'string',
-								'LocationLicense' => 'string',
-								'Medical' => true,
-								'MedicalGrade' => true,
-								'ParentID' => 'string',
-								'QualityControlDataHyperlink' => 'string',
-								'Result' => 'string',
-								'RnD' => true,
-								'SampleUse' => 'string',
-								'SessionTime' => 0,
-								'TestingData' => [
-									[
-										'LabAnalysisTime' => '2024-01-31T10:00:00.000Z',
-										'SamplePreparationTime' => '2024-01-31T10:00:00.000Z',
-										'TestID' => 0,
-										'TestResult' => [
-											[
-												'LabProvided' => true,
-												'TestPanel' => 'string',
-												'TestPass' => true,
-												'TestValue' => 0,
-												'TransactionID' => 0,
-											],
-										],
-									],
-								],
-								'TransactionID' => 0,
-							],
-						],
-						'LocationLicense' => 'string',
-						'MedUsableWeight' => 0,
-						'Medicated' => true,
-						'NetPackageWeight' => 0,
-						'PackageDate' => 'string',
-						'ProductName' => 'string',
-						'ProductionBatchID' => 0,
-						'QAStatus' => 'string',
-						'RecUsableWeight' => 0,
-						'RemainingAmount' => 0,
-						'Remediated' => true,
-						'RemediationCount' => 0,
-						'RemediationEligible' => true,
-						'Restocked' => true,
-						'Rework' => true,
-						'RoomID' => 0,
-						'Seized' => true,
-						'SessionTime' => 0,
-						'SourcePlantID' => 'string',
-						'StateProductIdentifier' => 'string',
-						'Status' => 'string',
-						'Strain' => 'string',
-						'TransactionID' => 0,
-						'UOM' => 'string',
-						'UnitBased' => true,
-						'UsableWeight' => 0,
-					],
-				],
-				'InventoryTransfer' => [
-					[
-						'Deleted' => true,
-						'ID' => 0,
-						'InboundLicense' => 'string',
-						'Invoice' => [
-							'Accepted' => true,
-							'BuyerLocationLicense' => 'string',
-							'Deleted' => true,
-							'Inventory' => [
-								[
-									'Amount' => 0,
-									'Deleted' => true,
-									'ID' => 0,
-									'InventoryID' => 'string',
-									'InvoiceID' => 'string',
-									'Price' => 0,
-									'TransactionID' => 0,
-								],
-							],
-							'InvoiceID' => 'string',
-							'LocationLicense' => 'string',
-							'Payment' => [
-								[
-									'Accepted' => true,
-									'AcceptedLocationID' => 'string',
-									'AcceptedOn' => 'string',
-									'Amount' => 0,
-									'BuyerLocationLicense' => 'string',
-									'BuyerUserID' => 0,
-									'CreatedOn' => 'string',
-									'Deleted' => true,
-									'ID' => 0,
-									'InvoiceID' => 'string',
-									'Rejected' => true,
-									'RejectedLocationLicense' => 'string',
-									'RejectedOn' => 'string',
-									'RejectedReason' => 'string',
-									'TransactionID' => 0,
-									'UpdatedOn' => 'string',
-								],
-							],
-							'Refund' => true,
-							'SessionTime' => 0,
-							'TransactionID' => 0,
-						],
-						'InvoiceID' => 'string',
-						'IsRejected' => true,
-						'Item' => [
-							[
-								'Amount' => 0,
-								'Deleted' => true,
-								'Description' => 'string',
-								'ID' => 0,
-								'Inventory' => [
-									'ActiveSampleInventoryID' => 'string',
-									'Deleted' => true,
-									'Destroyed' => true,
-									'Dried' => true,
-									'ExpirationDate' => 'string',
-									'ExternalID' => 'string',
-									'ID' => 'string',
-									'Initial' => true,
-									'InventoryParentID' => [
-										'string',
-									],
-									'InventoryType' => 0,
-									'IsSample' => true,
-									'LabSample' => [
-										[
-											'Amount' => 0,
-											'AmountUsed' => 0,
-											'CertOfAnalysisHyperlink' => 'string',
-											'Deleted' => true,
-											'ID' => 0,
-											'InventoryID' => 'string',
-											'InventoryType' => 0,
-											'LabLicense' => 'string',
-											'LocationLicense' => 'string',
-											'Medical' => true,
-											'MedicalGrade' => true,
-											'ParentID' => 'string',
-											'QualityControlDataHyperlink' => 'string',
-											'Result' => 'string',
-											'RnD' => true,
-											'SampleUse' => 'string',
-											'SessionTime' => 0,
-											'TestingData' => [
-												[
-													'LabAnalysisTime' => '2024-01-31T10:00:00.000Z',
-													'SamplePreparationTime' => '2024-01-31T10:00:00.000Z',
-													'TestID' => 0,
-													'TestResult' => [
-														[
-															'LabProvided' => true,
-															'TestPanel' => 'string',
-															'TestPass' => true,
-															'TestValue' => 0,
-															'TransactionID' => 0,
-														],
-													],
-												],
-											],
-											'TransactionID' => 0,
-										],
-									],
-									'LocationLicense' => 'string',
-									'MedUsableWeight' => 0,
-									'Medicated' => true,
-									'NetPackageWeight' => 0,
-									'PackageDate' => 'string',
-									'ProductName' => 'string',
-									'ProductionBatchID' => 0,
-									'QAStatus' => 'string',
-									'RecUsableWeight' => 0,
-									'RemainingAmount' => 0,
-									'Remediated' => true,
-									'RemediationCount' => 0,
-									'RemediationEligible' => true,
-									'Restocked' => true,
-									'Rework' => true,
-									'RoomID' => 0,
-									'Seized' => true,
-									'SessionTime' => 0,
-									'SourcePlantID' => 'string',
-									'StateProductIdentifier' => 'string',
-									'Status' => 'string',
-									'Strain' => 'string',
-									'TransactionID' => 0,
-									'UOM' => 'string',
-									'UnitBased' => true,
-									'UsableWeight' => 0,
-								],
-								'InventoryID' => 'string',
-								'InventoryTransferID' => 0,
-								'IsRejected' => true,
-								'IsReturn' => true,
-								'ManifestID' => 'string',
-								'Received' => true,
-								'ReceivedAmount' => 0,
-								'ReceivedTime' => 'string',
-								'TransactionID' => 0,
-							],
-						],
-						'ManifestID' => 'string',
-						'ManifestStopNumber' => 0,
-						'OutboundLicense' => 'string',
-						'Received' => true,
-						'ReceivedTime' => 'string',
-						'SessionTime' => 0,
-						'TransactionID' => 0,
-						'TransferType' => 'string',
-					],
-				],
-				'Manifest' => [
-					'City' => 'string',
-					'Completed' => true,
-					'CompletionDate' => 'string',
-					'CreatedOn' => 'string',
-					'Deleted' => true,
-					'Driver' => [
-						[
-							'DateofBirth' => 'string',
-							'ID' => 0,
-							'Name' => 'string',
-						],
-					],
-					'DriverArrived' => true,
-					'InTransit' => true,
-					'IsAccepted' => true,
-					'IsParked' => true,
-					'LicenseNumber' => 'string',
-					'Links' => [
-						[
-							'Href' => 'string',
-							'Method' => 'string',
-							'Rel' => 'string',
-						],
-					],
-					'ManifestID' => 'string',
-					'Name' => 'string',
-					'Phone' => 'string',
-					'Received' => true,
-					'SessionTime' => 0,
-					'State' => 'string',
-					'Stop' => [
-						[
-							'ApproximateArrival' => '2024-01-31T10:00:00.000Z',
-							'ApproximateDeparture' => '2024-01-31T10:00:00.000Z',
-							'ApproximateRoute' => 'string',
-							'City' => 'string',
-							'DriverArrived' => true,
-							'DriverArrivedTime' => 'string',
-							'ID' => 0,
-							'Invoice' => [
-								'Accepted' => true,
-								'BuyerLocationLicense' => 'string',
-								'Deleted' => true,
-								'Inventory' => [
-									[
-										'Amount' => 0,
-										'Deleted' => true,
-										'ID' => 0,
-										'InventoryID' => 'string',
-										'InvoiceID' => 'string',
-										'Price' => 0,
-										'TransactionID' => 0,
-									],
-								],
-								'InvoiceID' => 'string',
-								'LocationLicense' => 'string',
-								'Payment' => [
-									[
-										'Accepted' => true,
-										'AcceptedLocationID' => 'string',
-										'AcceptedOn' => 'string',
-										'Amount' => 0,
-										'BuyerLocationLicense' => 'string',
-										'BuyerUserID' => 0,
-										'CreatedOn' => 'string',
-										'Deleted' => true,
-										'ID' => 0,
-										'InvoiceID' => 'string',
-										'Rejected' => true,
-										'RejectedLocationLicense' => 'string',
-										'RejectedOn' => 'string',
-										'RejectedReason' => 'string',
-										'TransactionID' => 0,
-										'UpdatedOn' => 'string',
-									],
-								],
-								'Refund' => true,
-								'SessionTime' => 0,
-								'TransactionID' => 0,
-							],
-							'InvoiceID' => 'string',
-							'Item' => [
-								[
-									'Deleted' => true,
-									'Description' => 'string',
-									'ID' => 0,
-									'InventoryID' => 'string',
-									'ManifestID' => 'string',
-									'Quantity' => 0,
-									'QuantityReceived' => 0,
-									'SessionTime' => 0,
-									'StopNumber' => 0,
-									'TransactionID' => 0,
-								],
-							],
-							'ItemsCount' => 0,
-							'Links' => [
-								[
-									'Href' => 'string',
-									'Method' => 'string',
-									'Rel' => 'string',
-								],
-							],
-							'LocationLicense' => 'string',
-							'ManifestID' => 'string',
-							'Name' => 'string',
-							'ParkedTime' => 'string',
-							'Phone' => 'string',
-							'ResumedDirections' => 'string',
-							'ResumedEstimatedArrival' => 'string',
-							'ResumedEstimatedDeparture' => 'string',
-							'ResumedTime' => 'string',
-							'State' => 'string',
-							'StopNumber' => 0,
-							'TransporterParked' => true,
-							'TransporterResumed' => true,
-							'ZipCode' => 'string',
-						],
-					],
-					'StopCount' => 0,
-					'Street' => 'string',
-					'ThirdPartyTransporter' => [
-						'LicenseNumber' => 'string',
-						'Name' => 'string',
-					],
-					'TotalItemCount' => 0,
-					'TransactionID' => 0,
-					'Type' => 'string',
-					'UpdatedOn' => 'string',
-					'Vehicle' => [
-						'Description' => 'string',
-						'ID' => 'string',
-					],
-					'Zip' => 'string',
-				],
-				'SessionTime' => 0,
-				'TransactionID' => 0,
-			]
-			);
-		});
-		$a->get('/v1/inventory/transfer/inbound', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'InventoryTransfer' => [
-					[
-						'Deleted' => true,
-						'ID' => 0,
-						'InboundLicense' => 'string',
-						'Invoice' => [
-							'Accepted' => true,
-							'BuyerLocationLicense' => 'string',
-							'Deleted' => true,
-							'Inventory' => [
-								[
-									'Amount' => 0,
-									'Deleted' => true,
-									'ID' => 0,
-									'InventoryID' => 'string',
-									'InvoiceID' => 'string',
-									'Price' => 0,
-									'TransactionID' => 0,
-								],
-							],
-							'InvoiceID' => 'string',
-							'LocationLicense' => 'string',
-							'Payment' => [
-								[
-									'Accepted' => true,
-									'AcceptedLocationID' => 'string',
-									'AcceptedOn' => 'string',
-									'Amount' => 0,
-									'BuyerLocationLicense' => 'string',
-									'BuyerUserID' => 0,
-									'CreatedOn' => 'string',
-									'Deleted' => true,
-									'ID' => 0,
-									'InvoiceID' => 'string',
-									'Rejected' => true,
-									'RejectedLocationLicense' => 'string',
-									'RejectedOn' => 'string',
-									'RejectedReason' => 'string',
-									'TransactionID' => 0,
-									'UpdatedOn' => 'string',
-								],
-							],
-							'Refund' => true,
-							'SessionTime' => 0,
-							'TransactionID' => 0,
-						],
-						'InvoiceID' => 'string',
-						'IsRejected' => true,
-						'Item' => [
-							[
-								'Amount' => 0,
-								'Deleted' => true,
-								'Description' => 'string',
-								'ID' => 0,
-								'Inventory' => [
-									'ActiveSampleInventoryID' => 'string',
-									'Deleted' => true,
-									'Destroyed' => true,
-									'Dried' => true,
-									'ExpirationDate' => 'string',
-									'ExternalID' => 'string',
-									'ID' => 'string',
-									'Initial' => true,
-									'InventoryParentID' => [
-										'string',
-									],
-									'InventoryType' => 0,
-									'IsSample' => true,
-									'LabSample' => [
-										[
-											'Amount' => 0,
-											'AmountUsed' => 0,
-											'CertOfAnalysisHyperlink' => 'string',
-											'Deleted' => true,
-											'ID' => 0,
-											'InventoryID' => 'string',
-											'InventoryType' => 0,
-											'LabLicense' => 'string',
-											'LocationLicense' => 'string',
-											'Medical' => true,
-											'MedicalGrade' => true,
-											'ParentID' => 'string',
-											'QualityControlDataHyperlink' => 'string',
-											'Result' => 'string',
-											'RnD' => true,
-											'SampleUse' => 'string',
-											'SessionTime' => 0,
-											'TestingData' => [
-												[
-													'LabAnalysisTime' => '2024-01-31T10:00:00.000Z',
-													'SamplePreparationTime' => '2024-01-31T10:00:00.000Z',
-													'TestID' => 0,
-													'TestResult' => [
-														[
-															'LabProvided' => true,
-															'TestPanel' => 'string',
-															'TestPass' => true,
-															'TestValue' => 0,
-															'TransactionID' => 0,
-														],
-													],
-												],
-											],
-											'TransactionID' => 0,
-										],
-									],
-									'LocationLicense' => 'string',
-									'MedUsableWeight' => 0,
-									'Medicated' => true,
-									'NetPackageWeight' => 0,
-									'PackageDate' => 'string',
-									'ProductName' => 'string',
-									'ProductionBatchID' => 0,
-									'QAStatus' => 'string',
-									'RecUsableWeight' => 0,
-									'RemainingAmount' => 0,
-									'Remediated' => true,
-									'RemediationCount' => 0,
-									'RemediationEligible' => true,
-									'Restocked' => true,
-									'Rework' => true,
-									'RoomID' => 0,
-									'Seized' => true,
-									'SessionTime' => 0,
-									'SourcePlantID' => 'string',
-									'StateProductIdentifier' => 'string',
-									'Status' => 'string',
-									'Strain' => 'string',
-									'TransactionID' => 0,
-									'UOM' => 'string',
-									'UnitBased' => true,
-									'UsableWeight' => 0,
-								],
-								'InventoryID' => 'string',
-								'InventoryTransferID' => 0,
-								'IsRejected' => true,
-								'IsReturn' => true,
-								'ManifestID' => 'string',
-								'Received' => true,
-								'ReceivedAmount' => 0,
-								'ReceivedTime' => 'string',
-								'TransactionID' => 0,
-							],
-						],
-						'ManifestID' => 'string',
-						'ManifestStopNumber' => 0,
-						'OutboundLicense' => 'string',
-						'Received' => true,
-						'ReceivedTime' => 'string',
-						'SessionTime' => 0,
-						'TransactionID' => 0,
-						'TransferType' => 'string',
-					],
-				],
-				'NextCursor' => 0,
-				'NextTransactionID' => 0,
-				'SessionTime' => 0,
-			]
-			);
-		});
-		$a->get('/v1/inventory/transfer/inbound/{id}', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'InventoryTransfer' => [
-					'Deleted' => true,
-					'ID' => 0,
-					'InboundLicense' => 'string',
-					'Invoice' => [
-						'Accepted' => true,
-						'BuyerLocationLicense' => 'string',
-						'Deleted' => true,
-						'Inventory' => [
-							[
-								'Amount' => 0,
-								'Deleted' => true,
-								'ID' => 0,
-								'InventoryID' => 'string',
-								'InvoiceID' => 'string',
-								'Price' => 0,
-								'TransactionID' => 0,
-							],
-						],
-						'InvoiceID' => 'string',
-						'LocationLicense' => 'string',
-						'Payment' => [
-							[
-								'Accepted' => true,
-								'AcceptedLocationID' => 'string',
-								'AcceptedOn' => 'string',
-								'Amount' => 0,
-								'BuyerLocationLicense' => 'string',
-								'BuyerUserID' => 0,
-								'CreatedOn' => 'string',
-								'Deleted' => true,
-								'ID' => 0,
-								'InvoiceID' => 'string',
-								'Rejected' => true,
-								'RejectedLocationLicense' => 'string',
-								'RejectedOn' => 'string',
-								'RejectedReason' => 'string',
-								'TransactionID' => 0,
-								'UpdatedOn' => 'string',
-							],
-						],
-						'Refund' => true,
-						'SessionTime' => 0,
-						'TransactionID' => 0,
-					],
-					'InvoiceID' => 'string',
-					'IsRejected' => true,
-					'Item' => [
-						[
-							'Amount' => 0,
-							'Deleted' => true,
-							'Description' => 'string',
-							'ID' => 0,
-							'Inventory' => [
-								'ActiveSampleInventoryID' => 'string',
-								'Deleted' => true,
-								'Destroyed' => true,
-								'Dried' => true,
-								'ExpirationDate' => 'string',
-								'ExternalID' => 'string',
-								'ID' => 'string',
-								'Initial' => true,
-								'InventoryParentID' => [
-									'string',
-								],
-								'InventoryType' => 0,
-								'IsSample' => true,
-								'LabSample' => [
-									[
-										'Amount' => 0,
-										'AmountUsed' => 0,
-										'CertOfAnalysisHyperlink' => 'string',
-										'Deleted' => true,
-										'ID' => 0,
-										'InventoryID' => 'string',
-										'InventoryType' => 0,
-										'LabLicense' => 'string',
-										'LocationLicense' => 'string',
-										'Medical' => true,
-										'MedicalGrade' => true,
-										'ParentID' => 'string',
-										'QualityControlDataHyperlink' => 'string',
-										'Result' => 'string',
-										'RnD' => true,
-										'SampleUse' => 'string',
-										'SessionTime' => 0,
-										'TestingData' => [
-											[
-												'LabAnalysisTime' => '2024-01-31T10:00:00.000Z',
-												'SamplePreparationTime' => '2024-01-31T10:00:00.000Z',
-												'TestID' => 0,
-												'TestResult' => [
-													[
-														'LabProvided' => true,
-														'TestPanel' => 'string',
-														'TestPass' => true,
-														'TestValue' => 0,
-														'TransactionID' => 0,
-													],
-												],
-											],
-										],
-										'TransactionID' => 0,
-									],
-								],
-								'LocationLicense' => 'string',
-								'MedUsableWeight' => 0,
-								'Medicated' => true,
-								'NetPackageWeight' => 0,
-								'PackageDate' => 'string',
-								'ProductName' => 'string',
-								'ProductionBatchID' => 0,
-								'QAStatus' => 'string',
-								'RecUsableWeight' => 0,
-								'RemainingAmount' => 0,
-								'Remediated' => true,
-								'RemediationCount' => 0,
-								'RemediationEligible' => true,
-								'Restocked' => true,
-								'Rework' => true,
-								'RoomID' => 0,
-								'Seized' => true,
-								'SessionTime' => 0,
-								'SourcePlantID' => 'string',
-								'StateProductIdentifier' => 'string',
-								'Status' => 'string',
-								'Strain' => 'string',
-								'TransactionID' => 0,
-								'UOM' => 'string',
-								'UnitBased' => true,
-								'UsableWeight' => 0,
-							],
-							'InventoryID' => 'string',
-							'InventoryTransferID' => 0,
-							'IsRejected' => true,
-							'IsReturn' => true,
-							'ManifestID' => 'string',
-							'Received' => true,
-							'ReceivedAmount' => 0,
-							'ReceivedTime' => 'string',
-							'TransactionID' => 0,
-						],
-					],
-					'ManifestID' => 'string',
-					'ManifestStopNumber' => 0,
-					'OutboundLicense' => 'string',
-					'Received' => true,
-					'ReceivedTime' => 'string',
-					'SessionTime' => 0,
-					'TransactionID' => 0,
-					'TransferType' => 'string',
-				],
-			]
-			);
-		});
-		$a->get('/v1/inventory/transfer/rejected', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'InventoryTransfer' => [
-					[
-						'Deleted' => true,
-						'ID' => 0,
-						'InboundLicense' => 'string',
-						'Invoice' => [
-							'Accepted' => true,
-							'BuyerLocationLicense' => 'string',
-							'Deleted' => true,
-							'Inventory' => [
-								[
-									'Amount' => 0,
-									'Deleted' => true,
-									'ID' => 0,
-									'InventoryID' => 'string',
-									'InvoiceID' => 'string',
-									'Price' => 0,
-									'TransactionID' => 0,
-								],
-							],
-							'InvoiceID' => 'string',
-							'LocationLicense' => 'string',
-							'Payment' => [
-								[
-									'Accepted' => true,
-									'AcceptedLocationID' => 'string',
-									'AcceptedOn' => 'string',
-									'Amount' => 0,
-									'BuyerLocationLicense' => 'string',
-									'BuyerUserID' => 0,
-									'CreatedOn' => 'string',
-									'Deleted' => true,
-									'ID' => 0,
-									'InvoiceID' => 'string',
-									'Rejected' => true,
-									'RejectedLocationLicense' => 'string',
-									'RejectedOn' => 'string',
-									'RejectedReason' => 'string',
-									'TransactionID' => 0,
-									'UpdatedOn' => 'string',
-								],
-							],
-							'Refund' => true,
-							'SessionTime' => 0,
-							'TransactionID' => 0,
-						],
-						'InvoiceID' => 'string',
-						'IsRejected' => true,
-						'Item' => [
-							[
-								'Amount' => 0,
-								'Deleted' => true,
-								'Description' => 'string',
-								'ID' => 0,
-								'Inventory' => [
-									'ActiveSampleInventoryID' => 'string',
-									'Deleted' => true,
-									'Destroyed' => true,
-									'Dried' => true,
-									'ExpirationDate' => 'string',
-									'ExternalID' => 'string',
-									'ID' => 'string',
-									'Initial' => true,
-									'InventoryParentID' => [
-										'string',
-									],
-									'InventoryType' => 0,
-									'IsSample' => true,
-									'LabSample' => [
-										[
-											'Amount' => 0,
-											'AmountUsed' => 0,
-											'CertOfAnalysisHyperlink' => 'string',
-											'Deleted' => true,
-											'ID' => 0,
-											'InventoryID' => 'string',
-											'InventoryType' => 0,
-											'LabLicense' => 'string',
-											'LocationLicense' => 'string',
-											'Medical' => true,
-											'MedicalGrade' => true,
-											'ParentID' => 'string',
-											'QualityControlDataHyperlink' => 'string',
-											'Result' => 'string',
-											'RnD' => true,
-											'SampleUse' => 'string',
-											'SessionTime' => 0,
-											'TestingData' => [
-												[
-													'LabAnalysisTime' => '2024-01-31T10:00:00.000Z',
-													'SamplePreparationTime' => '2024-01-31T10:00:00.000Z',
-													'TestID' => 0,
-													'TestResult' => [
-														[
-															'LabProvided' => true,
-															'TestPanel' => 'string',
-															'TestPass' => true,
-															'TestValue' => 0,
-															'TransactionID' => 0,
-														],
-													],
-												],
-											],
-											'TransactionID' => 0,
-										],
-									],
-									'LocationLicense' => 'string',
-									'MedUsableWeight' => 0,
-									'Medicated' => true,
-									'NetPackageWeight' => 0,
-									'PackageDate' => 'string',
-									'ProductName' => 'string',
-									'ProductionBatchID' => 0,
-									'QAStatus' => 'string',
-									'RecUsableWeight' => 0,
-									'RemainingAmount' => 0,
-									'Remediated' => true,
-									'RemediationCount' => 0,
-									'RemediationEligible' => true,
-									'Restocked' => true,
-									'Rework' => true,
-									'RoomID' => 0,
-									'Seized' => true,
-									'SessionTime' => 0,
-									'SourcePlantID' => 'string',
-									'StateProductIdentifier' => 'string',
-									'Status' => 'string',
-									'Strain' => 'string',
-									'TransactionID' => 0,
-									'UOM' => 'string',
-									'UnitBased' => true,
-									'UsableWeight' => 0,
-								],
-								'InventoryID' => 'string',
-								'InventoryTransferID' => 0,
-								'IsRejected' => true,
-								'IsReturn' => true,
-								'ManifestID' => 'string',
-								'Received' => true,
-								'ReceivedAmount' => 0,
-								'ReceivedTime' => 'string',
-								'TransactionID' => 0,
-							],
-						],
-						'ManifestID' => 'string',
-						'ManifestStopNumber' => 0,
-						'OutboundLicense' => 'string',
-						'Received' => true,
-						'ReceivedTime' => 'string',
-						'SessionTime' => 0,
-						'TransactionID' => 0,
-						'TransferType' => 'string',
-					],
-				],
-				'NextCursor' => 0,
-				'NextTransactionID' => 0,
-				'SessionTime' => 0,
-			]
-			);
-		});
-		$a->get('/v1/inventory/transfer/rules', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'TransferRule' => [
-					[
-						'Deleted' => true,
-						'DestinationIsLab' => true,
-						'DestinationLocationType' => 0,
-						'ID' => 0,
-						'InventoryType' => 0,
-						'QAPassRequired' => true,
-						'RnDSampleAllowed' => true,
-						'SourceLocationType' => 0,
-						'TransportLicenseeTypeID' => 0,
-					],
-				],
-				'NextCursor' => 0,
-			]
-			);
-		});
-		$a->get('/v1/inventory/transfer/{id}', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				'InventoryTransfer' => [
-					'Deleted' => true,
-					'ID' => 0,
-					'InboundLicense' => 'string',
-					'Invoice' => [
-						'Accepted' => true,
-						'BuyerLocationLicense' => 'string',
-						'Deleted' => true,
-						'Inventory' => [
-							[
-								'Amount' => 0,
-								'Deleted' => true,
-								'ID' => 0,
-								'InventoryID' => 'string',
-								'InvoiceID' => 'string',
-								'Price' => 0,
-								'TransactionID' => 0,
-							],
-						],
-						'InvoiceID' => 'string',
-						'LocationLicense' => 'string',
-						'Payment' => [
-							[
-								'Accepted' => true,
-								'AcceptedLocationID' => 'string',
-								'AcceptedOn' => 'string',
-								'Amount' => 0,
-								'BuyerLocationLicense' => 'string',
-								'BuyerUserID' => 0,
-								'CreatedOn' => 'string',
-								'Deleted' => true,
-								'ID' => 0,
-								'InvoiceID' => 'string',
-								'Rejected' => true,
-								'RejectedLocationLicense' => 'string',
-								'RejectedOn' => 'string',
-								'RejectedReason' => 'string',
-								'TransactionID' => 0,
-								'UpdatedOn' => 'string',
-							],
-						],
-						'Refund' => true,
-						'SessionTime' => 0,
-						'TransactionID' => 0,
-					],
-					'InvoiceID' => 'string',
-					'IsRejected' => true,
-					'Item' => [
-						[
-							'Amount' => 0,
-							'Deleted' => true,
-							'Description' => 'string',
-							'ID' => 0,
-							'Inventory' => [
-								'ActiveSampleInventoryID' => 'string',
-								'Deleted' => true,
-								'Destroyed' => true,
-								'Dried' => true,
-								'ExpirationDate' => 'string',
-								'ExternalID' => 'string',
-								'ID' => 'string',
-								'Initial' => true,
-								'InventoryParentID' => [
-									'string',
-								],
-								'InventoryType' => 0,
-								'IsSample' => true,
-								'LabSample' => [
-									[
-										'Amount' => 0,
-										'AmountUsed' => 0,
-										'CertOfAnalysisHyperlink' => 'string',
-										'Deleted' => true,
-										'ID' => 0,
-										'InventoryID' => 'string',
-										'InventoryType' => 0,
-										'LabLicense' => 'string',
-										'LocationLicense' => 'string',
-										'Medical' => true,
-										'MedicalGrade' => true,
-										'ParentID' => 'string',
-										'QualityControlDataHyperlink' => 'string',
-										'Result' => 'string',
-										'RnD' => true,
-										'SampleUse' => 'string',
-										'SessionTime' => 0,
-										'TestingData' => [
-											[
-												'LabAnalysisTime' => '2024-01-31T10:00:00.000Z',
-												'SamplePreparationTime' => '2024-01-31T10:00:00.000Z',
-												'TestID' => 0,
-												'TestResult' => [
-													[
-														'LabProvided' => true,
-														'TestPanel' => 'string',
-														'TestPass' => true,
-														'TestValue' => 0,
-														'TransactionID' => 0,
-													],
-												],
-											],
-										],
-										'TransactionID' => 0,
-									],
-								],
-								'LocationLicense' => 'string',
-								'MedUsableWeight' => 0,
-								'Medicated' => true,
-								'NetPackageWeight' => 0,
-								'PackageDate' => 'string',
-								'ProductName' => 'string',
-								'ProductionBatchID' => 0,
-								'QAStatus' => 'string',
-								'RecUsableWeight' => 0,
-								'RemainingAmount' => 0,
-								'Remediated' => true,
-								'RemediationCount' => 0,
-								'RemediationEligible' => true,
-								'Restocked' => true,
-								'Rework' => true,
-								'RoomID' => 0,
-								'Seized' => true,
-								'SessionTime' => 0,
-								'SourcePlantID' => 'string',
-								'StateProductIdentifier' => 'string',
-								'Status' => 'string',
-								'Strain' => 'string',
-								'TransactionID' => 0,
-								'UOM' => 'string',
-								'UnitBased' => true,
-								'UsableWeight' => 0,
-							],
-							'InventoryID' => 'string',
-							'InventoryTransferID' => 0,
-							'IsRejected' => true,
-							'IsReturn' => true,
-							'ManifestID' => 'string',
-							'Received' => true,
-							'ReceivedAmount' => 0,
-							'ReceivedTime' => 'string',
-							'TransactionID' => 0,
-						],
-					],
-					'ManifestID' => 'string',
-					'ManifestStopNumber' => 0,
-					'OutboundLicense' => 'string',
-					'Received' => true,
-					'ReceivedTime' => 'string',
-					'SessionTime' => 0,
-					'TransactionID' => 0,
-					'TransferType' => 'string',
-				],
-			]
-			);
-		});
-		$a->put('/v1/inventory/transfer/{id}/receive', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"Inventory" => [
-				[
-				"ActiveSampleInventoryID" => "string",
-				"Deleted" => true,
-				"Destroyed" => true,
-				"Dried" => true,
-				"ExpirationDate" => "string",
-				"ExternalID" => "string",
-				"ID" => "string",
-				"Initial" => true,
-				"InventoryParentID" => [
-				"string"
-				],
-				"InventoryType" => 0,
-				"IsSample" => true,
-				"LabSample" => [
-				[
-				"Amount" => 0,
-				"AmountUsed" => 0,
-				"CertOfAnalysisHyperlink" => "string",
-				"Deleted" => true,
-				"ID" => 0,
-				"InventoryID" => "string",
-				"InventoryType" => 0,
-				"LabLicense" => "string",
-				"LocationLicense" => "string",
-				"Medical" => true,
-				"MedicalGrade" => true,
-				"ParentID" => "string",
-				"QualityControlDataHyperlink" => "string",
-				"Result" => "string",
-				"RnD" => true,
-				"SampleUse" => "string",
-				"SessionTime" => 0,
-				"TestingData" => [
-				[
-				"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
-				"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
-				"TestID" => 0,
-				"TestResult" => [
-				[
-				"LabProvided" => true,
-				"TestPanel" => "string",
-				"TestPass" => true,
-				"TestValue" => 0,
-				"TransactionID" => 0
-				]
-				]
-				]
-				],
-				"TransactionID" => 0
-				]
-				],
-				"LocationLicense" => "string",
-				"MedUsableWeight" => 0,
-				"Medicated" => true,
-				"NetPackageWeight" => 0,
-				"PackageDate" => "string",
-				"ProductName" => "string",
-				"ProductionBatchID" => 0,
-				"QAStatus" => "string",
-				"RecUsableWeight" => 0,
-				"RemainingAmount" => 0,
-				"Remediated" => true,
-				"RemediationCount" => 0,
-				"RemediationEligible" => true,
-				"Restocked" => true,
-				"Rework" => true,
-				"RoomID" => 0,
-				"Seized" => true,
-				"SessionTime" => 0,
-				"SourcePlantID" => "string",
-				"StateProductIdentifier" => "string",
-				"Status" => "string",
-				"Strain" => "string",
-				"TransactionID" => 0,
-				"UOM" => "string",
-				"UnitBased" => true,
-				"UsableWeight" => 0
-				]
-				],
-				"InventoryTransfer" => [
-				"Deleted" => true,
-				"ID" => 0,
-				"InboundLicense" => "string",
-				"Invoice" => [
-				"Accepted" => true,
-				"BuyerLocationLicense" => "string",
-				"Deleted" => true,
-				"Inventory" => [
-				[
-				"Amount" => 0,
-				"Deleted" => true,
-				"ID" => 0,
-				"InventoryID" => "string",
-				"InvoiceID" => "string",
-				"Price" => 0,
-				"TransactionID" => 0
-				]
-				],
-				"InvoiceID" => "string",
-				"LocationLicense" => "string",
-				"Payment" => [
-				[
-				"Accepted" => true,
-				"AcceptedLocationID" => "string",
-				"AcceptedOn" => "string",
-				"Amount" => 0,
-				"BuyerLocationLicense" => "string",
-				"BuyerUserID" => 0,
-				"CreatedOn" => "string",
-				"Deleted" => true,
-				"ID" => 0,
-				"InvoiceID" => "string",
-				"Rejected" => true,
-				"RejectedLocationLicense" => "string",
-				"RejectedOn" => "string",
-				"RejectedReason" => "string",
-				"TransactionID" => 0,
-				"UpdatedOn" => "string"
-				]
-				],
-				"Refund" => true,
-				"SessionTime" => 0,
-				"TransactionID" => 0
-				],
-				"InvoiceID" => "string",
-				"IsRejected" => true,
-				"Item" => [
-				[
-				"Amount" => 0,
-				"Deleted" => true,
-				"Description" => "string",
-				"ID" => 0,
-				"Inventory" => [
-				"ActiveSampleInventoryID" => "string",
-				"Deleted" => true,
-				"Destroyed" => true,
-				"Dried" => true,
-				"ExpirationDate" => "string",
-				"ExternalID" => "string",
-				"ID" => "string",
-				"Initial" => true,
-				"InventoryParentID" => [
-				"string"
-				],
-				"InventoryType" => 0,
-				"IsSample" => true,
-				"LabSample" => [
-				[
-				"Amount" => 0,
-				"AmountUsed" => 0,
-				"CertOfAnalysisHyperlink" => "string",
-				"Deleted" => true,
-				"ID" => 0,
-				"InventoryID" => "string",
-				"InventoryType" => 0,
-				"LabLicense" => "string",
-				"LocationLicense" => "string",
-				"Medical" => true,
-				"MedicalGrade" => true,
-				"ParentID" => "string",
-				"QualityControlDataHyperlink" => "string",
-				"Result" => "string",
-				"RnD" => true,
-				"SampleUse" => "string",
-				"SessionTime" => 0,
-				"TestingData" => [
-				[
-				"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
-				"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
-				"TestID" => 0,
-				"TestResult" => [
-				[
-				"LabProvided" => true,
-				"TestPanel" => "string",
-				"TestPass" => true,
-				"TestValue" => 0,
-				"TransactionID" => 0
-				]
-				]
-				]
-				],
-				"TransactionID" => 0
-				]
-				],
-				"LocationLicense" => "string",
-				"MedUsableWeight" => 0,
-				"Medicated" => true,
-				"NetPackageWeight" => 0,
-				"PackageDate" => "string",
-				"ProductName" => "string",
-				"ProductionBatchID" => 0,
-				"QAStatus" => "string",
-				"RecUsableWeight" => 0,
-				"RemainingAmount" => 0,
-				"Remediated" => true,
-				"RemediationCount" => 0,
-				"RemediationEligible" => true,
-				"Restocked" => true,
-				"Rework" => true,
-				"RoomID" => 0,
-				"Seized" => true,
-				"SessionTime" => 0,
-				"SourcePlantID" => "string",
-				"StateProductIdentifier" => "string",
-				"Status" => "string",
-				"Strain" => "string",
-				"TransactionID" => 0,
-				"UOM" => "string",
-				"UnitBased" => true,
-				"UsableWeight" => 0
-				],
-				"InventoryID" => "string",
-				"InventoryTransferID" => 0,
-				"IsRejected" => true,
-				"IsReturn" => true,
-				"ManifestID" => "string",
-				"Received" => true,
-				"ReceivedAmount" => 0,
-				"ReceivedTime" => "string",
-				"TransactionID" => 0
-				]
-				],
-				"ManifestID" => "string",
-				"ManifestStopNumber" => 0,
-				"OutboundLicense" => "string",
-				"Received" => true,
-				"ReceivedTime" => "string",
-				"SessionTime" => 0,
-				"TransactionID" => 0,
-				"TransferType" => "string"
-				],
-				"Invoice" => [
-				"Accepted" => true,
-				"BuyerLocationLicense" => "string",
-				"Deleted" => true,
-				"Inventory" => [
-				[
-				"Amount" => 0,
-				"Deleted" => true,
-				"ID" => 0,
-				"InventoryID" => "string",
-				"InvoiceID" => "string",
-				"Price" => 0,
-				"TransactionID" => 0
-				]
-				],
-				"InvoiceID" => "string",
-				"LocationLicense" => "string",
-				"Payment" => [
-				[
-				"Accepted" => true,
-				"AcceptedLocationID" => "string",
-				"AcceptedOn" => "string",
-				"Amount" => 0,
-				"BuyerLocationLicense" => "string",
-				"BuyerUserID" => 0,
-				"CreatedOn" => "string",
-				"Deleted" => true,
-				"ID" => 0,
-				"InvoiceID" => "string",
-				"Rejected" => true,
-				"RejectedLocationLicense" => "string",
-				"RejectedOn" => "string",
-				"RejectedReason" => "string",
-				"TransactionID" => 0,
-				"UpdatedOn" => "string"
-				]
-				],
-				"Refund" => true,
-				"SessionTime" => 0,
-				"TransactionID" => 0
-				],
-				"RejectedData" => [
-				"Inventory" => [
-				[
-				"ActiveSampleInventoryID" => "string",
-				"Deleted" => true,
-				"Destroyed" => true,
-				"Dried" => true,
-				"ExpirationDate" => "string",
-				"ExternalID" => "string",
-				"ID" => "string",
-				"Initial" => true,
-				"InventoryParentID" => [
-				"string"
-				],
-				"InventoryType" => 0,
-				"IsSample" => true,
-				"LabSample" => [
-				[
-				"Amount" => 0,
-				"AmountUsed" => 0,
-				"CertOfAnalysisHyperlink" => "string",
-				"Deleted" => true,
-				"ID" => 0,
-				"InventoryID" => "string",
-				"InventoryType" => 0,
-				"LabLicense" => "string",
-				"LocationLicense" => "string",
-				"Medical" => true,
-				"MedicalGrade" => true,
-				"ParentID" => "string",
-				"QualityControlDataHyperlink" => "string",
-				"Result" => "string",
-				"RnD" => true,
-				"SampleUse" => "string",
-				"SessionTime" => 0,
-				"TestingData" => [
-				[
-				"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
-				"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
-				"TestID" => 0,
-				"TestResult" => [
-				[
-				"LabProvided" => true,
-				"TestPanel" => "string",
-				"TestPass" => true,
-				"TestValue" => 0,
-				"TransactionID" => 0
-				]
-				]
-				]
-				],
-				"TransactionID" => 0
-				]
-				],
-				"LocationLicense" => "string",
-				"MedUsableWeight" => 0,
-				"Medicated" => true,
-				"NetPackageWeight" => 0,
-				"PackageDate" => "string",
-				"ProductName" => "string",
-				"ProductionBatchID" => 0,
-				"QAStatus" => "string",
-				"RecUsableWeight" => 0,
-				"RemainingAmount" => 0,
-				"Remediated" => true,
-				"RemediationCount" => 0,
-				"RemediationEligible" => true,
-				"Restocked" => true,
-				"Rework" => true,
-				"RoomID" => 0,
-				"Seized" => true,
-				"SessionTime" => 0,
-				"SourcePlantID" => "string",
-				"StateProductIdentifier" => "string",
-				"Status" => "string",
-				"Strain" => "string",
-				"TransactionID" => 0,
-				"UOM" => "string",
-				"UnitBased" => true,
-				"UsableWeight" => 0
-				]
-				],
-				"InventoryTransfer" => [
-				"Deleted" => true,
-				"ID" => 0,
-				"InboundLicense" => "string",
-				"Invoice" => [
-				"Accepted" => true,
-				"BuyerLocationLicense" => "string",
-				"Deleted" => true,
-				"Inventory" => [
-				[
-				"Amount" => 0,
-				"Deleted" => true,
-				"ID" => 0,
-				"InventoryID" => "string",
-				"InvoiceID" => "string",
-				"Price" => 0,
-				"TransactionID" => 0
-				]
-				],
-				"InvoiceID" => "string",
-				"LocationLicense" => "string",
-				"Payment" => [
-				[
-				"Accepted" => true,
-				"AcceptedLocationID" => "string",
-				"AcceptedOn" => "string",
-				"Amount" => 0,
-				"BuyerLocationLicense" => "string",
-				"BuyerUserID" => 0,
-				"CreatedOn" => "string",
-				"Deleted" => true,
-				"ID" => 0,
-				"InvoiceID" => "string",
-				"Rejected" => true,
-				"RejectedLocationLicense" => "string",
-				"RejectedOn" => "string",
-				"RejectedReason" => "string",
-				"TransactionID" => 0,
-				"UpdatedOn" => "string"
-				]
-				],
-				"Refund" => true,
-				"SessionTime" => 0,
-				"TransactionID" => 0
-				],
-				"InvoiceID" => "string",
-				"IsRejected" => true,
-				"Item" => [
-				[
-				"Amount" => 0,
-				"Deleted" => true,
-				"Description" => "string",
-				"ID" => 0,
-				"Inventory" => [
-				"ActiveSampleInventoryID" => "string",
-				"Deleted" => true,
-				"Destroyed" => true,
-				"Dried" => true,
-				"ExpirationDate" => "string",
-				"ExternalID" => "string",
-				"ID" => "string",
-				"Initial" => true,
-				"InventoryParentID" => [
-				"string"
-				],
-				"InventoryType" => 0,
-				"IsSample" => true,
-				"LabSample" => [
-				[
-				"Amount" => 0,
-				"AmountUsed" => 0,
-				"CertOfAnalysisHyperlink" => "string",
-				"Deleted" => true,
-				"ID" => 0,
-				"InventoryID" => "string",
-				"InventoryType" => 0,
-				"LabLicense" => "string",
-				"LocationLicense" => "string",
-				"Medical" => true,
-				"MedicalGrade" => true,
-				"ParentID" => "string",
-				"QualityControlDataHyperlink" => "string",
-				"Result" => "string",
-				"RnD" => true,
-				"SampleUse" => "string",
-				"SessionTime" => 0,
-				"TestingData" => [
-				[
-				"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
-				"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
-				"TestID" => 0,
-				"TestResult" => [
-				[
-				"LabProvided" => true,
-				"TestPanel" => "string",
-				"TestPass" => true,
-				"TestValue" => 0,
-				"TransactionID" => 0
-				]
-				]
-				]
-				],
-				"TransactionID" => 0
-				]
-				],
-				"LocationLicense" => "string",
-				"MedUsableWeight" => 0,
-				"Medicated" => true,
-				"NetPackageWeight" => 0,
-				"PackageDate" => "string",
-				"ProductName" => "string",
-				"ProductionBatchID" => 0,
-				"QAStatus" => "string",
-				"RecUsableWeight" => 0,
-				"RemainingAmount" => 0,
-				"Remediated" => true,
-				"RemediationCount" => 0,
-				"RemediationEligible" => true,
-				"Restocked" => true,
-				"Rework" => true,
-				"RoomID" => 0,
-				"Seized" => true,
-				"SessionTime" => 0,
-				"SourcePlantID" => "string",
-				"StateProductIdentifier" => "string",
-				"Status" => "string",
-				"Strain" => "string",
-				"TransactionID" => 0,
-				"UOM" => "string",
-				"UnitBased" => true,
-				"UsableWeight" => 0
-				],
-				"InventoryID" => "string",
-				"InventoryTransferID" => 0,
-				"IsRejected" => true,
-				"IsReturn" => true,
-				"ManifestID" => "string",
-				"Received" => true,
-				"ReceivedAmount" => 0,
-				"ReceivedTime" => "string",
-				"TransactionID" => 0
-				]
-				],
-				"ManifestID" => "string",
-				"ManifestStopNumber" => 0,
-				"OutboundLicense" => "string",
-				"Received" => true,
-				"ReceivedTime" => "string",
-				"SessionTime" => 0,
-				"TransactionID" => 0,
-				"TransferType" => "string"
-				],
-				"Manifest" => [
-				"City" => "string",
-				"Completed" => true,
-				"CompletionDate" => "string",
-				"CreatedOn" => "string",
-				"Deleted" => true,
-				"Driver" => [
-				[
-				"DateofBirth" => "string",
-				"ID" => 0,
-				"Name" => "string"
-				]
-				],
-				"DriverArrived" => true,
-				"InTransit" => true,
-				"IsAccepted" => true,
-				"IsParked" => true,
-				"LicenseNumber" => "string",
-				"Links" => [
-				[
-				"Href" => "string",
-				"Method" => "string",
-				"Rel" => "string"
-				]
-				],
-				"ManifestID" => "string",
-				"Name" => "string",
-				"Phone" => "string",
-				"Received" => true,
-				"SessionTime" => 0,
-				"State" => "string",
-				"Stop" => [
-				[
-				"ApproximateArrival" => "2024-01-31T10:00:00.000Z",
-				"ApproximateDeparture" => "2024-01-31T10:00:00.000Z",
-				"ApproximateRoute" => "string",
-				"City" => "string",
-				"DriverArrived" => true,
-				"DriverArrivedTime" => "string",
-				"ID" => 0,
-				"Invoice" => [
-				"Accepted" => true,
-				"BuyerLocationLicense" => "string",
-				"Deleted" => true,
-				"Inventory" => [
-				[
-				"Amount" => 0,
-				"Deleted" => true,
-				"ID" => 0,
-				"InventoryID" => "string",
-				"InvoiceID" => "string",
-				"Price" => 0,
-				"TransactionID" => 0
-				]
-				],
-				"InvoiceID" => "string",
-				"LocationLicense" => "string",
-				"Payment" => [
-				[
-				"Accepted" => true,
-				"AcceptedLocationID" => "string",
-				"AcceptedOn" => "string",
-				"Amount" => 0,
-				"BuyerLocationLicense" => "string",
-				"BuyerUserID" => 0,
-				"CreatedOn" => "string",
-				"Deleted" => true,
-				"ID" => 0,
-				"InvoiceID" => "string",
-				"Rejected" => true,
-				"RejectedLocationLicense" => "string",
-				"RejectedOn" => "string",
-				"RejectedReason" => "string",
-				"TransactionID" => 0,
-				"UpdatedOn" => "string"
-				]
-				],
-				"Refund" => true,
-				"SessionTime" => 0,
-				"TransactionID" => 0
-				],
-				"InvoiceID" => "string",
-				"Item" => [
-				[
-				"Deleted" => true,
-				"Description" => "string",
-				"ID" => 0,
-				"InventoryID" => "string",
-				"ManifestID" => "string",
-				"Quantity" => 0,
-				"QuantityReceived" => 0,
-				"SessionTime" => 0,
-				"StopNumber" => 0,
-				"TransactionID" => 0
-				]
-				],
-				"ItemsCount" => 0,
-				"Links" => [
-				[
-				"Href" => "string",
-				"Method" => "string",
-				"Rel" => "string"
-				]
-				],
-				"LocationLicense" => "string",
-				"ManifestID" => "string",
-				"Name" => "string",
-				"ParkedTime" => "string",
-				"Phone" => "string",
-				"ResumedDirections" => "string",
-				"ResumedEstimatedArrival" => "string",
-				"ResumedEstimatedDeparture" => "string",
-				"ResumedTime" => "string",
-				"State" => "string",
-				"StopNumber" => 0,
-				"TransporterParked" => true,
-				"TransporterResumed" => true,
-				"ZipCode" => "string"
-				]
-				],
-				"StopCount" => 0,
-				"Street" => "string",
-				"ThirdPartyTransporter" => [
-				"LicenseNumber" => "string",
-				"Name" => "string"
-				],
-				"TotalItemCount" => 0,
-				"TransactionID" => 0,
-				"Type" => "string",
-				"UpdatedOn" => "string",
-				"Vehicle" => [
-				"Description" => "string",
-				"ID" => "string"
-				],
-				"Zip" => "string"
-				]
-				],
-				"SessionTime" => 0,
-				"TransactionID" => 0
-				]);
-		});
-		$a->put('/v1/inventory/transfer/{id}/void', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"Inventory" => [
-				   [
-					  "ActiveSampleInventoryID" => "string",
-					  "Deleted" => true,
-					  "Destroyed" => true,
-					  "Dried" => true,
-					  "ExpirationDate" => "string",
-					  "ExternalID" => "string",
-					  "ID" => "string",
-					  "Initial" => true,
-					  "InventoryParentID" => [
-						 "string"
-					  ],
-					  "InventoryType" => 0,
-					  "IsSample" => true,
-					  "LabSample" => [
-							[
-							   "Amount" => 0,
-							   "AmountUsed" => 0,
-							   "CertOfAnalysisHyperlink" => "string",
-							   "Deleted" => true,
-							   "ID" => 0,
-							   "InventoryID" => "string",
-							   "InventoryType" => 0,
-							   "LabLicense" => "string",
-							   "LocationLicense" => "string",
-							   "Medical" => true,
-							   "MedicalGrade" => true,
-							   "ParentID" => "string",
-							   "QualityControlDataHyperlink" => "string",
-							   "Result" => "string",
-							   "RnD" => true,
-							   "SampleUse" => "string",
-							   "SessionTime" => 0,
-							   "TestingData" => [
-								  [
-									 "LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
-									 "SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
-									 "TestID" => 0,
-									 "TestResult" => [
-										[
-										   "LabProvided" => true,
-										   "TestPanel" => "string",
-										   "TestPass" => true,
-										   "TestValue" => 0,
-										   "TransactionID" => 0
-										]
-									 ]
-								  ]
-							   ],
-							   "TransactionID" => 0
-							]
-						 ],
-					  "LocationLicense" => "string",
-					  "MedUsableWeight" => 0,
-					  "Medicated" => true,
-					  "NetPackageWeight" => 0,
-					  "PackageDate" => "string",
-					  "ProductName" => "string",
-					  "ProductionBatchID" => 0,
-					  "QAStatus" => "string",
-					  "RecUsableWeight" => 0,
-					  "RemainingAmount" => 0,
-					  "Remediated" => true,
-					  "RemediationCount" => 0,
-					  "RemediationEligible" => true,
-					  "Restocked" => true,
-					  "Rework" => true,
-					  "RoomID" => 0,
-					  "Seized" => true,
-					  "SessionTime" => 0,
-					  "SourcePlantID" => "string",
-					  "StateProductIdentifier" => "string",
-					  "Status" => "string",
-					  "Strain" => "string",
-					  "TransactionID" => 0,
-					  "UOM" => "string",
-					  "UnitBased" => true,
-					  "UsableWeight" => 0
-				   ]
-				],
-				"InventoryTransfer" => [
-				   "Deleted" => true,
-				   "ID" => 0,
-				   "InboundLicense" => "string",
-				   "Invoice" => [
-					  "Accepted" => true,
-					  "BuyerLocationLicense" => "string",
-					  "Deleted" => true,
-					  "Inventory" => [
-						 [
-							"Amount" => 0,
-							"Deleted" => true,
-							"ID" => 0,
-							"InventoryID" => "string",
-							"InvoiceID" => "string",
-							"Price" => 0,
-							"TransactionID" => 0
-						 ]
-					  ],
-					  "InvoiceID" => "string",
-					  "LocationLicense" => "string",
-					  "Payment" => [
-							   [
-								  "Accepted" => true,
-								  "AcceptedLocationID" => "string",
-								  "AcceptedOn" => "string",
-								  "Amount" => 0,
-								  "BuyerLocationLicense" => "string",
-								  "BuyerUserID" => 0,
-								  "CreatedOn" => "string",
-								  "Deleted" => true,
-								  "ID" => 0,
-								  "InvoiceID" => "string",
-								  "Rejected" => true,
-								  "RejectedLocationLicense" => "string",
-								  "RejectedOn" => "string",
-								  "RejectedReason" => "string",
-								  "TransactionID" => 0,
-								  "UpdatedOn" => "string"
-							   ]
-							],
-					  "Refund" => true,
-					  "SessionTime" => 0,
-					  "TransactionID" => 0
-				   ],
-				   "InvoiceID" => "string",
-				   "IsRejected" => true,
-				   "Item" => [
-					  [
-						 "Amount" => 0,
-						 "Deleted" => true,
-						 "Description" => "string",
-						 "ID" => 0,
-						 "Inventory" => [
-							"ActiveSampleInventoryID" => "string",
-							"Deleted" => true,
-							"Destroyed" => true,
-							"Dried" => true,
-							"ExpirationDate" => "string",
-							"ExternalID" => "string",
-							"ID" => "string",
-							"Initial" => true,
-							"InventoryParentID" => [
-							   "string"
-							],
-							"InventoryType" => 0,
-							"IsSample" => true,
-							"LabSample" => [
-							   [
-								  "Amount" => 0,
-								  "AmountUsed" => 0,
-								  "CertOfAnalysisHyperlink" => "string",
-								  "Deleted" => true,
-								  "ID" => 0,
-								  "InventoryID" => "string",
-								  "InventoryType" => 0,
-								  "LabLicense" => "string",
-								  "LocationLicense" => "string",
-								  "Medical" => true,
-								  "MedicalGrade" => true,
-								  "ParentID" => "string",
-								  "QualityControlDataHyperlink" => "string",
-								  "Result" => "string",
-								  "RnD" => true,
-								  "SampleUse" => "string",
-								  "SessionTime" => 0,
-								  "TestingData" => [
-									 [
-										"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
-										"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
-										"TestID" => 0,
-										"TestResult" => [
-										   [
-											  "LabProvided" => true,
-											  "TestPanel" => "string",
-											  "TestPass" => true,
-											  "TestValue" => 0,
-											  "TransactionID" => 0
-										   ]
-										]
-									 ]
-								  ],
-								  "TransactionID" => 0
-							   ]
-							],
-							"LocationLicense" => "string",
-							"MedUsableWeight" => 0,
-							"Medicated" => true,
-							"NetPackageWeight" => 0,
-							"PackageDate" => "string",
-							"ProductName" => "string",
-							"ProductionBatchID" => 0,
-							"QAStatus" => "string",
-							"RecUsableWeight" => 0,
-							"RemainingAmount" => 0,
-							"Remediated" => true,
-							"RemediationCount" => 0,
-							"RemediationEligible" => true,
-							"Restocked" => true,
-							"Rework" => true,
-							"RoomID" => 0,
-							"Seized" => true,
-							"SessionTime" => 0,
-							"SourcePlantID" => "string",
-							"StateProductIdentifier" => "string",
-							"Status" => "string",
-							"Strain" => "string",
-							"TransactionID" => 0,
-							"UOM" => "string",
-							"UnitBased" => true,
-							"UsableWeight" => 0
-						 ],
-						 "InventoryID" => "string",
-						 "InventoryTransferID" => 0,
-						 "IsRejected" => true,
-						 "IsReturn" => true,
-						 "ManifestID" => "string",
-						 "Received" => true,
-						 "ReceivedAmount" => 0,
-						 "ReceivedTime" => "string",
-						 "TransactionID" => 0
-					  ]
-				   ],
-				   "ManifestID" => "string",
-				   "ManifestStopNumber" => 0,
-				   "OutboundLicense" => "string",
-				   "Received" => true,
-				   "ReceivedTime" => "string",
-				   "SessionTime" => 0,
-				   "TransactionID" => 0,
-				   "TransferType" => "string"
-				],
-				"Manifest" => [
-				   "City" => "string",
-				   "Completed" => true,
-				   "CompletionDate" => "string",
-				   "CreatedOn" => "string",
-				   "Deleted" => true,
-				   "Driver" => [
-					  [
-						 "DateofBirth" => "string",
-						 "ID" => 0,
-						 "Name" => "string"
-					  ]
-				   ],
-				   "DriverArrived" => true,
-				   "InTransit" => true,
-				   "IsAccepted" => true,
-				   "IsParked" => true,
-				   "LicenseNumber" => "string",
-				   "Links" => [
-							[
-							   "Href" => "string",
-							   "Method" => "string",
-							   "Rel" => "string"
-							]
-						 ],
-				   "ManifestID" => "string",
-				   "Name" => "string",
-				   "Phone" => "string",
-				   "Received" => true,
-				   "SessionTime" => 0,
-				   "State" => "string",
-				   "Stop" => [
-								  [
-									 "ApproximateArrival" => "2024-01-31T10:00:00.000Z",
-									 "ApproximateDeparture" => "2024-01-31T10:00:00.000Z",
-									 "ApproximateRoute" => "string",
-									 "City" => "string",
-									 "DriverArrived" => true,
-									 "DriverArrivedTime" => "string",
-									 "ID" => 0,
-									 "Invoice" => [
-										"Accepted" => true,
-										"BuyerLocationLicense" => "string",
-										"Deleted" => true,
-										"Inventory" => [
-										   [
-											  "Amount" => 0,
-											  "Deleted" => true,
-											  "ID" => 0,
-											  "InventoryID" => "string",
-											  "InvoiceID" => "string",
-											  "Price" => 0,
-											  "TransactionID" => 0
-										   ]
-										],
-										"InvoiceID" => "string",
-										"LocationLicense" => "string",
-										"Payment" => [
-												 [
-													"Accepted" => true,
-													"AcceptedLocationID" => "string",
-													"AcceptedOn" => "string",
-													"Amount" => 0,
-													"BuyerLocationLicense" => "string",
-													"BuyerUserID" => 0,
-													"CreatedOn" => "string",
-													"Deleted" => true,
-													"ID" => 0,
-													"InvoiceID" => "string",
-													"Rejected" => true,
-													"RejectedLocationLicense" => "string",
-													"RejectedOn" => "string",
-													"RejectedReason" => "string",
-													"TransactionID" => 0,
-													"UpdatedOn" => "string"
-												 ]
-											  ],
-										"Refund" => true,
-										"SessionTime" => 0,
-										"TransactionID" => 0
-									 ],
-									 "InvoiceID" => "string",
-									 "Item" => [
-													   [
-														  "Deleted" => true,
-														  "Description" => "string",
-														  "ID" => 0,
-														  "InventoryID" => "string",
-														  "ManifestID" => "string",
-														  "Quantity" => 0,
-														  "QuantityReceived" => 0,
-														  "SessionTime" => 0,
-														  "StopNumber" => 0,
-														  "TransactionID" => 0
-													   ]
-													],
-									 "ItemsCount" => 0,
-									 "Links" => [
-															 [
-																"Href" => "string",
-																"Method" => "string",
-																"Rel" => "string"
-															 ]
-														  ],
-									 "LocationLicense" => "string",
-									 "ManifestID" => "string",
-									 "Name" => "string",
-									 "ParkedTime" => "string",
-									 "Phone" => "string",
-									 "ResumedDirections" => "string",
-									 "ResumedEstimatedArrival" => "string",
-									 "ResumedEstimatedDeparture" => "string",
-									 "ResumedTime" => "string",
-									 "State" => "string",
-									 "StopNumber" => 0,
-									 "TransporterParked" => true,
-									 "TransporterResumed" => true,
-									 "ZipCode" => "string"
-								  ]
-							   ],
-				   "StopCount" => 0,
-				   "Street" => "string",
-				   "ThirdPartyTransporter" => [
-						 "LicenseNumber" => "string",
-						 "Name" => "string"
-					 ],
-				   "TotalItemCount" => 0,
-				   "TransactionID" => 0,
-				   "Type" => "string",
-				   "UpdatedOn" => "string",
-				   "Vehicle" => [
-						 "Description" => "string",
-						 "ID" => "string"
-					 ],
-				   "Zip" => "string"
-				],
-				"SessionTime" => 0,
-				"TransactionID" => 0
-			 ]);
-		});
-
 		// Sale
-		$a->get('/v1/sale', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"NextCursor" => 0,
-				"NextTransactionID" => 0,
-				"Sale" => [
-					[
-						"CardID" => "string",
-						"CreatedByUserID" => 0,
-						"CreatedOn" => "string",
-						"Deleted" => true,
-						"ExternalID" => "string",
-						"ID" => 0,
-						"Item" => [
-							[
-								"Barcode" => "string",
-								"ExternalID" => "string",
-								"FormID" => 0,
-								"ItemNumber" => 0,
-								"OrderTypeID" => 0,
-								"Price" => 0,
-								"Quantity" => 0,
-								"TaxCollected" => [
-									"Excise" => 0,
-									"Other" => 0
-								],
-								"TransactionID" => 0,
-								"VoidReason" => "string"
-							]
-						],
-						"Location" => 0,
-						"OrderingPhysician" => "string",
-						"RequestID" => "string",
-						"TransactionID" => 0,
-						"Type" => "string",
-						"UpdatedOn" => "string"
-					]
-				]
-			]);
-		});
-		$a->post('/v1/sale', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"Inventory" => [
-					[
-						"ActiveSampleInventoryID" => "string",
-						"Deleted" => true,
-						"Destroyed" => true,
-						"Dried" => true,
-						"ExpirationDate" => "string",
-						"ExternalID" => "string",
-						"ID" => "string",
-						"Initial" => true,
-						"InventoryParentID" => [
-							"string"
-						],
-						"InventoryType" => 0,
-						"IsSample" => true,
-						"LabSample" => [
-							[
-								"Amount" => 0,
-								"AmountUsed" => 0,
-								"CertOfAnalysisHyperlink" => "string",
-								"Deleted" => true,
-								"ID" => 0,
-								"InventoryID" => "string",
-								"InventoryType" => 0,
-								"LabLicense" => "string",
-								"LocationLicense" => "string",
-								"Medical" => true,
-								"MedicalGrade" => true,
-								"ParentID" => "string",
-								"QualityControlDataHyperlink" => "string",
-								"Result" => "string",
-								"RnD" => true,
-								"SampleUse" => "string",
-								"SessionTime" => 0,
-								"TestingData" => [
-									[
-										"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
-										"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
-										"TestID" => 0,
-										"TestResult" => [
-											[
-												"LabProvided" => true,
-												"TestPanel" => "string",
-												"TestPass" => true,
-												"TestValue" => 0,
-												"TransactionID" => 0
-											]
-										]
-									]
-								]
-							]
-						],
-						"LocationLicense" => "string",
-						"MedUsableWeight" => 0,
-						"Medicated" => true,
-						"NetPackageWeight" => 0,
-						"PackageDate" => "string",
-						"ProductName" => "string",
-						"ProductionBatchID" => 0,
-						"QAStatus" => "string",
-						"RecUsableWeight" => 0,
-						"RemainingAmount" => 0,
-						"Remediated" => true,
-						"RemediationCount" => 0,
-						"RemediationEligible" => true,
-						"Restocked" => true,
-						"Rework" => true,
-						"RoomID" => 0,
-						"Seized" => true,
-						"SessionTime" => 0,
-						"SourcePlantID" => "string",
-						"StateProductIdentifier" => "string",
-						"Status" => "string",
-						"Strain" => "string",
-						"TransactionID" => 0,
-						"UOM" => "string",
-						"UnitBased" => true,
-						"UsableWeight" => 0
-					]
-				],
-				"Sale" => [
-					[
-						"CardID" => "string",
-						"CreatedByUserID" => 0,
-						"CreatedOn" => "string",
-						"Deleted" => true,
-						"ExternalID" => "string",
-						"ID" => 0,
-						"Item" => [
-							[
-								"Barcode" => "string",
-								"ExternalID" => "string",
-								"FormID" => 0,
-								"ItemNumber" => 0,
-								"OrderTypeID" => 0,
-								"Price" => 0,
-								"Quantity" => 0,
-								"TaxCollected" => [
-									"Excise" => 0,
-									"Other" => 0
-								],
-								"TransactionID" => 0,
-								"VoidReason" => "string"
-							]
-						],
-						"Location" => 0,
-						"OrderingPhysician" => "string",
-						"RequestID" => "string",
-						"TransactionID" => 0,
-						"Type" => "string",
-						"UpdatedOn" => "string"
-					]
-				],
-				"SessionTime" => 0,
-				"TransactionID" => 0
-			]);
-		});
-		$a->get('/v1/sale/{id}', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"Sale" => [
-					"CardID" => "string",
-					"CreatedByUserID" => 0,
-					"CreatedOn" => "string",
-					"Deleted" => true,
-					"ExternalID" => "string",
-					"ID" => 0,
-					"Item" => [
-						[
-							"Barcode" => "string",
-							"ExternalID" => "string",
-							"FormID" => 0,
-							"ItemNumber" => 0,
-							"OrderTypeID" => 0,
-							"Price" => 0,
-							"Quantity" => 0,
-							"TaxCollected" => [
-								"Excise" => 0,
-								"Other" => 0
-							],
-							"TransactionID" => 0,
-							"VoidReason" => "string"
-						]
-					],
-					"Location" => 0,
-					"OrderingPhysician" => "string",
-					"RequestID" => "string",
-					"TransactionID" => 0,
-					"Type" => "string",
-					"UpdatedOn" => "string"
-				]
-			]);
-		});
-		$a->put('/v1/sale/{id}', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"CardID" => "string",
-				"CreatedByUserID" => 0,
-				"CreatedOn" => "string",
-				"Deleted" => true,
-				"ExternalID" => "string",
-				"ID" => 0,
-				"Item" => [
-					[
-						"Barcode" => "string",
-						"ExternalID" => "string",
-						"FormID" => 0,
-						"ItemNumber" => 0,
-						"OrderTypeID" => 0,
-						"Price" => 0,
-						"Quantity" => 0,
-						"TaxCollected" => [
-							"Excise" => 0,
-							"Other" => 0
-						],
-						"TransactionID" => 0,
-						"VoidReason" => "string"
-					]
-				],
-				"Location" => 0,
-				"OrderingPhysician" => "string",
-				"RequestID" => "string",
-				"TransactionID" => 0,
-				"Type" => "string",
-				"UpdatedOn" => "string"
-			]);
-		});
-		$a->post('/v1/sale/{id}/refund', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"Inventory" => [
-					[
-						"ActiveSampleInventoryID" => "string",
-						"Deleted" => true,
-						"Destroyed" => true,
-						"Dried" => true,
-						"ExpirationDate" => "string",
-						"ExternalID" => "string",
-						"ID" => "string",
-						"Initial" => true,
-						"InventoryParentID" => [
-							"string"
-						],
-						"InventoryType" => 0,
-						"IsSample" => true,
-						"LabSample" => [
-							[
-								"Amount" => 0,
-								"AmountUsed" => 0,
-								"CertOfAnalysisHyperlink" => "string",
-								"Deleted" => true,
-								"ID" => 0,
-								"InventoryID" => "string",
-								"InventoryType" => 0,
-								"LabLicense" => "string",
-								"LocationLicense" => "string",
-								"Medical" => true,
-								"MedicalGrade" => true,
-								"ParentID" => "string",
-								"QualityControlDataHyperlink" => "string",
-								"Result" => "string",
-								"RnD" => true,
-								"SampleUse" => "string",
-								"SessionTime" => 0,
-								"TestingData" => [
-									[
-										"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
-										"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
-										"TestID" => 0,
-										"TestResult" => [
-											[
-												"LabProvided" => true,
-												"TestPanel" => "string",
-												"TestPass" => true,
-												"TestValue" => 0,
-												"TransactionID" => 0
-											]
-										]
-									]
-								]
-							]
-						],
-						"LocationLicense" => "string",
-						"MedUsableWeight" => 0,
-						"Medicated" => true,
-						"NetPackageWeight" => 0,
-						"PackageDate" => "string",
-						"ProductName" => "string",
-						"ProductionBatchID" => 0,
-						"QAStatus" => "string",
-						"RecUsableWeight" => 0,
-						"RemainingAmount" => 0,
-						"Remediated" => true,
-						"RemediationCount" => 0,
-						"RemediationEligible" => true,
-						"Restocked" => true,
-						"Rework" => true,
-						"RoomID" => 0,
-						"Seized" => true,
-						"SessionTime" => 0,
-						"SourcePlantID" => "string",
-						"StateProductIdentifier" => "string",
-						"Status" => "string",
-						"Strain" => "string",
-						"TransactionID" => 0,
-						"UOM" => "string",
-						"UnitBased" => true,
-						"UsableWeight" => 0
-					]
-				],
-				"Refund" => [
-					[
-						"CardID" => "string",
-						"CreatedByUserID" => 0,
-						"CreatedOn" => "string",
-						"Deleted" => true,
-						"ExternalID" => "string",
-						"ID" => 0,
-						"Item" => [
-							[
-								"Barcode" => "string",
-								"ExternalID" => "string",
-								"FormID" => 0,
-								"ItemNumber" => 0,
-								"OrderTypeID" => 0,
-								"Price" => 0,
-								"Quantity" => 0,
-								"TaxCollected" => [
-									"Excise" => 0,
-									"Other" => 0
-								],
-								"TransactionID" => 0,
-								"VoidReason" => "string"
-							]
-						],
-						"Location" => 0,
-						"OrderingPhysician" => "string",
-						"RequestID" => "string",
-						"TransactionID" => 0,
-						"Type" => "string",
-						"UpdatedOn" => "string"
-					]
-				],
-				"Sale" => [
-					[
-						"CardID" => "string",
-						"CreatedByUserID" => 0,
-						"CreatedOn" => "string",
-						"Deleted" => true,
-						"ExternalID" => "string",
-						"ID" => 0,
-						"Item" => [
-							[
-								"Barcode" => "string",
-								"ExternalID" => "string",
-								"FormID" => 0,
-								"ItemNumber" => 0,
-								"OrderTypeID" => 0,
-								"Price" => 0,
-								"Quantity" => 0,
-								"TaxCollected" => [
-									"Excise" => 0,
-									"Other" => 0
-								],
-								"TransactionID" => 0,
-								"VoidReason" => "string"
-							]
-						],
-						"Location" => 0,
-						"OrderingPhysician" => "string",
-						"RequestID" => "string",
-						"TransactionID" => 0,
-						"Type" => "string",
-						"UpdatedOn" => "string"
-					]
-				],
-				"SessionTime" => 0,
-				"TransactionID" => 0
-			]);
-		});
-		$a->put('/v1/sale/{id}/void', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"transactionID" => 0
-			]);
-		});
+		$a->get('/v1/sale', 'SaleSearch');
+		$a->post('/v1/sale', 'SaleCreate');
+		$a->get('/v1/sale/{id}', 'SaleDetail');
+		$a->put('/v1/sale/{id}', 'SaleUpdate');
+		$a->post('/v1/sale/{id}/refund', 'SaleRefund');
+		$a->put('/v1/sale/{id}/void', 'SaleVoid');
 
 		// Patient
 		// NYS: Medical Cannabis Data Management System (M.C.D.M.S.)
@@ -13618,471 +12077,6 @@ class BioTrack2024 extends \OpenTHC\Module\Base
 				"Session" => "string",
 			]);
 		});
-		$a->get('/v1/lab/sample', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"LabSample" => [
-					[
-						"Amount" => 0,
-						"AmountUsed" => 0,
-						"CertOfAnalysisHyperlink" => "string",
-						"Deleted" => true,
-						"ID" => 0,
-						"InventoryID" => "string",
-						"InventoryType" => 0,
-						"LabLicense" => "string",
-						"LocationLicense" => "string",
-						"Medical" => true,
-						"MedicalGrade" => true,
-						"ParentID" => "string",
-						"QualityControlDataHyperlink" => "string",
-						"Result" => "string",
-						"RnD" => true,
-						"SampleUse" => "string",
-						"SessionTime" => 0,
-						"TestingData" => [
-							[
-								"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
-								"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
-								"TestID" => 0,
-								"TestResult" => [
-									[
-										"LabProvided" => true,
-										"TestPanel" => "string",
-										"TestPass" => true,
-										"TestValue" => 0,
-										"TransactionID" => 0
-									]
-								]
-							]
-						],
-						"TransactionID" => 0
-					]
-				],
-				"NextCursor" => 0,
-				"NextTransactionID" => 0
-			]);
-		});
-		$a->get('/v1/lab/sample/{id}', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"LabSample" => [
-					"Amount" => 0,
-					"AmountUsed" => 0,
-					"CertOfAnalysisHyperlink" => "string",
-					"Deleted" => true,
-					"ID" => 0,
-					"InventoryID" => "string",
-					"InventoryType" => 0,
-					"LabLicense" => "string",
-					"LocationLicense" => "string",
-					"Medical" => true,
-					"MedicalGrade" => true,
-					"ParentID" => "string",
-					"QualityControlDataHyperlink" => "string",
-					"Result" => "string",
-					"RnD" => true,
-					"SampleUse" => "string",
-					"SessionTime" => 0,
-					"TestingData" => [
-						[
-							"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
-							"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
-							"TestID" => 0,
-							"TestResult" => [
-								[
-									"LabProvided" => true,
-									"TestPanel" => "string",
-									"TestPass" => true,
-									"TestValue" => 0,
-									"TransactionID" => 0
-								]
-							]
-						]
-					],
-					"TransactionID" => 0
-				]
-			]);
-		});
-		$a->post('/v1/lab/sample/{id}/result', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"Inventory" => [
-					[
-						"ActiveSampleInventoryID" => "string",
-						"Deleted" => true,
-						"Destroyed" => true,
-						"Dried" => true,
-						"ExpirationDate" => "string",
-						"ExternalID" => "string",
-						"ID" => "string",
-						"Initial" => true,
-						"InventoryParentID" => [
-							"string"
-						],
-						"InventoryType" => 0,
-						"IsSample" => true,
-						"LabSample" => [
-							[
-								"Amount" => 0,
-								"AmountUsed" => 0,
-								"CertOfAnalysisHyperlink" => "string",
-								"Deleted" => true,
-								"ID" => 0,
-								"InventoryID" => "string",
-								"InventoryType" => 0,
-								"LabLicense" => "string",
-								"LocationLicense" => "string",
-								"Medical" => true,
-								"MedicalGrade" => true,
-								"ParentID" => "string",
-								"QualityControlDataHyperlink" => "string",
-								"Result" => "string",
-								"RnD" => true,
-								"SampleUse" => "string",
-								"SessionTime" => 0,
-								"TestingData" => [
-									[
-										"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
-										"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
-										"TestID" => 0,
-										"TestResult" => [
-											[
-												"LabProvided" => true,
-												"TestPanel" => "string",
-												"TestPass" => true,
-												"TestValue" => 0,
-												"TransactionID" => 0
-											]
-										]
-									]
-								],
-								"TransactionID" => 0
-							]
-						],
-						"LocationLicense" => "string",
-						"MedUsableWeight" => 0,
-						"Medicated" => true,
-						"NetPackageWeight" => 0,
-						"PackageDate" => "string",
-						"ProductName" => "string",
-						"ProductionBatchID" => 0,
-						"QAStatus" => "string",
-						"RecUsableWeight" => 0,
-						"RemainingAmount" => 0,
-						"Remediated" => true,
-						"RemediationCount" => 0,
-						"RemediationEligible" => true,
-						"Restocked" => true,
-						"Rework" => true,
-						"RoomID" => 0,
-						"Seized" => true,
-						"SessionTime" => 0,
-						"SourcePlantID" => "string",
-						"StateProductIdentifier" => "string",
-						"Status" => "string",
-						"Strain" => "string",
-						"TransactionID" => 0,
-						"UOM" => "string",
-						"UnitBased" => true,
-						"UsableWeight" => 0
-					]
-				],
-				"LabSample" => [
-					[
-						"Amount" => 0,
-						"AmountUsed" => 0,
-						"CertOfAnalysisHyperlink" => "string",
-						"Deleted" => true,
-						"ID" => 0,
-						"InventoryID" => "string",
-						"InventoryType" => 0,
-						"LabLicense" => "string",
-						"LocationLicense" => "string",
-						"Medical" => true,
-						"MedicalGrade" => true,
-						"ParentID" => "string",
-						"QualityControlDataHyperlink" => "string",
-						"Result" => "string",
-						"RnD" => true,
-						"SampleUse" => "string",
-						"SessionTime" => 0,
-						"TestingData" => [
-							[
-								"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
-								"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
-								"TestID" => 0,
-								"TestResult" => [
-									[
-										"LabProvided" => true,
-										"TestPanel" => "string",
-										"TestPass" => true,
-										"TestValue" => 0,
-										"TransactionID" => 0
-									]
-								]
-							]
-						],
-						"TransactionID" => 0
-					]
-				],
-				"TransactionID" => 0
-			]);
-		});
-		$a->put('/v1/lab/sample/{id}/result', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"Inventory" => [
-					[
-						"ActiveSampleInventoryID" => "string",
-						"Deleted" => true,
-						"Destroyed" => true,
-						"Dried" => true,
-						"ExpirationDate" => "string",
-						"ExternalID" => "string",
-						"ID" => "string",
-						"Initial" => true,
-						"InventoryParentID" => ["string"],
-						"InventoryType" => 0,
-						"IsSample" => true,
-						"LabSample" => [
-							[
-								"Amount" => 0,
-								"AmountUsed" => 0,
-								"CertOfAnalysisHyperlink" => "string",
-								"Deleted" => true,
-								"ID" => 0,
-								"InventoryID" => "string",
-								"InventoryType" => 0,
-								"LabLicense" => "string",
-								"LocationLicense" => "string",
-								"Medical" => true,
-								"MedicalGrade" => true,
-								"ParentID" => "string",
-								"QualityControlDataHyperlink" => "string",
-								"Result" => "string",
-								"RnD" => true,
-								"SampleUse" => "string",
-								"SessionTime" => 0,
-								"TestingData" => [
-									[
-										"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
-										"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
-										"TestID" => 0,
-										"TestResult" => [
-											[
-												"LabProvided" => true,
-												"TestPanel" => "string",
-												"TestPass" => true,
-												"TestValue" => 0,
-												"TransactionID" => 0
-											]
-										]
-									]
-								],
-								"TransactionID" => 0
-							]
-						],
-						"LocationLicense" => "string",
-						"MedUsableWeight" => 0,
-						"Medicated" => true,
-						"NetPackageWeight" => 0,
-						"PackageDate" => "string",
-						"ProductName" => "string",
-						"ProductionBatchID" => 0,
-						"QAStatus" => "string",
-						"RecUsableWeight" => 0,
-						"RemainingAmount" => 0,
-						"Remediated" => true,
-						"RemediationCount" => 0,
-						"RemediationEligible" => true,
-						"Restocked" => true,
-						"Rework" => true,
-						"RoomID" => 0,
-						"Seized" => true,
-						"SessionTime" => 0,
-						"SourcePlantID" => "string",
-						"StateProductIdentifier" => "string",
-						"Status" => "string",
-						"Strain" => "string",
-						"TransactionID" => 0,
-						"UOM" => "string",
-						"UnitBased" => true,
-						"UsableWeight" => 0
-					]
-				],
-				"LabSample" => [
-					[
-						"Amount" => 0,
-						"AmountUsed" => 0,
-						"CertOfAnalysisHyperlink" => "string",
-						"Deleted" => true,
-						"ID" => 0,
-						"InventoryID" => "string",
-						"InventoryType" => 0,
-						"LabLicense" => "string",
-						"LocationLicense" => "string",
-						"Medical" => true,
-						"MedicalGrade" => true,
-						"ParentID" => "string",
-						"QualityControlDataHyperlink" => "string",
-						"Result" => "string",
-						"RnD" => true,
-						"SampleUse" => "string",
-						"SessionTime" => 0,
-						"TestingData" => [
-							[
-								"LabAnalysisTime" => "2024-01-31T10:00:00.000Z",
-								"SamplePreparationTime" => "2024-01-31T10:00:00.000Z",
-								"TestID" => 0,
-								"TestResult" => [
-									[
-										"LabProvided" => true,
-										"TestPanel" => "string",
-										"TestPass" => true,
-										"TestValue" => 0,
-										"TransactionID" => 0
-									]
-								]
-							]
-						],
-						"TransactionID" => 0
-					]
-				],
-				"TransactionID" => 0
-			]);
-		});
-		$a->get('/v1/lab/test', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"Test" => [
-					[
-						"ID" => 0,
-						"Name" => "string",
-						"Panels" => [
-							[
-								"AddToTotal" => true,
-								"InventoryType" => 0,
-								"Name" => "string",
-								"PassFailCondition" => "string",
-								"PassFailConditional" => true,
-								"PassFailLimit" => "string",
-								"TestValueRecordOnly" => true,
-								"TotalPanel" => true,
-								"UOM" => "string"
-							]
-						]
-					]
-				]
-			]);
-		});
-		$a->get('/v1/lab/test/medical/{id}', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"Test" => [
-					[
-						"ID" => 0,
-						"Name" => "string",
-						"Panels" => [
-							[
-								"AddToTotal" => true,
-								"InventoryType" => 0,
-								"Name" => "string",
-								"PassFailCondition" => "string",
-								"PassFailConditional" => true,
-								"PassFailLimit" => "string",
-								"TestValueRecordOnly" => true,
-								"TotalPanel" => true,
-								"UOM" => "string"
-							]
-						]
-					]
-				]
-			]);
-		});
-		$a->get('/v1/lab/test/{id}', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"Test" => [
-					[
-						"ID" => 0,
-						"Name" => "string",
-						"Panels" => [
-							[
-								"AddToTotal" => true,
-								"InventoryType" => 0,
-								"Name" => "string",
-								"PassFailCondition" => "string",
-								"PassFailConditional" => true,
-								"PassFailLimit" => "string",
-								"TestValueRecordOnly" => true,
-								"TotalPanel" => true,
-								"UOM" => "string"
-							]
-						]
-					]
-				]
-			]);
-		});
-		$a->get('/v1/lab/user', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"LabUsers" => [
-					[
-						"Active" => true,
-						"Admin" => true,
-						"ID" => 0,
-						"TransactionID" => 0,
-						"Username" => "string"
-					]
-				],
-				"NextCursor" => 0,
-				"NextTransactionID" => 0
-			]);
-		});
-		$a->post('/v1/lab/user', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"LabUser" => [
-					"Active" => true,
-					"Admin" => true,
-					"ID" => 0,
-					"Username" => "string"
-				],
-				"SessionTime" => 0,
-				"TransactionID" => 0
-			]);
-		});
-		$a->post('/v1/lab/user/password-reset-request', function($REQ, $RES, $ARG) {
-			// No 200 response documented
-			return $RES->withJSON();
-		});
-		$a->delete('/v1/lab/user/{id}', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"LabUser" => [
-					"Active" => true,
-					"Admin" => true,
-					"ID" => 0,
-					"Username" => "string"
-				],
-				"SessionTime" => 0,
-				"TransactionID" => 0
-			]);
-		});
-		$a->get('/v1/lab/user/{id}', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"LabUser" => [
-					"Active" => true,
-					"Admin" => true,
-					"ID" => 0,
-					"TransactionID" => 0,
-					"Username" => "string"
-				]
-			]);
-		});
-		$a->put('/v1/lab/user/{id}', function($REQ, $RES, $ARG) {
-			return $RES->withJSON([
-				"LabUser" => [
-					"Active" => true,
-					"Admin" => true,
-					"ID" => 0,
-					"Username" => "string"
-				],
-				"SessionTime" => 0,
-				"TransactionID" => 0
-			]);
-		});
 
 		// Unit of Measure
 		$a->get('/v1/uom', function($REQ, $RES, $ARG) {
@@ -14124,5 +12118,10 @@ class BioTrack2024 extends \OpenTHC\Module\Base
 			]);
 		});
 
+	}
+
+	function makeClassName($c)
+	{
+		return sprintf('OpenTHC\Bunk\BioTrack2014\%s', $c);
 	}
 }
