@@ -16,7 +16,7 @@ class BioTrack2021 extends \OpenTHC\Module\Base
 	{
 		// Documentation
 		$a->get('', function($REQ, $RES, $ARG) {
-			return _page_doc_merge('biotrack-v2021');
+			return _page_doc_merge('BioTrack2021');
 		});
 
 	}

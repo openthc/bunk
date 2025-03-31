@@ -16,7 +16,7 @@ class BioTrack2024 extends \OpenTHC\Module\Base
 	{
 		// Documentation
 		$a->get('', function($REQ, $RES, $ARG) {
-			return _page_doc_merge('biotrack-v2024');
+			return _page_doc_merge('BioTrack2024');
 		});
 
 		// User / Authenticate

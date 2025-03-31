@@ -17,7 +17,7 @@ class BioTrack2014 extends \OpenTHC\Module\Base
 
 		// Documentation
 		$a->get('', function($REQ, $RES, $ARG) {
-			return _page_doc_merge('biotrack-v2014');
+			return _page_doc_merge('BioTrack2014');
 		});
 
 		// Ping
