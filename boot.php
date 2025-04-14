@@ -19,13 +19,7 @@ if ( ! \OpenTHC\Config::init(APP_ROOT) ) {
 	_exit_html_fail('<h1>Invalid Application Configuration [OBB-019]</h1>', 500);
 }
 
-define('OPENTHC_SERVICE_ID', \OpenTHC\Config::get('openthc/bunk/id'));
 define('OPENTHC_SERVICE_ORIGIN', \OpenTHC\Config::get('openthc/bunk/origin'));
-
-require_once('/opt/openthc/cre-adapter/lib/BioTrack.php');
-require_once('/opt/openthc/cre-adapter/lib/BioTrack/Contact.php');
-require_once('/opt/openthc/cre-adapter/lib/BioTrack/Section.php');
-require_once('/opt/openthc/cre-adapter/lib/BioTrack/Vehicle.php');
 
 /**
  * Shit Hack for a "theme"
@@ -34,19 +28,23 @@ function _page_doc_merge(string $f) : void
 {
 	$source = file_get_contents(APP_ROOT . '/webroot/index.html');
 
-	$file = sprintf('%s/doc/%s.md', APP_ROOT, $f);
+	$file = sprintf('%s/lib/%s/README.md', APP_ROOT, $f);
+	if ( ! is_file($file)) {
+		__exit_text('Not Found', 404);
+	}
 	$text = file_get_contents($file);
 
-	$t0 = strtok($text, "\n");
-	$insert = sprintf('<title>%s - \1</title>', trim(strtok($text, "\n"), '#'));
-	$source = preg_replace('/<title>(.+)<\/title>/ms', $insert, $source);
+	$content = _content_read($file);
+	// $source = $content['body'];
 
-	$pd = new \Parsedown();
-	$middle = $pd->text($text);
+	$title = strtok($content['body'], "\n");
+	$title = trim($title, '#');
+	$update = sprintf('<title>%s - \1</title>', $title);
+	$source = preg_replace('/<title>(.+)<\/title>/ms', $update, $source);
 
-	$middle = sprintf('<body><div class="cre-note">%s</div></body>', $pd->text($text));
-
-	$output = preg_replace('/<body>.+<\/body>/ms', $middle, $source);
+	$update = _markdown_ex($content['body']);
+	$update = sprintf('<body><div class="cre-note">%s</div></body>', $update);
+	$output = preg_replace('/<body>.+<\/body>/ms', $update, $source);
 
 	_exit_html($output);
 
