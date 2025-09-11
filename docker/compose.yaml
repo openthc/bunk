@@ -1,0 +1,19 @@
+#
+# OpenTHC Bunk Server Docker
+#
+
+services:
+  bunk:
+    container_name: openthc.bunk
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    image: openthc/bunk
+    pull_policy: never
+    ports:
+      - "42020:80"
+    volumes:
+      - type: bind
+        source: ../etc/bunk/config.php
+        target: /opt/openthc/bunk/etc/config.php
+        read_only: true
