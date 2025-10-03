@@ -1,5 +1,6 @@
 #!/bin/bash
 #
+# OpenTHC Bunk Docker Init
 #
 
 set -o errexit
@@ -8,6 +9,31 @@ set -o nounset
 set -o pipefail
 
 
+#
+# PHP Debugger
+OPENTHC_DEBUG=${OPENTHC_DEBUG:-"false"}
+if [ "$OPENTHC_DEBUG" == "true" ]
+then
+	echo "DEBUG ENABLED"
+	phpenmod xdebug
+fi
 
+
+#
+# Uses Environment to Create App
+/opt/openthc/bunk/docker/init.php
+
+
+#
+# Unsets All OpenTHC Environment Variables
+# Except for OPENTHC_SERVICE and OPENTHC_SERVER_NAME
+for var in $(env | cut -d= -f1 | grep OPENTHC | grep -v OPENTHC_SER)
+do
+	# echo "unset $var"
+	unset "$var"
+done
+
+
+#
 # Start Regular Way
 exec /usr/sbin/apache2 -DFOREGROUND
